@@ -1,0 +1,93 @@
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-info:    #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger:  #d9534f;
+
+body {
+  background-color: #f3f3f3;
+}
+
+#header {
+  background-color: $brand-primary;
+  color: white;
+  height: 40px;
+  line-height:40px;
+  text-align: center;
+}
+
+#menu {
+  // background-color: #E0F2F7;
+  margin-top: 40px;
+}
+
+#content {
+  margin-top: 30px;
+  // background-color: #F8E0E6;
+}
+
+
+.container {
+  margin:auto;
+}
+
+.header-title {
+  width: 100px;
+  text-align: center;
+}
+
+#search {
+  height: 28px;
+  width: 75%;
+  max-width: 400px;
+}
+
+.avatar {
+  @extend .img-circle;
+  width: 50px;
+  float:left;
+}
+
+.user-name {
+  margin-left: 70px;
+  margin-top: 7px;
+}
+
+.user-avatar {
+  max-width: 40px;
+  max-height: 40px;
+  float:left;
+}
+
+.deconnexion {
+  margin-left: 70px;
+  font-size: 12px;
+}
+
+#menu-action {
+  margin-top: 20px;
+  margin-left: 70px;
+}
+
+#menu-action li {
+  margin-top: 5px;
+}
+
+#menu-action li a {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.content-new {
+  margin-left: 55px;
+}
+
+.content-new .title {
+  margin-top: 2px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.content-new .describe {
+  margin-top: 10px;
+}
