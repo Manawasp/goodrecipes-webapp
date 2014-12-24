@@ -22,6 +22,9 @@ angular.module('app').controller("userCtrl", ($scope, $location, $cookieStore, u
       else if t_access == "admin"
         $scope.access_admin = true
 
+    $scope.locate = (location) ->
+      $location.path(location);
+
     $scope.logout = () ->
       $cookieStore.remove('id')
       $cookieStore.remove('token')

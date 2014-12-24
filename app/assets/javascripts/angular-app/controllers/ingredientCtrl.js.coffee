@@ -10,4 +10,9 @@ angular.module('app').controller("ingredientCtrl", ($scope, $location, $cookieSt
       $scope.ingredient.savours.push label
     $scope.addBlacklist = (label) ->
       $scope.ingredient.blacklist.push label
+
+
+    $scope.data = {
+      selectedIndex : 3
+    }
 )

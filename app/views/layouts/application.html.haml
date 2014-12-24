@@ -5,5 +5,5 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body{"ng-app" => 'app'}
-    %div{"ng-view" => true}
+  %body{"ng-app" => 'app', layout: 'row'}
+    %div{layout: "column", "layout-fill" => "", "tabindex" => "-1", role: "main", "ng-view" => true}

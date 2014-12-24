@@ -3,4 +3,8 @@ angular.module('app').controller("createrecipeCtrl", ($scope, $location, $cookie
     $scope.template = 'views/createrecipe.html'
     $scope.error = ''
     $scope.recipe = {}
+
+    $scope.data = {
+      selectedIndex : 1
+    }
 )
