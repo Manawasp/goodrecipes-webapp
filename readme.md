@@ -1,50 +1,48 @@
-# Foundation for Apps Template
+# Food Project
 
-This is the default template project for Foundation for Apps. It's powered by Node, Gulp, Angular, and libsass. It provides you with a basic template to get started with Angular and Foundation for Apps. If you're already an Angular developer, you may instead want to install the components into your own stack using Bower: `bower install foundation-apps`
+## Tools
 
-## Requirements
+For this project I use :    
+- Haml (Html preprocessing)
+- SCSS/SASS (CSS preprocessing)
+- CoffeeScrip (JavaScript preprocessing)
+- BoostrapCSS (framework css) | note : need to be deleted
+- AngularJS Material Design (framework css)
+- AngularJS (framework JS, v1.3.x)
+- Rails (v4.1.4)
 
-You'll need the following software installed to get started.
+## Clone depot, Init & Start
 
-  * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
-  * [Git](http://git-scm.com/downloads): Use the installer for your OS.
-    * Windows users can also try [Git for Windows](http://git-for-windows.github.io/).
-  * [Ruby](https://www.ruby-lang.org/en/): Use the installer for your OS. For Windows users, [JRuby](http://jruby.org/) is a popular alternative.
-    * With Ruby installed, run `gem install bundler sass`.
-  * [Gulp](http://gulpjs.com/) and [Bower](http://bower.io): Run `[sudo] npm install -g gulp bower`
+### Clone & Initialization
 
-## Get Started
+Clone the depot :    
+`$ git clone git@github.com:Manawasp/nourriture-frontend-app.git`    
 
-Clone this repository, where `app` is the name of your app.
-
-```bash
-git clone https://github.com/zurb/foundation-apps-template.git app
+Initialization :    
+```
+$ bundle install
+$ rake bower:instal
 ```
 
-Change into the directory.
+### Start
 
-```bash
-cd app
-```
+*Don't forget to run the api server & mongodb*    
 
-Install the dependencies. Running `npm install` will also automatically run `bower install` after. If you're running Mac OS or Linux, you may need to run `sudo npm install` instead, depending on how your machine is configured. Running `bundle` will install the correct version of Sass for the template.
 
-```bash
-npm install
-bower install
-bundle
-```
+Run server :
+`rails s`    
 
-While you're working on your project, run:
+And go to [http://localhost:3000](localhost:3000)    
 
-```bash
-npm start
-```
+### Start in development
 
-This will compile the Sass and assemble your Angular app. **Now go to `localhost:8080` in your browser to see it in action.**
+You need to add `guard start` to compile html.haml in app/assets/templates -> public/templates
 
-To run the compiling process once, without watching any files:
+## Source
 
-```bash
-npm start build
-```
+- [http://docs.foodapicn.apiary.io/](food api documentation)
+- [https://github.com/ftb59/Nourriture](food api server)
+- [http://doc.ubuntu-fr.org/rubyonrails](installation Rails via RVM - recommended)
+- [http://angularjs.org](AngularJS)
+- [http://material.angularjs.org](Material Design for AngularJS)
+- [http://getbootstrap.com/](BootstrapCSS)
