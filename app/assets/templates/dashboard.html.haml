@@ -1,0 +1,60 @@
+#header
+  .container.row
+    .col-xs-12
+      #menucontainer.row
+        .col-xs-3.col-md-3
+          %span.header-title
+            %a{"ng-href" => "\#/"} Foodapi
+        .col-xs-9.col-md-9
+          %span.header-search{style: 'text-align:left'}
+            %form.form-inline{role: "form"}
+              %input#search.form-control{placeholder: 'Search users, recipes...'}
+#main
+  .container.row
+    .col-xs-12
+      #maincontainer.row
+        #menu.col-sm-3.col-md-3.hidden-xs.hidden-sm{"ng-controller" => "userCtrl"}
+          %a{href: '\#users/{{id}}'}
+            %img.avatar{src: "{{avatar}}"}
+          %div
+            %div.user-name {{user.pseudo}}
+            %div.deconnexion
+              %a{href: "", "ng-click" => "logout()"} log out
+          %div#menu-action
+            %ul.list-unstyled
+              %a{href: "\#moment"}
+                %li.title
+                  %span.glyphicon.glyphicon-film
+                  Moments
+              %a{href: "\#moment/create"}
+                %li
+                  %span.glyphicon.glyphicon-plus
+                  moment
+            %ul.list-unstyled{style: 'margin-top:20px'}
+              %a{href: "\#recipe"}
+                %li.title
+                  %span.glyphicon.glyphicon-cutlery
+                  Recipes
+              %a{href: "\#recipe/create"}
+                %li{"ng-show" => "access_gastronomist == true"}
+                  %span.glyphicon.glyphicon-plus
+                  recipe
+            %ul.list-unstyled{"ng-show" => "access_supplier == true", style: 'margin-top:20px'}
+              %a{href: "\#ingredient"}
+                %li.title
+                  %span.glyphicon.glyphicon-leaf
+                  Ingredients
+              %a{href: "#ingredient/create"}
+                %li
+                  %span.glyphicon.glyphicon-plus
+                  ingredient
+            %ul.list-unstyled{"ng-show" => "access_admin == true", style: 'margin-top:20px'}
+              %li.title
+                %span.glyphicon.glyphicon-cog
+                Admin
+              %a{href: "\#user/search"}
+                %li.title
+                  %span.glyphicon.glyphicon-user
+                  Users
+        #content.col-xs-12.col-md-9{"ng-include" => "template"}
+          / = yield

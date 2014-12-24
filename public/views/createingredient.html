@@ -1,0 +1,32 @@
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    Create ingredient
+  </div>
+  <div class='panel-body'>
+    <form role='form'>
+      <div class='row'>
+        <div class='col-xs-12'>
+          <div class='form-group' ng-show="error != ''">
+            <div class='alert alert-danger' role='alert'>
+              <span aria-hidden='true' class='glyphicon glyphicon-exclamation-sign'></span>
+              {{error}}
+            </div>
+          </div>
+        </div>
+        <div class='col-xs-12'>
+          <div class='form-group'>
+            <label for='exampleInputEmail1'>Title</label>
+            <input class='form-control' ng-model='ingredient.title' placeholder='Enter title'>
+          </div>
+          <div class='form-group'>
+            <label for='exampleInputPassword1'>Description</label>
+            <input class='form-control' ng-model='ingredient.description' placeholder='Enter description'>
+          </div>
+          <button class='btn btn-info btn-sm' ng-click='send()'>
+            <b>create</b>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.panel.panel-default
+  .panel-heading
+    %button.fright.btn.btn-success.btn-xs{"ng-click" => "send()"}
+      %b register
+    Edit your profile
+  .panel-body
+    %form{"role" => "form"}
+      .row
+        .col-xs-12
+          .form-group{"ng-show" => "error != ''"}
+            .alert.alert-danger{role: 'alert'}
+              %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"} 
+              {{error}}
+        .col-xs-6
+          .form-group
+            %label{"for" => "exampleInputEmail1"} Email address
+            %input.form-control{"ng-model" => "user.email", placeholder: "Enter email"}
+          .form-group
+            %label{"for" => "exampleInputPassword1"} Pseudo
+            %input.form-control{"ng-model" => "user.pseudo"}
+          .form-group
+            %label{"for" => "exampleInputPassword1"} Password
+            %input.form-control{"ng-model" => "user.password", placeholder: "Enter new password"}
+        .col-xs-6
+          .form-group
+            %label{"for" => "exampleInputEmail1"} Firstname
+            %input.form-control{"ng-model" => "user.firstname", placeholder: "Enter your firstname"}
+          .form-group
+            %label{"for" => "exampleInputPassword1"} Lastname
+            %input.form-control{"ng-model" => "user.lastname", placeholder: "Enter your lastname"}
+          .form-group
+            %div
+              %label Role
+            %span{"ng-repeat" => "access in user.access"}
+              %span.label.label-info {{access}}
+        .col-xs-12.text-right

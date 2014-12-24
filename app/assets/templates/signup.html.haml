@@ -1,0 +1,13 @@
+.form-group{"ng-show" => "error != ''"}
+  .alert.alert-danger{role: 'alert'}
+    %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"} 
+    {{error}}
+.form-group
+  %label{:for => "exampleInputEmail1"} Email address
+  %input.form-control{:placeholder => "Enter email", "ng-model" => "email"}
+.form-group
+  %label{:for => "exampleInputPassword1"} Password
+  %input.form-control{:placeholder => "Password", :type => "password", "ng-model" => "password"}
+%div.text-right.margin-top-10
+  %a.btn.btn-default.btn-sm.revert.fleft{"ng-href" => "\#signin"} sign in
+  %button.btn.btn-success.btn-sm{"ng-click" => "send()"} Connection

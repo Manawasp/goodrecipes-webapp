@@ -1,0 +1,23 @@
+.panel.panel-default
+  .panel-heading
+    %button.fright.btn.btn-success.btn-xs{"ng-click" => "send()"}
+      %b follow
+    See profile
+  .panel-body
+    %form{"role" => "form"}
+      .row
+        .col-xs-4.col-sm-3.col-md-1
+          %a{href: ''}
+            %img.avatar{src: "/images/avatar.jpg"}
+        .col-xs-4
+          .form-group
+            %label{"for" => "exampleInputPassword1"} Pseudo
+            %div
+              {{user.pseudo}}
+        .col-xs-4
+          .form-group
+            %div
+              %label Role
+            %span{"ng-repeat" => "access in user.access"}
+              %span.label.label-info {{access}}
+        .col-xs-12.text-right

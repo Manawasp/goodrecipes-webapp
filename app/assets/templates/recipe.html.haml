@@ -1,0 +1,54 @@
+.panel.panel-default
+  .panel-body
+    %big Search Recipe
+    %form.form-inline{"role" => "form"}
+      .row
+        .col-xs-12
+          .form-group{"ng-show" => "error != ''"}
+            .alert.alert-danger{role: 'alert'}
+              %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"} 
+              {{error}}
+        .col-xs-12
+          .form-group{style: 'width: 90%;margin-left:5%;margin-top:10px;margin-bottom:10px;'}
+            %input.input-sm.form-control{"ng-model" => "recipe.description", placeholder: "Enter title", style: 'width: 100%'}
+      .row{style: 'border-top:1px solid #eee;margin-top:5px;'}
+        .col-xs-5
+          %p
+            .form-group
+              %label{"for" => "exampleInputPassword1", style:'width:75px'} Labels
+              %input.input-sm.form-control{"ng-model" => "label", placeholder: "add labels"}
+              %a.btn.btn-xs.btn-success{herf: '', 'ng-click' => 'addLabels(label)'}
+                %span.glyphicon.glyphicon-plus
+        .col-xs-7
+          %div{style: 'margin-top:15px'}
+            %span{"ng-repeat" => "ig in recipe.labels"}
+              %span.label.label-info {{ig}}
+      .row{style: 'border-top:1px solid #eee;margin-top:5px;'}
+        .col-xs-5
+          %p
+            .form-group
+              %label{"for" => "exampleInputPassword1", style:'width:75px'} Savours
+              %input.input-sm.form-control{"ng-model" => "savour", placeholder: "add savours"}
+              %a.btn.btn-xs.btn-success{herf: '', 'ng-click' => 'addSavours(savour)'}
+                %span.glyphicon.glyphicon-plus
+        .col-xs-7
+          %div{style: 'margin-top:15px'}
+            %span{"ng-repeat" => "ig in recipe.savours"}
+              %span.label.label-info {{ig}}
+      .row{style: 'border-top:1px solid #eee;margin-top:5px;'}
+        .col-xs-5
+          %p
+            .form-group
+              %label{"for" => "exampleInputPassword1", style:'width:75px'} Blacklist
+              %input.input-sm.form-control{"ng-model" => "blacklist", placeholder: "add blacklist"}
+              %a.btn.btn-xs.btn-success{herf: '', 'ng-click' => 'addBlacklist(blacklist)'}
+                %span.glyphicon.glyphicon-plus
+        .col-xs-7
+          %div{style: 'margin-top:15px'}
+            %span{"ng-repeat" => "ig in recipe.blacklist"}
+              %span.label.label-info {{ig}}
+      .row{style: 'border-top:1px solid #eee;margin-top:5px;'}
+        .col-xs-12{style: 'margin-top:10px;'}
+          %button.btn.btn-info.btn-sm{"ng-click" => "send()"}
+            %b Search recipes
+      {{recipe}}
