@@ -1,4 +1,4 @@
-angular.module('app.exampleApp').controller("ExampleCtrl", [
+angular.module('app').controller("ExampleCtrl", [
   '$scope',
   ($scope)->
     console.log 'ExampleCtrl running'
