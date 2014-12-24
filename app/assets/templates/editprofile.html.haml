@@ -1,36 +1,42 @@
-.panel.panel-default
-  .panel-heading
-    %button.fright.btn.btn-success.btn-xs{"ng-click" => "send()"}
-      %b register
-    Edit your profile
-  .panel-body
-    %form{"role" => "form"}
-      .row
-        .col-xs-12
-          .form-group{"ng-show" => "error != ''"}
-            .alert.alert-danger{role: 'alert'}
-              %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"} 
-              {{error}}
-        .col-xs-6
-          .form-group
-            %label{"for" => "exampleInputEmail1"} Email address
-            %input.form-control{"ng-model" => "user.email", placeholder: "Enter email"}
-          .form-group
-            %label{"for" => "exampleInputPassword1"} Pseudo
-            %input.form-control{"ng-model" => "user.pseudo"}
-          .form-group
-            %label{"for" => "exampleInputPassword1"} Password
-            %input.form-control{"ng-model" => "user.password", placeholder: "Enter new password"}
-        .col-xs-6
-          .form-group
-            %label{"for" => "exampleInputEmail1"} Firstname
-            %input.form-control{"ng-model" => "user.firstname", placeholder: "Enter your firstname"}
-          .form-group
-            %label{"for" => "exampleInputPassword1"} Lastname
-            %input.form-control{"ng-model" => "user.lastname", placeholder: "Enter your lastname"}
-          .form-group
-            %div
-              %label Role
-            %span{"ng-repeat" => "access in user.access"}
-              %span.label.label-info {{access}}
-        .col-xs-12.text-right
+%div.panel-content{"layout-fill" => "", layout: "column"}
+  %section.demo-container.md-whiteframe-z1
+    %md-toolbar.demo-toolbar.md-default-theme
+      .md-toolbar-tools
+        %span.ng-binding Edit your profile
+        %span{:flex => ""}
+    %div.demo-content
+      %div{:layout => "column"}
+        %md-content
+          %form{:style => "padding: 20px;"}
+            %md-text-float{:disabled => "disabled", :label => "Company", "ng-model" => "user.company"}
+            .row
+              %div{flex: '50'}
+                %md-text-float{:label => "FirstName", "ng-model" => "user.firstName"}
+              %div{flex: '50'}
+                %md-text-float{:label => "LastName", "ng-model" => "user.lastName"}
+            %md-text-float{:label => "Address", "ng-model" => "user.address"}
+            .row
+              %md-text-float{:label => "City", "ng-model" => "user.city"}
+              %md-text-float{:label => "State", "ng-model" => "user.state"}
+              %md-text-float{:label => "Postal Code", "ng-model" => "user.postalCode"}
+            %md-text-float{:disabled => "disabled", :label => "Country", "ng-model" => "user.country"}
+      .form-group
+        %label{"for" => "exampleInputEmail1"} Email address
+        %input.form-control{"ng-model" => "user.email", placeholder: "Enter email"}
+      .form-group
+        %label{"for" => "exampleInputPassword1"} Pseudo
+        %input.form-control{"ng-model" => "user.pseudo"}
+      .form-group
+        %label{"for" => "exampleInputPassword1"} Password
+        %input.form-control{"ng-model" => "user.password", placeholder: "Enter new password"}
+      .form-group
+        %label{"for" => "exampleInputEmail1"} Firstname
+        %input.form-control{"ng-model" => "user.firstname", placeholder: "Enter your firstname"}
+      .form-group
+        %label{"for" => "exampleInputPassword1"} Lastname
+        %input.form-control{"ng-model" => "user.lastname", placeholder: "Enter your lastname"}
+      .form-group
+        %div
+          %label Role
+          %span{"ng-repeat" => "access in user.access"}
+            %span.label.label-info {{access}}
