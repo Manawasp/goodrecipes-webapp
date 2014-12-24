@@ -26,7 +26,7 @@ $ rake bower:instal
 
 ### Start
 
-*Don't forget to run the api server & mongodb*    
+**Don't forget to run the api server & mongodb**    
 
 
 Run server :
