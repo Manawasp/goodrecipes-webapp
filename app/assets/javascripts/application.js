@@ -16,6 +16,10 @@
 //= require angular-route
 //= require angular-cookies
 //= require angular-rails-templates
+//= require angular-animate
+//= require angular-aria
+//= require hammerjs
+//= require angular-material
 
 //= require angular-app/app
 //= require_tree ./angular-app/modules
@@ -26,5 +30,6 @@
 //= require_tree ./angular-app/controllers
 //= require_tree ../templates
 
-//= require bootstrap-sprockets
+// = require bootstrap-sprockets
+
 

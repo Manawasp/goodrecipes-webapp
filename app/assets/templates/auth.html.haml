@@ -5,6 +5,7 @@
         .panel-heading
           %h4
             Foodapi
-        .panel-body
-          %form{:role => "form"}
-            %div{"ng-include" => "template"}
+        .panel-body{"layout" => "column"}
+          %md-content{"md-theme" => "docs-dark"}
+            %form{:role => "form"}
+              %div{"ng-include" => "template"}

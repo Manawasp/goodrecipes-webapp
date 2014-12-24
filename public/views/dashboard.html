@@ -1,23 +1,52 @@
-<div id='header'>
-  <div class='container row'>
-    <div class='col-xs-12'>
-      <div class='row' id='menucontainer'>
-        <div class='col-xs-3 col-md-3'>
-          <span class='header-title'>
-            <a ng-href='#/'>Foodapi</a>
-          </span>
+<md-toolbar class='md-default-theme' layout='column'>
+  <div class='md-toolbar-tools' flex='100' layout='column' ng-controller='userCtrl' tabindex='0'>
+    <div flex='' layout='column'>
+      <div layout-align='space-between start' layout='row'>
+        <div style='margin-top:50px;'>
+          NourritureApp
         </div>
-        <div class='col-xs-9 col-md-9'>
-          <span class='header-search' style='text-align:left'>
-            <form class='form-inline' role='form'>
-              <input class='form-control' id='search' placeholder='Search users, recipes...'>
-            </form>
-          </span>
+        <div flex='50' style='margin-top:45px;background-color:red'>
+          <md-tabs class='md-accent' md-selected='data.selectedIndex'>
+            <md-tab aria-controls='tab1-content' id='tab1' ng-click="locate('moment')">
+              <b>Moments</b>
+            </md-tab>
+            <md-tab aria-controls='tab2-content' id='tab2' ng-click="locate('recipe')">
+              <b>Recipes</b>
+            </md-tab>
+            <md-tab aria-controls='tab2-content' id='tab2' ng-click="locate('ingredient')">
+              <b>Ingredients</b>
+            </md-tab>
+          </md-tabs>
+          <!-- %a -->
+          <!-- %md-button -->
+          <!-- %b Moments -->
+          <!-- %a{href: "\#recipe/create"} -->
+          <!-- %md-button -->
+          <!-- %b Recipes -->
+        </div>
+        <div>
+          <a href='\#users/{{id}}'>
+            <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' ng-transclude='' style='margin-top:60px'>
+              <img class='avatar' src='{{avatar}}'>
+            </button>
+          </a>
+          <!-- .md-ripple-container{:style => ""} -->
         </div>
       </div>
     </div>
   </div>
-</div>
+</md-toolbar>
+<!-- #header -->
+<!-- .container.row -->
+<!-- .col-xs-12 -->
+<!-- #menucontainer.row -->
+<!-- .col-xs-3.col-md-3 -->
+<!-- %span.header-title -->
+<!-- %a{"ng-href" => "\#/"} Foodapi -->
+<!-- .col-xs-9.col-md-9 -->
+<!-- %span.header-search{style: 'text-align:left'} -->
+<!-- %form.form-inline{role: "form"} -->
+<!-- %input#search.form-control{placeholder: 'Search users, recipes...'} -->
 <div id='main'>
   <div class='container row'>
     <div class='col-xs-12'>

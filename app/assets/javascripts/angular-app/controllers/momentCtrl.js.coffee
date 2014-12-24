@@ -3,4 +3,8 @@ angular.module('app').controller("momentCtrl", ($scope, $location, $cookieStore,
     # $scope.user = api.getUser()
     $scope.connected = "evidemment"
     $scope.template = 'views/wall.html'
+
+    $scope.data = {
+      selectedIndex : 0
+    }
 )

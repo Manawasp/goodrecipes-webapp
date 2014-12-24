@@ -4,6 +4,10 @@ angular.module('app').controller("recipeCtrl", ($scope, $location, $cookieStore,
     $scope.error = ''
     $scope.recipe = {labels: [], savours: [], blacklist: []}
 
+    $scope.data = {
+      selectedIndex : 1
+    }
+
     $scope.addLabels = (label) ->
       $scope.recipe.labels.push label
     $scope.addSavours = (label) ->

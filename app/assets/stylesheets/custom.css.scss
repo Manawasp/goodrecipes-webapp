@@ -80,9 +80,11 @@ body {
 }
 
 .avatar {
-  @extend .img-circle;
-  width: 50px;
-  float:left;
+  // @extend .img-circle;
+  width: 58px;
+  margin-top:-7px;
+  margin-left:-3px;
+  float: left;
 }
 
 .user-name {

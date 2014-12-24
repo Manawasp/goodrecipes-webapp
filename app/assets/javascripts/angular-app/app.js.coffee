@@ -1,7 +1,8 @@
 @app = angular.module('app', [
   # additional dependencies here, such as restangular
   'ngRoute',
-  'ngCookies'
+  'ngCookies',
+  'ngMaterial'
 ])
 
 # for compatibility with Rails CSRF protection

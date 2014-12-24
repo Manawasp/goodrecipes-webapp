@@ -1,14 +1,39 @@
-#header
-  .container.row
-    .col-xs-12
-      #menucontainer.row
-        .col-xs-3.col-md-3
-          %span.header-title
-            %a{"ng-href" => "\#/"} Foodapi
-        .col-xs-9.col-md-9
-          %span.header-search{style: 'text-align:left'}
-            %form.form-inline{role: "form"}
-              %input#search.form-control{placeholder: 'Search users, recipes...'}
+%md-toolbar.md-default-theme{layout: "column"}
+  .md-toolbar-tools{tabindex: "0", flex: "100", layout: "column", "ng-controller" => "userCtrl"}
+    %div{layout: "column", flex: ""}
+      %div{layout: "row", "layout-align" => "space-between start"}
+        %div{style: 'margin-top:50px;'}
+          NourritureApp
+        %div{flex: "50", style: 'margin-top:45px;background-color:red'}
+          %md-tabs.md-accent{"md-selected" => "data.selectedIndex"}
+            %md-tab{id: "tab1", "ng-click" => "locate('moment')", "aria-controls" => "tab1-content"}
+              %b Moments
+            %md-tab{id: "tab2", "ng-click" => "locate('recipe')", "aria-controls" => "tab2-content"}
+              %b Recipes
+            %md-tab{id: "tab2", "ng-click" => "locate('ingredient')", "aria-controls" => "tab2-content"}
+              %b Ingredients
+          / %a
+          /   %md-button
+          /     %b Moments
+          / %a{href: "\#recipe/create"}
+          /   %md-button
+          /     %b Recipes
+        %div
+          %a{href: '\#users/{{id}}'}
+            %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", "ng-transclude" => "", style:"margin-top:60px"}
+              %img.avatar{src: "{{avatar}}"}
+          /     .md-ripple-container{:style => ""}
+/ #header
+/   .container.row
+/     .col-xs-12
+/       #menucontainer.row
+/         .col-xs-3.col-md-3
+/           %span.header-title
+/             %a{"ng-href" => "\#/"} Foodapi
+/         .col-xs-9.col-md-9
+/           %span.header-search{style: 'text-align:left'}
+/             %form.form-inline{role: "form"}
+/               %input#search.form-control{placeholder: 'Search users, recipes...'}
 #main
   .container.row
     .col-xs-12
