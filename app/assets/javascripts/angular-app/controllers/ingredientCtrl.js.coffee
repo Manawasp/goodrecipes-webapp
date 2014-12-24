@@ -13,6 +13,6 @@ angular.module('app').controller("ingredientCtrl", ($scope, $location, $cookieSt
 
 
     $scope.data = {
-      selectedIndex : 3
+      selectedIndex : 2
     }
 )
