@@ -1,5 +1,3 @@
-=== init depot
-
 # Food Project
 
 ## Tools
@@ -15,16 +13,36 @@ For this project I use :
 
 ## Clone depot, Init & Start
 
-### Clone & Init
+### Clone & Initialization
 
 Clone the depot :    
-`git clone git@github.com:Manawasp/nourriture-frontend-app.git`    
+`$ git clone git@github.com:Manawasp/nourriture-frontend-app.git`    
 
 Initialization :    
 ```
-	$ bundle install
-	$ rake bower:instal
+$ bundle install
+$ rake bower:instal
 ```
 
+### Start
 
-###
+*Don't forget to run the api server & mongodb*    
+
+
+Run server :
+`rails s`    
+
+And go to [http://localhost:3000](localhost:3000)    
+
+### Start in development
+
+You need to add `guard start` to compile html.haml in app/assets/templates -> public/templates
+
+## Source
+
+- [http://docs.foodapicn.apiary.io/](food api documentation)
+- [https://github.com/ftb59/Nourriture](food api server)
+- [http://doc.ubuntu-fr.org/rubyonrails](installation Rails via RVM - recommended)
+- [http://angularjs.org](AngularJS)
+- [http://material.angularjs.org](Material Design for AngularJS)
+- [http://getbootstrap.com/](BootstrapCSS)
