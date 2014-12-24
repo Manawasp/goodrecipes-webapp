@@ -1,0 +1,22 @@
+<div class='form-group' ng-show="error != ''">
+  <div class='alert alert-danger' role='alert'>
+    <span aria-hidden='true' class='glyphicon glyphicon-exclamation-sign'></span>
+    {{error}}
+  </div>
+</div>
+<div class='form-group'>
+  <label for='exampleInputPseudo'>Pseudo</label>
+  <input class='form-control' ng-model='pseudo' placeholder='Enter pseudo'>
+</div>
+<div class='form-group'>
+  <label for='exampleInputEmail'>Email address</label>
+  <input class='form-control' ng-model='email' placeholder='Enter email'>
+</div>
+<div class='form-group'>
+  <label for='exampleInputPassword'>Password</label>
+  <input class='form-control' ng-model='password' placeholder='Password' type='password'>
+</div>
+<div class='text-right margin-top-10'>
+  <a class='btn btn-default btn-sm revert fleft' href='\#login'>Connection</a>
+  <button class='btn btn-success btn-sm' ng-click='send()'>Validate inscription</button>
+</div>

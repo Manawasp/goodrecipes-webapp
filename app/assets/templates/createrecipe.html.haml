@@ -1,0 +1,20 @@
+.panel.panel-default
+  .panel-heading
+    Create recipe
+  .panel-body
+    %form{"role" => "form"}
+      .row
+        .col-xs-12
+          .form-group{"ng-show" => "error != ''"}
+            .alert.alert-danger{role: 'alert'}
+              %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"} 
+              {{error}}
+        .col-xs-12
+          .form-group
+            %label{"for" => "exampleInputEmail1"} Title
+            %input.form-control{"ng-model" => "recipe.title", placeholder: "Enter title"}
+          .form-group
+            %label{"for" => "exampleInputPassword1"} Description
+            %input.form-control{"ng-model" => "recipe.description", placeholder: "Enter description"}
+          %button.btn.btn-info.btn-sm{"ng-click" => "send()"}
+            %b create

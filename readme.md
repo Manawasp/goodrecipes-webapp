@@ -26,13 +26,13 @@ $ rake bower:instal
 
 ### Start
 
-*Don't forget to run the api server & mongodb*    
+**Don't forget to run the api server & mongodb**    
 
 
 Run server :
 `rails s`    
 
-And go to [http://localhost:3000](localhost:3000)    
+And go to (localhost:3000)[http://localhost:3000]    
 
 ### Start in development
 

@@ -1,0 +1,98 @@
+<div id='header'>
+  <div class='container row'>
+    <div class='col-xs-12'>
+      <div class='row' id='menucontainer'>
+        <div class='col-xs-3 col-md-3'>
+          <span class='header-title'>
+            <a ng-href='#/'>Foodapi</a>
+          </span>
+        </div>
+        <div class='col-xs-9 col-md-9'>
+          <span class='header-search' style='text-align:left'>
+            <form class='form-inline' role='form'>
+              <input class='form-control' id='search' placeholder='Search users, recipes...'>
+            </form>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id='main'>
+  <div class='container row'>
+    <div class='col-xs-12'>
+      <div class='row' id='maincontainer'>
+        <div class='col-sm-3 col-md-3 hidden-xs hidden-sm' id='menu' ng-controller='userCtrl'>
+          <a href='\#users/{{id}}'>
+            <img class='avatar' src='{{avatar}}'>
+          </a>
+          <div>
+            <div class='user-name'>{{user.pseudo}}</div>
+            <div class='deconnexion'>
+              <a href='' ng-click='logout()'>log out</a>
+            </div>
+          </div>
+          <div id='menu-action'>
+            <ul class='list-unstyled'>
+              <a href='#moment'>
+                <li class='title'>
+                  <span class='glyphicon glyphicon-film'></span>
+                  Moments
+                </li>
+              </a>
+              <a href='#moment/create'>
+                <li>
+                  <span class='glyphicon glyphicon-plus'></span>
+                  moment
+                </li>
+              </a>
+            </ul>
+            <ul class='list-unstyled' style='margin-top:20px'>
+              <a href='#recipe'>
+                <li class='title'>
+                  <span class='glyphicon glyphicon-cutlery'></span>
+                  Recipes
+                </li>
+              </a>
+              <a href='#recipe/create'>
+                <li ng-show='access_gastronomist == true'>
+                  <span class='glyphicon glyphicon-plus'></span>
+                  recipe
+                </li>
+              </a>
+            </ul>
+            <ul class='list-unstyled' ng-show='access_supplier == true' style='margin-top:20px'>
+              <a href='#ingredient'>
+                <li class='title'>
+                  <span class='glyphicon glyphicon-leaf'></span>
+                  Ingredients
+                </li>
+              </a>
+              <a href='#ingredient/create'>
+                <li>
+                  <span class='glyphicon glyphicon-plus'></span>
+                  ingredient
+                </li>
+              </a>
+            </ul>
+            <ul class='list-unstyled' ng-show='access_admin == true' style='margin-top:20px'>
+              <li class='title'>
+                <span class='glyphicon glyphicon-cog'></span>
+                Admin
+              </li>
+              <a href='#user/search'>
+                <li class='title'>
+                  <span class='glyphicon glyphicon-user'></span>
+                  Users
+                </li>
+              </a>
+            </ul>
+          </div>
+        </div>
+        <div class='col-xs-12 col-md-9' id='content' ng-include='template'>
+          <!-- = yield -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
