@@ -12,5 +12,15 @@ angular.module('app')
           return req
         search: () ->
           req = $http.post(apiService.url() + '/users/search')
+        follow: (idhash) ->
+          idhash = idhash || ''
+          req = $http.post(apiService.url() + '/followers', {id: idhash})
+          return req
+        getFollower: (idhash) ->
+          req = $http.get(apiService.url() + '/followers/' + idhash)
+          return req
+        removeFollower: (idhash) ->
+          req = $http.del(apiService.url() + '/followers/' + idhash)
+          return req
       )
   )
