@@ -11,6 +11,24 @@ body {
   background-color: #f4f4f4;
 }
 
+.green {
+  background-color: red;
+}
+
+// .md-fab-top-right.md-fab.is-friend {
+//   background-color: #F7D358;
+//   &:hover {
+//     background-color: red;
+//   }
+// }
+
+.md-fab-top-right.md-fab.not-friend {
+  background-color: #bbb;
+  .glyphicon.glyphicon-star {
+    color: #999;
+  }
+}
+
 #maincontainer {
   // background-color: #f4f4f4;
 }
