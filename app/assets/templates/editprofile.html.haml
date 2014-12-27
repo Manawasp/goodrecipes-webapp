@@ -34,7 +34,7 @@
                 %md-text-float{:label => "Last name", "ng-model" => "user.lastname"}
             %div{layout: "row"}
               %div{flex: '50'}
-                %md-text-float{:label => "Password", "ng-model" => "user.password"}
+                %md-text-float{:label => "Password", "ng-model" => "user.password", "ng-type" => "number"}
               %div{flex: '50'}
                 %span{"ng-repeat" => "access in user.access"}
                   %span.label.label-info {{access}}

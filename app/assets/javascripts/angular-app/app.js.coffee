@@ -7,7 +7,7 @@
 
 # for compatibility with Rails CSRF protection
 
-@app.config(($routeProvider, $locationProvider, $httpProvider)->
+@app.config(($mdThemingProvider, $routeProvider, $locationProvider, $httpProvider)->
   $httpProvider.interceptors.push('httpInterceptor');
   
   $routeProvider
