@@ -12,6 +12,8 @@
           %div{layout: "row", "layout-align" => "center", style: 'margin-top:-60px;'}
             %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style:"position:absolute;margin-top:60px"}
               %img.avatar{src: "{{user.avatar}}"}
+              %md-tooltip.font-11
+                upload
     %div.demo-content
       %md-content{layout: "row"}
         %div{flex: '20'}
@@ -42,16 +44,37 @@
         %div{layout: "row"}
           %div{flex: '20'}
             %h4{style: 'margin-top:30px;margin-left:15px;margin-bottom:30px'}
-              Followers ({{followers.length}})
+              Followers
+              %span.light-silver.margin-left-5.font-14
+                {{followers.length}}
           %div{flex: '70'}
             %div
               %div{layout: "row", "layout-align" =>"start start"}
                 %div{"ng-repeat" => "follower in followers", style: 'padding:10px 15px'}
                   %div{layout: "column","layout-align" =>"center center"}
                     %div{style: 'margin-top:10px'}
-                      %a{href: '\#hello'}
+                      %a{href: '\#users/{{follower.id}}'}
                         %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style: 'width:40px;height:40px'}
                           %img.avatar{src: "{{follower.avatar}}", style: 'width:40px;height:40px'}
                     %div{style: 'font-size:11px;margin-top:5px'}
                       {{follower.pseudo}}
+      %md-content{style: 'border-top:1px solid #ddd'}
+        %div{layout: "row"}
+          %div{flex: '20'}
+            %h4{style: 'margin-top:30px;margin-left:15px;margin-bottom:30px'}
+              Followeds 
+              %span.light-silver.margin-left-5.font-14
+                {{followeds.length}}
+          %div{flex: '70'}
+            %div
+              %div{layout: "row", "layout-align" =>"start start"}
+                %div{"ng-repeat" => "followed in followeds", style: 'padding:10px 15px'}
+                  %div{layout: "column","layout-align" =>"center center"}
+                    %div{style: 'margin-top:10px'}
+                      %a{href: '\#users/{{followed.id}}'}
+                        %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style: 'width:40px;height:40px'}
+                          %img.avatar{src: "{{followed.avatar}}", style: 'width:40px;height:40px'}
+                    %div{style: 'font-size:11px;margin-top:5px'}
+                      {{followed.pseudo}}
+
 
