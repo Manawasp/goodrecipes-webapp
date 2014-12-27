@@ -3,15 +3,16 @@
     <md-toolbar class='demo-toolbar md-default-theme' style='background-color: #eee;color:#666'>
       <div class='md-toolbar-tools'>
         <span flex='100' style='position:absolute;margin-top:20px'>
-          Edit your profile
+          Your profile
         </span>
-        <!-- %span{flex: 100, style: 'position:absolute;right:0;margin-top:10px;margin-right:10px'} -->
-        <!-- %md-progress-circular{"md-mode" => "indeterminate", "md-diameter" => "30"} -->
-        <md-button class='md-primary md-fab md-fab-top-right' style='background:#4CAF50;margin-right:-10px;margin-top:-17px;width:40px;height:40px'>
+        <md-button aria-label='' class='md-primary md-fab md-fab-top-right' ng-click='update_user()' ng-show='data.send == false' style='background:#4CAF50;margin-right:-10px;margin-top:-17px;width:40px;height:40px'>
           <span class='glyphicon glyphicon-ok'></span>
         </md-button>
+        <span flex='100' ng-show='data.send == true' style='width:100%;position:absolute;margin-top:54px;margin-left:-10px'>
+          <md-progress-linear class='md-accent' md-mode='indeterminate'></md-progress-linear>
+        </span>
         <span flex='100'>
-          <div layout-align='center' layout='row' style='margin-top:-70px;'>
+          <div layout-align='center' layout='row' style='margin-top:-60px;'>
             <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='position:absolute;margin-top:60px'>
               <img class='avatar' src='{{user.avatar}}'>
             </button>
@@ -20,50 +21,76 @@
       </div>
     </md-toolbar>
     <div class='demo-content'>
-      <div layout='column'>
-        <md-content>
+      <md-content layout='row'>
+        <div flex='20'>
+          <h4 style='margin-top:30px;margin-left:15px;margin-bottom:30px'>Informations</h4>
+        </div>
+        <div flex='80' layout='column'>
           <form style='padding: 20px;'>
-            <div layout-align='center' layout='row'>
-              <div flex='50' layout-align='center' layout='row'>
-                <div>
-                  <md-text-float label='Email adress' ng-model='user.email'></md-text-float>
-                </div>
-              </div>
-              <div flex='50' layout-align='center' layout='row'>
-                <div>
-                  <md-text-float label='Pseudo' ng-model='user.pseudo'></md-text-float>
-                </div>
+            <div layout='row' ng-show="data.error != ''">
+              <div class='alert alert-danger' flex='100' role='alert' style='margin-top: 20px'>
+                <span aria-hidden='true' class='glyphicon glyphicon-exclamation-sign'></span>
+                {{data.error}}
               </div>
             </div>
-            <div layout-align='space-around center' layout='row'>
-              <div flex='50' layout-align='center' layout='row'>
-                <div>
-                  <md-text-float label='First name' ng-model='user.firstname'></md-text-float>
-                </div>
+            <div layout='row'>
+              <div flex='50'>
+                <md-text-float label='Email adress' ng-model='user.email'></md-text-float>
               </div>
-              <div flex='50' layout-align='center' layout='row'>
-                <div>
-                  <md-text-float label='Last name' ng-model='user.lastname'></md-text-float>
-                </div>
+              <div flex='50'>
+                <md-text-float label='Pseudo' ng-model='user.pseudo'></md-text-float>
               </div>
             </div>
-            <div class='row' layout-align='space-around center' layout='row'>
-              <div flex='50' layout-align='center' layout='row'>
-                <div>
-                  <md-text-float label='Password' ng-model='user.password'></md-text-float>
-                </div>
+            <div layout='row'>
+              <div flex='50'>
+                <md-text-float label='First name' ng-model='user.firstname'></md-text-float>
               </div>
-              <div flex='50' layout-align='center' layout='row'>
-                <div>
-                  <span ng-repeat='access in user.access'>
-                    <span class='label label-info'>{{access}}</span>
-                  </span>
-                </div>
+              <div flex='50'>
+                <md-text-float label='Last name' ng-model='user.lastname'></md-text-float>
+              </div>
+            </div>
+            <div layout='row'>
+              <div flex='50'>
+                <md-text-float label='Password' ng-model='user.password'></md-text-float>
+              </div>
+              <div flex='50'>
+                <span ng-repeat='access in user.access'>
+                  <span class='label label-info'>{{access}}</span>
+                </span>
               </div>
             </div>
           </form>
-        </md-content>
-      </div>
+        </div>
+      </md-content>
+      <md-content style='border-top:1px solid #ddd'>
+        <div layout='row'>
+          <div flex='20'>
+            <h4 style='margin-top:30px;margin-left:15px;margin-bottom:30px'>
+              Followers ({{followers.length}})
+            </h4>
+          </div>
+          <div flex='70'>
+            <div>
+              <div layout-align='start start' layout='row'>
+                <div ng-repeat='follower in followers' style='padding:10px 15px'>
+                  <div layout-align='center center' layout='column'>
+                    <div style='margin-top:10px'>
+                      <a href='\#hello'>
+                        <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:40px;height:40px'>
+                          <img class='avatar' src='{{follower.avatar}}' style='width:40px;height:40px'>
+                        </button>
+                      </a>
+                    </div>
+                    <div style='font-size:11px;margin-top:5px'>
+                      {{follower.pseudo}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </md-content>
     </div>
   </section>
 </div>
