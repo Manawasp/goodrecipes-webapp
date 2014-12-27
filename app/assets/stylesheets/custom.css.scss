@@ -20,6 +20,13 @@ body {
   color: #bbb;
 }
 
+.color-label      {color: #03a9f4}
+.color-label-bg   {background-color: #03a9f4}
+.color-savour     {color: #FFBF00}
+.color-savour-bg  {background-color: #FFBF00}
+.color-ban        {color: #F44336}
+.color-ban-bg     {background-color: #F44336}
+
 .margin-left-0 {margin-left:0px}
 .margin-left-5 {margin-left:5px}
 .margin-left-10 {margin-left:10px}
@@ -47,7 +54,7 @@ body {
 
 .searchbar .demo-container{
   margin-bottom: 10px;
-  margin-top:30px;
+  margin-top:5px;
 
   .ligth-design {
     border-top:0;
@@ -64,6 +71,7 @@ body {
 .font-16 {font-size: 16px}
 .font-18 {font-size: 18px}
 
+.cursor {cursor: pointer}
 // .md-fab-top-right.md-fab.is-friend {
 //   background-color: #F7D358;
 //   &:hover {

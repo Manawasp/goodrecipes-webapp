@@ -14,105 +14,45 @@
             </div>
           </div>
           <div>
-            <md-button class='md-primary md-raised' style='width:36px;'>
+            <md-button aria-label='refresh' class='md-primary md-raised' style='width:36px;'>
               <span class='glyphicon glyphicon-search'></span>
             </md-button>
-            <md-button class='md-primary margin-right-10' style='width:36px;'>
+            <md-button aria-label='refresh' class='md-primary margin-right-10' ng-click='advancedSearch()' style='width:36px;'>
               <span class='glyphicon glyphicon-cog'></span>
             </md-button>
           </div>
         </div>
       </div>
+      <div flex='100' layout='row' ng-show='data.showAdvancedSearch' style='border-top:1px solid #eee;padding-top:10px;padding-bottom:10px'>
+        <div class='margin-left-10' style='padding-right:10px;border-right:1px solid #eee'>
+          <div class='margin-left-5 margin-bottom-5' style='color:#555'>
+            Advanced element
+          </div>
+          <input class='input-sm form-control ligth-design' ng-model='element' placeholder='Enter element...'>
+          <div class='margin-top-5 text-center'>
+            <md-button aria-label='refresh' class='margin-right-5' ng-click='addLabel(element) &amp;&amp; (element = "")' style='width: 36px'>
+              <span class='glyphicon glyphicon-tag color-label'></span>
+            </md-button>
+            <md-button aria-label='refresh' class='margin-right-5' ng-click='addSavour(element) &amp;&amp; (element = "")' style='width: 36px'>
+              <span class='glyphicon glyphicon-heart-empty color-savour'></span>
+            </md-button>
+            <md-button aria-label='refresh' class='margin-right-5' ng-click='addBlacklist(element) &amp;&amp; (element = "")' style='width: 36px'>
+              <span class='glyphicon glyphicon-ban-circle color-ban'></span>
+            </md-button>
+          </div>
+        </div>
+        <div class='margin-left-15'>
+          <span ng-repeat='ig in ingredient.labels'>
+            <span class='label label-default color-label-bg font-12 cursor' ng-click='delLabel(ig)' style='padding-top:4px'>{{ig}}</span>
+          </span>
+          <span ng-repeat='ig in ingredient.savours'>
+            <span class='label label-default color-savour-bg font-12 cursor' ng-click='delSavour(ig)' style='padding-top:4px'>{{ig}}</span>
+          </span>
+          <span ng-repeat='ig in ingredient.blacklist'>
+            <span class='label label-default color-ban-bg font-12 cursor' ng-click='delBlacklist(ig)' style='padding-top:4px'>{{ig}}</span>
+          </span>
+        </div>
+      </div>
     </form>
   </section>
-</div>
-<div class='panel panel-default'>
-  <div class='panel-body'>
-    <big>Search Ingredient</big>
-    <form class='form-inline' role='form'>
-      <div class='row'>
-        <div class='col-xs-12'>
-          <div class='form-group' ng-show="error != ''">
-            <div class='alert alert-danger' role='alert'>
-              <span aria-hidden='true' class='glyphicon glyphicon-exclamation-sign'></span>
-              {{error}}
-            </div>
-          </div>
-        </div>
-        <div class='col-xs-12'>
-          <div class='form-group' style='width: 90%;margin-left:5%;margin-top:10px;margin-bottom:10px;'>
-            <input class='input-sm form-control' ng-model='ingredient.description' placeholder='Enter title' style='width: 100%'>
-          </div>
-        </div>
-      </div>
-      <div class='row' style='border-top:1px solid #eee;margin-top:5px;'>
-        <div class='col-xs-5'>
-          <p>
-            <div class='form-group'>
-              <label for='exampleInputPassword1' style='width:75px'>Labels</label>
-              <input class='input-sm form-control' ng-model='label' placeholder='add labels'>
-              <a class='btn btn-xs btn-success' herf='' ng-click='addLabels(label)'>
-                <span class='glyphicon glyphicon-plus'></span>
-              </a>
-            </div>
-          </p>
-        </div>
-        <div class='col-xs-7'>
-          <div style='margin-top:15px'>
-            <span ng-repeat='ig in ingredient.labels'>
-              <span class='label label-info'>{{ig}}</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class='row' style='border-top:1px solid #eee;margin-top:5px;'>
-        <div class='col-xs-5'>
-          <p>
-            <div class='form-group'>
-              <label for='exampleInputPassword1' style='width:75px'>Savours</label>
-              <input class='input-sm form-control' ng-model='savour' placeholder='add savours'>
-              <a class='btn btn-xs btn-success' herf='' ng-click='addSavours(savour)'>
-                <span class='glyphicon glyphicon-plus'></span>
-              </a>
-            </div>
-          </p>
-        </div>
-        <div class='col-xs-7'>
-          <div style='margin-top:15px'>
-            <span ng-repeat='ig in ingredient.savours'>
-              <span class='label label-info'>{{ig}}</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class='row' style='border-top:1px solid #eee;margin-top:5px;'>
-        <div class='col-xs-5'>
-          <p>
-            <div class='form-group'>
-              <label for='exampleInputPassword1' style='width:75px'>Blacklist</label>
-              <input class='input-sm form-control' ng-model='blacklist' placeholder='add blacklist'>
-              <a class='btn btn-xs btn-success' herf='' ng-click='addBlacklist(blacklist)'>
-                <span class='glyphicon glyphicon-plus'></span>
-              </a>
-            </div>
-          </p>
-        </div>
-        <div class='col-xs-7'>
-          <div style='margin-top:15px'>
-            <span ng-repeat='ig in ingredient.blacklist'>
-              <span class='label label-info'>{{ig}}</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class='row' style='border-top:1px solid #eee;margin-top:5px;'>
-        <div class='col-xs-12' style='margin-top:10px;'>
-          <button class='btn btn-info btn-sm' ng-click='send()'>
-            <b>Search recipes</b>
-          </button>
-        </div>
-      </div>
-      {{ingredient}}
-    </form>
-  </div>
 </div>

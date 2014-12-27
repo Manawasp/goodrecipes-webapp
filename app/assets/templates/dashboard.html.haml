@@ -1,6 +1,6 @@
 %span{"ng-controller" => "userCtrl"}
   %md-toolbar.md-default-theme{layout: "column"}
-    .md-toolbar-tools{tabindex: "0", flex: "100", layout: "column"}
+    .md-toolbar-tools.md-whiteframe-z1{tabindex: "0", flex: "100", layout: "column"}
       %div{layout: "column", flex: ""}
         %div{layout: "row", "layout-align" => "space-between start"}
           %div
@@ -46,6 +46,6 @@
       %div.margin-top-5{layout: "column",style: 'border-top:3px solid #C8E5F2;padding-top:15px'}
         %md-button{href: ''}
           Search user
-    %md-button.md-warn.md-fab.md-fab-bottom-right{"ng-click" => "logout()"}
+    %md-button.md-warn.md-fab.md-fab-bottom-right{"ng-click" => "logout()", 'aria-label' => 'refresh'}
       %span.glyphicon.glyphicon-off
   %md-content.md-padding.md-default-theme{:flex => "", "md-scroll-y" => "", "ng-include" => "template"}
