@@ -1,4 +1,7 @@
-angular.module('app').controller("userCtrl", ($scope, $location, $cookieStore, userService, api)->
+angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $cookieStore, userService, api)->
+    $scope.toggleLeft = () ->
+      $mdSidenav('left').toggle()
+
     $scope.user = api.getUser()
     $scope.id = $scope.user.id || ""
     console.log ($scope.user.avatar || "/images/avatar.jpg")

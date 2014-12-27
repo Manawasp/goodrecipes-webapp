@@ -30,11 +30,14 @@ angular.module('app')
           idhash = idhash || ''
           req = $http.post(apiService.url() + '/followers', {user_id: idhash})
           return req
+        getFollowed: (idhash) ->
+          req = $http.get(apiService.url() + '/followeds/' + idhash)
+          return req
         getFollower: (idhash) ->
           req = $http.get(apiService.url() + '/followers/' + idhash)
           return req
         removeFollower: (idhash) ->
-          req = $http.del(apiService.url() + '/followers/' + idhash)
+          req = $http.delete(apiService.url() + '/followers/' + idhash)
           return req
       )
   )

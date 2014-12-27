@@ -66,7 +66,10 @@
         <div layout='row'>
           <div flex='20'>
             <h4 style='margin-top:30px;margin-left:15px;margin-bottom:30px'>
-              Followers ({{followers.length}})
+              Followers
+              <span class='light-silver margin-left-5 font-14'>
+                {{followers.length}}
+              </span>
             </h4>
           </div>
           <div flex='70'>
@@ -75,7 +78,7 @@
                 <div ng-repeat='follower in followers' style='padding:10px 15px'>
                   <div layout-align='center center' layout='column'>
                     <div style='margin-top:10px'>
-                      <a href='\#hello'>
+                      <a href='\#users/{{follower.id}}'>
                         <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:40px;height:40px'>
                           <img class='avatar' src='{{follower.avatar}}' style='width:40px;height:40px'>
                         </button>
@@ -83,6 +86,38 @@
                     </div>
                     <div style='font-size:11px;margin-top:5px'>
                       {{follower.pseudo}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </md-content>
+      <md-content style='border-top:1px solid #ddd'>
+        <div layout='row'>
+          <div flex='20'>
+            <h4 style='margin-top:30px;margin-left:15px;margin-bottom:30px'>
+              Followeds
+              <span class='light-silver margin-left-5 font-14'>
+                {{followeds.length}}
+              </span>
+            </h4>
+          </div>
+          <div flex='70'>
+            <div>
+              <div layout-align='start start' layout='row'>
+                <div ng-repeat='followed in followeds' style='padding:10px 15px'>
+                  <div layout-align='center center' layout='column'>
+                    <div style='margin-top:10px'>
+                      <a href='\#users/{{followed.id}}'>
+                        <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:40px;height:40px'>
+                          <img class='avatar' src='{{followed.avatar}}' style='width:40px;height:40px'>
+                        </button>
+                      </a>
+                    </div>
+                    <div style='font-size:11px;margin-top:5px'>
+                      {{followed.pseudo}}
                     </div>
                   </div>
                 </div>

@@ -1,32 +1,80 @@
-<md-toolbar class='md-default-theme' layout='column'>
-  <div class='md-toolbar-tools' flex='100' layout='column' ng-controller='userCtrl' tabindex='0'>
-    <div flex='' layout='column'>
-      <div layout-align='space-between start' layout='row'>
-        <div style='margin-top:50px;'>
-          NourritureApp
-        </div>
-        <div flex='50' style='margin-top:42px;background-color:red'>
-          <md-tabs class='md-accent' md-selected='data.selectedIndex'>
-            <md-tab aria-controls='tab1-content' id='tab1' ng-click="locate('moment')">
-              <b>Moments</b>
-            </md-tab>
-            <md-tab aria-controls='tab2-content' id='tab2' ng-click="locate('recipe')">
-              <b>Recipes</b>
-            </md-tab>
-            <md-tab aria-controls='tab2-content' id='tab2' ng-click="locate('ingredient')">
-              <b>Ingredients</b>
-            </md-tab>
-          </md-tabs>
-        </div>
-        <div>
-          <a href='#/users/{{id}}'>
-            <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='margin-top:60px'>
-              <img class='avatar' src='{{avatar}}'>
-            </button>
-          </a>
+<span ng-controller='userCtrl'>
+  <md-toolbar class='md-default-theme' layout='column'>
+    <div class='md-toolbar-tools' flex='100' layout='column' tabindex='0'>
+      <div flex='' layout='column'>
+        <div layout-align='space-between start' layout='row'>
+          <div>
+            <a href='' ng-click='toggleLeft()' style='display:block;margin-top:20px;'>
+              NourritureApp
+            </a>
+          </div>
+          <div flex='50' style='margin-top:15px'>
+            <md-tabs class='md-accent' md-selected='data.selectedIndex'>
+              <md-tab aria-controls='tab1-content' id='tab1' ng-click="locate('moment')">
+                <b>Moments</b>
+              </md-tab>
+              <md-tab aria-controls='tab2-content' id='tab2' ng-click="locate('recipe')">
+                <b>Recipes</b>
+              </md-tab>
+              <md-tab aria-controls='tab2-content' id='tab2' ng-click="locate('ingredient')">
+                <b>Ingredients</b>
+              </md-tab>
+            </md-tabs>
+          </div>
+          <div></div>
+          <!-- %div.font-11{style: 'position:absolute;top:10px;right:28px;'} -->
+          <!-- %a{href: '', "ng-click" => "logout()"} -->
+          <!-- logout -->
+          <!-- %div -->
+          <!-- %a{href: '#/users/{{id}}'} -->
+          <!-- %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style:"margin-top:60px"} -->
+          <!-- %img.avatar{src: "{{avatar}}"} -->
         </div>
       </div>
     </div>
-  </div>
-</md-toolbar>
-<md-content class='md-padding md-default-theme' flex='' md-scroll-y='' ng-include='template'></md-content>
+  </md-toolbar>
+  <md-sidenav class='md-sidenav-left md-whiteframe-z2' md-component-id='left'>
+    <md-toolbar class='md-theme-indigo' layout-align='center center'>
+      <div style='width: 80px'>
+        <a href='#/users/{{id}}' style='position:absolute'>
+          <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme'>
+            <img class='avatar' src='{{avatar}}'>
+          </button>
+        </a>
+      </div>
+    </md-toolbar>
+    <md-content class='md-padding'>
+      <div class='margin-top-15' layout='column'>
+        <div class='margin-left-10 margin-left-20'>
+          <md-text-float label='Email adress' ng-disabled='true' ng-model='user.email'></md-text-float>
+        </div>
+        <div class='margin-left-10 margin-left-20'>
+          <md-text-float label='Pseudo' ng-disabled='true' ng-model='user.pseudo'></md-text-float>
+        </div>
+      </div>
+      <div class='margin-top-15' layout='row' style='border-top:3px solid #C8E5F2;padding-top:15px'>
+        <div class='text-center' flex='50'>
+          Follower
+          <p>
+            500
+          </p>
+        </div>
+        <div class='text-center' flex='50'>
+          Followed
+          <p>
+            1000
+          </p>
+        </div>
+      </div>
+      <div class='margin-top-5' layout='column' style='border-top:3px solid #C8E5F2;padding-top:15px'>
+        <md-button href=''>
+          Search user
+        </md-button>
+      </div>
+    </md-content>
+    <md-button class='md-warn md-fab md-fab-bottom-right' ng-click='logout()'>
+      <span class='glyphicon glyphicon-off'></span>
+    </md-button>
+  </md-sidenav>
+  <md-content class='md-padding md-default-theme' flex='' md-scroll-y='' ng-include='template'></md-content>
+</span>

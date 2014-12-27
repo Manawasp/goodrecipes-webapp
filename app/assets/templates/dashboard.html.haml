@@ -1,19 +1,51 @@
-%md-toolbar.md-default-theme{layout: "column"}
-  .md-toolbar-tools{tabindex: "0", flex: "100", layout: "column", "ng-controller" => "userCtrl"}
-    %div{layout: "column", flex: ""}
-      %div{layout: "row", "layout-align" => "space-between start"}
-        %div{style: 'margin-top:50px;'}
-          NourritureApp
-        %div{flex: "50", style: 'margin-top:42px;background-color:red'}
-          %md-tabs.md-accent{"md-selected" => "data.selectedIndex"}
-            %md-tab{id: "tab1", "ng-click" => "locate('moment')", "aria-controls" => "tab1-content"}
-              %b Moments
-            %md-tab{id: "tab2", "ng-click" => "locate('recipe')", "aria-controls" => "tab2-content"}
-              %b Recipes
-            %md-tab{id: "tab2", "ng-click" => "locate('ingredient')", "aria-controls" => "tab2-content"}
-              %b Ingredients
-        %div
-          %a{href: '#/users/{{id}}'}
-            %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style:"margin-top:60px"}
-              %img.avatar{src: "{{avatar}}"}
-%md-content.md-padding.md-default-theme{:flex => "", "md-scroll-y" => "", "ng-include" => "template"}
+%span{"ng-controller" => "userCtrl"}
+  %md-toolbar.md-default-theme{layout: "column"}
+    .md-toolbar-tools{tabindex: "0", flex: "100", layout: "column"}
+      %div{layout: "column", flex: ""}
+        %div{layout: "row", "layout-align" => "space-between start"}
+          %div
+            %a{style: 'display:block;margin-top:20px;', href:'',"ng-click"=>"toggleLeft()"}
+              NourritureApp
+          %div{flex: "50", style: 'margin-top:15px'}
+            %md-tabs.md-accent{"md-selected" => "data.selectedIndex"}
+              %md-tab{id: "tab1", "ng-click" => "locate('moment')", "aria-controls" => "tab1-content"}
+                %b Moments
+              %md-tab{id: "tab2", "ng-click" => "locate('recipe')", "aria-controls" => "tab2-content"}
+                %b Recipes
+              %md-tab{id: "tab2", "ng-click" => "locate('ingredient')", "aria-controls" => "tab2-content"}
+                %b Ingredients
+          %div
+          /   %div.font-11{style: 'position:absolute;top:10px;right:28px;'}
+          /     %a{href: '', "ng-click" => "logout()"}
+          /       logout
+          /   %div
+          /     %a{href: '#/users/{{id}}'}
+          /       %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style:"margin-top:60px"}
+          /         %img.avatar{src: "{{avatar}}"}
+  %md-sidenav.md-sidenav-left.md-whiteframe-z2{"md-component-id" => "left"}
+    %md-toolbar.md-theme-indigo{"layout-align" => "center center"}
+      %div{style: 'width: 80px'}
+        %a{href: '#/users/{{id}}', style: 'position:absolute'}
+          %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh"}
+            %img.avatar{src: "{{avatar}}"}
+    %md-content.md-padding
+      %div.margin-top-15{layout: "column"}
+        %div.margin-left-10.margin-left-20
+          %md-text-float{:label => "Email adress", "ng-model" => "user.email", "ng-disabled" => "true"}
+        %div.margin-left-10.margin-left-20
+          %md-text-float{:label => "Pseudo", "ng-model" => "user.pseudo", "ng-disabled" => "true"}
+      %div.margin-top-15{layout: "row",style: 'border-top:3px solid #C8E5F2;padding-top:15px'}
+        %div.text-center{flex: '50'}
+          Follower
+          %p
+            500
+        %div.text-center{flex: '50'}
+          Followed
+          %p
+            1000
+      %div.margin-top-5{layout: "column",style: 'border-top:3px solid #C8E5F2;padding-top:15px'}
+        %md-button{href: ''}
+          Search user
+    %md-button.md-warn.md-fab.md-fab-bottom-right{"ng-click" => "logout()"}
+      %span.glyphicon.glyphicon-off
+  %md-content.md-padding.md-default-theme{:flex => "", "md-scroll-y" => "", "ng-include" => "template"}

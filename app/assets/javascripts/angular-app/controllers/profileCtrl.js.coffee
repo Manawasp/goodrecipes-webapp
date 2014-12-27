@@ -26,20 +26,24 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
         $scope.template = 'views/editprofile.html'
       else
         $scope.template = 'views/profile.html'
-        userService.getFollower(id
-        ).success((data) ->
-          for u of data
-            if u.id == $routeParams.userid
-              isfriend = true
-        )
     ).error((data) ->
     )
 
+    updateFollowed = () ->
+      userService.getFollowed($routeParams.userid
+      ).success((data) ->
+        id = api.getUser().id
+        for v, u of data
+          if u.id == id
+            $scope.data.isfriend = true
+        $scope.followeds = data
+      ).error((data) ->
+      )
+
+    updateFollowed()
+
     userService.getFollower($routeParams.userid
     ).success((data) ->
-      # Fake data
-      console.log data
-      data = [{"id": "poejfe09ufe9fjeijowdw", "pseudo": "Clovis Kyndt", "avatar":"/images/avatar.jpg"},{"id": "poejfe09ufe9fjeijo", "pseudo": "Manawasp", "avatar":"/images/avatar.jpg"}]
       $scope.followers = data
     ).error((data) ->
     )
@@ -49,13 +53,24 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
       if $scope.data.isfriend == false
         userService.follow($routeParams.userid
         ).success((data)->
+          updateFollowed()
           $scope.data.isfriend = true
-          $scope.data.send = true
+          $scope.data.send = false
         ).error((data) ->
           if data.error = "already in your followers"
             $scope.data.isfriend = true
           $scope.data.send = false
         )
+      else
+        userService.removeFollower($routeParams.userid
+        ).success((data)->
+          updateFollowed()
+          $scope.data.isfriend = false
+          $scope.data.send = false
+        ).error((data) ->
+          $scope.data.send = false
+        )
+
 
     $scope.update_user = () ->
       $scope.data.send = true
