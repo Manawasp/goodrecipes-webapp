@@ -20,6 +20,7 @@ body {
   color: #bbb;
 }
 
+
 .color-label      {color: #03a9f4}
 .color-label-bg   {background-color: #03a9f4}
 .color-savour     {color: #FFBF00}
@@ -103,6 +104,11 @@ body {
     background-color: #CC5189;
   }
 
+  &.active-cd {
+    color: white;
+    background-color: #CC5189;
+  }
+
   color: #CC5189;
   background-color: #FBEEF6;
 }
@@ -113,6 +119,11 @@ body {
   background-color: #F7F7F7;
 
   &:hover {
+      color: white;
+      background-color: #8E8D8E;
+  }
+  
+  &.active-cd {
       color: white;
       background-color: #8E8D8E;
   }
@@ -192,7 +203,12 @@ body {
   width: 75%;
   max-width: 400px;
 }
-
+.avatar-ingredient {
+  margin-top:-7px;
+  margin-left:-7px;
+  width: 60px;
+  height: 60px;
+}
 .avatar {
   // @extend .img-circle;
   width: 58px;

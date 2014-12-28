@@ -1,5 +1,7 @@
 angular.module('app')
   .factory('ingredientService', ($http, apiService) ->
+      current_ingredient = {}
+
       return (
         create: (data) ->
           req = $http.post(apiService.url() + '/ingredients', data)
@@ -26,5 +28,9 @@ angular.module('app')
         update: (data) ->
           req = $http.patch(apiService.url() + '/ingredients/' + data.id, data)
           return req
+        setCurrent: (data) ->
+          current_ingredient = data
+        getCurrent: () ->
+          return current_ingredient
       )
   )

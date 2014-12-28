@@ -1,4 +1,4 @@
-<md-dialog aria-label='Create Ingredient' flex-gt-lg='50' flex-md='70' flex-sm='90'>
+<md-dialog aria-label='Edit Ingredient' flex-gt-lg='50' flex-md='70' flex-sm='90'>
   <!-- %md-content -->
   <!-- %md-subheader -->
   <!-- Edit Ingredient -->
@@ -12,17 +12,12 @@
     <md-toolbar class='demo-toolbar md-default-theme' style='background-color: #eee;color:#666'>
       <div class='md-toolbar-tools active-cd' ng-class="{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}">
         <span flex='100' style='position:absolute;margin-top:20px'>
-          Create ingredient
+          Edit ingredient
         </span>
         <span flex='100'>
           <div layout-align='center' layout='row' style='margin-top:-60px;'>
-            <button aria-label='refresh' class='md-fab md-button md-default-theme md-fab-top-right' style='background-color:#ddd'>
-              <span ng-if='ingredient.icon'>
-                <img class='avatar-ingredient' src='{{ingredient.icon}}'>
-              </span>
-              <span ng-if='!ingredient.icon'>
-                <span class='glyphicon glyphicon-camera font-18'></span>
-              </span>
+            <button aria-label='refresh' class='md-fab md-button md-default-theme md-fab-top-right'>
+              <img class='avatar-ingredient' src='{{ingredient.icon}}'>
             </button>
           </div>
         </span>
@@ -65,7 +60,7 @@
             </span>
           </div>
         </div>
-        <button aria-label='refresh' class='md-fab md-button md-default-theme md-fab-bottom-right' ng-class="{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}" ng-click='create_ingredient()' style='width:48px;height:48px;'>
+        <button aria-label='refresh' class='md-fab md-button md-default-theme md-fab-bottom-right' ng-class="{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}" ng-click='update_ingredient()' style='width:48px;height:48px;'>
           <span class='glyphicon glyphicon-ok'></span>
           <!-- %img.avatar-ingredient{src: "{{ingredient.icon}}"} -->
         </button>

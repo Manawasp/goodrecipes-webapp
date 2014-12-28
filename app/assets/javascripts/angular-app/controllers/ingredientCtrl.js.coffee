@@ -1,4 +1,4 @@
-angular.module('app').controller("ingredientCtrl", ($scope, $location, $cookieStore, authorization, api, ingredientService)->
+angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
     console.log 'ingredientCtrl running'
     $scope.template = 'views/ingredient.html'
     $scope.error = ''
@@ -58,6 +58,27 @@ angular.module('app').controller("ingredientCtrl", ($scope, $location, $cookieSt
         console.log "error data in search ingredient"
         console.log data
       )
+
+
+    $scope.showEditingIngredient = (data) ->
+      ingredientService.setCurrent(data)
+      console.log(data)
+      $mdDialog.show(
+        controller: 'editingredientCtrl'
+        templateUrl: "/views/editingredient.html"
+      ).then (() ->
+        # $scope.alert = "You said the information was \"" + answer + "\"."
+      ), ->
+        # $scope.alert = "You cancelled the dialog."
+
+    $scope.showCreateIngredient = (data) ->
+      $mdDialog.show(
+        controller: 'createingredientCtrl'
+        templateUrl: "/views/createingredient.html"
+      ).then (() ->
+        # $scope.alert = "You said the information was \"" + answer + "\"."
+      ), ->
+        # $scope.alert = "You cancelled the dialog."
 
     searchIngredient()
 )
