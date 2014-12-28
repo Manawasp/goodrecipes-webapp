@@ -1,4 +1,4 @@
-%md-dialog{"aria-label" => "Create Ingredient", "flex-sm"=> '90', "flex-md" => "70", "flex-gt-lg"=> '50'}
+%md-dialog{"aria-label" => "Edit Ingredient", "flex-sm"=> '90', "flex-md" => "70", "flex-gt-lg"=> '50'}
   / %md-content
   /   %md-subheader
   /     Edit Ingredient
@@ -12,14 +12,11 @@
     %md-toolbar.demo-toolbar.md-default-theme{style: 'background-color: #eee;color:#666'}
       .md-toolbar-tools.active-cd{"ng-class" => "{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}"}
         %span{flex: 100, style: 'position:absolute;margin-top:20px'}
-          Create ingredient
+          Edit ingredient
         %span{:flex => "100"}
           %div{layout: "row", "layout-align" => "center", style: 'margin-top:-60px;'}
-            %button.md-fab.md-button.md-default-theme.md-fab-top-right{"aria-label" => "refresh", style: 'background-color:#ddd'}
-              %span{"ng-if" => "ingredient.icon"}
-                %img.avatar-ingredient{src: "{{ingredient.icon}}"}
-              %span{"ng-if" => "!ingredient.icon"}
-                %span.glyphicon.glyphicon-camera.font-18
+            %button.md-fab.md-button.md-default-theme.md-fab-top-right{"aria-label" => "refresh"}
+              %img.avatar-ingredient{src: "{{ingredient.icon}}"}
     %div.demo-content
       %md-content{layout: "column"}
         %div{layout: "row"}
@@ -44,6 +41,6 @@
               %span.label.label-default.color-savour-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delSavour(ig)"} {{ig}}
             %span{"ng-repeat" => "ig in ingredient.blacklist"}
               %span.label.label-default.color-ban-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delBlacklist(ig)"} {{ig}}
-        %button.md-fab.md-button.md-default-theme.md-fab-bottom-right{"aria-label" => "refresh", style: 'width:48px;height:48px;',        "ng-class" => "{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}", "ng-click" => "create_ingredient()"}
+        %button.md-fab.md-button.md-default-theme.md-fab-bottom-right{"aria-label" => "refresh", style: 'width:48px;height:48px;',        "ng-class" => "{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}", "ng-click" => "update_ingredient()"}
           %span.glyphicon.glyphicon-ok
           / %img.avatar-ingredient{src: "{{ingredient.icon}}"}

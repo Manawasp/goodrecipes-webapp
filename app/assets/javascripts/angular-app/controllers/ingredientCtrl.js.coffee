@@ -1,8 +1,8 @@
-angular.module('app').controller("ingredientCtrl", ($scope, $location, $cookieStore, authorization, api)->
+angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
     console.log 'ingredientCtrl running'
     $scope.template = 'views/ingredient.html'
     $scope.error = ''
-    $scope.ingredient = {labels: [], savours: [], blacklist: []}
+    $scope.ingredient = {description: "", labels: [], savours: [], blacklist: []}
 
     $scope.addLabel = (label) ->
       idx = $scope.ingredient.labels.indexOf(label)
@@ -29,12 +29,56 @@ angular.module('app').controller("ingredientCtrl", ($scope, $location, $cookieSt
       if idx != -1
         $scope.ingredient.blacklist.splice(idx, 1)
 
-
     $scope.advancedSearch = () ->
       $scope.data.showAdvancedSearch = !$scope.data.showAdvancedSearch
 
     $scope.data = {
-      selectedIndex : 2,
+      selectedIndex : 2
       showAdvancedSearch : false
+      offset : 0
+      limit : 40 
+      ingredients : []
     }
+
+    $scope.search = () ->
+      searchIngredient()
+
+    searchIngredient = () ->
+      ingredientService.search($scope.ingredient.description,
+                                $scope.ingredient.labels,
+                                $scope.ingredient.savours,
+                                $scope.ingredient.blacklist,
+                                $scope.data.offset,
+                                $scope.data.limit
+      ).success((data) ->
+        console.log "success data in search ingredient"
+        console.log data
+        $scope.data.ingredients = data.ingredients
+      ).error((data) ->
+        console.log "error data in search ingredient"
+        console.log data
+      )
+
+
+    $scope.showEditingIngredient = (data) ->
+      ingredientService.setCurrent(data)
+      console.log(data)
+      $mdDialog.show(
+        controller: 'editingredientCtrl'
+        templateUrl: "/views/editingredient.html"
+      ).then (() ->
+        # $scope.alert = "You said the information was \"" + answer + "\"."
+      ), ->
+        # $scope.alert = "You cancelled the dialog."
+
+    $scope.showCreateIngredient = (data) ->
+      $mdDialog.show(
+        controller: 'createingredientCtrl'
+        templateUrl: "/views/createingredient.html"
+      ).then (() ->
+        # $scope.alert = "You said the information was \"" + answer + "\"."
+      ), ->
+        # $scope.alert = "You cancelled the dialog."
+
+    searchIngredient()
 )

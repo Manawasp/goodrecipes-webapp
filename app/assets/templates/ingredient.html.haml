@@ -3,14 +3,16 @@
     %form
       %div{layout: "row"}
         %div
-          %label.white.font-18.margin-top-10.margin-left-20.margin-right-20{style: 'margin-top:12px;color:#999'}
+          %md-button.md-default.margin-right-10.margin-left-10{style:'width:36px;background-color:#eee;color:#666;', 'ng-click' => 'showCreateIngredient()', 'aria-label' => 'refresh'}
+            %span.glyphicon.glyphicon-pencil
+          %label.white.font-18.margin-top-10.margin-right-10{style: 'margin-top:12px;color:#999;border-left:1px solid #eee;padding-left:15px'}
             search
         %div{layout: "row", flex: "", "layout-align" => "space-between center"}
           %div
             .form-group{style: 'width: 90%;margin-left:5%;margin-top:10px;margin-bottom:10px;'}
               %input.input-sm.form-control.ligth-design{"ng-model" => "ingredient.description", placeholder: "Enter title", style: 'width: 100%'}
           %div
-            %md-button.md-primary.md-raised{style:'width:36px;', 'aria-label' => 'refresh'}
+            %md-button.md-primary.md-raised.margin-right-5{style:'width:36px;', 'ng-click' => 'search()', 'aria-label' => 'refresh'}
               %span.glyphicon.glyphicon-search
             %md-button.md-primary.margin-right-10{style:'width:36px;', 'ng-click' => 'advancedSearch()', 'aria-label' => 'refresh'}
               %span.glyphicon.glyphicon-cog
@@ -33,3 +35,10 @@
             %span.label.label-default.color-savour-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delSavour(ig)"} {{ig}}
           %span{"ng-repeat" => "ig in ingredient.blacklist"}
             %span.label.label-default.color-ban-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delBlacklist(ig)"} {{ig}}
+%div{layout: "row"}
+  %span{"ng-repeat" => "ig in data.ingredients", style: 'padding:0;'}
+    %md-card.ingredient-card{style: "padding:0;", "ng-class" => "{'ingredient-pink-cd': ig.color == 'pink', 'ingredient-silver-cd': ig.color == 'silver'}", "ng-click" => "showEditingIngredient(ig)"}
+      %div.ingredient-img
+        %img{"src" => "{{ig.icon}}", alt: "...", style: 'width:100%;max-height:100px;'}
+      .caption.md-ingredient
+        {{ig.name}}

@@ -1,7 +1,5 @@
-angular.module('app').controller("createingredientCtrl", ($scope, $location, $cookieStore, authorization, api, ingredientService)->
-  console.log 'createingredientCtrl running'
-  $scope.error = ''
-  $scope.ingredient = {blacklist: [], labels: [], color: "", name: ''}
+angular.module('app').controller("editingredientCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
+  $scope.ingredient = ingredientService.getCurrent()
 
   $scope.addLabel = (label) ->
     idx = $scope.ingredient.labels.indexOf(label)
@@ -29,9 +27,9 @@ angular.module('app').controller("createingredientCtrl", ($scope, $location, $co
   $scope.answer = (answer) ->
     $mdDialog.hide answer
 
-  $scope.create_ingredient = () ->
-    data = {labels: $scope.ingredient, blacklist: $scope.blacklist, name: $scope.name}
-    ingredientService.create(data
+  $scope.update_ingredient = () ->
+    data = {id: $scope.ingredient.id, labels: $scope.ingredient, blacklist: $scope.blacklist, name: $scope.name}
+    ingredientService.update(data
     ).success((data) ->
       console.log "sucees modif"
       console.log data
