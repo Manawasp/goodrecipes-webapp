@@ -1,6 +1,7 @@
 angular.module('app')
   .factory('ingredientService', ($http, apiService) ->
       current_ingredient = {}
+      view = false
 
       return (
         create: (data) ->
@@ -32,5 +33,9 @@ angular.module('app')
           current_ingredient = data
         getCurrent: () ->
           return current_ingredient
+        setView: (dview) ->
+          view = dview
+        getView: () ->
+          return view
       )
   )

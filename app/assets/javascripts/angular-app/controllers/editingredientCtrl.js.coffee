@@ -1,5 +1,11 @@
 angular.module('app').controller("editingredientCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
   $scope.ingredient = ingredientService.getCurrent()
+  $scope.view = ingredientService.getView()
+
+  if $scope.view
+    $scope.title = "Show ingredient"
+  else
+    $scope.title = "Edit ingredient"
 
   $scope.addLabel = (label) ->
     idx = $scope.ingredient.labels.indexOf(label)
@@ -37,4 +43,6 @@ angular.module('app').controller("editingredientCtrl", ($mdDialog, $scope, $loca
       console.log "echec modif"
       console.log data
     )
+
+  $scope.accessSuplier = api.getAccessSupplier();
 )
