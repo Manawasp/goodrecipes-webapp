@@ -1,14 +1,14 @@
 angular.module('app')
-  .factory('ingredientService', ($http, apiService) ->
-      current_ingredient = {}
+  .factory('recipeService', ($http, apiService) ->
+      current_recipe = {}
       view = false
 
       return (
         create: (data) ->
-          req = $http.post(apiService.url() + '/ingredients', data)
+          req = $http.post(apiService.url() + '/recipes', data)
           return req
         get: (idhash) ->
-          req = $http.get(apiService.url() + '/ingredients/' + idhash)
+          req = $http.get(apiService.url() + '/recipes/' + idhash)
           return req
         search: (name, labels, savours, blacklist, offset, limit) ->
           data = {}
@@ -24,15 +24,15 @@ angular.module('app')
             data.offset = offset
           if limit && limit.length > 0
             data.limit = limit
-          req = $http.post(apiService.url() + '/ingredients/search', data)
+          req = $http.post(apiService.url() + '/recipes/search', data)
           return req
         update: (data) ->
-          req = $http.patch(apiService.url() + '/ingredients/' + data.id, data)
+          req = $http.patch(apiService.url() + '/recipes/' + data.id, data)
           return req
         setCurrent: (data) ->
-          current_ingredient = data
+          current_recipe = data
         getCurrent: () ->
-          return current_ingredient
+          return current_recipe
         setView: (dview) ->
           view = dview
         getView: () ->

@@ -1,73 +1,24 @@
-<div class='searchbar' layout-fill='' layout='column'>
-  <section class='demo-container md-whiteframe-z1'>
-    <form>
-      <div layout='row'>
-        <div>
-          <md-button aria-label='refresh' class='md-default margin-right-10 margin-left-10' ng-click='showCreateIngredient()' style='width:36px;background-color:#eee;color:#666;'>
-            <span class='glyphicon glyphicon-pencil'></span>
-          </md-button>
-          <label class='white font-18 margin-top-10 margin-right-10' style='margin-top:12px;color:#999;border-left:1px solid #eee;padding-left:15px'>
-            search
-          </label>
-        </div>
-        <div flex='' layout-align='space-between center' layout='row'>
-          <div>
-            <div class='form-group' style='width: 90%;margin-left:5%;margin-top:10px;margin-bottom:10px;'>
-              <input class='input-sm form-control ligth-design' ng-model='ingredient.description' placeholder='Enter title' style='width: 100%'>
-            </div>
-          </div>
-          <div>
-            <md-button aria-label='refresh' class='md-primary md-raised margin-right-5' ng-click='search()' style='width:36px;'>
-              <span class='glyphicon glyphicon-search'></span>
-            </md-button>
-            <md-button aria-label='refresh' class='md-primary margin-right-10' ng-click='advancedSearch()' style='width:36px;'>
-              <span class='glyphicon glyphicon-cog'></span>
-            </md-button>
-          </div>
-        </div>
-      </div>
-      <div flex='100' layout='row' ng-show='data.showAdvancedSearch' style='border-top:1px solid #eee;padding-top:10px;padding-bottom:10px'>
-        <div class='margin-left-10' style='padding-right:10px;border-right:1px solid #eee'>
-          <div class='margin-left-5 margin-bottom-5' style='color:#555'>
-            Advanced element
-          </div>
-          <input class='input-sm form-control ligth-design' ng-model='element' placeholder='Enter element...'>
-          <div class='margin-top-5 text-center'>
-            <md-button aria-label='refresh' class='margin-right-5' ng-click='addLabel(element) &amp;&amp; (element = "")' style='width: 36px'>
-              <span class='glyphicon glyphicon-tag color-label'></span>
-            </md-button>
-            <md-button aria-label='refresh' class='margin-right-5' ng-click='addSavour(element) &amp;&amp; (element = "")' style='width: 36px'>
-              <span class='glyphicon glyphicon-heart-empty color-savour'></span>
-            </md-button>
-            <md-button aria-label='refresh' class='margin-right-5' ng-click='addBlacklist(element) &amp;&amp; (element = "")' style='width: 36px'>
-              <span class='glyphicon glyphicon-ban-circle color-ban'></span>
-            </md-button>
-          </div>
-        </div>
-        <div class='margin-left-15'>
-          <span ng-repeat='ig in ingredient.labels'>
-            <span class='label label-default color-label-bg font-12 cursor' ng-click='delLabel(ig)' style='padding-top:4px'>{{ig}}</span>
-          </span>
-          <span ng-repeat='ig in ingredient.savours'>
-            <span class='label label-default color-savour-bg font-12 cursor' ng-click='delSavour(ig)' style='padding-top:4px'>{{ig}}</span>
-          </span>
-          <span ng-repeat='ig in ingredient.blacklist'>
-            <span class='label label-default color-ban-bg font-12 cursor' ng-click='delBlacklist(ig)' style='padding-top:4px'>{{ig}}</span>
-          </span>
-        </div>
-      </div>
-    </form>
-  </section>
+<div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-20'>
+  MANAGE INGREDIENTS
 </div>
-<div layout='row'>
-  <span ng-repeat='ig in data.ingredients' style='padding:0;'>
-    <md-card class='ingredient-card' ng-class="{'ingredient-pink-cd': ig.color == 'pink', 'ingredient-silver-cd': ig.color == 'silver'}" ng-click='showEditingIngredient(ig)' style='padding:0;'>
-      <div class='ingredient-img'>
-        <img alt='...' src='{{ig.icon}}' style='width:100%;max-height:100px;'>
+<md-content class='md-whiteframe-z2' layout-align='start start' layout='column'>
+  <md-toolbar>
+    <div class='md-toolbar-tools no-padding food-api-white' flex='100' layout='column' style='background-color:#E04765' tabindex='0'>
+      <div class='no-margin' flex='70'>
+        <md-text-float class='margin-left-20' label='Name ingredient' ng-model='ingredient.description'></md-text-float>
       </div>
-      <div class='caption md-ingredient'>
-        {{ig.name}}
+      <div class='no-margin' flex='30' style='float:left;margin-left:-20px;padding-top:10px'>
+        <a class='cursor glyphicon glyphicon-search font-14' ng-click='search()'></a>
       </div>
-    </md-card>
-  </span>
-</div>
+      <md-button class='md-primary md-fab md-fab-top-right' ng-click='showCreateIngredient()' style='background-color:#F85562'>
+        <span class='font-36' style='line-height:32px;'>+</span>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content style='padding:20px 10px'>
+    <span ng-repeat='ig in data.ingredients'>
+      <md-content class='md-whiteframe-z1 ingredient-windows-120 cursor' ng-click='showEditingIngredient(ig)' style='background-image: url("{{ig.icon}}")'></md-content>
+      <!-- {{ig.name}} -->
+    </span>
+  </md-content>
+</md-content>

@@ -1,44 +1,94 @@
 %span{"ng-controller" => "userCtrl"}
-  %md-toolbar.md-default-theme{layout: "column"}
-    .md-toolbar-tools.md-whiteframe-z1{tabindex: "0", flex: "100", layout: "column"}
-      %div{layout: "column", flex: ""}
-        %div{layout: "row", "layout-align" => "space-between start"}
+  %md-toolbar.food-api-theme.md-default-theme{layout: "column"}
+    .md-toolbar-tools.md-whiteframe-z1.no-padding{tabindex: "0", flex: "100", layout: "column"}
+      %div.no-margin{layout: "column", flex: "100"}
+        %div{layout: "row", "layout-align" => "space-between center"}
+          %div{flex: ""}
+            / %a.font-36{href:'',"ng-click"=>"toggleLeft()"}
+            %span.font-36.margin-left-20{style: 'line-height: 70px;'}
+              %span.roboto.light GOOD
+              %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
+          %div{flex: ""}
+            %md-text-float.food-api-theme{:label => "What do you want to eat ?", "ng-model" => "ingredient.name"}
+            / %md-tabs.md-accent{"md-selected" => "data.selectedIndex"}
+            /   %md-tab{id: "tab1", "ng-click" => "locate('moment')", "aria-controls" => "tab1-content"}
+            /     %b Moments
+            /   %md-tab{id: "tab2", "ng-click" => "locate('recipe')", "aria-controls" => "tab2-content"}
+            /     %b Recipes
+            /   %md-tab{id: "tab2", "ng-click" => "locate('ingredient')", "aria-controls" => "tab2-content"}
+            /     %b Ingredients
+          %div.text-right.food-dark-red{flex: ""}
+            %span.cursor.glyphicon.glyphicon-search.margin-top-10.margin-left-15{style: 'float:left'}
+            .margin-top-5
+              %span.cursor.glyphicon.glyphicon-cog.margin-right-20
+        %div.sub-header{layout: "row", flex: "100", layout: "row", "layout-align" => "space-between center"}
           %div
-            %a{style: 'display:block;margin-top:20px;', href:'',"ng-click"=>"toggleLeft()"}
-              NourritureApp
-          %div{flex: "50", style: 'margin-top:15px'}
-            %md-tabs.md-accent{"md-selected" => "data.selectedIndex"}
-              %md-tab{id: "tab1", "ng-click" => "locate('moment')", "aria-controls" => "tab1-content"}
-                %b Moments
-              %md-tab{id: "tab2", "ng-click" => "locate('recipe')", "aria-controls" => "tab2-content"}
-                %b Recipes
-              %md-tab{id: "tab2", "ng-click" => "locate('ingredient')", "aria-controls" => "tab2-content"}
-                %b Ingredients
+            %a.cursor.glyphicon.glyphicon-th-large{"ng-click"=>"toggleLeft()"}
+          %div{layout: "row", "layout-align" => "center center"}
+            %div
+              %a.quick-access-search.beef-color{href: ""} Beef Recipes
+            %div
+              %a.quick-access-search.chicken-color{href: ""} Chicken Recipes
+            %div
+              %a.quick-access-search.vegetarian-color{href: ""} Vegetarian Recipes
+            %div
+              %a.quick-access-search.dessert-color{href: ""} Dessert Recipes
           %div
+            %a.cursor.glyphicon.glyphicon-flag{"ng-click" => "locate('moment')"}
   %md-sidenav.md-sidenav-left.md-whiteframe-z2{"md-component-id" => "left"}
-    %md-toolbar.md-theme-indigo{"layout-align" => "center center"}
-      %div{style: 'width: 80px'}
-        %a{href: '#/users/{{id}}', style: 'position:absolute'}
-          %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh"}
-            %img.avatar{src: "{{avatar}}"}
-    %md-content.md-padding
-      %div.margin-top-15{layout: "column"}
-        %div.margin-left-10.margin-left-20
-          %md-text-float{:label => "Email adress", "ng-model" => "user.email", "ng-disabled" => "true"}
-        %div.margin-left-10.margin-left-20
-          %md-text-float{:label => "Pseudo", "ng-model" => "user.pseudo", "ng-disabled" => "true"}
-      %div.margin-top-15{layout: "row",style: 'border-top:3px solid #C8E5F2;padding-top:15px'}
-        %div.text-center{flex: '50'}
-          Follower
-          %p
-            500
-        %div.text-center{flex: '50'}
-          Followed
-          %p
-            1000
-      %div.margin-top-5{layout: "column",style: 'border-top:3px solid #C8E5F2;padding-top:15px'}
-        %md-button{href: ''}
+    %md-toolbar.food-api-theme.md-theme-indigo{"layout-align" => "center center", style: 'height: 78px'}
+      %div{style: 'width: 80px;'}
+        %a{href: '#/users/{{id}}', style: 'position:absolute;margin-top:-10px;'}
+          %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style: 'width:90px;height:90px;padding:0;'}
+            %img.profile-avatar{src: "{{avatar}}"}
+    %md-content.footer{style: ''}
+      %div{layout: "column"}
+        %div.about.text-center
+          %a{href:''}
+            %span.silver ABOUT US & 
+            %span.roboto.light.white GOOD
+            %span.roboto.bold.food-dark-red{style: "margin-left:-2px"} RECIPES
+    %md-content
+      %span.silver-box.fleft
+        %span.glyphicon.glyphicon-user
+        200
+      %span.silver-box.fright
+        %span.glyphicon.glyphicon-eye-open
+        100
+      %div.margin-top-30{layout: "column"}
+        %div.text-center.margin-top-30.font-18.roboto.bold
+          {{user.pseudo}}
+        %div.text-center
+          {{user.email}}
+      %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %span.glyphicon.glyphicon-film.margin-right-10.margin-left-10
+          Post new moment
+        / %a.menu-link{href: ''}
+        /   %span.glyphicon.glyphicon-film
+        /   Post new moment
+        / %a.menu-link{href: ''}
+        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10
+          Edit profile informations
+        / %a.menu-link{href: ''}
+        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10
           Search user
-    %md-button.md-warn.md-fab.md-fab-bottom-right{"ng-click" => "logout()", 'aria-label' => 'refresh'}
-      %span.glyphicon.glyphicon-off
-  %md-content.md-padding.md-default-theme{:flex => "", "md-scroll-y" => "", "ng-include" => "template"}
+      %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %span.glyphicon.glyphicon-list-alt.margin-right-10.margin-left-10
+          Add new recipe
+        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %span.glyphicon.glyphicon-filter.margin-right-10.margin-left-10
+          See my recipes
+      %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('ingredient')"}
+          %span.glyphicon.glyphicon-leaf.margin-right-10.margin-left-10
+          Manage ingredients
+      %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %span.glyphicon.glyphicon-off.margin-right-10.margin-left-10
+          Logout
+  %md-content.no-bg.md-default-theme{layout: "column", "md-scroll-y" => "", "layout-align" => "center center"}
+    %md-content.no-bg{"ng-include" => "template", style: 'width:100%;max-width:940px;padding:20px'}

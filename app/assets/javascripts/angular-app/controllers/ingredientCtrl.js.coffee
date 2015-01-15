@@ -51,16 +51,17 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
                                 $scope.data.offset,
                                 $scope.data.limit
       ).success((data) ->
-        console.log "success data in search ingredient"
-        console.log data
+        # console.log "success data in search ingredient"
+        # console.log data
         $scope.data.ingredients = data.ingredients
       ).error((data) ->
-        console.log "error data in search ingredient"
-        console.log data
+        # console.log "error data in search ingredient"
+        # console.log data
       )
 
 
     $scope.showEditingIngredient = (data) ->
+      ingredientService.setView(true)
       ingredientService.setCurrent(data)
       console.log(data)
       $mdDialog.show(
