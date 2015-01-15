@@ -63,10 +63,11 @@
   <span ng-repeat='ig in data.recipes' style='padding:0;'>
     <md-card class='ingredient-card' ng-class="{'ingredient-pink-cd': ig.color == 'pink', 'ingredient-silver-cd': ig.color == 'silver'}" ng-click='showEditingRecipe(ig)' style='padding:0;'>
       <div class='ingredient-img'>
-        <img alt='...' src='{{ig.icon}}' style='width:100%;max-height:100px;'>
+        <img alt='...' ng-if='ig.icon' src='{{ig.icon}}' style='width:100%;max-height:100px;'>
+        <img alt='...' ng-if='!ig.icon' src='/images/ingredients/pork.jpg' style='width:100%;max-height:100px;'>
       </div>
       <div class='caption md-ingredient'>
-        {{ig.name}}
+        {{ig.title}}
       </div>
     </md-card>
   </span>

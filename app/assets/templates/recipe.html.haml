@@ -39,6 +39,7 @@
   %span{"ng-repeat" => "ig in data.recipes", style: 'padding:0;'}
     %md-card.ingredient-card{style: "padding:0;", "ng-class" => "{'ingredient-pink-cd': ig.color == 'pink', 'ingredient-silver-cd': ig.color == 'silver'}", "ng-click" => "showEditingRecipe(ig)"}
       %div.ingredient-img
-        %img{"src" => "{{ig.icon}}", alt: "...", style: 'width:100%;max-height:100px;'}
+        %img{"ng-if" => "ig.icon", "src" => "{{ig.icon}}", alt: "...", style: 'width:100%;max-height:100px;'}
+        %img{"ng-if" => "!ig.icon", "src" => "/images/ingredients/pork.jpg", alt: "...", style: 'width:100%;max-height:100px;'}
       .caption.md-ingredient
-        {{ig.name}}
+        {{ig.title}}

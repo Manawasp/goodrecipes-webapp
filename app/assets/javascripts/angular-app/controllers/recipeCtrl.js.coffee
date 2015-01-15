@@ -1,4 +1,4 @@
-angular.module('app').controller("recipeCtrl", ($scope, $location, $cookieStore, authorization, api, ingredientService)->
+angular.module('app').controller("recipeCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService, recipeService)->
     console.log 'recipeCtrl running'
     # $scope.template = 'views/recipe.html'
     # $scope.error = ''
@@ -67,8 +67,8 @@ angular.module('app').controller("recipeCtrl", ($scope, $location, $cookieStore,
                                 $scope.data.offset,
                                 $scope.data.limit
       ).success((data) ->
-        # console.log "success data in search ingredient"
-        # console.log data
+        console.log "success data in search ingredient"
+        console.log data
         $scope.data.recipes = data.recipes
       ).error((data) ->
         # console.log "error data in search ingredient"
@@ -77,8 +77,8 @@ angular.module('app').controller("recipeCtrl", ($scope, $location, $cookieStore,
 
 
     $scope.showEditingRecipe = (data) ->
-      ingredientRecipe.setView(true)
-      ingredientRecipe.setCurrent(data)
+      recipeService.setView(true)
+      recipeService.setCurrent(data)
       console.log(data)
       $mdDialog.show(
         controller: 'editrecipeCtrl'
