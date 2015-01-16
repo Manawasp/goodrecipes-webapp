@@ -20,6 +20,7 @@
 //= require angular-aria
 //= require hammerjs
 //= require angular-material
+//= require angular-elastic
 
 //= require angular-app/app
 //= require_tree ./angular-app/modules

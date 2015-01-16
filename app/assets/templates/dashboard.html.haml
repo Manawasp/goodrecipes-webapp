@@ -1,6 +1,6 @@
-%span{"ng-controller" => "userCtrl"}
+%span{"ng-controller" => "userCtrl", style: 'background-color:#E3E4E6'}
   %md-toolbar.food-api-theme.md-default-theme{layout: "column"}
-    .md-toolbar-tools.md-whiteframe-z1.no-padding{tabindex: "0", flex: "100", layout: "column"}
+    .md-toolbar-tools.md-whiteframe-z1.no-padding{tabindex: "0", flex: "100", layout: "column", style: 'height:114px'}
       %div.no-margin{layout: "column", flex: "100"}
         %div{layout: "row", "layout-align" => "space-between center"}
           %div{flex: ""}
@@ -76,7 +76,7 @@
           %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10
           Search user
       %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('/recipe/create')"}
           %span.glyphicon.glyphicon-list-alt.margin-right-10.margin-left-10
           Add new recipe
         %md-button{style: 'text-align:left;text-transform: lowercase;'}

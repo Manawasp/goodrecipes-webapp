@@ -2,7 +2,8 @@
   # additional dependencies here, such as restangular
   'ngRoute',
   'ngCookies',
-  'ngMaterial'
+  'ngMaterial',
+  'monospaced.elastic'
 ])
 
 # for compatibility with Rails CSRF protection
@@ -24,6 +25,9 @@
     .when('/recipe/create', {
       templateUrl: 'views/dashboard.html',
       controller: 'createrecipeCtrl' })
+    .when('/recipe/show/:id', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'showrecipeCtrl' })
 
     .when('/ingredient/create', {
       templateUrl: 'views/dashboard.html',

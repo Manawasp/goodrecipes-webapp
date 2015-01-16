@@ -1,6 +1,6 @@
-<span ng-controller='userCtrl'>
+<span ng-controller='userCtrl' style='background-color:#E3E4E6'>
   <md-toolbar class='food-api-theme md-default-theme' layout='column'>
-    <div class='md-toolbar-tools md-whiteframe-z1 no-padding' flex='100' layout='column' tabindex='0'>
+    <div class='md-toolbar-tools md-whiteframe-z1 no-padding' flex='100' layout='column' style='height:114px' tabindex='0'>
       <div class='no-margin' flex='100' layout='column'>
         <div layout-align='space-between center' layout='row'>
           <div flex=''>
@@ -110,7 +110,7 @@
         </md-button>
       </div>
       <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-        <md-button style='text-align:left;text-transform: lowercase;'>
+        <md-button ng-click="locate('/recipe/create')" style='text-align:left;text-transform: lowercase;'>
           <span class='glyphicon glyphicon-list-alt margin-right-10 margin-left-10'></span>
           Add new recipe
         </md-button>
