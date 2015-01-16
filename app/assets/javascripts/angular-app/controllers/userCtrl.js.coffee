@@ -2,6 +2,8 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
     $scope.toggleLeft = () ->
       $mdSidenav('left').toggle()
 
+    $scope.search_name = ''
+
     $scope.user = api.getUser()
     $scope.id = $scope.user.id || ""
     console.log ($scope.user.avatar || "/images/avatar.jpg")
@@ -25,8 +27,12 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
       else if t_access == "admin"
         $scope.access_admin = true
 
+    $scope.redir_title = () ->
+      loc = 'recipes/search?title=' + $scope.search_name;
+      $location.url(loc);
+
     $scope.locate = (location) ->
-      $location.path(location);
+      $location.url(location);
 
     $scope.logout = () ->
       $cookieStore.remove('id')
@@ -34,6 +40,9 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
       api.delUser()
       $location.path('/login');
 
+    $scope.redir_your_profile = () ->
+      loc = 'users/' + $scope.id;
+      $location.url(loc);
 
     # console.log  api.getUser()
     # $scope.connected = authorization.isLogged()

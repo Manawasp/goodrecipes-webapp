@@ -294,12 +294,14 @@ md-input-group label, .md-input-group label {
 .margin-top-15 {margin-top:15px}
 .margin-top-20 {margin-top:20px}
 .margin-top-30 {margin-top:30px}
+.margin-top-40 {margin-top:40px}
 
 .margin-bottom-0 {margin-bottom:0px}
 .margin-bottom-5 {margin-bottom:5px}
 .margin-bottom-10 {margin-bottom:10px}
 .margin-bottom-15 {margin-bottom:15px}
 .margin-bottom-20 {margin-bottom:20px}
+.margin-bottom-30 {margin-bottom:30px}
 
 .margin-5 {margin:5px}
 .margin-10 {margin:10px}
@@ -688,5 +690,31 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
   color: #E66273;
   &:hover {
     @extend .food-dark-red;
+  }
+}
+
+.cook-now {
+  float: right;
+  width: 300px;
+
+  .title {
+    @extend .font-18, .margin-left-15, .margin-right-15, .margin-top-10, .margin-bottom-10;
+    font-family: "Roboto-Medium";
+    color: #FC850F;
+  }
+
+  .describe {
+    @extend .font-16, .margin-left-15, .margin-right-15, .margin-bottom-10;
+    height: 110px;
+  }
+
+  .cook-now-button {
+    @extend .cursor;
+    font-family: "Roboto-Bold";
+    color: white;
+    text-align: center;
+    padding-top:10px;
+    padding-bottom: 10px;
+    background-color: #FC850F;
   }
 }

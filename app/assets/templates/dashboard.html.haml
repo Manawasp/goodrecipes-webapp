@@ -9,36 +9,27 @@
               %span.roboto.light GOOD
               %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
           %div{flex: ""}
-            %md-text-float.food-api-theme{:label => "What do you want to eat ?", "ng-model" => "ingredient.name"}
-            / %md-tabs.md-accent{"md-selected" => "data.selectedIndex"}
-            /   %md-tab{id: "tab1", "ng-click" => "locate('moment')", "aria-controls" => "tab1-content"}
-            /     %b Moments
-            /   %md-tab{id: "tab2", "ng-click" => "locate('recipe')", "aria-controls" => "tab2-content"}
-            /     %b Recipes
-            /   %md-tab{id: "tab2", "ng-click" => "locate('ingredient')", "aria-controls" => "tab2-content"}
-            /     %b Ingredients
+            %md-text-float.food-api-theme{:label => "What do you want to eat ?", "ng-model" => "search_name"}
           %div.text-right.food-dark-red{flex: ""}
-            %span.cursor.glyphicon.glyphicon-search.margin-top-10.margin-left-15{style: 'float:left'}
-            .margin-top-5
-              %span.cursor.glyphicon.glyphicon-cog.margin-right-20
+            %span.cursor.glyphicon.glyphicon-search.margin-top-10.margin-left-15{style: 'float:left', "ng-click" => "redir_title()"}
         %div.sub-header{layout: "row", flex: "100", layout: "row", "layout-align" => "space-between center"}
           %div
             %a.cursor.glyphicon.glyphicon-th-large{"ng-click"=>"toggleLeft()"}
           %div{layout: "row", "layout-align" => "center center"}
             %div
-              %a.quick-access-search.beef-color{href: ""} Beef Recipes
+              %a.quick-access-search.beef-color{href: "", "ng-click" => "locate('recipes/search?label=beef')"} Beef Recipes
             %div
-              %a.quick-access-search.chicken-color{href: ""} Chicken Recipes
+              %a.quick-access-search.chicken-color{href: "", "ng-click" => "locate('recipes/search?label=chicken')"} Chicken Recipes
             %div
-              %a.quick-access-search.vegetarian-color{href: ""} Vegetarian Recipes
+              %a.quick-access-search.vegetarian-color{href: "", "ng-click" => "locate('recipes/search?label=vegetarian')"} Vegetarian Recipes
             %div
-              %a.quick-access-search.dessert-color{href: ""} Dessert Recipes
+              %a.quick-access-search.dessert-color{href: "", "ng-click" => "locate('recipes/search?label=dessert')"} Dessert Recipes
           %div
-            %a.cursor.glyphicon.glyphicon-flag{"ng-click" => "locate('moment')"}
+            %a.cursor.glyphicon.glyphicon-flag{"ng-click" => "locate('moments')"}
   %md-sidenav.md-sidenav-left.md-whiteframe-z2{"md-component-id" => "left"}
     %md-toolbar.food-api-theme.md-theme-indigo{"layout-align" => "center center", style: 'height: 78px'}
       %div{style: 'width: 80px;'}
-        %a{href: '#/users/{{id}}', style: 'position:absolute;margin-top:-10px;'}
+        %a{"ng-click" => "locate('moments')", style: 'position:absolute;margin-top:-10px;'}
           %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style: 'width:90px;height:90px;padding:0;'}
             %img.profile-avatar{src: "{{avatar}}"}
     %md-content.footer{style: ''}
@@ -68,7 +59,7 @@
         /   %span.glyphicon.glyphicon-film
         /   Post new moment
         / %a.menu-link{href: ''}
-        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "redir_your_profile()"}
           %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10
           Edit profile informations
         / %a.menu-link{href: ''}
@@ -76,14 +67,14 @@
           %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10
           Search user
       %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('/recipe/create')"}
+        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('/recipes/create')"}
           %span.glyphicon.glyphicon-list-alt.margin-right-10.margin-left-10
           Add new recipe
-        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('/recipes/users/ok')"}
           %span.glyphicon.glyphicon-filter.margin-right-10.margin-left-10
           See my recipes
       %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('ingredient')"}
+        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('ingredients')"}
           %span.glyphicon.glyphicon-leaf.margin-right-10.margin-left-10
           Manage ingredients
       %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}

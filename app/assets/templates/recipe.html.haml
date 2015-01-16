@@ -1,4 +1,5 @@
-%md-content.margin-top-10{layout: "column", "layout-align" => "start start", flex: '100', "ng-class" => "{'md-whiteframe-z1' : show_search_advanced}"}
+%md-content.margin-top-10{layout: "column", "layout-align" => "start start", flex: '100', "ng-class" => "{'md-whiteframe-z1' : show_search_advanced,
+                        'margin-bottom-20' : show_search_advanced}"}
   %md-toolbar
     .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#E3E4E6'}
       %div.margin-left-30.roboto.medium.cursor.font-24{style: 'color:#BB2743', "ng-click" => "show_search_advanced = !show_search_advanced", "ng-show" => "show_search_advanced"}
@@ -35,48 +36,19 @@
           %md-button.md-primary{'ng-click' => 'show_search_advanced = !show_search_advanced', style: 'padding: 5px 15px;color:#BB2743'} CLOSE
         %div
           %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "validate()"} SEARCH
--# %div.searchbar{"layout-fill" => "", layout: "column"}
--#   %section.demo-container.md-whiteframe-z1
--#     %form
--#       %div{layout: "row"}
--#         %div
--#           %md-button.md-default.margin-right-10.margin-left-10{style:'width:36px;background-color:#eee;color:#666;', 'ng-click' => 'showCreateRecipe()', 'aria-label' => 'refresh'}
--#             %span.glyphicon.glyphicon-pencil
--#           %label.white.font-18.margin-top-10.margin-right-10{style: 'margin-top:12px;color:#999;border-left:1px solid #eee;padding-left:15px'}
--#             search
--#         %div{layout: "row", flex: "", "layout-align" => "space-between center"}
--#           %div
--#             .form-group{style: 'width: 90%;margin-left:5%;margin-top:10px;margin-bottom:10px;'}
--#               %input.input-sm.form-control.ligth-design{"ng-model" => "recipe.description", placeholder: "Enter title", style: 'width: 100%'}
--#           %div
--#             %md-button.md-primary.md-raised.margin-right-5{style:'width:36px;', 'ng-click' => 'search()', 'aria-label' => 'refresh'}
--#               %span.glyphicon.glyphicon-search
--#             %md-button.md-primary.margin-right-10{style:'width:36px;', 'ng-click' => 'advancedSearch()', 'aria-label' => 'refresh'}
--#               %span.glyphicon.glyphicon-cog
--#       %div{layout: "row", flex: "100",'ng-show' => 'data.showAdvancedSearch', style: 'border-top:1px solid #eee;padding-top:10px;padding-bottom:10px'}
--#         %div.margin-left-10{style: 'padding-right:10px;border-right:1px solid #eee'}
--#           %div.margin-left-5.margin-bottom-5{style: 'color:#555'}
--#             Advanced element
--#           %input.input-sm.form-control.ligth-design{"ng-model" => "element", placeholder: "Enter element..."}
--#           %div.margin-top-5.text-center
--#             %md-button.margin-right-5{style: 'width: 36px','ng-click' => 'addLabel(element) && (element = "")', "aria-label" => "refresh"}
--#               %span.glyphicon.glyphicon-tag.color-label
--#             %md-button.margin-right-5{style: 'width: 36px','ng-click' => 'addSavour(element) && (element = "")', "aria-label" => "refresh"}
--#               %span.glyphicon.glyphicon-heart-empty.color-savour
--#             %md-button.margin-right-5{style: 'width: 36px','ng-click' => 'addBlacklist(element) && (element = "")', "aria-label" => "refresh"}
--#               %span.glyphicon.glyphicon-ban-circle.color-ban
--#         %div.margin-left-15
--#           %span{"ng-repeat" => "ig in recipe.labels"}
--#             %span.label.label-default.color-label-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delLabel(ig)"} {{ig}}
--#           %span{"ng-repeat" => "ig in recipe.savours"}
--#             %span.label.label-default.color-savour-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delSavour(ig)"} {{ig}}
--#           %span{"ng-repeat" => "ig in recipe.blacklist"}
--#             %span.label.label-default.color-ban-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delBlacklist(ig)"} {{ig}}
-%div{layout: "row"}
-  %span{"ng-repeat" => "ig in data.recipes", style: 'padding:0;'}
-    %md-card.ingredient-card{style: "padding:0;", "ng-class" => "{'ingredient-pink-cd': ig.color == 'pink', 'ingredient-silver-cd': ig.color == 'silver'}", "ng-click" => "showEditingRecipe(ig)"}
-      %div.ingredient-img
-        %img{"ng-if" => "ig.icon", "src" => "{{ig.icon}}", alt: "...", style: 'width:100%;max-height:100px;'}
-        %img{"ng-if" => "!ig.icon", "src" => "/images/ingredients/pork.jpg", alt: "...", style: 'width:100%;max-height:100px;'}
-      .caption.md-ingredient
-        {{ig.title}}
+
+%div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "space-between center"}
+  %div{flex: '21', "ng-repeat" => 'morerecipe in more_recipe'}
+    %md-content.md-whiteframe-z1{layout: "column", flex: '100'}
+      %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
+      %div.margin-left-10.margin-right-10.margin-top-10{style: 'height:60px'}
+        %div.font-14.roboto.medium {{morerecipe.title}}
+        %div.time.font-12
+          %span{"ng-show" => 'morerecipe.total.h != 0'}
+            {{morerecipe.total.h}} hour
+          %span{"ng-show" => 'morerecipe.total.m != 0'}
+            {{morerecipe.total.m}} min
+      %div.margin-left-10.margin-right-10.margin-bottom-5
+        %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= morerecipe.mark}"}
+        %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
+        %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comment_length}}

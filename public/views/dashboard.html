@@ -11,20 +11,10 @@
             </span>
           </div>
           <div flex=''>
-            <md-text-float class='food-api-theme' label='What do you want to eat ?' ng-model='ingredient.name'></md-text-float>
-            <!-- %md-tabs.md-accent{"md-selected" => "data.selectedIndex"} -->
-            <!-- %md-tab{id: "tab1", "ng-click" => "locate('moment')", "aria-controls" => "tab1-content"} -->
-            <!-- %b Moments -->
-            <!-- %md-tab{id: "tab2", "ng-click" => "locate('recipe')", "aria-controls" => "tab2-content"} -->
-            <!-- %b Recipes -->
-            <!-- %md-tab{id: "tab2", "ng-click" => "locate('ingredient')", "aria-controls" => "tab2-content"} -->
-            <!-- %b Ingredients -->
+            <md-text-float class='food-api-theme' label='What do you want to eat ?' ng-model='search_name'></md-text-float>
           </div>
           <div class='text-right food-dark-red' flex=''>
-            <span class='cursor glyphicon glyphicon-search margin-top-10 margin-left-15' style='float:left'></span>
-            <div class='margin-top-5'>
-              <span class='cursor glyphicon glyphicon-cog margin-right-20'></span>
-            </div>
+            <span class='cursor glyphicon glyphicon-search margin-top-10 margin-left-15' ng-click='redir_title()' style='float:left'></span>
           </div>
         </div>
         <div class='sub-header' flex='100' layout-align='space-between center' layout='row'>
@@ -33,20 +23,20 @@
           </div>
           <div layout-align='center center' layout='row'>
             <div>
-              <a class='quick-access-search beef-color' href=''>Beef Recipes</a>
+              <a class='quick-access-search beef-color' href='' ng-click="locate('recipes/search?label=beef')">Beef Recipes</a>
             </div>
             <div>
-              <a class='quick-access-search chicken-color' href=''>Chicken Recipes</a>
+              <a class='quick-access-search chicken-color' href='' ng-click="locate('recipes/search?label=chicken')">Chicken Recipes</a>
             </div>
             <div>
-              <a class='quick-access-search vegetarian-color' href=''>Vegetarian Recipes</a>
+              <a class='quick-access-search vegetarian-color' href='' ng-click="locate('recipes/search?label=vegetarian')">Vegetarian Recipes</a>
             </div>
             <div>
-              <a class='quick-access-search dessert-color' href=''>Dessert Recipes</a>
+              <a class='quick-access-search dessert-color' href='' ng-click="locate('recipes/search?label=dessert')">Dessert Recipes</a>
             </div>
           </div>
           <div>
-            <a class='cursor glyphicon glyphicon-flag' ng-click="locate('moment')"></a>
+            <a class='cursor glyphicon glyphicon-flag' ng-click="locate('moments')"></a>
           </div>
         </div>
       </div>
@@ -55,7 +45,7 @@
   <md-sidenav class='md-sidenav-left md-whiteframe-z2' md-component-id='left'>
     <md-toolbar class='food-api-theme md-theme-indigo' layout-align='center center' style='height: 78px'>
       <div style='width: 80px;'>
-        <a href='#/users/{{id}}' style='position:absolute;margin-top:-10px;'>
+        <a ng-click="locate('moments')" style='position:absolute;margin-top:-10px;'>
           <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:90px;height:90px;padding:0;'>
             <img class='profile-avatar' src='{{avatar}}'>
           </button>
@@ -99,7 +89,7 @@
         <!-- %span.glyphicon.glyphicon-film -->
         <!-- Post new moment -->
         <!-- %a.menu-link{href: ''} -->
-        <md-button style='text-align:left;text-transform: lowercase;'>
+        <md-button ng-click='redir_your_profile()' style='text-align:left;text-transform: lowercase;'>
           <span class='glyphicon glyphicon-pencil margin-right-10 margin-left-10'></span>
           Edit profile informations
         </md-button>
@@ -110,17 +100,17 @@
         </md-button>
       </div>
       <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-        <md-button ng-click="locate('/recipe/create')" style='text-align:left;text-transform: lowercase;'>
+        <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: lowercase;'>
           <span class='glyphicon glyphicon-list-alt margin-right-10 margin-left-10'></span>
           Add new recipe
         </md-button>
-        <md-button style='text-align:left;text-transform: lowercase;'>
+        <md-button ng-click="locate('/recipes/users/ok')" style='text-align:left;text-transform: lowercase;'>
           <span class='glyphicon glyphicon-filter margin-right-10 margin-left-10'></span>
           See my recipes
         </md-button>
       </div>
       <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-        <md-button ng-click="locate('ingredient')" style='text-align:left;text-transform: lowercase;'>
+        <md-button ng-click="locate('ingredients')" style='text-align:left;text-transform: lowercase;'>
           <span class='glyphicon glyphicon-leaf margin-right-10 margin-left-10'></span>
           Manage ingredients
         </md-button>
