@@ -1,0 +1,143 @@
+<div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-20'>
+  WEEK'S RECIPE
+</div>
+<md-content class='md-whiteframe-z1 margin-bottom-20' layout-align='start start' layout='column'>
+  <md-content style='padding:20px 20px;width:100%'>
+    <div class='md-whiteframe-z1 cook-now' layout='column'>
+      <div class='title'>
+        {{week_recipe.title}}
+      </div>
+      <div class='describe'>
+        {{week_recipe.description}}
+      </div>
+      <div class='margin-left-15 margin-top-15'>
+        <span style='display:inline-block;width:85px;color:#666'>Prep time</span>
+        <span class='recipe-time'>
+          <span class='roboto medium bold font-14' ng-show='week_recipe.preparation.h &gt; 0'>
+            {{week_recipe.preparation.h}} hours
+          </span>
+          <span class='roboto medium bold font-14' ng-show='week_recipe.preparation.m &gt; 0'>
+            {{week_recipe.preparation.m}} min
+          </span>
+        </span>
+      </div>
+      <div class='margin-left-15 margin-top-10'>
+        <span style='display:inline-block;width:85px;color:#666'>Total time</span>
+        <span class='recipe-time'>
+          <span class='roboto medium bold font-14' ng-show='week_recipe.total.h &gt; 0'>
+            {{week_recipe.total.h}} hours
+          </span>
+          <span class='roboto medium bold font-14' ng-show='week_recipe.total.m &gt; 0'>
+            {{week_recipe.total.m}} min
+          </span>
+        </span>
+      </div>
+      <div class='margin-left-15 margin-top-10'>
+        <span style='display:inline-block;width:85px;color:#666'>Ingredients</span>
+        <span class='roboto medium bold font-14'>
+          {{week_recipe.ingredients.length}}
+        </span>
+      </div>
+      <div class='margin-left-15 margin-top-10'>
+        <span style='color:#999'>
+          <span class='glyphicon glyphicon-user'></span>
+        </span>
+        <span class='roboto medium font-14 margin-left-5' style='color:#666;'>
+          {{week_recipe.people}}
+        </span>
+      </div>
+      <div class='margin-left-15 margin-bottom-10'>
+        <span class='mark xsmall margin-right-5 margin-top-15' ng-class="{'valid': mark[$index] &lt;= week_recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+        <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+        <span class='font-11 margin-left-5' style='line-height:24px'>{{week_recipe.comment_length}}</span>
+      </div>
+      <div class='cook-now-button'>
+        COOK NOW !
+      </div>
+    </div>
+  </md-content>
+</md-content>
+<div class='print-title margin-left-20 font-24 roboto light margin-top-40 margin-bottom-20'>
+  MONTH'S RECIPE
+</div>
+<div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
+  <div flex='21' ng-repeat='morerecipe in month_recipe'>
+    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+      <div class='flat-image-100p cursor text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+      <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
+        <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
+        <div class='time font-12'>
+          <span ng-show='morerecipe.total.h != 0'>
+            {{morerecipe.total.h}} hour
+          </span>
+          <span ng-show='morerecipe.total.m != 0'>
+            {{morerecipe.total.m}} min
+          </span>
+        </div>
+      </div>
+      <div class='margin-left-10 margin-right-10 margin-bottom-5'>
+        <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+        <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+        <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comment_length}}</span>
+      </div>
+    </md-content>
+  </div>
+</div>
+<div layout='row'>
+  <div flex='50'>
+    <div class='print-title margin-left-20 font-24 roboto light margin-top-40 margin-bottom-20'>
+      LATEST RECIPE
+    </div>
+    <div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
+      <div flex='45' ng-repeat='morerecipe in latest_recipe'>
+        <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+          <div class='flat-image-100p cursor text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+          <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
+            <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
+            <div class='time font-12'>
+              <span ng-show='morerecipe.total.h != 0'>
+                {{morerecipe.total.h}} hour
+              </span>
+              <span ng-show='morerecipe.total.m != 0'>
+                {{morerecipe.total.m}} min
+              </span>
+            </div>
+          </div>
+          <div class='margin-left-10 margin-right-10 margin-bottom-5'>
+            <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+            <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+            <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comment_length}}</span>
+          </div>
+        </md-content>
+      </div>
+    </div>
+  </div>
+  <div flex='50'>
+    <div class='print-title margin-left-20 font-24 roboto light margin-top-40 margin-bottom-20'>
+      RANDOM RECIPE
+    </div>
+    <div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
+      <div flex='45' ng-repeat='morerecipe in random_recipe'>
+        <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+          <div class='flat-image-100p cursor text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+          <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
+            <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
+            <div class='time font-12'>
+              <span ng-show='morerecipe.total.h != 0'>
+                {{morerecipe.total.h}} hour
+              </span>
+              <span ng-show='morerecipe.total.m != 0'>
+                {{morerecipe.total.m}} min
+              </span>
+            </div>
+          </div>
+          <div class='margin-left-10 margin-right-10 margin-bottom-5'>
+            <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+            <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+            <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comment_length}}</span>
+          </div>
+        </md-content>
+      </div>
+    </div>
+  </div>
+</div>

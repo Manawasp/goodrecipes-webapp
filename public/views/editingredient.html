@@ -3,26 +3,20 @@
     <div class='margin-top-20 margin-left-20 font-18 margin-bottom-10'>
       Edit an ingredient
     </div>
-    <div class='margin-left-10 margin-right-10'>
-      <div layout='row'>
-        <div>
-          <md-content class='ingredient-windows-120 text-center md-whiteframe-z1' style='background-image: url("{{ingredient.icon}}");'>
-            <!-- %span.glyphicon.glyphicon-picture.font-36{style: 'color:#999;line-height:115px;'} -->
-          </md-content>
+    <div class='margin-left-10 margin-right-10' style='min-height:125px'>
+      <md-content class='ingredient-windows-120 text-center md-whiteframe-z1 fleft' style='background-image: url("{{ingredient.icon}}");'></md-content>
+      <div class='margin-top-15' style='margin-left:150px'>
+        <div class='font-12'>
+          You need to choose a validate name for an ingredient, name contain at least 2 characters.
+          Name must be unique. You must be choose and upload a picture
         </div>
-        <div class='margin-left-10 margin-top-10'>
-          <div class='font-12'>
-            You need to choose a validate name for an ingredient, name contain at least 2 characters.
-            Name must be unique. You must be choose and upload a picture
-          </div>
-          <md-text-float label='Name' ng-model='ingredient.name'></md-text-float>
-        </div>
+        <md-text-float label='Name' ng-model='ingredient.name'></md-text-float>
       </div>
     </div>
-    <div class='text-right margin-right-20 margin-bottom-15'>
+    <div class='text-right margin-right-20 margin-bottom-15 margin-top-15 margin-left-20'>
       <div layout-align='space-between center' layout='row'>
         <div>
-          <md-button class='md-primary margin-left-10' style='padding: 5px 15px;color:#BB2743'>REMOVE</md-button>
+          <md-button class='md-primary' style='padding: 5px 15px;color:#BB2743'>REMOVE</md-button>
         </div>
         <div>
           <md-button class='md-primary' style='padding: 5px 15px'>CANCEL</md-button>
@@ -32,58 +26,3 @@
     </div>
   </section>
 </md-dialog>
-<!-- %md-dialog{"aria-label" => "Edit Ingredient", flex: "10", "flex-sm"=> '90', "flex-md" => "70", "flex-gt-lg"=> '10'} -->
-<!-- %section.demo-container.md-whiteframe-z1 -->
-<!-- %md-toolbar.demo-toolbar.md-default-theme{style: 'background-color: #eee;color:#666'} -->
-<!-- .md-toolbar-tools.active-cd{"ng-class" => "{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}"} -->
-<!-- %span{flex: 100, style: 'position:absolute;margin-top:20px'} -->
-<!-- {{title}} -->
-<!-- %span{'ng-show' => 'view && accessSuplier'} -->
-<!-- %span.glyphicon.glyphicon-pencil.font-14.margin-left-10{"ng-click" => "view = !view"} -->
-<!-- %span{'ng-show' => '!view && accessSuplier'} -->
-<!-- %span.glyphicon.glyphicon-eye-open.font-14.margin-left-10{"ng-click" => "view = !view"} -->
-<!-- %span{:flex => "100"} -->
-<!-- %div{layout: "row", "layout-align" => "center", style: 'margin-top:-60px;'} -->
-<!-- %button.md-fab.md-button.md-default-theme.md-fab-top-right{"aria-label" => "refresh"} -->
-<!-- %img.avatar-ingredient{src: "{{ingredient.icon}}"} -->
-<!-- %div.demo-content{{'ng-show' => '!view'}} -->
-<!-- %md-content{layout: "column"} -->
-<!-- %div{layout: "row"} -->
-<!-- %div{flex: '50'} -->
-<!-- %md-text-float{:label => "Name", "ng-model" => "ingredient.name"} -->
-<!-- %div{flex: '50'} -->
-<!-- %md-text-float{:label => "Color", "ng-model" => "ingredient.color"} -->
-<!-- %div{layout: "row", flex: "100", style: 'border-top:1px solid #eee;padding-top:10px;padding-bottom:10px'} -->
-<!-- %div.margin-left-10{style: 'padding-right:10px;border-right:1px solid #eee'} -->
-<!-- %div.margin-left-5.margin-bottom-5{style: 'color:#555'} -->
-<!-- Advanced element -->
-<!-- %input.input-sm.form-control.ligth-design{"ng-model" => "element", placeholder: "Enter element..."} -->
-<!-- %div.margin-top-5.text-center -->
-<!-- %md-button.margin-right-5{style: 'width: 36px','ng-click' => 'addLabel(element) && (element = "")', "aria-label" => "refresh"} -->
-<!-- %span.glyphicon.glyphicon-tag.color-label -->
-<!-- %md-button.margin-right-5{style: 'width: 36px','ng-click' => 'addBlacklist(element) && (element = "")', "aria-label" => "refresh"} -->
-<!-- %span.glyphicon.glyphicon-ban-circle.color-ban -->
-<!-- %div.margin-left-15 -->
-<!-- %span{"ng-repeat" => "ig in ingredient.labels"} -->
-<!-- %span.label.label-default.color-label-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delLabel(ig)"} {{ig}} -->
-<!-- %span{"ng-repeat" => "ig in ingredient.savours"} -->
-<!-- %span.label.label-default.color-savour-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delSavour(ig)"} {{ig}} -->
-<!-- %span{"ng-repeat" => "ig in ingredient.blacklist"} -->
-<!-- %span.label.label-default.color-ban-bg.font-12.cursor{style: 'padding-top:4px', "ng-click" => "delBlacklist(ig)"} {{ig}} -->
-<!-- %button.md-fab.md-button.md-default-theme.md-fab-bottom-right{"aria-label" => "refresh", style: 'width:48px;height:48px;',        "ng-class" => "{'ingredient-pink-cd': ingredient.color == 'pink', 'ingredient-silver-cd': ingredient.color == 'silver'}", "ng-click" => "update_ingredient()"} -->
-<!-- %span.glyphicon.glyphicon-ok -->
-<!-- / %img.avatar-ingredient{src: "{{ingredient.icon}}"} -->
-<!-- %div.demo-content{{'ng-show' => 'view'}} -->
-<!-- %md-content{layout: "column"} -->
-<!-- %div{layout: "row"} -->
-<!-- %div{"flex-md" => '30', "flex-sm" => '40', "flex-lg" => '15'} -->
-<!-- %md-text-float{:label => "Name", "ng-model" => "ingredient.name"} -->
-<!-- %div{flex: '50'} -->
-<!-- %div{layout: "column"} -->
-<!-- %div -->
-<!-- Labels -->
-<!-- %div -->
-<!-- %span{"ng-repeat" => "ig in ingredient.labels"} -->
-<!-- %span.label.label-default.color-label-bg.font-12.cursor{style: 'padding-top:4px'} {{ig}} -->
-<!-- %span{"ng-repeat" => "ig in ingredient.blacklist"} -->
-<!-- %span.label.label-default.color-ban-bg.font-12.cursor{style: 'padding-top:4px'} {{ig}} -->

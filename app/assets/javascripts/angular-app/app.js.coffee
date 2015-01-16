@@ -2,7 +2,8 @@
   # additional dependencies here, such as restangular
   'ngRoute',
   'ngCookies',
-  'ngMaterial'
+  'ngMaterial',
+  'monospaced.elastic'
 ])
 
 # for compatibility with Rails CSRF protection
@@ -11,29 +12,36 @@
   $httpProvider.interceptors.push('httpInterceptor');
   
   $routeProvider
-    .when('/moment', {
+    .when('/', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'homepageCtrl' })
+
+    .when('/moments', {
       templateUrl: 'views/dashboard.html',
       controller: 'momentCtrl' })
-    .when('/moment/create', {
+    .when('/moments/create', {
       templateUrl: 'views/dashboard.html',
       controller: 'createmomentCtrl' })
 
-    .when('/recipe', {
+    .when('/recipes/users/:userid', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'myrecipeCtrl' })
+    .when('/recipes/search', {
       templateUrl: 'views/dashboard.html',
       controller: 'recipeCtrl' })
-    .when('/recipe/create', {
+    .when('/recipes/create', {
       templateUrl: 'views/dashboard.html',
       controller: 'createrecipeCtrl' })
-
-    .when('/ingredient/create', {
+    .when('/recipes/show/:id', {
       templateUrl: 'views/dashboard.html',
-      controller: 'createingredientCtrl' })
-    .when('/ingredient', {
+      controller: 'showrecipeCtrl' })
+
+    .when('/ingredients', {
       templateUrl: 'views/dashboard.html',
       controller: 'ingredientCtrl' })
 
 
-    .when('/user/search', {
+    .when('/users/search', {
       templateUrl: 'views/dashboard.html',
       controller: 'searchuserCtrl' })
 
@@ -42,7 +50,7 @@
       controller: 'profileCtrl' })
     .when('/login', { templateUrl: 'views/auth.html', controller: 'loginCtrl' })
     .when('/signin', { templateUrl: 'views/auth.html', controller: 'signupCtrl' })
-    .otherwise({ redirectTo: '/moment' })
+    .otherwise({ redirectTo: '/' })
 )
 
 @app.run((api)->

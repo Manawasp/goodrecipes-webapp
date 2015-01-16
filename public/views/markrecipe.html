@@ -1,0 +1,15 @@
+<md-dialog aria-label='Create Ingredient' flex-gt-lg='30' flex-md='50' flex-sm='80'>
+  <section class='demo-container md-whiteframe-z1' layout='column'>
+    <div class='margin-top-20 margin-left-20 font-18 margin-bottom-10'>
+      Rating recipe
+    </div>
+    <div class='margin-left-10 margin-right-10'>
+      <h3 class='text-center'>{{mark}} / 5</h3>
+      <md-slider aria-label='rating' max='5' md-discrete='' min='0' ng-model='mark' step='1'></md-slider>
+    </div>
+    <div class='text-right margin-right-20 margin-bottom-15 margin-top-15 margin-left-20'>
+      <md-button class='md-primary' ng-click='cancel()' style='padding: 5px 15px'>Annuler</md-button>
+      <md-button class='md-primary margin-left-10' ng-click='validate()' style='padding: 5px 15px'>Valider</md-button>
+    </div>
+  </section>
+</md-dialog>

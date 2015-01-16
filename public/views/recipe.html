@@ -1,74 +1,85 @@
-<div class='searchbar' layout-fill='' layout='column'>
-  <section class='demo-container md-whiteframe-z1'>
-    <form>
+<md-content class='margin-top-10' flex='100' layout-align='start start' layout='column' ng-class="{'md-whiteframe-z1' : show_search_advanced,&#x000A;'margin-bottom-20' : show_search_advanced}">
+  <md-toolbar>
+    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#E3E4E6' tabindex='0'>
+      <div class='margin-left-30 roboto medium cursor font-24' ng-click='show_search_advanced = !show_search_advanced' ng-show='show_search_advanced' style='color:#BB2743'>
+        Advanced recipe search
+      </div>
+      <div ng-show='!show_search_advanced'>
+        <md-button ng-click='show_search_advanced = !show_search_advanced' style='color:#333'>Advanced recipe search</md-button>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-content layout='column' ng-show='show_search_advanced' style='width:100%;padding:30px 20px 10px 20px;'>
+    <div>
       <div layout='row'>
+        <div flex='100'>
+          <div>
+            <md-text-float class='margin-left-20 fleft' label='Search ingredients' ng-model='recipe.ingredients_describe[$index].title' style='display:inline-block;margin-top:0;'></md-text-float>
+            <span class='glyphicon glyphicon-search btn-search'></span>
+          </div>
+          <div class='margin-left-5'>
+            <span ng-repeat='ig in ingredients'>
+              <md-content class='md-whiteframe-z1 ingredient-windows-64 cursor text-center' style='background-image: url("{{ig.icon}}")'>
+                <span class='glyphicon glyphicon-picture font-24' ng-show='ig.icon != ""' style='color:#999;line-height:63px;'></span>
+                <span class='glyphicon glyphicon-picture font-16' ng-show='"" != ig.icon' style='color:#999;line-height:32px;'></span>
+              </md-content>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='step'>
+      <div class='step-header'>
+        <div class='font-18 roboto bold step-title margin-top-15 margin-bottom-10'>LABELS</div>
+        <div layout-wrap='' layout='row'>
+          <div flex='20' ng-repeat='label in labels'>
+            <md-checkbox aria-label='label.name' ng-model='label.c'>
+              {{label.name}}
+            </md-checkbox>
+          </div>
+        </div>
+        <div class='font-18 roboto bold step-title margin-top-30 margin-bottom-10'>BANN LIST</div>
+        <div layout-wrap='' layout='row'>
+          <div flex='20' ng-repeat='label in denied'>
+            <md-checkbox aria-label='label.name' class='md-warn' ng-model='label.c'>
+              {{label.name}}
+            </md-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='text-right padding-top-10 padding-bottom-5 top-border'>
+      <div layout-align='space-between center' layout='row'>
         <div>
-          <md-button aria-label='refresh' class='md-default margin-right-10 margin-left-10' ng-click='showCreateRecipe()' style='width:36px;background-color:#eee;color:#666;'>
-            <span class='glyphicon glyphicon-pencil'></span>
-          </md-button>
-          <label class='white font-18 margin-top-10 margin-right-10' style='margin-top:12px;color:#999;border-left:1px solid #eee;padding-left:15px'>
-            search
-          </label>
+          <md-button class='md-primary' ng-click='show_search_advanced = !show_search_advanced' style='padding: 5px 15px;color:#BB2743'>CLOSE</md-button>
         </div>
-        <div flex='' layout-align='space-between center' layout='row'>
-          <div>
-            <div class='form-group' style='width: 90%;margin-left:5%;margin-top:10px;margin-bottom:10px;'>
-              <input class='input-sm form-control ligth-design' ng-model='recipe.description' placeholder='Enter title' style='width: 100%'>
-            </div>
-          </div>
-          <div>
-            <md-button aria-label='refresh' class='md-primary md-raised margin-right-5' ng-click='search()' style='width:36px;'>
-              <span class='glyphicon glyphicon-search'></span>
-            </md-button>
-            <md-button aria-label='refresh' class='md-primary margin-right-10' ng-click='advancedSearch()' style='width:36px;'>
-              <span class='glyphicon glyphicon-cog'></span>
-            </md-button>
-          </div>
+        <div>
+          <md-button class='md-primary margin-left-10' ng-click='validate()' style='padding: 5px 15px'>SEARCH</md-button>
         </div>
       </div>
-      <div flex='100' layout='row' ng-show='data.showAdvancedSearch' style='border-top:1px solid #eee;padding-top:10px;padding-bottom:10px'>
-        <div class='margin-left-10' style='padding-right:10px;border-right:1px solid #eee'>
-          <div class='margin-left-5 margin-bottom-5' style='color:#555'>
-            Advanced element
-          </div>
-          <input class='input-sm form-control ligth-design' ng-model='element' placeholder='Enter element...'>
-          <div class='margin-top-5 text-center'>
-            <md-button aria-label='refresh' class='margin-right-5' ng-click='addLabel(element) &amp;&amp; (element = "")' style='width: 36px'>
-              <span class='glyphicon glyphicon-tag color-label'></span>
-            </md-button>
-            <md-button aria-label='refresh' class='margin-right-5' ng-click='addSavour(element) &amp;&amp; (element = "")' style='width: 36px'>
-              <span class='glyphicon glyphicon-heart-empty color-savour'></span>
-            </md-button>
-            <md-button aria-label='refresh' class='margin-right-5' ng-click='addBlacklist(element) &amp;&amp; (element = "")' style='width: 36px'>
-              <span class='glyphicon glyphicon-ban-circle color-ban'></span>
-            </md-button>
-          </div>
-        </div>
-        <div class='margin-left-15'>
-          <span ng-repeat='ig in recipe.labels'>
-            <span class='label label-default color-label-bg font-12 cursor' ng-click='delLabel(ig)' style='padding-top:4px'>{{ig}}</span>
+    </div>
+  </md-content>
+</md-content>
+<div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
+  <div flex='21' ng-repeat='morerecipe in more_recipe'>
+    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+      <div class='flat-image-100p cursor text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+      <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
+        <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
+        <div class='time font-12'>
+          <span ng-show='morerecipe.total.h != 0'>
+            {{morerecipe.total.h}} hour
           </span>
-          <span ng-repeat='ig in recipe.savours'>
-            <span class='label label-default color-savour-bg font-12 cursor' ng-click='delSavour(ig)' style='padding-top:4px'>{{ig}}</span>
-          </span>
-          <span ng-repeat='ig in recipe.blacklist'>
-            <span class='label label-default color-ban-bg font-12 cursor' ng-click='delBlacklist(ig)' style='padding-top:4px'>{{ig}}</span>
+          <span ng-show='morerecipe.total.m != 0'>
+            {{morerecipe.total.m}} min
           </span>
         </div>
       </div>
-    </form>
-  </section>
-</div>
-<div layout='row'>
-  <span ng-repeat='ig in data.recipes' style='padding:0;'>
-    <md-card class='ingredient-card' ng-class="{'ingredient-pink-cd': ig.color == 'pink', 'ingredient-silver-cd': ig.color == 'silver'}" ng-click='showEditingRecipe(ig)' style='padding:0;'>
-      <div class='ingredient-img'>
-        <img alt='...' ng-if='ig.icon' src='{{ig.icon}}' style='width:100%;max-height:100px;'>
-        <img alt='...' ng-if='!ig.icon' src='/images/ingredients/pork.jpg' style='width:100%;max-height:100px;'>
+      <div class='margin-left-10 margin-right-10 margin-bottom-5'>
+        <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+        <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+        <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comment_length}}</span>
       </div>
-      <div class='caption md-ingredient'>
-        {{ig.title}}
-      </div>
-    </md-card>
-  </span>
+    </md-content>
+  </div>
 </div>

@@ -1,0 +1,95 @@
+%md-content.md-whiteframe-z1.margin-top-30{layout: "column", "layout-align" => "start start", flex: '100'}
+  %md-toolbar
+    .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#E3E4E6'}
+      %div.margin-left-30.roboto.medium.font-24{style: 'color:#555'}
+        {{recipe.title}}
+  %md-content{style: 'width:100%;padding:30px 20px 10px 20px;', layout: 'column'}
+    -# %div
+    -#   {{recipe}}
+    -#   // image + description
+    -#   ok
+    %div{layout: "row"}
+      %div{flex: '65'}
+        %md-content.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: 'background-image: url("{{recipe.image}}")'}
+          %span.glyphicon.glyphicon-picture.font-72{style: 'color:#999;line-height:372px;', 'ng-show' => '!recipe.image'}
+      %div{flex: '35', layout: 'column'}
+        %div.margin-top-15.margin-bottom-10{style: "padding:0 15px"}
+          %div.font-16.roboto.medium{style: 'color:#333'} Description
+          %div.step-description.font-14.margin-top-10.margin-bottom-5.blue-bottom-border{style: 'color:#666'}
+            {{recipe.description}}
+            -# recipe.people
+        %div.margin-top-15{style: "padding:0 15px"}
+          %div.font-16.roboto.medium.margin-bottom-10{style: 'color:#333'} Informations
+          %div.margin-left-5.margin-top-15
+            %span{style: 'display:inline-block;width:85px;color:#666'} Prep time
+            %span.recipe-time
+              %span.roboto.medium.bold.font-14{"ng-show" => "recipe.preparation.h > 0"}
+                {{recipe.preparation.h}} hours
+              %span.roboto.medium.bold.font-14{"ng-show" => "recipe.preparation.m > 0"}
+                {{recipe.preparation.m}} min
+          %div.margin-left-5.margin-top-10
+            %span{style: 'display:inline-block;width:85px;color:#666'} Total time
+            %span.recipe-time
+              %span.roboto.medium.bold.font-14{"ng-show" => "recipe.total.h > 0"}
+                {{recipe.total.h}} hours
+              %span.roboto.medium.bold.font-14{"ng-show" => "recipe.total.m > 0"}
+                {{recipe.total.m}} min
+          %div.margin-left-5.margin-top-10
+            %span{style: 'display:inline-block;width:85px;color:#666'} Ingredients
+            %span.roboto.medium.bold.font-14
+              {{recipe.ingredients.length}}
+          %div.margin-left-5.margin-top-10
+            %span{style: 'color:#999'}
+              %span.glyphicon.glyphicon-user
+            %span.roboto.medium.font-14.margin-left-5{style: 'color:#666;'}
+              {{recipe.people}}
+          %div.margin-top-20
+            %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= recipe.mark}"}
+            %span.font-11{style: 'line-height:24px'} ({{recipe.mark_length}})
+            %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
+            %span.font-11.margin-left-5{style: 'line-height:24px'} {{recipe.comment_length}}
+    %div
+      // Search ingredient
+      %div.margin-left-15.margin-top-20.margin-right-10
+        %div.font-16.food-dark-red.margin-bottom-10  Ingredients
+        %span{"ng-repeat" => "ig in recipe.ingredients"}
+          %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{ig.icon}}");margin-left:2px;margin-right:18px'}
+            %span.glyphicon.glyphicon-picture.font-24{style: 'color:#999;line-height:63px;', 'ng-show' => 'ig.icon != ""'}
+    %div
+      // Parts ingredient
+      %div.margin-left-10{layout: "row", "layout-wrap" => ""}
+        %div{flex: '50', "ng-repeat" => "ig_desc in recipe.ingredients_describe track by $index"}
+          %div.font-16.roboto.bold.margin-left-10.margin-top-30.margin-bottom-5{style: 'color:#333'}
+            {{recipe.ingredients_describe[$index].title}}
+          %div.margin-top-10.margin-left-15
+            %textarea.msd-elastic.step-description.margin-bottom-5{"ng-model" => "recipe.ingredients_describe[$index].description", placeholder: "List of quantity and ingredients", disabled: 'true', style: 'background-color:transparent'}
+    %div.step.padding-bottom-5{"ng-repeat" => "step in recipe.steps track by $index"}
+      %div.step-header{layout: 'row', "layout-align" => "start center"}
+        %div.font-24.roboto.bold.step-title
+          STEP {{$index + 1}}
+      %textarea.msd-elastic.step-description.margin-top-15.margin-bottom-5{"ng-model" => "recipe.steps[$index]", placeholder: "Please enter your step description", disabled: 'true', style: 'background-color:transparent'}
+    %div.text-right.padding-top-10.padding-bottom-5.top-border
+      %div{layout: "row", "layout-align" => "space-between center"}
+        %div.margin-left-10
+          by {{author.name}}
+        %div
+          %md-button.md-primary{style: 'padding: 5px 15px', "ng-click" => "markRecipe()"} MARK
+          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "create_ingredient()"} COMMENT
+
+%div.print-title.margin-left-20.font-24.roboto.light.margin-top-30.margin-bottom-20
+  Want to try more ?
+%div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "space-between center"}
+  %div{flex: '21', "ng-repeat" => 'morerecipe in more_recipe'}
+    %md-content.md-whiteframe-z1{layout: "column", flex: '100'}
+      %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
+      %div.margin-left-10.margin-right-10.margin-top-10{style: 'height:60px'}
+        %div.font-14.roboto.medium {{morerecipe.title}}
+        %div.time.font-12
+          %span{"ng-show" => 'morerecipe.total.h != 0'}
+            {{morerecipe.total.h}} hour
+          %span{"ng-show" => 'morerecipe.total.m != 0'}
+            {{morerecipe.total.m}} min
+      %div.margin-left-10.margin-right-10.margin-bottom-5
+        %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= morerecipe.mark}"}
+        %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
+        %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comment_length}}

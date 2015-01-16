@@ -1,32 +1,140 @@
-<div class='panel panel-default'>
-  <div class='panel-heading'>
-    Create recipe
-  </div>
-  <div class='panel-body'>
-    <form role='form'>
-      <div class='row'>
-        <div class='col-xs-12'>
-          <div class='form-group' ng-show="error != ''">
-            <div class='alert alert-danger' role='alert'>
-              <span aria-hidden='true' class='glyphicon glyphicon-exclamation-sign'></span>
-              {{error}}
+<md-content class='md-whiteframe-z1 margin-top-30' flex='100' layout-align='start start' layout='column'>
+  <md-toolbar>
+    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#E3E4E6' tabindex='0'>
+      <div class='no-margin' flex='70'>
+        <md-text-float class='margin-left-20' label='Title of your recipe' ng-model='recipe.title'></md-text-float>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-content layout='column' style='width:100%;padding:30px 20px 10px 20px;'>
+    <div layout='row'>
+      <div flex='65'>
+        <md-content class='md-whiteframe-z1 ingredient-windows-90p cursor text-center' style='background-image: url("{{recipe.image}}")'>
+          <span class='glyphicon glyphicon-picture font-72' ng-show='!recipe.image' style='color:#999;line-height:372px;'></span>
+        </md-content>
+      </div>
+      <div flex='35' layout='column'>
+        <div>
+          <md-input-container flex=''>
+            <div class='margin-top-15' style='padding:0 15px'>
+              <span class='font-12' style='color:#29B6F6'>Recipe description</span>
+              <textarea class='msd-elastic step-description font-14 margin-bottom-5 blue-bottom-border' md-maxlength='200' ng-model='recipe.description' placeholder='Short recipe description (200 characters)'></textarea>
             </div>
+          </md-input-container>
+        </div>
+        <div class='margin-top-15'>
+          <md-text-float class='margin-left-20' label='How many people ?' ng-model='recipe.people' style='margin-top:0;'></md-text-float>
+        </div>
+        <div class='margin-left-20' layout-wrap='' layout='row'>
+          <div class='margin-top-15' style='width:100%'>
+            PREPARATION TIME
+          </div>
+          <div flex='50'>
+            <md-text-float class='w100 margin-right-20' label='hours' ng-model='recipe.preparation.h' style='margin-top:0;'></md-text-float>
+          </div>
+          <div flex='50'>
+            <md-text-float class='w100 margin-right-20' label='minutes' ng-model='recipe.preparation.m' style='margin-top:0;'></md-text-float>
           </div>
         </div>
-        <div class='col-xs-12'>
-          <div class='form-group'>
-            <label for='exampleInputEmail1'>Title</label>
-            <input class='form-control' ng-model='recipe.title' placeholder='Enter title'>
+        <div class='margin-left-20' layout-wrap='' layout='row'>
+          <div class='margin-top-15' style='width:100%'>
+            TOTAL TIME
           </div>
-          <div class='form-group'>
-            <label for='exampleInputPassword1'>Description</label>
-            <input class='form-control' ng-model='recipe.description' placeholder='Enter description'>
+          <div flex='50'>
+            <md-text-float class='w100 margin-right-20' label='hours' ng-model='recipe.total.h' style='margin-top:0;'></md-text-float>
           </div>
-          <button class='btn btn-info btn-sm' ng-click='send()'>
-            <b>create</b>
-          </button>
+          <div flex='50'>
+            <md-text-float class='w100 margin-right-20' label='minutes' ng-model='recipe.total.m' style='margin-top:0;'></md-text-float>
+          </div>
         </div>
       </div>
-    </form>
-  </div>
-</div>
+    </div>
+    <div>
+      <!-- / Search ingredient -->
+      <div layout='row'>
+        <div flex='50'>
+          <div>
+            <md-text-float class='margin-left-20' label='Search ingredients' ng-model='recipe.ingredients_describe[$index].title' style='margin-top:0;'></md-text-float>
+          </div>
+          <div class='margin-left-5'>
+            <span ng-repeat='ig in ingredients'>
+              <md-content class='md-whiteframe-z1 ingredient-windows-64 cursor text-center' style='background-image: url("{{ig.icon}}")'>
+                <span class='glyphicon glyphicon-picture font-24' ng-show='ig.icon != ""' style='color:#999;line-height:63px;'></span>
+              </md-content>
+            </span>
+          </div>
+        </div>
+        <div flex='50'>
+          <div class='margin-left-15 margin-top-30'>
+            <div class='margin-left-15 roboto light margin-top-20' style='color:#666'>BOX INGREDIENTS ({{recipe.ingredients.length}})</div>
+            <span ng-repeat='ig in recipe.ingredients track by $index'>
+              <md-content class='md-whiteframe-z1 ingredient-windows-36 cursor text-center' style='background-image: url("{{ig.icon}}")'>
+                <span class='glyphicon glyphicon-picture font-16' ng-show='"" != ig.icon' style='color:#999;line-height:32px;'></span>
+              </md-content>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- / Parts ingredient -->
+      <div layout-wrap='' layout='row'>
+        <div flex='50' ng-repeat='ig_desc in recipe.ingredients_describe track by $index'>
+          <div>
+            <md-text-float class='margin-left-20' label='Title' ng-model='recipe.ingredients_describe[$index].title'></md-text-float>
+          </div>
+          <div class='margin-top-5' style='padding:0 15px'>
+            <span class='font-12' style='color:#29B6F6'>Description</span>
+            <textarea class='msd-elastic step-description margin-bottom-5' ng-model='recipe.ingredients_describe[$index].description' placeholder='List of quantity and ingredients'></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='step padding-bottom-5' ng-repeat='step in recipe.steps track by $index'>
+      <div class='step-header' layout-align='start center' layout='row'>
+        <div class='font-24 roboto bold step-title'>
+          STEP {{$index + 1}}
+        </div>
+        <md-button class='md-primary step-button food-dark-red' ng-click='remove_step($index)'>REMOVE STEP</md-button>
+      </div>
+      <textarea class='msd-elastic step-description margin-top-15 margin-bottom-5' ng-model='recipe.steps[$index]' placeholder='Please enter your step description'></textarea>
+    </div>
+    <div class='step'>
+      <div class='step-header'>
+        <span class='font-24 roboto bold step-title'>STEP {{recipe.steps.length + 1}}</span>
+        <md-button class='md-primary step-button' ng-click='add_step()'>ADD STEP</md-button>
+      </div>
+    </div>
+    <div class='step'>
+      <div class='step-header'>
+        <div class='font-18 roboto bold step-title margin-top-15 margin-bottom-10'>LABELS</div>
+        <div layout-wrap='' layout='row'>
+          <div flex='20' ng-repeat='label in labels'>
+            <md-checkbox aria-label='label.name' ng-model='label.c'>
+              {{label.name}}
+            </md-checkbox>
+          </div>
+        </div>
+        <div class='font-18 roboto bold step-title margin-top-30 margin-bottom-10'>BANN LIST</div>
+        <div layout-wrap='' layout='row'>
+          <div flex='20' ng-repeat='label in denied'>
+            <md-checkbox aria-label='label.name' class='md-warn' ng-model='label.c'>
+              {{label.name}}
+            </md-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='text-right padding-top-10 padding-bottom-5 top-border'>
+      <div layout-align='space-between center' layout='row'>
+        <div>
+          <md-button class='md-primary' style='padding: 5px 15px;color:#BB2743'>REMOVE</md-button>
+        </div>
+        <div>
+          <md-button class='md-primary' style='padding: 5px 15px'>CANCEL</md-button>
+          <md-button class='md-primary margin-left-10' ng-click='validate()' style='padding: 5px 15px'>VALIDATE</md-button>
+        </div>
+      </div>
+    </div>
+  </md-content>
+</md-content>
