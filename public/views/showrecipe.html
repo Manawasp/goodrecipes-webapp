@@ -105,7 +105,7 @@
           by {{author.name}}
         </div>
         <div>
-          <md-button class='md-primary' style='padding: 5px 15px'>MARK</md-button>
+          <md-button class='md-primary' ng-click='markRecipe()' style='padding: 5px 15px'>MARK</md-button>
           <md-button class='md-primary margin-left-10' ng-click='create_ingredient()' style='padding: 5px 15px'>COMMENT</md-button>
         </div>
       </div>
@@ -115,25 +115,26 @@
 <div class='print-title margin-left-20 font-24 roboto light margin-top-30 margin-bottom-20'>
   Want to try more ?
 </div>
-<div layout-align='space-between center' layout-wrap='' layout='row'>
-  <div flex='33'>
+<div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
+  <div flex='21' ng-repeat='morerecipe in more_recipe'>
     <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-      Hello
-    </md-content>
-  </div>
-  <div flex='66'>
-    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-      Hello
-    </md-content>
-  </div>
-  <div flex='20'>
-    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-      Hello
-    </md-content>
-  </div>
-  <div flex='20'>
-    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-      Hello
+      <div class='flat-image-100p cursor text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+      <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
+        <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
+        <div class='time font-12'>
+          <span ng-show='morerecipe.total.h != 0'>
+            {{morerecipe.total.h}} hour
+          </span>
+          <span ng-show='morerecipe.total.m != 0'>
+            {{morerecipe.total.m}} min
+          </span>
+        </div>
+      </div>
+      <div class='margin-left-10 margin-right-10 margin-bottom-5'>
+        <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+        <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+        <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comment_length}}</span>
+      </div>
     </md-content>
   </div>
 </div>

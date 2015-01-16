@@ -69,10 +69,22 @@
       %div.step-header
         %span.font-24.roboto.bold.step-title STEP {{recipe.steps.length + 1}}
         %md-button.md-primary.step-button{"ng-click" => "add_step()"} ADD STEP
+    %div.step
+      %div.step-header
+        %div.font-18.roboto.bold.step-title.margin-top-15.margin-bottom-10 LABELS
+        %div{layout: "row", "layout-wrap" => ""}
+          %div{"ng-repeat" => "label in labels", flex: '20'}
+            %md-checkbox{"ng-model"=>"label.c", "aria-label"=>"label.name"}
+              {{label.name}}
+        %div.font-18.roboto.bold.step-title.margin-top-30.margin-bottom-10 BANN LIST
+        %div{layout: "row", "layout-wrap" => ""}
+          %div{"ng-repeat" => "label in denied", flex: '20'}
+            %md-checkbox.md-warn{"ng-model"=>"label.c", "aria-label"=>"label.name"}
+              {{label.name}}
     %div.text-right.padding-top-10.padding-bottom-5.top-border
       %div{layout: "row", "layout-align" => "space-between center"}
         %div
           %md-button.md-primary{style: 'padding: 5px 15px;color:#BB2743'} REMOVE
         %div
           %md-button.md-primary{style: 'padding: 5px 15px'} CANCEL
-          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "create_ingredient()"} VALIDATE
+          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "validate()"} VALIDATE

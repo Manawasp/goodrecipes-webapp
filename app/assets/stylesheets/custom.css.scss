@@ -403,6 +403,14 @@ md-input-group label, .md-input-group label {
   background-size: cover;
 }
 
+.flat-image-100p {
+  display:inline-block;
+  width:100%;
+  height:125px;
+  background: url('/') no-repeat center center;
+  background-size: cover;
+  background-color: #eee;
+}
 md-content.md-default-theme {
   &.ingredient-windows-90p, &.ingredient-windows-120, .ingredient-windows-64, .ingredient-windows-36 {background-color:#eee;}
 }
@@ -632,4 +640,36 @@ textarea.msd-elastic.blue-bottom-border {
 
 .panel-content {
   max-width: 864px;
+}
+
+/// text-transform: 
+
+
+.md-button.md-default-theme.md-warn {
+      color: rgb(244,67,54);
+}
+
+.md-button.md-default-theme.md-warn.md-raised, .md-button.md-default-theme.md-warn.md-fab {
+        color: rgb(255,255,255);
+        background-color: rgb(244,67,54);
+}
+
+.md-button.md-default-theme.md-warn.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-warn.md-raised:not([disabled]):focus, .md-button.md-default-theme.md-warn.md-fab:not([disabled]):hover, .md-button.md-default-theme.md-warn.md-fab:not([disabled]):focus {
+          background-color: rgb(211,47,47);
+}
+
+md-checkbox.md-default-theme:not([disabled]).md-warn .md-ripple {
+    color: rgb(229,57,53);
+}
+
+md-checkbox.md-default-theme:not([disabled]).md-warn .md-icon {
+    border-color: rgba(0,0,0,0.54);
+}
+
+md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon {
+    background-color: rgba(244,67,54,0.87);
+}
+
+md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
+    border-color: rgb(238,238,238);
 }

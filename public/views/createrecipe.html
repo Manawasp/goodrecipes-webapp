@@ -105,6 +105,26 @@
         <md-button class='md-primary step-button' ng-click='add_step()'>ADD STEP</md-button>
       </div>
     </div>
+    <div class='step'>
+      <div class='step-header'>
+        <div class='font-18 roboto bold step-title margin-top-15 margin-bottom-10'>LABELS</div>
+        <div layout-wrap='' layout='row'>
+          <div flex='20' ng-repeat='label in labels'>
+            <md-checkbox aria-label='label.name' ng-model='label.c'>
+              {{label.name}}
+            </md-checkbox>
+          </div>
+        </div>
+        <div class='font-18 roboto bold step-title margin-top-30 margin-bottom-10'>BANN LIST</div>
+        <div layout-wrap='' layout='row'>
+          <div flex='20' ng-repeat='label in denied'>
+            <md-checkbox aria-label='label.name' class='md-warn' ng-model='label.c'>
+              {{label.name}}
+            </md-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class='text-right padding-top-10 padding-bottom-5 top-border'>
       <div layout-align='space-between center' layout='row'>
         <div>
@@ -112,7 +132,7 @@
         </div>
         <div>
           <md-button class='md-primary' style='padding: 5px 15px'>CANCEL</md-button>
-          <md-button class='md-primary margin-left-10' ng-click='create_ingredient()' style='padding: 5px 15px'>VALIDATE</md-button>
+          <md-button class='md-primary margin-left-10' ng-click='validate()' style='padding: 5px 15px'>VALIDATE</md-button>
         </div>
       </div>
     </div>

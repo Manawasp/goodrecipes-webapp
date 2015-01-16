@@ -1,4 +1,4 @@
-angular.module('app').controller("showrecipeCtrl", ($scope, $location, $cookieStore, authorization, api)->
+angular.module('app').controller("showrecipeCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api)->
     console.log 'showrecipesCtrl running'
     $scope.template = 'views/showrecipe.html'
     $scope.error = ''
@@ -8,4 +8,18 @@ Reduce heat to medium-low, add chicken broth and cooking sauce. Simmer 15 to 20 
 Reduce heat to medium-low, add chicken broth and cooking sauce. Simmer 15 to 20 minutes or until thoroughly cooked and no longer pink in center."], ingredients_describe: [{title: "Meatballs", description: "1 lb lean (at least 80%) ground beef\n1/2 cup Progresso plain panko bread crumbs\n1 medium onion, finely chopped (1/2 cup)\n1/2 teaspoon died oregano leaves\n1/2 teaspoon salt\n3 gloves garlic, finely chopped\n1 egg, beaten"}]}
     $scope.ingredients = [{"icon": "chocolat"},{"icon": "chocolat"},{"icon": "chocolat"},{"icon": "chocolat"},{"icon": "chocolat"},{"icon": "chocolat"},{"icon": "chocolat"},{"icon": "chocolat"},{"icon": "chocolat"}]
     $scope.mark = [0.5, 1.5, 2.5, 3.5, 4.5]
+    $scope.more_recipe = [{'id': '1', 'icon': '', 'title': 'Avocado Dessert', 'comment_length': 12,'total': {'h': 1, 'm': 0}, 'mark': 4.7},
+                          {'id': '2', 'icon': '', 'title': 'Apple pie', 'comment_length': 12,'total': {'h': 0, 'm': 45}, 'mark': 4.2},
+                          {'id': '3', 'icon': '', 'title': 'Moules cuites au wok', 'comment_length': 12,'total': {'h': 1, 'm': 45}, 'mark': 4.2},
+                          {'id': '4', 'icon': '', 'title': 'Pizza viande de boeuf hachee', 'comment_length': 12,'total': {'h': 0, 'm': 45}, 'mark': 4.2}]
+
+    $scope.markRecipe = (data) ->
+      $mdDialog.show(
+        controller: 'markrecipeCtrl'
+        templateUrl: "/views/markrecipe.html"
+      ).then (() ->
+        # $scope.alert = "You said the information was \"" + answer + "\"."
+      ), ->
+        # $scope.alert = "You cancelled the dialog."
+
 )
