@@ -1,0 +1,139 @@
+<md-content class='md-whiteframe-z1 margin-top-30' flex='100' layout-align='start start' layout='column'>
+  <md-toolbar>
+    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#E3E4E6' tabindex='0'>
+      <div class='margin-left-30 roboto medium font-24' style='color:#555'>
+        {{recipe.title}}
+      </div>
+    </div>
+  </md-toolbar>
+  <md-content layout='column' style='width:100%;padding:30px 20px 10px 20px;'>
+    <div layout='row'>
+      <div flex='65'>
+        <md-content class='md-whiteframe-z1 ingredient-windows-90p cursor text-center' style='background-image: url("{{recipe.image}}")'>
+          <span class='glyphicon glyphicon-picture font-72' ng-show='!recipe.image' style='color:#999;line-height:372px;'></span>
+        </md-content>
+      </div>
+      <div flex='35' layout='column'>
+        <div class='margin-top-15 margin-bottom-10' style='padding:0 15px'>
+          <div class='font-16 roboto medium' style='color:#333'>Description</div>
+          <div class='step-description font-14 margin-top-10 margin-bottom-5 blue-bottom-border' style='color:#666'>
+            {{recipe.description}}
+          </div>
+        </div>
+        <div class='margin-top-15' style='padding:0 15px'>
+          <div class='font-16 roboto medium margin-bottom-10' style='color:#333'>Informations</div>
+          <div class='margin-left-5 margin-top-15'>
+            <span style='display:inline-block;width:85px;color:#666'>Prep time</span>
+            <span class='recipe-time'>
+              <span class='roboto medium bold font-14' ng-show='recipe.preparation.h &gt; 0'>
+                {{recipe.preparation.h}} hours
+              </span>
+              <span class='roboto medium bold font-14' ng-show='recipe.preparation.m &gt; 0'>
+                {{recipe.preparation.m}} min
+              </span>
+            </span>
+          </div>
+          <div class='margin-left-5 margin-top-10'>
+            <span style='display:inline-block;width:85px;color:#666'>Total time</span>
+            <span class='recipe-time'>
+              <span class='roboto medium bold font-14' ng-show='recipe.total.h &gt; 0'>
+                {{recipe.total.h}} hours
+              </span>
+              <span class='roboto medium bold font-14' ng-show='recipe.total.m &gt; 0'>
+                {{recipe.total.m}} min
+              </span>
+            </span>
+          </div>
+          <div class='margin-left-5 margin-top-10'>
+            <span style='display:inline-block;width:85px;color:#666'>Ingredients</span>
+            <span class='roboto medium bold font-14'>
+              {{recipe.ingredients.length}}
+            </span>
+          </div>
+          <div class='margin-left-5 margin-top-10'>
+            <span style='color:#999'>
+              <span class='glyphicon glyphicon-user'></span>
+            </span>
+            <span class='roboto medium font-14 margin-left-5' style='color:#666;'>
+              {{recipe.people}}
+            </span>
+          </div>
+          <div class='margin-top-20'>
+            <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+            <span class='font-11' style='line-height:24px'>({{recipe.mark_length}})</span>
+            <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+            <span class='font-11 margin-left-5' style='line-height:24px'>{{recipe.comment_length}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- / Search ingredient -->
+      <div class='margin-left-15 margin-top-20 margin-right-10'>
+        <div class='font-16 food-dark-red margin-bottom-10'>Ingredients</div>
+        <span ng-repeat='ig in recipe.ingredients'>
+          <md-content class='md-whiteframe-z1 ingredient-windows-64 cursor text-center' style='background-image: url("{{ig.icon}}");margin-left:2px;margin-right:18px'>
+            <span class='glyphicon glyphicon-picture font-24' ng-show='ig.icon != ""' style='color:#999;line-height:63px;'></span>
+          </md-content>
+        </span>
+      </div>
+    </div>
+    <div>
+      <!-- / Parts ingredient -->
+      <div class='margin-left-10' layout-wrap='' layout='row'>
+        <div flex='50' ng-repeat='ig_desc in recipe.ingredients_describe track by $index'>
+          <div class='font-16 roboto bold margin-left-10 margin-top-30 margin-bottom-5' style='color:#333'>
+            {{recipe.ingredients_describe[$index].title}}
+          </div>
+          <div class='margin-top-10 margin-left-15'>
+            <textarea class='msd-elastic step-description margin-bottom-5' disabled='true' ng-model='recipe.ingredients_describe[$index].description' placeholder='List of quantity and ingredients' style='background-color:transparent'></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='step padding-bottom-5' ng-repeat='step in recipe.steps track by $index'>
+      <div class='step-header' layout-align='start center' layout='row'>
+        <div class='font-24 roboto bold step-title'>
+          STEP {{$index + 1}}
+        </div>
+      </div>
+      <textarea class='msd-elastic step-description margin-top-15 margin-bottom-5' disabled='true' ng-model='recipe.steps[$index]' placeholder='Please enter your step description' style='background-color:transparent'></textarea>
+    </div>
+    <div class='text-right padding-top-10 padding-bottom-5 top-border'>
+      <div layout-align='space-between center' layout='row'>
+        <div class='margin-left-10'>
+          by {{author.name}}
+        </div>
+        <div>
+          <md-button class='md-primary' style='padding: 5px 15px'>MARK</md-button>
+          <md-button class='md-primary margin-left-10' ng-click='create_ingredient()' style='padding: 5px 15px'>COMMENT</md-button>
+        </div>
+      </div>
+    </div>
+  </md-content>
+</md-content>
+<div class='print-title margin-left-20 font-24 roboto light margin-top-30 margin-bottom-20'>
+  Want to try more ?
+</div>
+<div layout-align='space-between center' layout-wrap='' layout='row'>
+  <div flex='33'>
+    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+      Hello
+    </md-content>
+  </div>
+  <div flex='66'>
+    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+      Hello
+    </md-content>
+  </div>
+  <div flex='20'>
+    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+      Hello
+    </md-content>
+  </div>
+  <div flex='20'>
+    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
+      Hello
+    </md-content>
+  </div>
+</div>
