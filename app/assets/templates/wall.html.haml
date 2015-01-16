@@ -1,11 +1,29 @@
-.panel.panel-default
-  .panel-body
-    %img.user-avatar{src: 'images/minion.png'}
-    %div.content-new
-      .title Mon super titre de la mort qui tue
-      %div
-        %span.date 1 hours ago 
-        by
-        %span.author Clovky
-      %div.describe
-        Hello 2 "{{connected}}"
+%md-content.md-whiteframe-z1.margin-top-20{style: 'display:inline-block;background-color:white;width:85px;position:absolute;'}
+  %md-toolbar
+    .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#60808B'}
+      %a{"ng-click" => "locate('moments')", style: 'position:absolute;margin-top:4px;width:72px;text-align:center'}
+        %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style: 'width:54px;height:54px;padding:0;'}
+          %img.profile-avatar{src: "{{avatar}}"}
+  %md-content{layout: 'column'}
+    %div
+      %div.silver-box.margin-top-15.text-center
+        %span.glyphicon.glyphicon-user
+        200
+    %div
+      %div.silver-box.margin-top-5.text-center
+        %span.glyphicon.glyphicon-eye-open
+        100
+    %div.text-center.margin-top-5.margin-bottom-10
+      %md-button.md-primary.md-raised{style: 'padding: 4px 10px'}
+        %span.glyphicon.glyphicon-star
+%md-content.md-whiteframe-z1.margin-top-20{style: 'margin-left:110px;min-height:300px'}
+  %md-toolbar
+    .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#60808B;'}
+      %div.margin-left-30.roboto.medium.font-24{style: 'color:#fff'}
+        Moments
+  %div
+    View
+  %div
+    Follower
+  %div
+    Follo

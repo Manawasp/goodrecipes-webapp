@@ -581,6 +581,8 @@ textarea.msd-elastic.blue-bottom-border {
 }
 .profile-avatar {
   width: 90px;
+  background: url('/') no-repeat center center;
+  background-size: cover;
 }
 .avatar {
   // @extend .img-circle;

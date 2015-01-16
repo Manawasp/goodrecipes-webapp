@@ -1,16 +1,48 @@
-<div class='panel panel-default'>
-  <div class='panel-body'>
-    <img class='user-avatar' src='images/minion.png'>
-    <div class='content-new'>
-      <div class='title'>Mon super titre de la mort qui tue</div>
-      <div>
-        <span class='date'>1 hours ago</span>
-        by
-        <span class='author'>Clovky</span>
-      </div>
-      <div class='describe'>
-        Hello 2 "{{connected}}"
+<md-content class='md-whiteframe-z1 margin-top-20' style='display:inline-block;background-color:white;width:85px;position:absolute;'>
+  <md-toolbar>
+    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#60808B' tabindex='0'>
+      <a ng-click="locate('moments')" style='position:absolute;margin-top:4px;width:72px;text-align:center'>
+        <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:54px;height:54px;padding:0;'>
+          <img class='profile-avatar' src='{{avatar}}'>
+        </button>
+      </a>
+    </div>
+  </md-toolbar>
+  <md-content layout='column'>
+    <div>
+      <div class='silver-box margin-top-15 text-center'>
+        <span class='glyphicon glyphicon-user'></span>
+        200
       </div>
     </div>
+    <div>
+      <div class='silver-box margin-top-5 text-center'>
+        <span class='glyphicon glyphicon-eye-open'></span>
+        100
+      </div>
+    </div>
+    <div class='text-center margin-top-5 margin-bottom-10'>
+      <md-button class='md-primary md-raised' style='padding: 4px 10px'>
+        <span class='glyphicon glyphicon-star'></span>
+      </md-button>
+    </div>
+  </md-content>
+</md-content>
+<md-content class='md-whiteframe-z1 margin-top-20' style='margin-left:110px;min-height:300px'>
+  <md-toolbar>
+    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#60808B;' tabindex='0'>
+      <div class='margin-left-30 roboto medium font-24' style='color:#fff'>
+        Moments
+      </div>
+    </div>
+  </md-toolbar>
+  <div>
+    View
   </div>
-</div>
+  <div>
+    Follower
+  </div>
+  <div>
+    Follo
+  </div>
+</md-content>
