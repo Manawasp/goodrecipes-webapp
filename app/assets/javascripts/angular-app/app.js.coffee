@@ -19,7 +19,7 @@
       templateUrl: 'views/dashboard.html',
       controller: 'createmomentCtrl' })
 
-    .when('/recipe', {
+    .when('/recipe/search', {
       templateUrl: 'views/dashboard.html',
       controller: 'recipeCtrl' })
     .when('/recipe/create', {
@@ -29,9 +29,6 @@
       templateUrl: 'views/dashboard.html',
       controller: 'showrecipeCtrl' })
 
-    .when('/ingredient/create', {
-      templateUrl: 'views/dashboard.html',
-      controller: 'createingredientCtrl' })
     .when('/ingredient', {
       templateUrl: 'views/dashboard.html',
       controller: 'ingredientCtrl' })

@@ -1,33 +1,28 @@
 angular.module('app').controller("recipeCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService, recipeService)->
     console.log 'recipeCtrl running'
-    # $scope.template = 'views/recipe.html'
-    # $scope.error = ''
-    # $scope.recipe = {labels: [], savours: [], blacklist: []}
-
-    # $scope.data = {
-    #   selectedIndex : 1
-    # }
-
-    # $scope.addLabels = (label) ->
-    #   $scope.recipe.labels.push label
-    # $scope.addSavours = (label) ->
-    #   $scope.recipe.savours.push label
-    # $scope.addBlacklist = (label) ->
-    #   $scope.recipe.blacklist.push label
-
-    # console.log 'ingredientCtrl running'
     $scope.template = 'views/recipe.html'
     $scope.error = ''
-    $scope.recipe = {description: "", labels: [], savours: [], blacklist: []}
+    $scope.recipe = {description: "", labels: [], blacklist: []}
+    $scope.labels = [{'c': false, 'name': 'breakfast & brunch'},  {'c': false, 'name': 'appetizer'},
+                    {'c': false, 'name': 'dessert'},              {'c': false, 'name': 'healty'},
+                    {'c': false, 'name': 'main dish'},            {'c': false, 'name': 'pasta'},
+                    {'c': false, 'name': 'slow cooker'},          {'c': false, 'name': 'vegetarian'},
+                    {'c': false, 'name': 'sauce'},                {'c': false, 'name': 'cheese'},
+                    {'c': false, 'name': 'fruit'},                {'c': false, 'name': 'vegetable'},
+                    {'c': false, 'name': 'sea food'},             {'c': false, 'name': 'fish'},
+                    {'c': false, 'name': 'spicy'},                {'c': false, 'name': 'meat'},
+                    {'c': false, 'name': 'chicken'},              {'c': false, 'name': 'beef'}]
+    $scope.denied = [{'c': false, 'name': 'arachide'},  {'c': false, 'name': 'egg'},
+                      {'c': false, 'name': 'milk'},     {'c': false, 'name': 'halal'},
+                      {'c': false, 'name': 'kascher'}]
+    $scope.ingredients = []
+    $scope.search_ingredients = []
+    $scope.show_search_advanced = false
 
     $scope.addLabel = (label) ->
       idx = $scope.recipe.labels.indexOf(label)
       if label && label.length > 0 && idx == -1
         $scope.recipe.labels.push label
-    $scope.addSavour = (label) ->
-      idx = $scope.recipe.savours.indexOf(label)
-      if label && label.length > 0 && idx == -1
-        $scope.recipe.savours.push label
     $scope.addBlacklist = (label) ->
       idx = $scope.recipe.blacklist.indexOf(label)
       if label && label.length > 0 && idx == -1
@@ -36,10 +31,6 @@ angular.module('app').controller("recipeCtrl", ($mdDialog, $scope, $location, $c
       idx = $scope.recipe.labels.indexOf(label)
       if idx != -1
         $scope.recipe.labels.splice(idx, 1)
-    $scope.delSavour = (label) ->
-      idx = $scope.recipe.savours.indexOf(label)
-      if idx != -1
-        $scope.recipe.savours.splice(idx, 1)
     $scope.delBlacklist = (label) ->
       idx = $scope.recipe.blacklist.indexOf(label)
       if idx != -1

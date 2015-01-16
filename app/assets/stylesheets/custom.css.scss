@@ -673,3 +673,20 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon {
 md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
     border-color: rgb(238,238,238);
 }
+
+
+.btn-search {
+  @extend .cursor, .food-dark-red;
+
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  line-height: 32px;
+  margin-top: 20px;
+  margin-left: 10px;
+  color: #E66273;
+  &:hover {
+    @extend .food-dark-red;
+  }
+}
