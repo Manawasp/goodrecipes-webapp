@@ -579,6 +579,12 @@ textarea.msd-elastic.blue-bottom-border {
   width: 60px;
   height: 60px;
 }
+.avatar-center-54 {
+  width:54px;height:54px;padding:0;
+  background: url('/') no-repeat center center;
+  background-size: cover;
+}
+
 .profile-avatar {
   width: 90px;
   background: url('/') no-repeat center center;
@@ -718,5 +724,17 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
     padding-top:10px;
     padding-bottom: 10px;
     background-color: #FC850F;
+  }
+}
+
+.moment-recipe {
+  background-color: #EBEBEB;
+}
+
+.moment {
+  .top-moment {
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+    padding-top: 15px;
   }
 }

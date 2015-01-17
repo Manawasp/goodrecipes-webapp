@@ -2,9 +2,7 @@
   <md-toolbar>
     <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#60808B' tabindex='0'>
       <a ng-click="locate('moments')" style='position:absolute;margin-top:4px;width:72px;text-align:center'>
-        <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:54px;height:54px;padding:0;'>
-          <img class='profile-avatar' src='{{avatar}}'>
-        </button>
+        <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme avatar-center-54' style="background-image:url('{{avatar}}')"></button>
       </a>
     </div>
   </md-toolbar>
@@ -28,21 +26,118 @@
     </div>
   </md-content>
 </md-content>
-<md-content class='md-whiteframe-z1 margin-top-20' style='margin-left:110px;min-height:300px'>
+<!-- / CREATE MOMENT -->
+<md-content class='md-whiteframe-z1 margin-top-20 margin-bottom-30' ng-show='show_create_moment' style='margin-left:110px;'>
   <md-toolbar>
-    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#60808B;' tabindex='0'>
-      <div class='margin-left-30 roboto medium font-24' style='color:#fff'>
-        Moments
+    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#00bcd4;' tabindex='0'>
+      <div class='no-margin' flex='70'>
+        <div class='margin-left-30 roboto medium font-24' style='color:#fff'>
+          Create moment !
+        </div>
       </div>
     </div>
   </md-toolbar>
-  <div>
-    View
-  </div>
-  <div>
-    Follower
-  </div>
-  <div>
-    Follo
-  </div>
+  <md-content layout='column' style='width:100%;padding:0px 20px 0px 20px;'>
+    <div>
+      <md-text-float class='margin-left-20' label='Recipe id' ng-model='create_moment.recipe_id'></md-text-float>
+    </div>
+    <div class='margin-top-5' style='padding:0 15px'>
+      <span class='font-12' style='color:#29B6F6'>Description</span>
+      <textarea class='msd-elastic step-description margin-bottom-5' ng-model='create_moment.description' placeholder="What's up ?"></textarea>
+    </div>
+    <div class='text-right margin-right-20 margin-bottom-15 margin-top-15 margin-left-20'>
+      <md-button class='md-primary' ng-click='show_create_moment = !show_create_moment' style='padding: 5px 15px'>Cancel</md-button>
+      <md-button class='md-primary margin-left-10' ng-click='show_create_moment = !show_create_moment' style='padding: 5px 15px'>Valider</md-button>
+    </div>
+  </md-content>
+</md-content>
+<!-- / MOMENT -->
+<md-content class='md-whiteframe-z1 margin-top-20' ng-show='!show_create_moment' style='margin-left:110px;min-height:300px'>
+  <md-toolbar>
+    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#60808B;' tabindex='0'>
+      <div class='no-margin' flex='70'>
+        <div class='margin-left-30 roboto medium font-24' style='color:#fff'>
+          {{pseudo}}'s moments
+        </div>
+      </div>
+      <div class='no-margin' flex='30' style='float:left;margin-left:-20px;padding-top:10px'>
+        <md-button class='md-primary md-fab md-fab-top-right' ng-click='show_create_moment = !show_create_moment' style='background-color:#00bcd4'>
+          <span class='font-36' style='line-height:32px;'>+</span>
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-content layout='column' style='width:100%;padding:30px 20px 10px 20px;'>
+    <div class='moment' ng-repeat='moment in moments'>
+      <div class='padding-left-5 padding-right-5' ng-class="{'top-moment' : $index &gt; 0}">
+        {{moment.moment.description}}
+      </div>
+      <div class='moment-recipe margin-top-10' layout='row'>
+        <div flex='35'>
+          {{moment.recipe.icon}}
+        </div>
+        <div flex='65' style='padding:10px 15px 5px 15px'>
+          <!-- / Les informations -->
+          <div class='fright margin-top-5'>
+            <span class='glyphicon glyphicon-user' style='color:#666'></span>
+            {{moment.recipe.people}}
+          </div>
+          <div class='roboto medium font-16'>
+            {{moment.recipe.title}}
+          </div>
+          <div class='font-12 margin-top-10 margin-bottom-20' style='height: 50px'>
+            {{moment.recipe.description}}
+          </div>
+          <div>
+            <span style='display:inline-block;width:85px;color:#666'>Prep time</span>
+            <span class='recipe-time'>
+              <span class='roboto medium font-14' ng-show='moment.recipe.preparation.h &gt; 0'>
+                {{moment.recipe.preparation.h}} hours
+              </span>
+              <span class='roboto medium font-14' ng-show='moment.recipe.preparation.m &gt; 0'>
+                {{moment.recipe.preparation.m}} min
+              </span>
+            </span>
+          </div>
+          <div>
+            <span style='display:inline-block;width:85px;color:#666'>Prep time</span>
+            <span class='recipe-time'>
+              <span class='roboto medium font-14' ng-show='moment.recipe.total.h &gt; 0'>
+                {{moment.recipe.total.h}} hours
+              </span>
+              <span class='roboto medium font-14' ng-show='moment.recipe.total.m &gt; 0'>
+                {{moment.recipe.total.m}} min
+              </span>
+            </span>
+          </div>
+          <div>
+            <span style='display:inline-block;width:85px;color:#666'>Ingredients</span>
+            <span class='recipe-time'>
+              <span class='roboto medium font-14'>
+                {{moment.recipe.ingredients.length}}
+              </span>
+            </span>
+          </div>
+          <div>
+            <span class='mark xsmall margin-right-5 margin-top-15' ng-class="{'valid': mark[$index] &lt;= moment.recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+            <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
+            <span class='font-11 margin-left-5' style='line-height:24px'>{{moment.recipe.comment_length}}</span>
+          </div>
+        </div>
+      </div>
+      <div class='margin-top-5' layout-align='space-between center' layout='row'>
+        <div>
+          <span class='font-12 margin-left-5' style='color:#999'>
+            le 15 janvier 2014 a 11:20
+          </span>
+        </div>
+        <div class='padding-right-10'>
+          <span class='glyphicon font-12 margin-left-15 glyphicon-heart' style='color:#666'></span>
+          {{moment.moment.likes}}
+          <span class='glyphicon font-12 margin-left-15 glyphicon-comment' style='color:#666'></span>
+          {{moment.moment.comment_length}}
+        </div>
+      </div>
+    </div>
+  </md-content>
 </md-content>
