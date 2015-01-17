@@ -1,4 +1,4 @@
-%div.panel-content{"layout-fill" => "", layout: "column"}
+%div.panel-content.margin-top-20{"layout-fill" => "", layout: "column"}
   %section.demo-container.md-whiteframe-z1
     %md-toolbar.demo-toolbar.md-default-theme{style: 'background-color: #eee;color:#666'}
       .md-toolbar-tools
@@ -76,12 +76,3 @@
                           %img.avatar{src: "{{followed.avatar}}", style: 'width:40px;height:40px'}
                     %div{style: 'font-size:11px;margin-top:5px'}
                       {{followed.pseudo}}
-      %md-content{style: 'border-top:1px solid #ddd'}
-        -# ok
-        %input{type: "file", "nv-file-select" => '', uploader: "uploader"}
-        %ul
-          %li{"ng-repeat"=>"item in uploader.queue"}
-            Name: 
-            %span{"ng-bind"=>"item.file.name"}
-            %br
-            %button{"ng-click"=>"item.upload()"} upload
