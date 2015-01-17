@@ -2,8 +2,7 @@
   %md-toolbar
     .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#60808B'}
       %a{"ng-click" => "locate('moments')", style: 'position:absolute;margin-top:4px;width:72px;text-align:center'}
-        %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style: 'width:54px;height:54px;padding:0;'}
-          %img.profile-avatar{src: "{{avatar}}"}
+        %button.md-fab.md-accent.md-button.md-default-theme.avatar-center-54{"aria-label" => "refresh", style: "background-image:url('{{avatar}}')"}
   %md-content{layout: 'column'}
     %div
       %div.silver-box.margin-top-15.text-center
@@ -16,14 +15,77 @@
     %div.text-center.margin-top-5.margin-bottom-10
       %md-button.md-primary.md-raised{style: 'padding: 4px 10px'}
         %span.glyphicon.glyphicon-star
-%md-content.md-whiteframe-z1.margin-top-20{style: 'margin-left:110px;min-height:300px'}
+// CREATE MOMENT
+%md-content.md-whiteframe-z1.margin-top-20.margin-bottom-30{style: 'margin-left:110px;', 'ng-show' => 'show_create_moment'}
+  %md-toolbar
+    .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#00bcd4;'}
+      %div.no-margin{flex: '70'}
+        %div.margin-left-30.roboto.medium.font-24{style: 'color:#fff'}
+          Create moment !
+  %md-content{style: 'width:100%;padding:0px 20px 0px 20px;', layout: 'column'}
+    %div 
+      %md-text-float.margin-left-20{:label => "Recipe id", "ng-model" => "create_moment.recipe_id"}
+    %div.margin-top-5{style: "padding:0 15px"}
+      %span.font-12{style: 'color:#29B6F6'} Description
+      %textarea.msd-elastic.step-description.margin-bottom-5{"ng-model" => "create_moment.description", placeholder: "What's up ?"}
+    %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
+      %md-button.md-primary{style: 'padding: 5px 15px', 'ng-click'=> 'show_create_moment = !show_create_moment'} Cancel
+      %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "show_create_moment = !show_create_moment"} Valider
+// MOMENT
+%md-content.md-whiteframe-z1.margin-top-20{style: 'margin-left:110px;min-height:300px', 'ng-show' => '!show_create_moment'}
   %md-toolbar
     .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#60808B;'}
-      %div.margin-left-30.roboto.medium.font-24{style: 'color:#fff'}
-        Moments
-  %div
-    View
-  %div
-    Follower
-  %div
-    Follo
+      %div.no-margin{flex: '70'}
+        %div.margin-left-30.roboto.medium.font-24{style: 'color:#fff'}
+          {{pseudo}}'s moments
+      %div.no-margin{flex: '30', style:'float:left;margin-left:-20px;padding-top:10px'}
+        %md-button.md-primary.md-fab.md-fab-top-right{'ng-click' => 'show_create_moment = !show_create_moment', style: "background-color:#00bcd4"}
+          %span.font-36{style: 'line-height:32px;'} +
+  %md-content{style: 'width:100%;padding:30px 20px 10px 20px;', layout: 'column'}
+    %div.moment{"ng-repeat" => "moment in moments"}
+      %div.padding-left-5.padding-right-5{'ng-class' => "{'top-moment' : $index > 0}"}
+        {{moment.moment.description}}
+      %div.moment-recipe.margin-top-10{layout: 'row'}
+        %div{flex: '35'}
+          {{moment.recipe.icon}}
+        %div{flex: '65', style: 'padding:10px 15px 5px 15px'}
+          // Les informations
+          %div.fright.margin-top-5
+            %span.glyphicon.glyphicon-user{style: 'color:#666'}
+            {{moment.recipe.people}}
+          %div.roboto.medium.font-16
+            {{moment.recipe.title}}
+          %div.font-12.margin-top-10.margin-bottom-20{style: 'height: 50px'}
+            {{moment.recipe.description}}
+          %div
+            %span{style: 'display:inline-block;width:85px;color:#666'} Prep time
+            %span.recipe-time
+              %span.roboto.medium.font-14{"ng-show" => "moment.recipe.preparation.h > 0"}
+                {{moment.recipe.preparation.h}} hours
+              %span.roboto.medium.font-14{"ng-show" => "moment.recipe.preparation.m > 0"}
+                {{moment.recipe.preparation.m}} min
+          %div
+            %span{style: 'display:inline-block;width:85px;color:#666'} Prep time
+            %span.recipe-time
+              %span.roboto.medium.font-14{"ng-show" => "moment.recipe.total.h > 0"}
+                {{moment.recipe.total.h}} hours
+              %span.roboto.medium.font-14{"ng-show" => "moment.recipe.total.m > 0"}
+                {{moment.recipe.total.m}} min
+          %div
+            %span{style: 'display:inline-block;width:85px;color:#666'} Ingredients
+            %span.recipe-time
+              %span.roboto.medium.font-14
+                {{moment.recipe.ingredients.length}}
+          %div
+            %span.mark.xsmall.margin-right-5.margin-top-15{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= moment.recipe.mark}"}
+            %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
+            %span.font-11.margin-left-5{style: 'line-height:24px'} {{moment.recipe.comment_length}}
+      %div.margin-top-5{layout: 'row', 'layout-align' => 'space-between center'}
+        %div
+          %span.font-12.margin-left-5{style: 'color:#999'}
+            le 15 janvier 2014 a 11:20
+        %div.padding-right-10
+          %span.glyphicon.font-12.margin-left-15.glyphicon-heart{style: 'color:#666'}
+          {{moment.moment.likes}}
+          %span.glyphicon.font-12.margin-left-15.glyphicon-comment{style: 'color:#666'}
+          {{moment.moment.comment_length}}
