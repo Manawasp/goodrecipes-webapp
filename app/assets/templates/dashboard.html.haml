@@ -5,7 +5,8 @@
         %div{layout: "row", "layout-align" => "space-between center"}
           %div{flex: ""}
             / %a.font-36{href:'',"ng-click"=>"toggleLeft()"}
-            %span.font-36.margin-left-20{style: 'line-height: 70px;'}
+            %span.font-36.margin-left-20.cursor{style: 'line-height: 70px;', "ng-click" => "locate('/')"}
+              %img{src: '/images/logo.png', style: 'width:50px;height:50px;margin-top:-10px'}
               %span.roboto.light GOOD
               %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
           %div{flex: ""}
@@ -14,18 +15,29 @@
             %span.cursor.glyphicon.glyphicon-search.margin-top-10.margin-left-15{style: 'float:left', "ng-click" => "redir_title()"}
         %div.sub-header{layout: "row", flex: "100", layout: "row", "layout-align" => "space-between center"}
           %div
-            %a.cursor.glyphicon.glyphicon-th-large{"ng-click"=>"toggleLeft()"}
+            %a.cursor{"ng-click"=>"toggleLeft()"}
+              %img{src: '/images/menu.png', style: 'width:28px;height:28px'}
           %div{layout: "row", "layout-align" => "center center"}
             %div
-              %a.quick-access-search.beef-color{href: "", "ng-click" => "locate('recipes/search?label=beef')"} Beef Recipes
+              %a.quick-access-search.beef-color{href: "", "ng-click" => "locate('recipes/search?label=beef')"}
+                %img.margin-right-5{src: '/images/meat.png', style: 'width:24px;height:24px'}
+                %span.font-14 Beef Recipes
             %div
-              %a.quick-access-search.chicken-color{href: "", "ng-click" => "locate('recipes/search?label=chicken')"} Chicken Recipes
+              %a.quick-access-search.chicken-color{href: "", "ng-click" => "locate('recipes/search?label=chicken')"}
+                %img.margin-right-5{src: '/images/chicken.png', style: 'width:24px;height:24px'}
+                %span.font-14 Chicken Recipes
             %div
-              %a.quick-access-search.vegetarian-color{href: "", "ng-click" => "locate('recipes/search?label=vegetarian')"} Vegetarian Recipes
+              %a.quick-access-search.vegetarian-color{href: "", "ng-click" => "locate('recipes/search?label=vegetarian')"}
+                %img.margin-right-5{src: '/images/tomato.png', style: 'width:24px;height:24px'}
+                %span.font-14 Vegetarian Recipes
             %div
-              %a.quick-access-search.dessert-color{href: "", "ng-click" => "locate('recipes/search?label=dessert')"} Dessert Recipes
+              %a.quick-access-search.dessert-color{href: "", "ng-click" => "locate('recipes/search?label=dessert')"}
+                %img.margin-right-5{src: '/images/cake.png', style: 'width:24px;height:24px'}
+                %span.font-14 Dessert Recipes
           %div
-            %a.cursor.glyphicon.glyphicon-flag{"ng-click" => "locate('moments/' + user.id)"}
+            %a.cursor{"ng-click" => "locate('moments/' + user.id)"}
+              %img{src: '/images/camera.png', style: 'width:28px;height:28px'}
+            
   %md-sidenav.md-sidenav-left.md-whiteframe-z2{"md-component-id" => "left"}
     %md-toolbar.food-api-theme.md-theme-indigo{"layout-align" => "center center", style: 'height: 78px'}
       %div{style: 'width: 80px;'}
@@ -53,33 +65,37 @@
           {{user.email}}
       %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
         %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('moments/' + user.id + '?action=new')"}
-          %span.glyphicon.glyphicon-film.margin-right-10.margin-left-10
+          %span.margin-right-5.margin-left-5
+            %img{src: '/images/camera.png', style: 'width:24px;height:24px'}
           Post new moment
         / %a.menu-link{href: ''}
         /   %span.glyphicon.glyphicon-film
         /   Post new moment
         / %a.menu-link{href: ''}
         %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "redir_your_profile()"}
-          %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10
+          %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10{style: 'color:#666'}
           Edit profile informations
         / %a.menu-link{href: ''}
         %md-button{style: 'text-align:left;text-transform: lowercase;'}
-          %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10
+          %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10{style: 'color:#666'}
           Search user
       %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
         %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('/recipes/create')"}
-          %span.glyphicon.glyphicon-list-alt.margin-right-10.margin-left-10
+          %span.margin-right-5.margin-left-5
+            %img{src: '/images/chef.png', style: 'width:24px;height:24px'}
           Add new recipe
         %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('/recipes/users/ok')"}
-          %span.glyphicon.glyphicon-filter.margin-right-10.margin-left-10
+          %span.margin-right-5.margin-left-5
+            %img{src: '/images/plate.png', style: 'width:24px;height:24px'}
           See my recipes
       %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
         %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('ingredients')"}
-          %span.glyphicon.glyphicon-leaf.margin-right-10.margin-left-10
+          %span.margin-right-5.margin-left-5
+            %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
           Manage ingredients
       %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
         %md-button{style: 'text-align:left;text-transform: lowercase;'}
-          %span.glyphicon.glyphicon-off.margin-right-10.margin-left-10
+          %span.glyphicon.glyphicon-off.margin-right-10.margin-left-10{style: 'color:#666'}
           Logout
   %md-content.no-bg.md-default-theme{layout: "column", "md-scroll-y" => "", "layout-align" => "center center"}
     %md-content.no-bg{"ng-include" => "template", style: 'width:100%;max-width:940px;padding:20px'}

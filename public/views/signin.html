@@ -1,27 +1,19 @@
-<div ng-controller="DemoController" layout="column">
-  <md-content md-theme="docs-dark">
-    <form style="padding: 20px;">
-      <div class="row">
-        <md-text-float label="Title" ng-model="user.title"></md-text-float>
-        <md-text-float label="eMail" ng-model="user.email" type="email"></md-text-float>
-      </div>
-    </form>
-  </md-content>
-  <md-content>
-    <form style="padding: 20px;">
-      <md-text-float label="Company" ng-model="user.company" disabled> </md-text-float>
-      <div class="row">
-          <md-text-float label="FirstName" ng-model="user.firstName"> </md-text-float>
-          <md-text-float label="LastName" ng-model="user.lastName" class="long"> </md-text-float>
-      </div>
-      <md-text-float label="Address" ng-model="user.address"> </md-text-float>
-      <div class="row">
-        <md-text-float label="City" ng-model="user.city"> </md-text-float>
-        <md-text-float label="State" ng-model="user.state"> </md-text-float>
-        <md-text-float label="Postal Code" ng-model="user.postalCode"> </md-text-float>
-      </div>
-      <md-text-float label="Country" ng-model="user.country" disabled> </md-text-float>
-    </form>
-  </md-content>
+<div class='form-group' ng-show="error != ''">
+  <div class='alert alert-danger' role='alert'>
+    <span aria-hidden='true' class='glyphicon glyphicon-exclamation-sign'></span>
+    {{error}}
+  </div>
 </div>
-
+<div class='form-group margin-left-20'>
+  <md-text-float class='md-primary' label='Pseudo' ng-model='pseudo'></md-text-float>
+</div>
+<div class='form-group margin-left-20'>
+  <md-text-float label='Adresse email' ng-model='email'></md-text-float>
+</div>
+<div class='form-group margin-left-20'>
+  <md-text-float label='Password' ng-model='password' type='password'></md-text-float>
+</div>
+<div class='text-right margin-top-30'>
+  <md-button class='revert fleft' href='\#login'>Connection</md-button>
+  <md-button ng-click='send()'>Inscription</md-button>
+</div>
