@@ -1,4 +1,4 @@
-<div class='panel-content' layout-fill='' layout='column'>
+<div class='panel-content margin-top-20' layout-fill='' layout='column'>
   <section class='demo-container md-whiteframe-z1'>
     <md-toolbar class='demo-toolbar md-default-theme' style='background-color: #eee;color:#666'>
       <div class='md-toolbar-tools'>
@@ -128,17 +128,6 @@
             </div>
           </div>
         </div>
-      </md-content>
-      <md-content style='border-top:1px solid #ddd'>
-        <input nv-file-select='' type='file' uploader='uploader'>
-        <ul>
-          <li ng-repeat='item in uploader.queue'>
-            Name:
-            <span ng-bind='item.file.name'></span>
-            <br>
-            <button ng-click='item.upload()'>upload</button>
-          </li>
-        </ul>
       </md-content>
     </div>
   </section>
