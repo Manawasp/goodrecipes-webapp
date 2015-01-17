@@ -36,7 +36,7 @@
             </div>
           </div>
           <div>
-            <a class='cursor glyphicon glyphicon-flag' ng-click="locate('moments')"></a>
+            <a class='cursor glyphicon glyphicon-flag' ng-click="locate('moments/' + user.id)"></a>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
   <md-sidenav class='md-sidenav-left md-whiteframe-z2' md-component-id='left'>
     <md-toolbar class='food-api-theme md-theme-indigo' layout-align='center center' style='height: 78px'>
       <div style='width: 80px;'>
-        <a ng-click="locate('moments')" style='position:absolute;margin-top:-10px;'>
+        <a ng-click="locate('moments/' + user.id)" style='position:absolute;margin-top:-10px;'>
           <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:90px;height:90px;padding:0;'>
             <img class='profile-avatar' src='{{avatar}}'>
           </button>
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class='margin-top-30 top-border' layout='column' style='padding-top:15px'>
-        <md-button style='text-align:left;text-transform: lowercase;'>
+        <md-button ng-click="locate('moments/' + user.id + '?action=new')" style='text-align:left;text-transform: lowercase;'>
           <span class='glyphicon glyphicon-film margin-right-10 margin-left-10'></span>
           Post new moment
         </md-button>

@@ -1,14 +1,24 @@
-<md-dialog aria-label='Create Ingredient' flex-gt-lg='30' flex-md='50' flex-sm='80'>
+<md-dialog aria-label='Edit Ingredient' flex-gt-lg='30' flex-md='50' flex-sm='80'>
   <section class='demo-container md-whiteframe-z1' layout='column'>
     <div class='margin-top-20 margin-left-20 font-18 margin-bottom-10'>
       Edit an ingredient
     </div>
     <div class='margin-left-10 margin-right-10' style='min-height:125px'>
-      <md-content class='ingredient-windows-120 text-center md-whiteframe-z1 fleft' style='background-image: url("{{ingredient.icon}}");'></md-content>
+      <md-content class='fileUpload ingredient-windows-120 text-center md-whiteframe-z1 fleft' style='background-image: url("{{image_path(ingredient.icon)}}");'>
+        <input class='upload' nv-file-select='' style='height: 120px' type='file' uploader='uploader_avatar'>
+      </md-content>
       <div class='margin-top-15' style='margin-left:150px'>
         <div class='font-12'>
-          You need to choose a validate name for an ingredient, name contain at least 2 characters.
-          Name must be unique. You must be choose and upload a picture
+          You need to choose a validate name for an ingredient,
+          <span ng-class="{'food-error' : error == 'toosmall'}">
+            name contain at least 2 characters.
+          </span>
+          <span ng-class="{'food-error' : error == 'exist'}">
+            Name must be unique.
+          </span>
+          <span ng-class="{'food-error' : error == 'image'}">
+            You must be choose and upload a picture
+          </span>
         </div>
         <md-text-float label='Name' ng-model='ingredient.name'></md-text-float>
       </div>
@@ -19,8 +29,8 @@
           <md-button class='md-primary' style='padding: 5px 15px;color:#BB2743'>REMOVE</md-button>
         </div>
         <div>
-          <md-button class='md-primary' style='padding: 5px 15px'>CANCEL</md-button>
-          <md-button class='md-primary margin-left-10' ng-click='create_ingredient()' style='padding: 5px 15px'>VALIDATE</md-button>
+          <md-button class='md-primary' ng-click='cancel()' style='padding: 5px 15px'>CANCEL</md-button>
+          <md-button class='md-primary margin-left-10' ng-click='update_ingredient()' style='padding: 5px 15px'>VALIDATE</md-button>
         </div>
       </div>
     </div>

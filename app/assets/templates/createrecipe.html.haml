@@ -8,10 +8,13 @@
     -#   {{recipe}}
     -#   // image + description
     -#   ok
+    %div.food-error.margin-bottom-10.roboto.medium{"ng-show" => "error != ''"}
+      Error: {{error}}
     %div{layout: "row"}
       %div{flex: '65'}
-        %md-content.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: 'background-image: url("{{recipe.image}}")'}
-          %span.glyphicon.glyphicon-picture.font-72{style: 'color:#999;line-height:372px;', 'ng-show' => '!recipe.image'}
+        %md-content.fileUpload.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: 'background-image: url("{{image_path(recipe.image)}}")'}
+          %span.glyphicon.glyphicon-picture.font-72{style: 'color:#999;line-height:372px;', 'ng-show' => 'recipe.image == ""'}
+          %input.upload{type: "file", "nv-file-select" => '', uploader: "uploader_avatar", style: 'height: 400px'}
       %div{flex: '35', layout: 'column'}
         %div
           %md-input-container{flex: ''}
@@ -39,17 +42,18 @@
       %div{layout: "row"}
         %div{flex: '50'}
           %div
-            %md-text-float.margin-left-20{:label => "Search ingredients", "ng-model" => "recipe.ingredients_describe[$index].title", style: 'margin-top:0;'}
+            %md-text-float.margin-left-20{:label => "Search ingredients", "ng-model" => "form_ingredient.description", style: 'margin-top:0;display:inline-block'}
+            %span.glyphicon.glyphicon-search.margin-top-15.cursor{style: 'display:inline-block;color:#999', "ng-click" => "searchIngredient()"}
           %div.margin-left-5
-            %span{"ng-repeat" => "ig in ingredients"}
-              %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{ig.icon}}")'}
-                %span.glyphicon.glyphicon-picture.font-24{style: 'color:#999;line-height:63px;', 'ng-show' => 'ig.icon != ""'}
+            %span{"ng-repeat" => "ig in ingredients track by $index"}
+              %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}")',"ng-click" => "add_ingredients_in_box($index)"}
+                %span.glyphicon.glyphicon-picture.font-24{style: 'color:#999;line-height:63px;', 'ng-show' => 'ig.icon == ""'}
         %div{flex: '50'}
           %div.margin-left-15.margin-top-30
             %div.margin-left-15.roboto.light.margin-top-20{style: 'color:#666'} BOX INGREDIENTS ({{recipe.ingredients.length}})
             %span{"ng-repeat" => "ig in recipe.ingredients track by $index"}
-              %md-content.md-whiteframe-z1.ingredient-windows-36.cursor.text-center{style: 'background-image: url("{{ig.icon}}")'}
-                %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" != ig.icon'}
+              %md-content.md-whiteframe-z1.ingredient-windows-36.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}")',"ng-click" => "rm_ingredients_in_box($index)"}
+                %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" == ig.icon'}
     %div
       // Parts ingredient
       %div{layout: "row", "layout-wrap" => ""}

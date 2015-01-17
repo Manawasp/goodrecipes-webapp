@@ -188,6 +188,11 @@ a.quick-access-search {
 .food-dark-red {
   color: #BB2743;
 }
+.food-error {
+  color: #BB2743;
+  font-family: 'Roboto-Bold'
+}
+
 
 .step .md-button.md-default-theme.md-primary.food-dark-red {
   color: #BB2743;
@@ -411,7 +416,6 @@ md-input-group label, .md-input-group label {
   height:125px;
   background: url('/') no-repeat center center;
   background-size: cover;
-  background-color: #eee;
 }
 md-content.md-default-theme {
   &.ingredient-windows-90p, &.ingredient-windows-120, .ingredient-windows-64, .ingredient-windows-36 {background-color:#eee;}
@@ -701,9 +705,16 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
   }
 }
 
+.cook-flat-bg {
+  width:100%;
+  background: url('/') no-repeat center center;
+  background-size: cover;
+}
+
 .cook-now {
   float: right;
   width: 300px;
+
 
   .title {
     @extend .font-18, .margin-left-15, .margin-right-15, .margin-top-10, .margin-bottom-10;
@@ -737,4 +748,20 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
     margin-top: 15px;
     padding-top: 15px;
   }
+}
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
 }

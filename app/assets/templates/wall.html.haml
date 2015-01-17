@@ -30,7 +30,7 @@
       %textarea.msd-elastic.step-description.margin-bottom-5{"ng-model" => "create_moment.description", placeholder: "What's up ?"}
     %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
       %md-button.md-primary{style: 'padding: 5px 15px', 'ng-click'=> 'show_create_moment = !show_create_moment'} Cancel
-      %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "show_create_moment = !show_create_moment"} Valider
+      %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "push_new_moment()"} Valider
 // MOMENT
 %md-content.md-whiteframe-z1.margin-top-20{style: 'margin-left:110px;min-height:300px', 'ng-show' => '!show_create_moment'}
   %md-toolbar
@@ -44,10 +44,10 @@
   %md-content{style: 'width:100%;padding:30px 20px 10px 20px;', layout: 'column'}
     %div.moment{"ng-repeat" => "moment in moments"}
       %div.padding-left-5.padding-right-5{'ng-class' => "{'top-moment' : $index > 0}"}
-        {{moment.moment.description}}
-      %div.moment-recipe.margin-top-10{layout: 'row'}
+        {{moment.description}}
+      %div.moment-recipe.margin-top-10{layout: 'row', "ng-show" => "(moment.recipe || moment.recipe != '') && moment.recipe.id"}
         %div{flex: '35'}
-          {{moment.recipe.icon}}
+          %div.flat-image-100p.cursor{style: 'background-image: url("{{image_path(moment.recipe.image)}}");height:215px', "ng-click" => "redir_recipe(moment.recipe.id)"}
         %div{flex: '65', style: 'padding:10px 15px 5px 15px'}
           // Les informations
           %div.fright.margin-top-5
@@ -79,13 +79,13 @@
           %div
             %span.mark.xsmall.margin-right-5.margin-top-15{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= moment.recipe.mark}"}
             %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
-            %span.font-11.margin-left-5{style: 'line-height:24px'} {{moment.recipe.comment_length}}
+            %span.font-11.margin-left-5{style: 'line-height:24px'} {{moment.recipe.comments_length}}
       %div.margin-top-5{layout: 'row', 'layout-align' => 'space-between center'}
         %div
           %span.font-12.margin-left-5{style: 'color:#999'}
             le 15 janvier 2014 a 11:20
         %div.padding-right-10
           %span.glyphicon.font-12.margin-left-15.glyphicon-heart{style: 'color:#666'}
-          {{moment.moment.likes}}
+          {{moment.likes}}
           %span.glyphicon.font-12.margin-left-15.glyphicon-comment{style: 'color:#666'}
-          {{moment.moment.comment_length}}
+          {{moment.comments}}

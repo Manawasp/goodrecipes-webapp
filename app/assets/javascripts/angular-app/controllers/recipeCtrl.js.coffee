@@ -18,35 +18,62 @@ angular.module('app').controller("recipeCtrl", ($mdDialog, $routeParams, $scope,
     $scope.ingredients = []
     $scope.search_ingredients = []
     $scope.show_search_advanced = false
+    $scope.show_search_advanced_label = false
+    $scope.form_ingredient = {description: ""}
 
     $scope.mark = [0.5, 1.5, 2.5, 3.5, 4.5]
-    $scope.more_recipe = [{'id': '1', 'icon': '', 'title': 'Avocado Dessert', 'comment_length': 12,'total': {'h': 1, 'm': 0}, 'mark': 4.7},
-                          {'id': '2', 'icon': '', 'title': 'Apple pie', 'comment_length': 12,'total': {'h': 0, 'm': 45}, 'mark': 4.2},
-                          {'id': '3', 'icon': '', 'title': 'Moules cuites au wok', 'comment_length': 12,'total': {'h': 1, 'm': 45}, 'mark': 4.2},
-                          {'id': '4', 'icon': '', 'title': 'Pizza viande de boeuf hachee', 'comment_length': 12,'total': {'h': 0, 'm': 45}, 'mark': 4.2}]
-
-
+    $scope.more_recipe = []
 
     $scope.data = {
       offset : 0
-      limit : 40 
+      limit : 30 
     }
+
+    $scope.redir_recipe = (id) ->
+      $location.url('/recipes/show/' + id)
+
+    $scope.get_url_upload = () ->
+      'http://localhost:8080/pictures/'
+
+    $scope.image_path = (img) ->
+      if img == ''
+        ''
+      else
+        $scope.get_url_upload() + img
 
     $scope.search = () ->
       searchRecipe()
 
     searchRecipe = () ->
+      for element in $scope.labels
+        if element.c
+          $scope.recipe.labels.push element.name
+
+      for element in $scope.denied
+        if element.c
+          $scope.recipe.blacklist.push element.name
+
+      console.log($scope.recipe.blacklist)
+      console.log($scope.recipe.labels)
+      console.log($scope.recipe.search_ingredients)
       recipeService.search($scope.recipe.description,
                                 $scope.recipe.labels,
                                 $scope.recipe.savours,
                                 $scope.recipe.blacklist,
+                                $scope.recipe.search_ingredients,
                                 $scope.data.offset,
                                 $scope.data.limit
       ).success((data) ->
         console.log "success data in search ingredient"
         console.log data
-        $scope.data.recipes = data.recipes
+        $scope.more_recipe = data.recipes
+        $scope.recipe.labels = []
+        $scope.recipe.blacklist = []
+        $scope.recipe.description = []
       ).error((data) ->
+        $scope.recipe.labels = []
+        $scope.recipe.blacklist = []
+        $scope.recipe.description = []
         # console.log "error data in search ingredient"
         # console.log data
       )
@@ -58,5 +85,34 @@ angular.module('app').controller("recipeCtrl", ($mdDialog, $routeParams, $scope,
       console.log("search label : " + $routeParams.label)
     else
       console.log("search base no parametre")
+
+    if $routeParams.label && $routeParams.label != ""
+      $scope.recipe.labels = [$routeParams.label]
+    if $routeParams.title && $routeParams.title != ""
+      $scope.recipe.description = $routeParams.title
+
     searchRecipe()
+
+    $scope.search_launch = () ->
+      searchRecipe();
+
+    $scope.searchIngredient = () ->
+      ingredientService.search($scope.form_ingredient.description,
+                                [],
+                                [],
+                                [],
+                                0,
+                                10
+      ).success((data) ->
+        # console.log "success data in search ingredient"
+        # console.log data
+        $scope.ingredients = data.ingredients
+      ).error((data) ->
+        # console.log "error data in search ingredient"
+        # console.log data
+      )
+    $scope.search_with_ingredient = (id) ->
+      if $scope.ingredients.length > id
+        $scope.recipe.search_ingredients = [$scope.ingredients[id].id]
+      searchRecipe()
 )

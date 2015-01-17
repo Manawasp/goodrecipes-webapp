@@ -6,7 +6,8 @@
       "angular-route": "1.2.28",
       "angular-cookies": "1.2.28",
       "angular-material": "0.6.1",
-      "angular-elastic": "*"
+      "angular-elastic": "*",
+      "angular-file-upload": "*"
     }
   }
 }

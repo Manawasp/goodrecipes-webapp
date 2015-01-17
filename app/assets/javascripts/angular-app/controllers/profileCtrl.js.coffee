@@ -1,14 +1,22 @@
-angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location, $cookieStore, userService, api)->
+angular.module('app').controller("profileCtrl", (FileUploader, $scope, $routeParams, $location, $cookieStore, userService, api)->
+
+    $scope.get_url_upload = () ->
+      'http://localhost:8080/pictures/'
+
+    $scope.uploader = new FileUploader();
+    $scope.uploader.url = $scope.get_url_upload()
+    $scope.uploader.onAfterAddingFile = () ->
+      this.uploadAll()
 
     $scope.followers = []
     $scope.template = 'views/profile.html'
     $scope.data = {
-      selectedIndex : 99,
       send : false,
       error : '',
       isfriend : false
     }
     user_original = {}
+    $scope.obj = {}
 
     userService.get($routeParams.userid
     ).success((data) ->

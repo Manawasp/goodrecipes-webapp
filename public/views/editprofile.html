@@ -129,6 +129,17 @@
           </div>
         </div>
       </md-content>
+      <md-content style='border-top:1px solid #ddd'>
+        <input nv-file-select='' type='file' uploader='uploader'>
+        <ul>
+          <li ng-repeat='item in uploader.queue'>
+            Name:
+            <span ng-bind='item.file.name'></span>
+            <br>
+            <button ng-click='item.upload()'>upload</button>
+          </li>
+        </ul>
+      </md-content>
     </div>
   </section>
 </div>

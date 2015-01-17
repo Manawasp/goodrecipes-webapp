@@ -21,6 +21,7 @@
 //= require hammerjs
 //= require angular-material
 //= require angular-elastic
+//= require angular-file-upload
 
 //= require angular-app/app
 //= require_tree ./angular-app/modules

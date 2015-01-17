@@ -3,13 +3,19 @@
     %div.margin-top-20.margin-left-20.font-18.margin-bottom-10
       Create an ingredient
     %div.margin-left-10.margin-right-10
-      %md-content.ingredient-windows-120.text-center.fleft{style: 'background-color: #EBEBEB;'}
-        %span.glyphicon.glyphicon-picture.font-36{style: 'color:#999;line-height:115px;'}
+      %md-content.fileUpload.ingredient-windows-120.text-center.fleft{style: 'background-color: #EBEBEB;background-image: url("{{image_path(ingredient.icon)}}");'}
+        %span.glyphicon.glyphicon-picture.font-36{style: 'color:#999;line-height:115px;', "ng-show" => 'ingredient.icon == ""'}
+        %input.upload{type: "file", "nv-file-select" => '', uploader: "uploader_avatar", style: 'height: 120px'}
       %div.margin-top-15{style: "margin-left:150px"}
         %div.font-12
-          You need to choose a validate name for an ingredient, name contain at least 2 characters.
-          Name must be unique. You must be choose and upload a picture
+          You need to choose a validate name for an ingredient,
+          %span{'ng-class' => "{'food-error' : error == 'toosmall'}"}
+            name contain at least 2 characters.
+          %span{'ng-class' => "{'food-error' : error == 'exist'}"}
+            Name must be unique.
+          %span{'ng-class' => "{'food-error' : error == 'image'}"}
+            You must be choose and upload a picture
         %md-text-float{:label => "Name", "ng-model" => "ingredient.name"}
     %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
-      %md-button.md-primary{style: 'padding: 5px 15px'} Annuler
-      %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "create_ingredient()"} Valider
+      %md-button.md-primary{style: 'padding: 5px 15px', "ng-click" => "cancel()"} Cancel
+      %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "create_ingredient()"} Validate

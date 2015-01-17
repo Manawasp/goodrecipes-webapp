@@ -3,7 +3,8 @@
   'ngRoute',
   'ngCookies',
   'ngMaterial',
-  'monospaced.elastic'
+  'monospaced.elastic',
+  'angularFileUpload'
 ])
 
 # for compatibility with Rails CSRF protection
@@ -16,12 +17,9 @@
       templateUrl: 'views/dashboard.html',
       controller: 'homepageCtrl' })
 
-    .when('/moments', {
+    .when('/moments/:userid', {
       templateUrl: 'views/dashboard.html',
       controller: 'momentCtrl' })
-    .when('/moments/create', {
-      templateUrl: 'views/dashboard.html',
-      controller: 'createmomentCtrl' })
 
     .when('/recipes/users/:userid', {
       templateUrl: 'views/dashboard.html',

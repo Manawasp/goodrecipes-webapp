@@ -25,11 +25,11 @@
             %div
               %a.quick-access-search.dessert-color{href: "", "ng-click" => "locate('recipes/search?label=dessert')"} Dessert Recipes
           %div
-            %a.cursor.glyphicon.glyphicon-flag{"ng-click" => "locate('moments')"}
+            %a.cursor.glyphicon.glyphicon-flag{"ng-click" => "locate('moments/' + user.id)"}
   %md-sidenav.md-sidenav-left.md-whiteframe-z2{"md-component-id" => "left"}
     %md-toolbar.food-api-theme.md-theme-indigo{"layout-align" => "center center", style: 'height: 78px'}
       %div{style: 'width: 80px;'}
-        %a{"ng-click" => "locate('moments')", style: 'position:absolute;margin-top:-10px;'}
+        %a{"ng-click" => "locate('moments/' + user.id)", style: 'position:absolute;margin-top:-10px;'}
           %button.md-fab.md-accent.md-button.md-default-theme{"aria-label" => "refresh", style: 'width:90px;height:90px;padding:0;'}
             %img.profile-avatar{src: "{{avatar}}"}
     %md-content.footer{style: ''}
@@ -52,7 +52,7 @@
         %div.text-center
           {{user.email}}
       %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
-        %md-button{style: 'text-align:left;text-transform: lowercase;'}
+        %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('moments/' + user.id + '?action=new')"}
           %span.glyphicon.glyphicon-film.margin-right-10.margin-left-10
           Post new moment
         / %a.menu-link{href: ''}

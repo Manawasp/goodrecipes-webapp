@@ -17,7 +17,7 @@
   </md-toolbar>
   <md-content style='padding:20px 10px'>
     <span ng-repeat='ig in data.ingredients'>
-      <md-content class='md-whiteframe-z1 ingredient-windows-120 cursor' ng-click='showEditingIngredient(ig)' style='background-image: url("{{ig.icon}}")'></md-content>
+      <md-content class='md-whiteframe-z1 ingredient-windows-120 cursor' ng-click='showEditingIngredient(ig)' style='background-image: url("{{image_path(ig.icon)}}")'></md-content>
       <!-- {{ig.name}} -->
     </span>
   </md-content>

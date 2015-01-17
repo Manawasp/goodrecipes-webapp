@@ -4,20 +4,29 @@
       Create an ingredient
     </div>
     <div class='margin-left-10 margin-right-10'>
-      <md-content class='ingredient-windows-120 text-center fleft' style='background-color: #EBEBEB;'>
-        <span class='glyphicon glyphicon-picture font-36' style='color:#999;line-height:115px;'></span>
+      <md-content class='fileUpload ingredient-windows-120 text-center fleft' style='background-color: #EBEBEB;background-image: url("{{image_path(ingredient.icon)}}");'>
+        <span class='glyphicon glyphicon-picture font-36' ng-show='ingredient.icon == ""' style='color:#999;line-height:115px;'></span>
+        <input class='upload' nv-file-select='' style='height: 120px' type='file' uploader='uploader_avatar'>
       </md-content>
       <div class='margin-top-15' style='margin-left:150px'>
         <div class='font-12'>
-          You need to choose a validate name for an ingredient, name contain at least 2 characters.
-          Name must be unique. You must be choose and upload a picture
+          You need to choose a validate name for an ingredient,
+          <span ng-class="{'food-error' : error == 'toosmall'}">
+            name contain at least 2 characters.
+          </span>
+          <span ng-class="{'food-error' : error == 'exist'}">
+            Name must be unique.
+          </span>
+          <span ng-class="{'food-error' : error == 'image'}">
+            You must be choose and upload a picture
+          </span>
         </div>
         <md-text-float label='Name' ng-model='ingredient.name'></md-text-float>
       </div>
     </div>
     <div class='text-right margin-right-20 margin-bottom-15 margin-top-15 margin-left-20'>
-      <md-button class='md-primary' style='padding: 5px 15px'>Annuler</md-button>
-      <md-button class='md-primary margin-left-10' ng-click='create_ingredient()' style='padding: 5px 15px'>Valider</md-button>
+      <md-button class='md-primary' ng-click='cancel()' style='padding: 5px 15px'>Cancel</md-button>
+      <md-button class='md-primary margin-left-10' ng-click='create_ingredient()' style='padding: 5px 15px'>Validate</md-button>
     </div>
   </section>
 </md-dialog>

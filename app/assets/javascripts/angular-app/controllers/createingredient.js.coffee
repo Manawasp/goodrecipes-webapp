@@ -1,42 +1,44 @@
-angular.module('app').controller("createingredientCtrl", ($scope, $location, $cookieStore, authorization, api, ingredientService)->
+angular.module('app').controller("createingredientCtrl", (FileUploader, $mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
   console.log 'createingredientCtrl running'
   $scope.error = ''
-  $scope.ingredient = {blacklist: [], labels: [], color: "", name: ''}
+  $scope.ingredient = {name: '', icon: ''}
 
-  $scope.addLabel = (label) ->
-    idx = $scope.ingredient.labels.indexOf(label)
-    if label && label.length > 0 && idx == -1
-      $scope.ingredient.labels.push label
-  $scope.addBlacklist = (label) ->
-    idx = $scope.ingredient.blacklist.indexOf(label)
-    if label && label.length > 0 && idx == -1
-      $scope.ingredient.blacklist.push label
-  $scope.delLabel = (label) ->
-    idx = $scope.ingredient.labels.indexOf(label)
-    if idx != -1
-      $scope.ingredient.labels.splice(idx, 1)
-  $scope.delBlacklist = (label) ->
-    idx = $scope.ingredient.blacklist.indexOf(label)
-    if idx != -1
-      $scope.ingredient.blacklist.splice(idx, 1)
-
-  $scope.hide = ->
-    $mdDialog.hide()
-
-  $scope.cancel = ->
+  $scope.cancel = () ->
     $mdDialog.cancel()
 
-  $scope.answer = (answer) ->
-    $mdDialog.hide answer
+  $scope.get_url_upload = () ->
+    'http://localhost:8080/pictures/'
+
+  $scope.image_path = (img) ->
+    if img == ''
+      ''
+    else
+      $scope.get_url_upload() + img
+
+  $scope.uploader_avatar = new FileUploader();
+  $scope.uploader_avatar.url = $scope.get_url_upload()
+  $scope.uploader_avatar.onAfterAddingFile = () ->
+    this.uploadAll()
+  $scope.uploader_avatar.onSuccessItem = (item, response, status, headers) ->
+    $scope.ingredient.icon = response.url
 
   $scope.create_ingredient = () ->
-    data = {labels: $scope.ingredient, blacklist: $scope.blacklist, name: $scope.name}
-    ingredientService.create(data
-    ).success((data) ->
-      console.log "sucees modif"
-      console.log data
-    ).error((data) ->
-      console.log "echec modif"
-      console.log data
-    )
+    $scope.error = ""
+    if ($scope.ingredient.icon == '')
+      $scope.error = "image"
+    else
+      data = {name: $scope.ingredient.name, icon: $scope.ingredient.icon}
+      ingredientService.create(data
+      ).success((data) ->
+        $mdDialog.cancel()
+        # console.log "sucees modif"
+        console.log data
+      ).error((data) ->
+        if data.error == "name contain at least 2 characters"
+          $scope.error = 'toosmall'
+        else if data.error == "this ingredient already exist"
+          $scope.error = 'exist'
+        console.log "error :"
+        console.log data
+      )
 )
