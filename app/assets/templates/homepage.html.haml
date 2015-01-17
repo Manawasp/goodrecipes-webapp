@@ -1,8 +1,8 @@
 %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20
   WEEK'S RECIPE
 %md-content.md-whiteframe-z1.margin-bottom-20{layout: "column", "layout-align" => "start start"}
-  %md-content{style: 'padding:20px 20px;width:100%'}
-    %div.md-whiteframe-z1.cook-now{layout: 'column'}
+  %md-content.cook-flat-bg{style: 'padding:20px 20px;width:100%;background-image: url("http://localhost:8080/pictures//2786-1rj5bz4.jpg")'}
+    %div.md-whiteframe-z1.cook-now{layout: 'column', style: 'background-color:white'}
       %div.title
         {{week_recipe.title}}
       %div.describe
@@ -10,21 +10,21 @@
       %div.margin-left-15.margin-top-15
         %span{style: 'display:inline-block;width:85px;color:#666'} Prep time
         %span.recipe-time
-          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.preparation.h > 0"}
-            {{week_recipe.preparation.h}} hours
-          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.preparation.m > 0"}
-            {{week_recipe.preparation.m}} min
+          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.time_prep.h > 0"}
+            {{week_recipe.time_prep.h}} hours
+          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.time_prep.m > 0"}
+            {{week_recipe.time_prep.m}} min
       %div.margin-left-15.margin-top-10
         %span{style: 'display:inline-block;width:85px;color:#666'} Total time
         %span.recipe-time
-          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.total.h > 0"}
-            {{week_recipe.total.h}} hours
-          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.total.m > 0"}
-            {{week_recipe.total.m}} min
+          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.time_total.h > 0"}
+            {{week_recipe.time_total.h}} hours
+          %span.roboto.medium.bold.font-14{"ng-show" => "week_recipe.time_total.m > 0"}
+            {{week_recipe.time_total.m}} min
       %div.margin-left-15.margin-top-10
         %span{style: 'display:inline-block;width:85px;color:#666'} Ingredients
         %span.roboto.medium.bold.font-14
-          {{week_recipe.ingredients.length}}
+          {{week_recipe.ingredients_length}}
       %div.margin-left-15.margin-top-10
         %span{style: 'color:#999'}
           %span.glyphicon.glyphicon-user
@@ -33,26 +33,26 @@
       %div.margin-left-15.margin-bottom-10
         %span.mark.xsmall.margin-right-5.margin-top-15{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= week_recipe.mark}"}
         %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
-        %span.font-11.margin-left-5{style: 'line-height:24px'} {{week_recipe.comment_length}}
-      %div.cook-now-button
+        %span.font-11.margin-left-5{style: 'line-height:24px'} {{week_recipe.comments_length}}
+      %div.cook-now-button{{"ng-click" => "redir_recipe(week_recipe.id)"}}
         COOK NOW !
 %div.print-title.margin-left-20.font-24.roboto.light.margin-top-40.margin-bottom-20
   MONTH'S RECIPE
 %div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "space-between center"}
   %div{flex: '21', "ng-repeat" => 'morerecipe in month_recipe'}
     %md-content.md-whiteframe-z1{layout: "column", flex: '100'}
-      %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
+      %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{image_path(morerecipe.image)}}")', "ng-click" => "redir_recipe(morerecipe.id)"}
       %div.margin-left-10.margin-right-10.margin-top-10{style: 'height:60px'}
         %div.font-14.roboto.medium {{morerecipe.title}}
         %div.time.font-12
-          %span{"ng-show" => 'morerecipe.total.h != 0'}
-            {{morerecipe.total.h}} hour
-          %span{"ng-show" => 'morerecipe.total.m != 0'}
-            {{morerecipe.total.m}} min
+          %span{"ng-show" => 'morerecipe.time_total.h != 0'}
+            {{morerecipe.time_total.h}} hour
+          %span{"ng-show" => 'morerecipe.time_total.m != 0'}
+            {{morerecipe.time_total.m}} min
       %div.margin-left-10.margin-right-10.margin-bottom-5
         %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= morerecipe.mark}"}
         %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
-        %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comment_length}}
+        %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comments_length}}
 %div{layout: 'row'}
   %div{flex: '50'}
     %div.print-title.margin-left-20.font-24.roboto.light.margin-top-40.margin-bottom-20
@@ -60,33 +60,33 @@
     %div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "space-between center"}
       %div{flex: '45', "ng-repeat" => 'morerecipe in latest_recipe'}
         %md-content.md-whiteframe-z1{layout: "column", flex: '100'}
-          %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
+          %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{image_path(morerecipe.image)}}")', "ng-click" => "redir_recipe(morerecipe.id)"}
           %div.margin-left-10.margin-right-10.margin-top-10{style: 'height:60px'}
             %div.font-14.roboto.medium {{morerecipe.title}}
             %div.time.font-12
-              %span{"ng-show" => 'morerecipe.total.h != 0'}
-                {{morerecipe.total.h}} hour
-              %span{"ng-show" => 'morerecipe.total.m != 0'}
-                {{morerecipe.total.m}} min
+              %span{"ng-show" => 'morerecipe.time_total.h != 0'}
+                {{morerecipe.time_total.h}} hour
+              %span{"ng-show" => 'morerecipe.time_total.m != 0'}
+                {{morerecipe.time_total.m}} min
           %div.margin-left-10.margin-right-10.margin-bottom-5
             %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= morerecipe.mark}"}
             %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
-            %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comment_length}}
+            %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comments_length}}
   %div{flex: '50'}
     %div.print-title.margin-left-20.font-24.roboto.light.margin-top-40.margin-bottom-20
       RANDOM RECIPE
     %div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "space-between center"}
       %div{flex: '45', "ng-repeat" => 'morerecipe in random_recipe'}
         %md-content.md-whiteframe-z1{layout: "column", flex: '100'}
-          %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
+          %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{image_path(morerecipe.image)}}")', "ng-click" => "redir_recipe(morerecipe.id)"}
           %div.margin-left-10.margin-right-10.margin-top-10{style: 'height:60px'}
             %div.font-14.roboto.medium {{morerecipe.title}}
             %div.time.font-12
-              %span{"ng-show" => 'morerecipe.total.h != 0'}
-                {{morerecipe.total.h}} hour
-              %span{"ng-show" => 'morerecipe.total.m != 0'}
-                {{morerecipe.total.m}} min
+              %span{"ng-show" => 'morerecipe.time_total.h != 0'}
+                {{morerecipe.time_total.h}} hour
+              %span{"ng-show" => 'morerecipe.time_total.m != 0'}
+                {{morerecipe.time_total.m}} min
           %div.margin-left-10.margin-right-10.margin-bottom-5
             %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= morerecipe.mark}"}
             %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
-            %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comment_length}}
+            %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comments_length}}

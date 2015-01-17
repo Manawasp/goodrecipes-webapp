@@ -76,5 +76,12 @@
                           %img.avatar{src: "{{followed.avatar}}", style: 'width:40px;height:40px'}
                     %div{style: 'font-size:11px;margin-top:5px'}
                       {{followed.pseudo}}
-
-
+      %md-content{style: 'border-top:1px solid #ddd'}
+        -# ok
+        %input{type: "file", "nv-file-select" => '', uploader: "uploader"}
+        %ul
+          %li{"ng-repeat"=>"item in uploader.queue"}
+            Name: 
+            %span{"ng-bind"=>"item.file.name"}
+            %br
+            %button{"ng-click"=>"item.upload()"} upload

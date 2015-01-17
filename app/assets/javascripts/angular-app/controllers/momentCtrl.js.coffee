@@ -1,10 +1,14 @@
-angular.module('app').controller("momentCtrl", ($scope, $location, $cookieStore, userService, api)->
+angular.module('app').controller("momentCtrl", (momentService, $routeParams, $scope, $location, $cookieStore, userService, api)->
     console.log 'momentCtrl running'
     $scope.template = 'views/wall.html'
+    $scope.create_moment = {'description':'', 'recipe_id':''}
 
     $scope.pseudo = "Manawasp"
 
-    $scope.show_create_moment = false
+    $scope.data = {
+      offset: 0,
+      limit: 10,
+    }
 
     $scope.mark = [0.5, 1.5, 2.5, 3.5, 4.5]
 
@@ -20,4 +24,41 @@ angular.module('app').controller("momentCtrl", ($scope, $location, $cookieStore,
 
     $scope.moments = [{"moment": moment1, "user": user1, "recipe": recipe1},
                       {"moment": moment2, "user": user2, "recipe": recipe2}]
+
+    if $routeParams.action == "new"
+      $scope.show_create_moment = true
+    else
+      $scope.show_create_moment = false
+
+    $scope.get_url_upload = () ->
+      'http://localhost:8080/pictures/'
+
+    $scope.image_path = (img) ->
+      if img == ''
+        ''
+      else
+        $scope.get_url_upload() + img
+
+    $scope.redir_recipe = (id) ->
+      $location.url('/recipes/show/' + id)
+
+    $scope.push_new_moment = () ->
+      momentService.create({'description': $scope.create_moment.description, 'recipe': $scope.create_moment.recipe_id}
+      ).success((data) ->
+        console.log(data)
+        $scope.result_new_moment = data.moments
+      ).error((data) ->
+        console.log(data)
+      )
+
+    $scope.search_moment = () ->
+      momentService.search($routeParams.userid, $scope.data.offset, $scope.data.limit
+      ).success((data) ->
+        console.log(data)
+        $scope.moments = data.moments
+      ).error((data) ->
+        console.log(data)
+      )
+
+    $scope.search_moment()
 )

@@ -8,17 +8,16 @@
         %md-button{'ng-click' => 'show_search_advanced = !show_search_advanced', style: 'color:#333'} Advanced recipe search
   %md-content{"ng-show" => "show_search_advanced", style: 'width:100%;padding:30px 20px 10px 20px;', layout: 'column'}
     %div
-      %div{layout: "row"}
+      %div{layout: "column"}
         %div{flex: '100'}
           %div
-            %md-text-float.margin-left-20.fleft{:label => "Search ingredients", "ng-model" => "recipe.ingredients_describe[$index].title", style: 'display:inline-block;margin-top:0;'}
-            %span.glyphicon.glyphicon-search.btn-search
-          %div.margin-left-5
-            %span{"ng-repeat" => "ig in ingredients"}
-              %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{ig.icon}}")'}
-                %span.glyphicon.glyphicon-picture.font-24{style: 'color:#999;line-height:63px;', 'ng-show' => 'ig.icon != ""'}
-                %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" != ig.icon'}
-    %div.step
+            %md-text-float.margin-left-20.fleft{:label => "Search ingredients", "ng-model" => "form_ingredient.description", style: 'display:inline-block;margin-top:0;'}
+            %span.glyphicon.glyphicon-search.btn-search{"ng-click" => "searchIngredient()"}
+        %div.margin-left-5
+          %span{"ng-repeat" => "ig in ingredients"}
+            %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}");display:block-inline', "ng-click" => "search_with_ingredient($index)"}
+              %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" == ig.icon'}
+    %div.step{"ng-show" => "!show_search_advanced_label"}
       %div.step-header
         %div.font-18.roboto.bold.step-title.margin-top-15.margin-bottom-10 LABELS
         %div{layout: "row", "layout-wrap" => ""}
@@ -35,20 +34,21 @@
         %div
           %md-button.md-primary{'ng-click' => 'show_search_advanced = !show_search_advanced', style: 'padding: 5px 15px;color:#BB2743'} CLOSE
         %div
-          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "validate()"} SEARCH
-
-%div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "space-between center"}
-  %div{flex: '21', "ng-repeat" => 'morerecipe in more_recipe'}
-    %md-content.md-whiteframe-z1{layout: "column", flex: '100'}
-      %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
+          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "search_launch()"} SEARCH
+%div.margin-bottom-20{"ng-show" => "more_recipe.length == 0"}
+  %div.text-center.font-24.roboto.light.margin-top-30{style: 'color:#999'} No Result
+%div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "start center", "ng-show" => "more_recipe.length > 0"}
+  %div{flex: '20', "ng-repeat" => 'morerecipe in more_recipe'}
+    %md-content.md-whiteframe-z1{layout: "column", flex: '100', "ng-click" => "redir_recipe(morerecipe.id)"}
+      %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{image_path(morerecipe.image)}}")'}
       %div.margin-left-10.margin-right-10.margin-top-10{style: 'height:60px'}
         %div.font-14.roboto.medium {{morerecipe.title}}
         %div.time.font-12
-          %span{"ng-show" => 'morerecipe.total.h != 0'}
-            {{morerecipe.total.h}} hour
-          %span{"ng-show" => 'morerecipe.total.m != 0'}
-            {{morerecipe.total.m}} min
+          %span{"ng-show" => 'morerecipe.time_total.h != 0'}
+            {{morerecipe.time_total.h}} hour
+          %span{"ng-show" => 'morerecipe.time_total.m != 0'}
+            {{morerecipe.time_total.m}} min
       %div.margin-left-10.margin-right-10.margin-bottom-5
         %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= morerecipe.mark}"}
         %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
-        %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comment_length}}
+        %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comments_length}}

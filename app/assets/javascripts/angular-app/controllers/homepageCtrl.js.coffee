@@ -1,4 +1,4 @@
-angular.module('app').controller("homepageCtrl", ($mdDialog, $routeParams, $scope, $location, $cookieStore, authorization, api, ingredientService, recipeService)->
+angular.module('app').controller("homepageCtrl", (homepageService, $mdDialog, $routeParams, $scope, $location, $cookieStore, authorization, api, ingredientService, recipeService)->
     console.log 'homepageCtrl running'
     $scope.template = 'views/homepage.html'
 
@@ -20,4 +20,41 @@ angular.module('app').controller("homepageCtrl", ($mdDialog, $routeParams, $scop
                           {'id': '4', 'icon': '', 'title': 'Pizza viande de boeuf hachee', 'comment_length': 12,'total': {'h': 0, 'm': 45}, 'mark': 4.2}]
 
 
+    $scope.get_url_upload = () ->
+      'http://localhost:8080/pictures/'
+
+    $scope.image_path = (img) ->
+      if img == ''
+        ''
+      else
+        $scope.get_url_upload() + img
+
+    $scope.redir_recipe = (id) ->
+      $location.url('/recipes/show/' + id)
+
+    homepageService.month(
+    ).success((data) ->
+      console.log(data.recipes)
+      $scope.month_recipe = data.recipes
+    ).error((data) ->
+    )
+
+    homepageService.week(
+    ).success((data) ->
+      console.log(data.recipes)
+      $scope.week_recipe = data.recipes[0]
+    ).error((data) ->
+    )
+
+    homepageService.latest(
+    ).success((data) ->
+      $scope.latest_recipe = data.recipes
+    ).error((data) ->
+    )
+
+    homepageService.random(
+    ).success((data) ->
+      $scope.random_recipe = data.recipes
+    ).error((data) ->
+    )
 )

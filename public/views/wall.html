@@ -47,7 +47,7 @@
     </div>
     <div class='text-right margin-right-20 margin-bottom-15 margin-top-15 margin-left-20'>
       <md-button class='md-primary' ng-click='show_create_moment = !show_create_moment' style='padding: 5px 15px'>Cancel</md-button>
-      <md-button class='md-primary margin-left-10' ng-click='show_create_moment = !show_create_moment' style='padding: 5px 15px'>Valider</md-button>
+      <md-button class='md-primary margin-left-10' ng-click='push_new_moment()' style='padding: 5px 15px'>Valider</md-button>
     </div>
   </md-content>
 </md-content>
@@ -70,11 +70,11 @@
   <md-content layout='column' style='width:100%;padding:30px 20px 10px 20px;'>
     <div class='moment' ng-repeat='moment in moments'>
       <div class='padding-left-5 padding-right-5' ng-class="{'top-moment' : $index &gt; 0}">
-        {{moment.moment.description}}
+        {{moment.description}}
       </div>
-      <div class='moment-recipe margin-top-10' layout='row'>
+      <div class='moment-recipe margin-top-10' layout='row' ng-show="(moment.recipe || moment.recipe != '') &amp;&amp; moment.recipe.id">
         <div flex='35'>
-          {{moment.recipe.icon}}
+          <div class='flat-image-100p cursor' ng-click='redir_recipe(moment.recipe.id)' style='background-image: url("{{image_path(moment.recipe.image)}}");height:215px'></div>
         </div>
         <div flex='65' style='padding:10px 15px 5px 15px'>
           <!-- / Les informations -->
@@ -121,7 +121,7 @@
           <div>
             <span class='mark xsmall margin-right-5 margin-top-15' ng-class="{'valid': mark[$index] &lt;= moment.recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
             <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
-            <span class='font-11 margin-left-5' style='line-height:24px'>{{moment.recipe.comment_length}}</span>
+            <span class='font-11 margin-left-5' style='line-height:24px'>{{moment.recipe.comments_length}}</span>
           </div>
         </div>
       </div>
@@ -133,9 +133,9 @@
         </div>
         <div class='padding-right-10'>
           <span class='glyphicon font-12 margin-left-15 glyphicon-heart' style='color:#666'></span>
-          {{moment.moment.likes}}
+          {{moment.likes}}
           <span class='glyphicon font-12 margin-left-15 glyphicon-comment' style='color:#666'></span>
-          {{moment.moment.comment_length}}
+          {{moment.comments}}
         </div>
       </div>
     </div>

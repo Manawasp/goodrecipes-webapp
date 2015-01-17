@@ -7,10 +7,14 @@
     </div>
   </md-toolbar>
   <md-content layout='column' style='width:100%;padding:30px 20px 10px 20px;'>
+    <div class='food-error margin-bottom-10 roboto medium' ng-show="error != ''">
+      Error: {{error}}
+    </div>
     <div layout='row'>
       <div flex='65'>
-        <md-content class='md-whiteframe-z1 ingredient-windows-90p cursor text-center' style='background-image: url("{{recipe.image}}")'>
-          <span class='glyphicon glyphicon-picture font-72' ng-show='!recipe.image' style='color:#999;line-height:372px;'></span>
+        <md-content class='fileUpload md-whiteframe-z1 ingredient-windows-90p cursor text-center' style='background-image: url("{{image_path(recipe.image)}}")'>
+          <span class='glyphicon glyphicon-picture font-72' ng-show='recipe.image == ""' style='color:#999;line-height:372px;'></span>
+          <input class='upload' nv-file-select='' style='height: 400px' type='file' uploader='uploader_avatar'>
         </md-content>
       </div>
       <div flex='35' layout='column'>
@@ -54,12 +58,13 @@
       <div layout='row'>
         <div flex='50'>
           <div>
-            <md-text-float class='margin-left-20' label='Search ingredients' ng-model='recipe.ingredients_describe[$index].title' style='margin-top:0;'></md-text-float>
+            <md-text-float class='margin-left-20' label='Search ingredients' ng-model='form_ingredient.description' style='margin-top:0;display:inline-block'></md-text-float>
+            <span class='glyphicon glyphicon-search margin-top-15 cursor' ng-click='searchIngredient()' style='display:inline-block;color:#999'></span>
           </div>
           <div class='margin-left-5'>
-            <span ng-repeat='ig in ingredients'>
-              <md-content class='md-whiteframe-z1 ingredient-windows-64 cursor text-center' style='background-image: url("{{ig.icon}}")'>
-                <span class='glyphicon glyphicon-picture font-24' ng-show='ig.icon != ""' style='color:#999;line-height:63px;'></span>
+            <span ng-repeat='ig in ingredients track by $index'>
+              <md-content class='md-whiteframe-z1 ingredient-windows-64 cursor text-center' ng-click='add_ingredients_in_box($index)' style='background-image: url("{{image_path(ig.icon)}}")'>
+                <span class='glyphicon glyphicon-picture font-24' ng-show='ig.icon == ""' style='color:#999;line-height:63px;'></span>
               </md-content>
             </span>
           </div>
@@ -68,8 +73,8 @@
           <div class='margin-left-15 margin-top-30'>
             <div class='margin-left-15 roboto light margin-top-20' style='color:#666'>BOX INGREDIENTS ({{recipe.ingredients.length}})</div>
             <span ng-repeat='ig in recipe.ingredients track by $index'>
-              <md-content class='md-whiteframe-z1 ingredient-windows-36 cursor text-center' style='background-image: url("{{ig.icon}}")'>
-                <span class='glyphicon glyphicon-picture font-16' ng-show='"" != ig.icon' style='color:#999;line-height:32px;'></span>
+              <md-content class='md-whiteframe-z1 ingredient-windows-36 cursor text-center' ng-click='rm_ingredients_in_box($index)' style='background-image: url("{{image_path(ig.icon)}}")'>
+                <span class='glyphicon glyphicon-picture font-16' ng-show='"" == ig.icon' style='color:#999;line-height:32px;'></span>
               </md-content>
             </span>
           </div>

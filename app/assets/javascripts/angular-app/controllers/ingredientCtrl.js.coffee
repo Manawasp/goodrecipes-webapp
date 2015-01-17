@@ -4,41 +4,17 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
     $scope.error = ''
     $scope.ingredient = {description: "", labels: [], savours: [], blacklist: []}
 
-    $scope.addLabel = (label) ->
-      idx = $scope.ingredient.labels.indexOf(label)
-      if label && label.length > 0 && idx == -1
-        $scope.ingredient.labels.push label
-    $scope.addSavour = (label) ->
-      idx = $scope.ingredient.savours.indexOf(label)
-      if label && label.length > 0 && idx == -1
-        $scope.ingredient.savours.push label
-    $scope.addBlacklist = (label) ->
-      idx = $scope.ingredient.blacklist.indexOf(label)
-      if label && label.length > 0 && idx == -1
-        $scope.ingredient.blacklist.push label
-    $scope.delLabel = (label) ->
-      idx = $scope.ingredient.labels.indexOf(label)
-      if idx != -1
-        $scope.ingredient.labels.splice(idx, 1)
-    $scope.delSavour = (label) ->
-      idx = $scope.ingredient.savours.indexOf(label)
-      if idx != -1
-        $scope.ingredient.savours.splice(idx, 1)
-    $scope.delBlacklist = (label) ->
-      idx = $scope.ingredient.blacklist.indexOf(label)
-      if idx != -1
-        $scope.ingredient.blacklist.splice(idx, 1)
-
-    $scope.advancedSearch = () ->
-      $scope.data.showAdvancedSearch = !$scope.data.showAdvancedSearch
-
     $scope.data = {
-      selectedIndex : 2
-      showAdvancedSearch : false
       offset : 0
       limit : 40 
       ingredients : []
     }
+    
+    $scope.get_url_upload = () ->
+      'http://localhost:8080/pictures/'
+
+    $scope.image_path = (img) ->
+      $scope.get_url_upload() + img
 
     $scope.search = () ->
       searchIngredient()
