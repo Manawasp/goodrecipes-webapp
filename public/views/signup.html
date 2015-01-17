@@ -5,14 +5,12 @@
   </div>
 </div>
 <div class='form-group'>
-  <label for='exampleInputEmail1'>Email address</label>
-  <input class='form-control' ng-model='email' placeholder='Enter email'>
+  <md-text-float class='md-primary' label='Email' ng-model='email'></md-text-float>
 </div>
 <div class='form-group'>
-  <label for='exampleInputPassword1'>Password</label>
-  <input class='form-control' ng-model='password' placeholder='Password' type='password'>
+  <md-text-float class='md-primary' label='Password' ng-model='password' type='password'></md-text-float>
 </div>
 <div class='text-right margin-top-10'>
-  <a class='btn btn-default btn-sm revert fleft' ng-href='#signin'>sign in</a>
-  <button class='btn btn-success btn-sm' ng-click='send()'>Connection</button>
+  <md-button class='revert fleft' href='\#signin'>Sign in</md-button>
+  <md-button ng-click='send()'>connection</md-button>
 </div>
