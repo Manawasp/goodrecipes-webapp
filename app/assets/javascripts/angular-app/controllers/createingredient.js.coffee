@@ -5,7 +5,7 @@ angular.module('app').controller("createingredientCtrl", ($mdDialog, $scope, $lo
   $scope.ingredientPicture = undefined
 
   $scope.cancel = () ->
-    $mdDialog.cancel()
+    $mdDialog.hide("answer");
 
   $scope.show_picture = () ->
     if $scope.ingredientPicture != undefined
@@ -20,6 +20,7 @@ angular.module('app').controller("createingredientCtrl", ($mdDialog, $scope, $lo
     ).success((data) ->
       console.log("create ingredient success")
       console.log(data)
+      ingredientService.garbageAdd(data) # - DEBUG
       if ($scope.ingredientPicture != undefined)
         $scope.upload_picture(data.id)
       else
@@ -47,6 +48,7 @@ angular.module('app').controller("createingredientCtrl", ($mdDialog, $scope, $lo
         ingredientService.image(dataPicture).success((data) ->
           console.log("Upload success image return :")
           console.log(data)
+          ingredientService.garbageUpdate(data)
           $mdDialog.cancel()
         ).error((data) ->
           console.log("Putain d'erreur :")

@@ -18,7 +18,6 @@
 //= require angular-rails-templates
 //= require angular-animate
 //= require angular-aria
-//= require hammerjs
 //= require angular-material
 //= require angular-elastic
 //= require angular-base64-upload

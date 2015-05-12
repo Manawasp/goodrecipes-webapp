@@ -5,14 +5,8 @@ angular.module('app').controller("editingredientCtrl", ($mdDialog, $scope, $loca
   $scope.ingredientPicture = undefined
 
   $scope.cancel = () ->
-    $mdDialog.cancel()
+    $mdDialog.hide("answer");
 
-  # $scope.uploader_avatar = new FileUploader();
-  # $scope.uploader_avatar.url = $scope.get_url_upload()
-  # $scope.uploader_avatar.onAfterAddingFile = () ->
-  #   this.uploadAll()
-  # $scope.uploader_avatar.onSuccessItem = (item, response, status, headers) ->
-  #   $scope.ingredient.icon = response.url
   $scope.show_picture = () ->
     if $scope.ingredientPicture != undefined
       return "data:" + $scope.ingredientPicture.filetype + ";base64," + $scope.ingredientPicture.base64
@@ -27,6 +21,7 @@ angular.module('app').controller("editingredientCtrl", ($mdDialog, $scope, $loca
     ).success((data) ->
       console.log("create ingredient success")
       console.log(data)
+      ingredientService.garbageUpdate(data) # - DEBUG
       if ($scope.ingredientPicture != undefined)
         $scope.upload_picture(data.id)
       else
@@ -54,6 +49,7 @@ angular.module('app').controller("editingredientCtrl", ($mdDialog, $scope, $loca
         ingredientService.image(dataPicture).success((data) ->
           console.log("Upload success image return :")
           console.log(data)
+          ingredientService.garbageUpdate(data)
           $mdDialog.cancel()
         ).error((data) ->
           console.log("Putain d'erreur :")

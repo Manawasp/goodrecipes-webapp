@@ -1,24 +1,20 @@
-<div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-20'>
-  MANAGE INGREDIENTS
+<div layout-align='space-between center' layout='row'>
+  <div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-20'>
+    MANAGE INGREDIENTS
+  </div>
+  <div>
+    <md-button class='md-primary md-raised padding-left-20 padding-right-20' ng-click='showCreateIngredient($event)' style='background-color:#F85562'>
+      <span class='font-16' style='line-height:16px;'>New ingredient</span>
+    </md-button>
+  </div>
 </div>
-<md-content class='md-whiteframe-z1' layout-align='start start' layout='column'>
-  <md-toolbar>
-    <div class='md-toolbar-tools no-padding food-api-white' flex='100' layout='column' style='background-color:#E04765' tabindex='0'>
-      <div class='no-margin' flex='70'>
-        <md-text-float class='margin-left-20' label='Name ingredient' ng-model='ingredient.description'></md-text-float>
-      </div>
-      <div class='no-margin' flex='30' style='float:left;margin-left:-20px;padding-top:10px'>
-        <a class='cursor glyphicon glyphicon-search font-14' ng-click='search()'></a>
-      </div>
-      <md-button class='md-primary md-fab md-fab-top-right' ng-click='showCreateIngredient()' style='background-color:#F85562'>
-        <span class='font-36' style='line-height:32px;'>+</span>
-      </md-button>
-    </div>
-  </md-toolbar>
-  <md-content style='padding:20px 10px'>
+<div layout-align='start start' layout='column'>
+  <div flex='100' layout='column' tabindex='0'>
+  </div>
+  <md-content class='text-justify' style='padding:20px 10px'>
     <span ng-repeat='ig in data.ingredients'>
       <md-content class='md-whiteframe-z1 ingredient-windows-120 cursor' ng-click='showEditingIngredient(ig)' style='background-image: url("{{image_path(ig.icon)}}")'></md-content>
       <!-- {{ig.name}} -->
     </span>
   </md-content>
-</md-content>
+</div>

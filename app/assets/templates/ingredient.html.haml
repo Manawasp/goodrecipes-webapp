@@ -1,15 +1,17 @@
-%div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20
-  MANAGE INGREDIENTS
-%md-content.md-whiteframe-z1{layout: "column", "layout-align" => "start start"}
-  %md-toolbar
-    .md-toolbar-tools.no-padding.food-api-white{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#E04765'}
-      %div.no-margin{flex: '70'}
-        %md-text-float.margin-left-20{:label => "Name ingredient", "ng-model" => "ingredient.description"}
-      %div.no-margin{flex: '30', style:'float:left;margin-left:-20px;padding-top:10px'}
-        %a.cursor.glyphicon.glyphicon-search.font-14{'ng-click' => 'search()'}
-      %md-button.md-primary.md-fab.md-fab-top-right{'ng-click' => 'showCreateIngredient()', style: "background-color:#F85562"}
-        %span.font-36{style: 'line-height:32px;'} +
-  %md-content{style: 'padding:20px 10px'}
+%div{layout: "row", "layout-align" => "space-between center"}
+  %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20
+    MANAGE INGREDIENTS
+  %div
+    %md-button.md-primary.md-raised.padding-left-20.padding-right-20{'ng-click' => 'showCreateIngredient($event)', style: "background-color:#F85562"}
+      %span.font-16{style: 'line-height:16px;'} New ingredient
+%div{layout: "column", "layout-align" => "start start"}
+  %div{tabindex: "0", flex: "100", layout: "column"}
+    -# %div.no-margin{flex: '70'}
+    -#   %md-text-float.margin-left-20{:label => "Name ingredient", "ng-model" => "ingredient.description"}
+    -# %div.no-margin{flex: '30', style:'float:left;margin-left:-20px;padding-top:10px'}
+    -#   %a.cursor.glyphicon.glyphicon-search.font-14{'ng-click' => 'search()'}
+
+  %md-content.text-justify{style: 'padding:20px 10px'}
     %span{"ng-repeat" => "ig in data.ingredients"}
       %md-content.md-whiteframe-z1.ingredient-windows-120.cursor{style: 'background-image: url("{{image_path(ig.icon)}}")', "ng-click" => "showEditingIngredient(ig)"}
       / {{ig.name}}

@@ -42,7 +42,22 @@ angular.module('app')
           view = dview
         getView: () ->
           return view
-        putInGarbage: (obj)->
-          # ingredientsCarabage.append
+        garbageInit: (objTab)->
+          ingredientsCarabage.splice(0,ingredientsCarabage.length)
+          for key of objTab
+            ingredientsCarabage.push objTab[key]
+        garbageAdd: (obj)->
+          ingredientsCarabage.unshift(obj)
+        garbageUpdate: (obj)->
+          console.log("UPDATE")
+          for key of ingredientsCarabage
+            if ingredientsCarabage[key].id == obj.id
+              console.log("update works !")
+              ingredientsCarabage[key] = obj
+              return true
+          console.log("pas marche...")
+          return false
+        garbage: () ->
+          return ingredientsCarabage
       )
   )
