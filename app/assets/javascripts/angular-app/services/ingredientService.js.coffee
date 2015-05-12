@@ -1,6 +1,7 @@
 angular.module('app')
   .factory('ingredientService', ($http, apiService) ->
       current_ingredient = {}
+      ingredientsCarabage = []
       view = false
 
       return (
@@ -41,5 +42,7 @@ angular.module('app')
           view = dview
         getView: () ->
           return view
+        putInGarbage: (obj)->
+          # ingredientsCarabage.append
       )
   )
