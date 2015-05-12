@@ -6,15 +6,15 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
 
     $scope.data = {
       offset : 0
-      limit : 40 
+      limit : 40
       ingredients : []
     }
-    
+
     $scope.get_url_upload = () ->
       'http://localhost:8080/pictures/'
 
     $scope.image_path = (img) ->
-      $scope.get_url_upload() + img
+      img
 
     $scope.search = () ->
       searchIngredient()

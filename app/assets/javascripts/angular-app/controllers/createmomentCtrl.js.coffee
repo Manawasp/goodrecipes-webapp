@@ -12,7 +12,7 @@ angular.module('app').controller("createmomentCtrl", ($scope, $location, $cookie
       'http://localhost:8080/pictures/'
 
     $scope.image_path = (img) ->
-      $scope.get_url_upload() + img
+      img
 
     $scope.uploader_avatar = new FileUploader();
     $scope.uploader_avatar.url = $scope.get_url_upload()

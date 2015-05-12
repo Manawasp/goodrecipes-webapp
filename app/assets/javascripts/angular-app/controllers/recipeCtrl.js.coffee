@@ -26,7 +26,7 @@ angular.module('app').controller("recipeCtrl", ($mdDialog, $routeParams, $scope,
 
     $scope.data = {
       offset : 0
-      limit : 30 
+      limit : 30
     }
 
     $scope.redir_recipe = (id) ->
@@ -39,7 +39,7 @@ angular.module('app').controller("recipeCtrl", ($mdDialog, $routeParams, $scope,
       if img == ''
         ''
       else
-        $scope.get_url_upload() + img
+        img
 
     $scope.search = () ->
       searchRecipe()

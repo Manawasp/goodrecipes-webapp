@@ -8,7 +8,7 @@ angular.module('app').controller("createrecipeCtrl", (FileUploader, $scope, $loc
       offset : 0
       limit : 8
     }
-    
+
     $scope.recipe = {"image": "","title":"Fabulous chocolat pie","description":"Le paradis du chocolat","people": 6,"preparation": {"h": 0, "m": 0}, "total": {"h": 0, "m": 0}, ingredients: [], steps: [], ingredients_describe: [{title: "", description: ""}]}
     $scope.ingredients = []
     $scope.labels = [{'c': false, 'name': 'breakfast & brunch'},  {'c': false, 'name': 'appetizer'},
@@ -31,7 +31,7 @@ angular.module('app').controller("createrecipeCtrl", (FileUploader, $scope, $loc
       if img == ''
         ''
       else
-        $scope.get_url_upload() + img
+        img
 
     $scope.uploader_avatar = new FileUploader();
     $scope.uploader_avatar.url = $scope.get_url_upload()
@@ -111,7 +111,7 @@ angular.module('app').controller("createrecipeCtrl", (FileUploader, $scope, $loc
         $location.url('/recipes/show/' + data.recipe.id)
       ).error((data) ->
         console.log data
-        $scope.error = data.error        
+        $scope.error = data.error
       )
 
     $scope.searchIngredient = () ->

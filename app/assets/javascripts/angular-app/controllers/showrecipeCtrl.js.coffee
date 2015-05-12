@@ -41,7 +41,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       if img == ''
         ''
       else
-        $scope.get_url_upload() + img
+        img
 
     $scope.markRecipe = (data) ->
       $mdDialog.show(

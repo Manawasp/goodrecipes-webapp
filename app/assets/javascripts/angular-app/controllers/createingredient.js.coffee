@@ -13,7 +13,7 @@ angular.module('app').controller("createingredientCtrl", (FileUploader, $mdDialo
     if img == ''
       ''
     else
-      $scope.get_url_upload() + img
+      img
 
   $scope.uploader_avatar = new FileUploader();
   $scope.uploader_avatar.url = $scope.get_url_upload()

@@ -17,7 +17,7 @@ angular.module('app').controller("momentCtrl", (momentService, $routeParams, $sc
     moment1   = {"id": "iwojdoiw6fwt67fw7", "description": "Hello world !", "likes": 1023,"comment_length": 744, "create_at": "okdowkwpodk"}
     user1     = {"id": "chocolat", "avatar": "/images/baravatar2.jpg","pseudo": "Superadmin"}
     recipe1   = {'id': '1','week_length': 10 ,'ingredients': ['', '', '', '', '', '', '', '', '', '', ''],'people': 6,'icon': '','title': 'Gateau a la mangue','comment_length': 12,'preparation': {'h': 0, 'm': 45},'total': {'h': 1, 'm': 0},'mark': 2.7, 'description': 'Try a new twist on a homemade meatball comes quickly dor a delicious dinner !Try a new twist on a homemade meatball comes quickly dor a deliciw !'}
-            
+
     moment2   = {"id": "iwojdoiw6fwt67fw7", "description": "2 moments", "likes": 13,"comment_length": 4, "create_at": "okdowkwpodk","updated_at": "okok"}
     user2     = {"id": "chocolat", "avatar": "/images/bakemono.png", "pseudo": "Superadmin"}
     recipe2   = {'id': '1','week_length': 10 ,'ingredients': ['', '', '', '', '', '', '', '', '', '', ''],'people': 6,'icon': '','title': 'Gateau a la mangue','comment_length': 12,'preparation': {'h': 0, 'm': 45},'total': {'h': 1, 'm': 0},'mark': 2.7, 'description': 'Try a new twist on a homemade meatball comes quickly dor a delicious dinner !Try a new twist on a homemade meatball comes quickly dor a deliciw !'}
@@ -37,7 +37,7 @@ angular.module('app').controller("momentCtrl", (momentService, $routeParams, $sc
       if img == ''
         ''
       else
-        $scope.get_url_upload() + img
+        img
 
     $scope.redir_recipe = (id) ->
       $location.url('/recipes/show/' + id)
