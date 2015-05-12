@@ -4,9 +4,9 @@
       Create an ingredient
     </div>
     <div class='margin-left-10 margin-right-10'>
-      <md-content class='fileUpload ingredient-windows-120 text-center fleft' style='background-color: #EBEBEB;background-image: url("{{image_path(ingredient.icon)}}");'>
-        <span class='glyphicon glyphicon-picture font-36' ng-show='ingredient.icon == ""' style='color:#999;line-height:115px;'></span>
-        <input class='upload' nv-file-select='' style='height: 120px' type='file' uploader='uploader_avatar'>
+      <md-content class='fileUpload ingredient-windows-120 text-center fleft' style='background-color: #EBEBEB;background-image: url("{{show_picture()}}");'>
+        <span class='glyphicon glyphicon-picture font-36' ng-show='ingredient.ingredientPicture == ""' style='color:#999;line-height:115px;'></span>
+        <input base-sixty-four-input='' class='upload' ng-model='ingredientPicture' style='height: 120px' type='file'>
       </md-content>
       <div class='margin-top-15' style='margin-left:150px'>
         <div class='font-12'>

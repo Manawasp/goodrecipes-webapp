@@ -29,6 +29,10 @@ angular.module('app')
         update: (data) ->
           req = $http.patch(apiService.url() + '/ingredients/' + data.id, data)
           return req
+        image: (data) ->
+          req = $http.post(apiService.url() + '/ingredients/' + data.id + '/pictures', data)
+          return req
+          console.log(type)
         setCurrent: (data) ->
           current_ingredient = data
         getCurrent: () ->
