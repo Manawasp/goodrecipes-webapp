@@ -4,6 +4,7 @@ angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $loc
     $scope.error = ''
     $scope.form_ingredient = {description: ""}
     $scope.ingredientPicture = undefined
+    $scope.type = 'create'
 
     $scope.show_picture = () ->
       if $scope.ingredientPicture != undefined

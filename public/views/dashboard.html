@@ -66,12 +66,16 @@
     </md-sidenav>
     <md-content flex='' layout-padding='' style='padding:0;height:100%;'>
       <md-content layout-align='space-between center' layout='row' style='border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;'>
-        <div style='line-height: 62px'>
-          <a class='cursor padding-left-30 padding-right-30' style='color:#333;border-right:1px solid #eee;display:inline-block;'>
-            <i class='fa fa-bars fa-lg'></i>
-          </a>
-          <i class='fa fa-search fa-lg padding-left-30' style='color:#aaa'></i>
-          <input class='padding-left-20 font-16' placeholder='What do you want to cook today ?' style='width:300px;border:0;' type='text'>
+        <div flex='70' layout-align='start center' layout='row' style='line-height: 62px'>
+          <div class='padding-left-30 padding-right-30' hide-gt-md='' style='border-right:1px solid #eee;width:75px;'>
+            <a class='cursor' ng-click='toggleLeft()' style='color:#333;'>
+              <i class='fa fa-bars fa-lg'></i>
+            </a>
+          </div>
+          <div>
+            <i class='fa fa-search fa-lg padding-left-30' style='color:#aaa'></i>
+            <input class='padding-left-20 font-16' placeholder='What do you want to cook today ?' style='width:300px;border:0;' type='text'>
+          </div>
         </div>
         <div layout='column'>
           <div class='padding-left-20' layout-align='space-between center' layout='row' style='border-left:1px solid #eee;'>

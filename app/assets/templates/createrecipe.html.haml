@@ -1,6 +1,6 @@
 %div
-  %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-30{style: "width:100%"}
-    CREATE RECIPE
+  %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-30.uppercase{style: "width:100%"}
+    {{type}} RECIPE
   %div.margin-top-30.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20{style: "width:100%", layout: "row", "layout-align" => "space-between center"}
     %div{flex: 60}
       %i.fa.fa-newspaper-o{style: "float:left;padding-top:7px;color:#333;"}
@@ -77,12 +77,13 @@
   %div
     // Parts ingredient
     %div{layout: "row", "layout-wrap" => ""}
-      %div{flex: '50', "ng-repeat" => "ig_desc in recipe.ingredients_describe track by $index"}
-        %div
-          %md-text-float.margin-left-20{:label => "Title", "ng-model" => "recipe.ingredients_describe[$index].title"}
+      %div{flex: '50'}
         %div.margin-top-5{style: "padding:0 15px"}
           %span.margin-bottom-30.font-18.roboto.bold.food-dark-red.uppercase Quantity
-          %textarea.margin-top-20.msd-elastic.step-description.margin-bottom-5{"ng-model" => "recipe.ingredients_describe[$index].description", placeholder: "List of quantity and ingredients"}
+          %textarea.margin-top-20.msd-elastic.step-description.margin-bottom-5{"ng-model" => "recipe.parts", placeholder: "List of quantity and ingredients"}
+      -# %div{flex: '50', "ng-repeat" => "ig_desc in recipe.ingredients_describe track by $index"}
+      -#   %div
+      -#     %md-text-float.margin-left-20{:label => "Title", "ng-model" => "recipe.ingredients_describe[$index].title"}
   %div.step.padding-bottom-5{"ng-repeat" => "step in recipe.steps track by $index"}
     %div.step-header
       %div{style: 'float:right'}

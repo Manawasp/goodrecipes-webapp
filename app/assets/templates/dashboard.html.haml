@@ -46,11 +46,13 @@
             Logout
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
       %md-content{layout: "row","layout-align" => "space-between center", style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;'}
-        %div{style: 'line-height: 62px'}
-          %a.cursor.padding-left-30.padding-right-30{style:'color:#333;border-right:1px solid #eee;display:inline-block;'}
-            %i.fa.fa-bars.fa-lg
-          %i.fa.fa-search.fa-lg.padding-left-30{style: 'color:#aaa'}
-          %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'width:300px;border:0;'}
+        %div{flex: "70", style: 'line-height: 62px', layout: "row", "layout-align" => "start center"}
+          %div.padding-left-30.padding-right-30{"hide-gt-md"=>"", style: "border-right:1px solid #eee;width:75px;"}
+            %a.cursor{style: 'color:#333;', "ng-click"=>"toggleLeft()"}
+              %i.fa.fa-bars.fa-lg
+          %div
+            %i.fa.fa-search.fa-lg.padding-left-30{style: 'color:#aaa'}
+            %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'width:300px;border:0;'}
 
         %div{layout: "column"}
           %div.padding-left-20{layout: "row", "layout-align" => "space-between center", style: 'border-left:1px solid #eee;'}

@@ -1,6 +1,6 @@
 <div>
-  <div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-30 uppercase' style='width:100%'>
-    {{type}} RECIPE
+  <div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-30' style='width:100%'>
+    CREATE RECIPE
   </div>
   <div class='margin-top-30 print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-20' layout-align='space-between center' layout='row' style='width:100%'>
     <div flex='60'>
@@ -39,15 +39,17 @@
       <p class='font-18 roboto bold food-dark-red uppercase'>Ingredients</p>
       <md-contact-chips filter-selected='ctrl.filterSelected' md-contact-email='email' md-contact-image='icon' md-contact-name='name' md-contacts='ctrl.querySearch($query)' md-require-match='' ng-model='ctrl.contacts' placeholder='Insert ingredient'></md-contact-chips>
     </md-content>
-    <!-- / Search ingredient -->
   </div>
   <div>
     <!-- / Parts ingredient -->
     <div layout-wrap='' layout='row'>
-      <div flex='50'>
+      <div flex='50' ng-repeat='ig_desc in recipe.ingredients_describe track by $index'>
+        <div>
+          <md-text-float class='margin-left-20' label='Title' ng-model='recipe.ingredients_describe[$index].title'></md-text-float>
+        </div>
         <div class='margin-top-5' style='padding:0 15px'>
           <span class='margin-bottom-30 font-18 roboto bold food-dark-red uppercase'>Quantity</span>
-          <textarea class='margin-top-20 msd-elastic step-description margin-bottom-5' ng-model='recipe.parts' placeholder='List of quantity and ingredients'></textarea>
+          <textarea class='margin-top-20 msd-elastic step-description margin-bottom-5' ng-model='recipe.ingredients_describe[$index].description' placeholder='List of quantity and ingredients'></textarea>
         </div>
       </div>
     </div>

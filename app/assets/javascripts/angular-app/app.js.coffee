@@ -24,9 +24,9 @@
     .when('/recipes/users/:userid', {
       templateUrl: 'views/dashboard.html',
       controller: 'myrecipeCtrl' })
-    .when('/recipes/edit/:userid', {
+    .when('/recipes/edit/:id', {
       templateUrl: 'views/dashboard.html',
-      controller: 'editrecipeCtrl' })
+      controller: 'editerecipeCtrl' })
     .when('/recipes/search', {
       templateUrl: 'views/dashboard.html',
       controller: 'recipeCtrl' })
