@@ -1,6 +1,7 @@
 angular.module('app')
-  .factory('ingredientService', ($http, apiService) ->
+  .factory('ingredientService', ($http, $q, apiService) ->
       current_ingredient = {}
+      ingredientsCarabage = []
       view = false
 
       return (
@@ -22,13 +23,21 @@ angular.module('app')
             data.blacklist = blacklist
           if offset && offset.length > 0
             data.offset = offset
-          if limit && limit.length > 0
+          if limit
             data.limit = limit
-          req = $http.post(apiService.url() + '/ingredients/search', data)
+          req = $http.post(apiService.url() + '/ingredients/search', data).success((data) ->
+            return data.ingredients
+          ).error((data) ->
+            return []
+          )
           return req
         update: (data) ->
           req = $http.patch(apiService.url() + '/ingredients/' + data.id, data)
           return req
+        image: (data) ->
+          req = $http.post(apiService.url() + '/ingredients/' + data.id + '/pictures', data)
+          return req
+          console.log(type)
         setCurrent: (data) ->
           current_ingredient = data
         getCurrent: () ->
@@ -37,5 +46,22 @@ angular.module('app')
           view = dview
         getView: () ->
           return view
+        garbageInit: (objTab)->
+          ingredientsCarabage.splice(0,ingredientsCarabage.length)
+          for key of objTab
+            ingredientsCarabage.push objTab[key]
+        garbageAdd: (obj)->
+          ingredientsCarabage.unshift(obj)
+        garbageUpdate: (obj)->
+          console.log("UPDATE")
+          for key of ingredientsCarabage
+            if ingredientsCarabage[key].id == obj.id
+              console.log("update works !")
+              ingredientsCarabage[key] = obj
+              return true
+          console.log("pas marche...")
+          return false
+        garbage: () ->
+          return ingredientsCarabage
       )
   )

@@ -3,7 +3,8 @@
   %head
     %title APP
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel => "stylesheet"}/
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body{"ng-app" => 'app', layout: 'row'}
-    %div{layout: "column", "layout-fill" => "", "tabindex" => "-1", role: "main", "ng-view" => true}
+    %div{layout: "column", "layout-fill" => "", "tabindex" => "-1", role: "main", "ng-view" => true, style: 'background-color:#FCFCFC'}

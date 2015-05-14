@@ -106,6 +106,34 @@ md-content.footer {
   }
 }
 
+.md-contact-chips .md-chips .md-chip .md-contact-avatar img {
+  width:4rem !important;
+  height:4rem !important;
+  border-radius: 2rem !important;
+  margin-left:-3px !important;
+}
+.md-contact-suggestion img {
+  width:4rem !important;
+  margin-top:0.8rem;
+  vertical-align: top;
+}
+.md-chips .md-chip-input-container input[type="text"] {
+  height:4rem !important;
+  line-height:4rem !important;
+}
+md-chips.md-default-theme .md-chip {
+  margin-right:20px !important;
+}
+md-chips.md-default-theme .md-chips.md-focused, md-chips.md-default-theme .md-chips  {
+  box-shadow: none !important;
+}
+.md-chips .md-chip {
+  height:4rem;
+  line-height:4rem;
+}
+.md-chips .md-chip .md-chip-remove md-icon {
+  margin-top: -4px;
+}
 .print-title {
   color: #999;
 }
@@ -133,7 +161,6 @@ textarea.msd-elastic {
 .step-button {
   @extend .font-12, .margin-left-20;
   margin-top:3px;
-  padding: 4px 12px;
 }
 
 body {
@@ -157,7 +184,7 @@ body {
 }
 
 .food-api-theme.md-default-theme {
-  background-color: #211718;
+  background-color: #BB2743;
 }
 
 .food-api-theme .md-toolbar-tools {
@@ -188,6 +215,9 @@ a.quick-access-search {
 .food-dark-red {
   color: #BB2743;
 }
+.uppercase {
+  text-transform: uppercase;
+}
 .food-error {
   color: #BB2743;
   font-family: 'Roboto-Bold'
@@ -205,7 +235,7 @@ a.quick-access-search {
 md-input-group.food-api-theme {
   background-color: red;
   height: 70px;
-  width: 100%; 
+  width: 100%;
   margin-top: 0;
 }
 
@@ -496,7 +526,7 @@ textarea.msd-elastic.blue-bottom-border {
       color: white;
       background-color: #8E8D8E;
   }
-  
+
   &.active-cd {
       color: white;
       background-color: #8E8D8E;
@@ -656,7 +686,7 @@ textarea.msd-elastic.blue-bottom-border {
   max-width: 864px;
 }
 
-/// text-transform: 
+/// text-transform:
 
 
 .md-button.md-default-theme.md-warn {

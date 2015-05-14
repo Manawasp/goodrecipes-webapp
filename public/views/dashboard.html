@@ -1,154 +1,105 @@
-<span ng-controller='userCtrl' style='background-color:#E3E4E6'>
-  <md-toolbar class='food-api-theme md-default-theme' layout='column'>
-    <div class='md-toolbar-tools md-whiteframe-z1 no-padding' flex='100' layout='column' style='height:114px' tabindex='0'>
-      <div class='no-margin' flex='100' layout='column'>
-        <div layout-align='space-between center' layout='row'>
-          <div flex=''>
-            <!-- %a.font-36{href:'',"ng-click"=>"toggleLeft()"} -->
-            <span class='font-36 margin-left-20 cursor' ng-click="locate('/')" style='line-height: 70px;'>
-              <img src='/images/logo.png' style='width:50px;height:50px;margin-top:-10px'>
-              <span class='roboto light'>GOOD</span>
-              <span class='roboto bold food-dark-red' style='margin-left:-5px'>RECIPES</span>
+<span layout='column' ng-controller='userCtrl' style='height:100%'>
+  <section flex='' layout='row' style='height:100%'>
+    <md-sidenav class='md-sidenav-left md-whiteframe-z2' md-component-id='left' md-is-locked-open="$mdMedia('gt-md')">
+      <md-toolbar class='food-api-theme no-bg md-theme-indigo' layout-align='center center'>
+        <div class='text-center margin-top-20'>
+          <img src='/images/logo.png' style='width:50px;height:50px;'>
+        </div>
+        <span class='font-36 cursor margin-top-10' ng-click="locate('/')">
+          <span class='roboto light silver'>GOOD</span>
+          <span class='roboto bold food-dark-red' style='margin-left:-5px'>RECIPES</span>
+        </span>
+      </md-toolbar>
+      <md-content>
+        <div class='margin-top-30 top-border' layout='column' style='padding-top:15px'>
+          <md-button ng-click="locate('moments/' + user.id + '?action=new')" style='text-align:left;text-transform: lowercase;'>
+            <span class='margin-right-5 margin-left-5'>
+              <img src='/images/camera.png' style='width:24px;height:24px'>
             </span>
-          </div>
-          <div flex=''>
-            <md-text-float class='food-api-theme' label='What do you want to eat ?' ng-model='search_name'></md-text-float>
-          </div>
-          <div class='text-right food-dark-red' flex=''>
-            <span class='cursor glyphicon glyphicon-search margin-top-10 margin-left-15' ng-click='redir_title()' style='float:left'></span>
-          </div>
+            Post new moment
+          </md-button>
+          <!-- %a.menu-link{href: ''} -->
+          <!-- %span.glyphicon.glyphicon-film -->
+          <!-- Post new moment -->
+          <!-- %a.menu-link{href: ''} -->
+          <md-button ng-click='redir_your_profile()' style='text-align:left;text-transform: lowercase;'>
+            <span class='glyphicon glyphicon-pencil margin-right-10 margin-left-10' style='color:#666'></span>
+            Edit profile informations
+          </md-button>
+          <!-- %a.menu-link{href: ''} -->
+          <md-button style='text-align:left;text-transform: lowercase;'>
+            <span class='glyphicon glyphicon-user margin-right-10 margin-left-10' style='color:#666'></span>
+            Search user
+          </md-button>
         </div>
-        <div class='sub-header' flex='100' layout-align='space-between center' layout='row'>
-          <div>
-            <a class='cursor' ng-click='toggleLeft()'>
-              <img src='/images/menu.png' style='width:28px;height:28px'>
+        <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
+          <md-button style='text-align:left;text-transform: uppercase;'>
+            <span class='margin-right-5 margin-left-5'>
+              <img src='/images/chef.png' style='width:24px;height:24px'>
+            </span>
+            recipes
+          </md-button>
+          <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: lowercase;color:#444'>
+            <i class='fa fa-pencil margin-left-30 margin-right-15'></i>
+            create new one
+          </md-button>
+          <md-button ng-click="locate('/recipes/users/ok')" style='text-align:left;text-transform: lowercase;'>
+            <i class='fa fa-eye margin-left-30 margin-right-15'></i>
+            my recipe
+          </md-button>
+        </div>
+        <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
+          <md-button ng-click="locate('ingredients')" style='text-align:left;'>
+            <span class='margin-right-5 margin-left-5'>
+              <img src='/images/ingredient.png' style='width:24px;height:24px'>
+            </span>
+            ingredients
+          </md-button>
+        </div>
+        <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
+          <md-button style='text-align:left;text-transform: lowercase;'>
+            <span class='glyphicon glyphicon-off margin-right-10 margin-left-10' style='color:#666'></span>
+            Logout
+          </md-button>
+        </div>
+      </md-content>
+    </md-sidenav>
+    <md-content flex='' layout-padding='' style='padding:0;height:100%;'>
+      <md-content layout-align='space-between center' layout='row' style='border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;'>
+        <div flex='70' layout-align='start center' layout='row' style='line-height: 62px'>
+          <div class='padding-left-30 padding-right-30' hide-gt-md='' style='border-right:1px solid #eee;width:75px;'>
+            <a class='cursor' ng-click='toggleLeft()' style='color:#333;'>
+              <i class='fa fa-bars fa-lg'></i>
             </a>
           </div>
-          <div layout-align='center center' layout='row'>
-            <div>
-              <a class='quick-access-search beef-color' href='' ng-click="locate('recipes/search?label=beef')">
-                <img class='margin-right-5' src='/images/meat.png' style='width:24px;height:24px'>
-                <span class='font-14'>Beef Recipes</span>
-              </a>
-            </div>
-            <div>
-              <a class='quick-access-search chicken-color' href='' ng-click="locate('recipes/search?label=chicken')">
-                <img class='margin-right-5' src='/images/chicken.png' style='width:24px;height:24px'>
-                <span class='font-14'>Chicken Recipes</span>
-              </a>
-            </div>
-            <div>
-              <a class='quick-access-search vegetarian-color' href='' ng-click="locate('recipes/search?label=vegetarian')">
-                <img class='margin-right-5' src='/images/tomato.png' style='width:24px;height:24px'>
-                <span class='font-14'>Vegetarian Recipes</span>
-              </a>
-            </div>
-            <div>
-              <a class='quick-access-search dessert-color' href='' ng-click="locate('recipes/search?label=dessert')">
-                <img class='margin-right-5' src='/images/cake.png' style='width:24px;height:24px'>
-                <span class='font-14'>Dessert Recipes</span>
-              </a>
-            </div>
-          </div>
           <div>
-            <a class='cursor' ng-click="locate('moments/' + user.id)">
-              <img src='/images/camera.png' style='width:28px;height:28px'>
-            </a>
+            <i class='fa fa-search fa-lg padding-left-30' style='color:#aaa'></i>
+            <input class='padding-left-20 font-16' placeholder='What do you want to cook today ?' style='width:300px;border:0;' type='text'>
           </div>
         </div>
-      </div>
-    </div>
-  </md-toolbar>
-  <md-sidenav class='md-sidenav-left md-whiteframe-z2' md-component-id='left'>
-    <md-toolbar class='food-api-theme md-theme-indigo' layout-align='center center' style='height: 78px'>
-      <div style='width: 80px;'>
-        <a ng-click="locate('moments/' + user.id)" style='position:absolute;margin-top:-10px;'>
-          <button aria-label='refresh' class='md-fab md-accent md-button md-default-theme' style='width:90px;height:90px;padding:0;'>
-            <img class='profile-avatar' src='{{avatar}}'>
-          </button>
-        </a>
-      </div>
-    </md-toolbar>
-    <md-content class='footer' style=''>
-      <div layout='column'>
-        <div class='about text-center'>
-          <a href=''>
-            <span class='silver'>ABOUT US &</span>
-            <span class='roboto light white'>GOOD</span>
-            <span class='roboto bold food-dark-red' style='margin-left:-2px'>RECIPES</span>
-          </a>
+        <div layout='column'>
+          <div class='padding-left-20' layout-align='space-between center' layout='row' style='border-left:1px solid #eee;'>
+            <div layout-align='center center' layout='row'>
+              <div layout='column'>
+                <div class='text-right font-14 roboto'>
+                  {{user.pseudo || "Manawasp"}}
+                </div>
+                <div class='text-center font-11 roboto' style='color:#999'>
+                  {{user.email || "manawasp@gmail.com"}}
+                </div>
+              </div>
+              <a class='margin-left-10 margin-right-20' ng-click="locate('moments/' + user.id)">
+                <button style='width:36px;height:36px;padding:0;border-radius:18px'>
+                  <img class='profile-avatar' src='{{avatar}}' style='width:36px;height:36px;padding:0;margin-left:-2px;margin-top:-2px;border-radius:18px'>
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
+      </md-content>
+      <md-content class='no-bg md-default-theme' layout-align='center center' layout='column' md-scroll-y=''>
+        <md-content class='no-bg' ng-include='template' style='width:100%;padding:20px 20px 10px 20px'></md-content>
+      </md-content>
     </md-content>
-    <md-content>
-      <span class='silver-box fleft'>
-        <span class='glyphicon glyphicon-user'></span>
-        200
-      </span>
-      <span class='silver-box fright'>
-        <span class='glyphicon glyphicon-eye-open'></span>
-        100
-      </span>
-      <div class='margin-top-30' layout='column'>
-        <div class='text-center margin-top-30 font-18 roboto bold'>
-          {{user.pseudo}}
-        </div>
-        <div class='text-center'>
-          {{user.email}}
-        </div>
-      </div>
-      <div class='margin-top-30 top-border' layout='column' style='padding-top:15px'>
-        <md-button ng-click="locate('moments/' + user.id + '?action=new')" style='text-align:left;text-transform: lowercase;'>
-          <span class='margin-right-5 margin-left-5'>
-            <img src='/images/camera.png' style='width:24px;height:24px'>
-          </span>
-          Post new moment
-        </md-button>
-        <!-- %a.menu-link{href: ''} -->
-        <!-- %span.glyphicon.glyphicon-film -->
-        <!-- Post new moment -->
-        <!-- %a.menu-link{href: ''} -->
-        <md-button ng-click='redir_your_profile()' style='text-align:left;text-transform: lowercase;'>
-          <span class='glyphicon glyphicon-pencil margin-right-10 margin-left-10' style='color:#666'></span>
-          Edit profile informations
-        </md-button>
-        <!-- %a.menu-link{href: ''} -->
-        <md-button style='text-align:left;text-transform: lowercase;'>
-          <span class='glyphicon glyphicon-user margin-right-10 margin-left-10' style='color:#666'></span>
-          Search user
-        </md-button>
-      </div>
-      <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-        <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: lowercase;'>
-          <span class='margin-right-5 margin-left-5'>
-            <img src='/images/chef.png' style='width:24px;height:24px'>
-          </span>
-          Add new recipe
-        </md-button>
-        <md-button ng-click="locate('/recipes/users/ok')" style='text-align:left;text-transform: lowercase;'>
-          <span class='margin-right-5 margin-left-5'>
-            <img src='/images/plate.png' style='width:24px;height:24px'>
-          </span>
-          See my recipes
-        </md-button>
-      </div>
-      <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-        <md-button ng-click="locate('ingredients')" style='text-align:left;text-transform: lowercase;'>
-          <span class='margin-right-5 margin-left-5'>
-            <img src='/images/ingredient.png' style='width:24px;height:24px'>
-          </span>
-          Manage ingredients
-        </md-button>
-      </div>
-      <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-        <md-button style='text-align:left;text-transform: lowercase;'>
-          <span class='glyphicon glyphicon-off margin-right-10 margin-left-10' style='color:#666'></span>
-          Logout
-        </md-button>
-      </div>
-    </md-content>
-  </md-sidenav>
-  <md-content class='no-bg md-default-theme' layout-align='center center' layout='column' md-scroll-y=''>
-    <md-content class='no-bg' ng-include='template' style='width:100%;max-width:940px;padding:20px'></md-content>
-  </md-content>
+  </section>
 </span>

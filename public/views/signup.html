@@ -5,10 +5,16 @@
   </div>
 </div>
 <div class='form-group'>
-  <md-text-float class='md-primary' label='Email' ng-model='email'></md-text-float>
+  <md-input-container>
+    <label>Email</label>
+    <input ng-model='email'>
+  </md-input-container>
 </div>
 <div class='form-group'>
-  <md-text-float class='md-primary' label='Password' ng-model='password' type='password'></md-text-float>
+  <md-input-container>
+    <label>Password</label>
+    <input ng-model='password' type='password'>
+  </md-input-container>
 </div>
 <div class='text-right margin-top-10'>
   <md-button class='revert fleft' href='\#signin'>Sign in</md-button>

@@ -3,18 +3,19 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
     $scope.template = 'views/ingredient.html'
     $scope.error = ''
     $scope.ingredient = {description: "", labels: [], savours: [], blacklist: []}
+    $scope.garbage = ingredientService.garbage()
 
     $scope.data = {
       offset : 0
-      limit : 40 
+      limit : 40
       ingredients : []
     }
-    
+
     $scope.get_url_upload = () ->
       'http://localhost:8080/pictures/'
 
     $scope.image_path = (img) ->
-      $scope.get_url_upload() + img
+      img
 
     $scope.search = () ->
       searchIngredient()
@@ -29,33 +30,37 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
       ).success((data) ->
         # console.log "success data in search ingredient"
         # console.log data
-        $scope.data.ingredients = data.ingredients
+        ingredientService.garbageInit(data.ingredients)
+        $scope.data.ingredients = ingredientService.garbage()
       ).error((data) ->
         # console.log "error data in search ingredient"
         # console.log data
       )
 
 
-    $scope.showEditingIngredient = (data) ->
+    $scope.showEditingIngredient = (ev, id) ->
       ingredientService.setView(true)
-      ingredientService.setCurrent(data)
-      console.log(data)
+      ingredientService.setCurrent(id)
       $mdDialog.show(
-        controller: 'editingredientCtrl'
-        templateUrl: "/views/editingredient.html"
-      ).then (() ->
-        # $scope.alert = "You said the information was \"" + answer + "\"."
+        controller: 'editingredientCtrl',
+        templateUrl: "/views/editingredient.html",
+        targetEvent: ev).then ((answer) ->
+        # $scope.alert = 'You said the information was "' + answer + '".'
+        return
       ), ->
-        # $scope.alert = "You cancelled the dialog."
-
-    $scope.showCreateIngredient = (data) ->
+        # $scope.alert = 'You cancelled the dialog.'
+        return
+    $scope.showCreateIngredient = (ev) ->
       $mdDialog.show(
-        controller: 'createingredientCtrl'
-        templateUrl: "/views/createingredient.html"
-      ).then (() ->
-        # $scope.alert = "You said the information was \"" + answer + "\"."
+        controller: 'createingredientCtrl',
+        templateUrl: "/views/createingredient.html",
+        targetEvent: ev).then ((answer) ->
+        # $scope.alert = 'You said the information was "' + answer + '".'
+        return
       ), ->
-        # $scope.alert = "You cancelled the dialog."
+        # $scope.alert = 'You cancelled the dialog.'
+        return
+      return
 
     searchIngredient()
 )

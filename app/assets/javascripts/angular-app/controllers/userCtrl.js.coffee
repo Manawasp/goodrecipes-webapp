@@ -13,8 +13,8 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
     else if $scope.user.avatar == ""
       $scope.avatar = "/images/avatar.png"
     else
-      $scope.avatar = $scope.user.avatar 
-    
+      $scope.avatar = $scope.user.avatar
+
     $scope.access_gastronomist  = false
     $scope.access_supplier      = false
     $scope.access_admin         = false

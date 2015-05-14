@@ -27,7 +27,7 @@ angular.module('app').controller("homepageCtrl", (homepageService, $mdDialog, $r
       if img == ''
         ''
       else
-        $scope.get_url_upload() + img
+        img
 
     $scope.redir_recipe = (id) ->
       $location.url('/recipes/show/' + id)

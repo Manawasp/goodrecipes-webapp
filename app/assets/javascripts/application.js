@@ -18,10 +18,9 @@
 //= require angular-rails-templates
 //= require angular-animate
 //= require angular-aria
-//= require hammerjs
 //= require angular-material
 //= require angular-elastic
-//= require angular-file-upload
+//= require angular-base64-upload
 
 //= require angular-app/app
 //= require_tree ./angular-app/modules
@@ -33,5 +32,3 @@
 //= require_tree ../templates
 
 // = require bootstrap-sprockets
-
-

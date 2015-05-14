@@ -3,8 +3,8 @@
     %div.margin-top-20.margin-left-20.font-18.margin-bottom-10
       Edit an ingredient
     %div.margin-left-10.margin-right-10{style: 'min-height:125px'}
-      %md-content.fileUpload.ingredient-windows-120.text-center.md-whiteframe-z1.fleft{style: 'background-image: url("{{image_path(ingredient.icon)}}");'}
-        %input.upload{type: "file", "nv-file-select" => '', uploader: "uploader_avatar", style: 'height: 120px'}
+      %md-content.fileUpload.ingredient-windows-120.text-center.md-whiteframe-z1.fleft{style: 'background-image: url("{{show_picture()}}");'}
+        %input.upload{type: "file", "ng-model" => 'ingredientPicture', "base-sixty-four-input" => "", style: 'height: 120px'}
       %div.margin-top-15{style: "margin-left:150px"}
         %div.font-12
           You need to choose a validate name for an ingredient,
@@ -14,11 +14,19 @@
             Name must be unique.
           %span{'ng-class' => "{'food-error' : error == 'image'}"}
             You must be choose and upload a picture
-        %md-text-float{:label => "Name", "ng-model" => "ingredient.name"}
+        %md-input-container
+          %label Name
+          %input{"ng-model" => "ingredient.name"}
     %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
       %div{layout: "row", "layout-align" => "space-between center"}
         %div
-          %md-button.md-primary{style: 'padding: 5px 15px;color:#BB2743'} REMOVE
+          %md-button.md-warn
+            %i.fa.fa-close.margin-right-5{"ng-click" => "cancel()"}
+            REMOVE
         %div
-          %md-button.md-primary{style: 'padding: 5px 15px', "ng-click" => "cancel()"} CANCEL
-          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "update_ingredient()"} VALIDATE
+          %md-button.md-nothing{"ng-click" => "cancel()", style: 'color:#777'}
+            %i.fa.fa-undo.margin-right-5
+            CANCEL
+          %md-button.md-primary.margin-left-10{"ng-click" => "update_ingredient()"}
+            %i.fa.fa-check.margin-right-5
+            VALIDATE
