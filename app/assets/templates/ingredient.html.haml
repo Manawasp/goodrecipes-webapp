@@ -13,5 +13,5 @@
 
   %md-content.text-justify{style: 'padding:20px 10px'}
     %span{"ng-repeat" => "ig in data.ingredients"}
-      %md-content.md-whiteframe-z1.ingredient-windows-120.cursor{style: 'background-image: url("{{image_path(ig.icon)}}")', "ng-click" => "showEditingIngredient(ig)"}
+      %md-content.md-whiteframe-z1.ingredient-windows-120.cursor{style: 'background-image: url("{{image_path(ig.icon)}}")', "ng-click" => "showEditingIngredient($event, ig)"}
       / {{ig.name}}

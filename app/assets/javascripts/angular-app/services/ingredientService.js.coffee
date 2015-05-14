@@ -1,5 +1,5 @@
 angular.module('app')
-  .factory('ingredientService', ($http, apiService) ->
+  .factory('ingredientService', ($http, $q, apiService) ->
       current_ingredient = {}
       ingredientsCarabage = []
       view = false
@@ -23,9 +23,13 @@ angular.module('app')
             data.blacklist = blacklist
           if offset && offset.length > 0
             data.offset = offset
-          if limit && limit.length > 0
+          if limit
             data.limit = limit
-          req = $http.post(apiService.url() + '/ingredients/search', data)
+          req = $http.post(apiService.url() + '/ingredients/search', data).success((data) ->
+            return data.ingredients
+          ).error((data) ->
+            return []
+          )
           return req
         update: (data) ->
           req = $http.patch(apiService.url() + '/ingredients/' + data.id, data)

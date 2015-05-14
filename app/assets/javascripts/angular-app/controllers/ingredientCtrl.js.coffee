@@ -38,9 +38,9 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
       )
 
 
-    $scope.showEditingIngredient = (ev) ->
+    $scope.showEditingIngredient = (ev, id) ->
       ingredientService.setView(true)
-      ingredientService.setCurrent(ev)
+      ingredientService.setCurrent(id)
       $mdDialog.show(
         controller: 'editingredientCtrl',
         templateUrl: "/views/editingredient.html",

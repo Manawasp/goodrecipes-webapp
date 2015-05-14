@@ -1,13 +1,19 @@
 .form-group{"ng-show" => "error != ''"}
   .alert.alert-danger{role: 'alert'}
-    %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"} 
+    %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
     {{error}}
 .form-group.margin-left-20
-  %md-text-float.md-primary{:label => "Pseudo", "ng-model" => "pseudo"}
+  %md-input-container
+    %label "Pseudo"
+    %input{"ng-model" => "pseudo"}
 .form-group.margin-left-20
-  %md-text-float{:label => "Adresse email", "ng-model" => "email"}
+  %md-input-container
+    %label Adresse email
+    %input{"ng-model" => "email"}
 .form-group.margin-left-20
-  %md-text-float{:label => "Password", "ng-model" => "password", type: "password"}
+  %md-input-container
+    %label Password
+    %input{"ng-model" => "password", type: "password"}
 %div.text-right.margin-top-30
   %md-button.revert.fleft{href: '\#login'} Connection
   %md-button{"ng-click" => "send()"} Inscription

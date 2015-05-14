@@ -1,94 +1,116 @@
-%md-content.md-whiteframe-z1.margin-top-30{layout: "column", "layout-align" => "start start", flex: '100'}
-  %md-toolbar
-    .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#E3E4E6'}
-      %div.no-margin{flex: '70'}
-        %md-text-float.margin-left-20{:label => "Title of your recipe", "ng-model" => "recipe.title"}
-  %md-content{style: 'width:100%;padding:30px 20px 10px 20px;', layout: 'column'}
-    -# %div
-    -#   {{recipe}}
-    -#   // image + description
-    -#   ok
-    %div.food-error.margin-bottom-10.roboto.medium{"ng-show" => "error != ''"}
-      Error: {{error}}
-    %div{layout: "row"}
-      %div{flex: '65'}
-        %md-content.fileUpload.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: 'background-image: url("{{image_path(recipe.image)}}")'}
-          %span.glyphicon.glyphicon-picture.font-72{style: 'color:#999;line-height:372px;', 'ng-show' => 'recipe.image == ""'}
-          %input.upload{type: "file", "nv-file-select" => '', uploader: "uploader_avatar", style: 'height: 400px'}
-      %div{flex: '35', layout: 'column'}
+%div
+  %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20{style: "width:100%"}
+    CREATE RECIPE
+  %div.margin-top-20.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20{style: "width:100%", layout: "row", "layout-align" => "space-between center"}
+    %div{flex: 60}
+      %input{style:"border:0;color:#555;font-weight:700;width:100%","ng-model" => "recipe.title", placeholder: 'Enter recipe name...'}
+    %div.text-right.padding-right-20{flex: 40}
+      %i.fa.fa-group
+      %input{style:"width:38px;border:0;color:#555;font-weight:700;","ng-model" => "recipe.people", maxlength: "2"}
+      %i.fa.fa-history
+      %input{style:"width:100px;border:0;color:#555;font-weight:700;","ng-model" => "recipe.time", maxlength: "5"}
+%md-content{style: 'padding:10px 20px 10px 20px;', layout: 'column'}
+  -# %div
+  -#   {{recipe}}
+  -#   // image + description
+  -#   ok
+  %div.food-error.margin-bottom-10.roboto.medium{"ng-show" => "error != ''"}
+    Error: {{error}}
+  %div{layout: "row"}
+    %div{flex: '50', layout: 'column'}
+      %div.margin-right-20
+        %md-input-container{flex: ''}
+          %label.font-24 Description
+          %textarea{"ng-model" => "recipe.description", columns: "1", "md-maxlength" => "500", style: "min-height:330px"}
+    %div{flex: '50'}
+      %md-content.fileUpload.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: "background-image: url('{{ingredient.image ||  'data:' + ingredientPicture.filetype + ';base64,' + ingredientPicture.base64}}')"}
+        %input.upload{type: "file", "ng-model" => 'ingredientPicture', "base-sixty-four-input" => "", style: 'height: 400px;width:100%;'}
+      -# -# %span.font-12{style: 'color:#29B6F6'} Recipe description
+      -# %textarea.msd-elastic.step-description.font-14.margin-bottom-5.blue-bottom-border{"ng-model" => "recipe.description", placeholder: "Short recipe description (200 characters)",  "md-maxlength"=>"200"}
+      -# %div.margin-top-15
+      -#   %md-text-float.margin-left-20{:label => "How many people ?", "ng-model" => "recipe.people", style: 'margin-top:0;'}
+      -# %div.margin-left-20{layout: 'row', "layout-wrap" => ""}
+      -#   %div.margin-top-15{style: 'width:100%'}
+      -#     PREPARATION TIME
+      -#   %div{flex: '50'}
+      -#     %md-text-float.w100.margin-right-20{:label => "hours", "ng-model" => "recipe.preparation.h", style: 'margin-top:0;'}
+      -#   %div{flex: '50'}
+      -#     %md-text-float.w100.margin-right-20{:label => "minutes", "ng-model" => "recipe.preparation.m", style: 'margin-top:0;'}
+      -# %div.margin-left-20{layout: 'row', "layout-wrap" => ""}
+      -#   %div.margin-top-15{style: 'width:100%'}
+      -#     TOTAL TIME
+      -#   %div{flex: '50'}
+      -#     %md-text-float.w100.margin-right-20{:label => "hours", "ng-model" => "recipe.total.h", style: 'margin-top:0;'}
+      -#   %div{flex: '50'}
+      -#     %md-text-float.w100.margin-right-20{:label => "minutes", "ng-model" => "recipe.total.m", style: 'margin-top:0;'}
+  %div.chipsdemoContactChips{"ng-app" => "MyApp", "ng-controller"=>"ContactChipDemoCtrl as ctrl", layout: "column"}
+    %md-content.md-padding.autocomplete{:layout => "column"}
+      %p.font-18 Ingredients
+      %md-contact-chips{"filter-selected" => "ctrl.filterSelected", "md-contact-email" => "email", "md-contact-image" => "icon", "md-contact-name" => "name", "md-contacts" => "ctrl.querySearch($query)", "md-require-match" => "", "ng-model" => "ctrl.contacts", :placeholder => "Insert ingredient"}
+      -# %md-list.fixedRows
+      -#   %md-subheader.md-no-sticky Contacts
+      -#   %md-list-item.md-2-line.contact-item{"ng-if" => "ctrl.contacts.indexOf(contact) < 0", "ng-repeat" => "(index, contact) in ctrl.allContacts"}
+      -#     %img.md-avatar{:alt => "{{contact.name}}", "ng-src" => "{{contact.icon}}"}/
+      -#     .md-list-item-text.compact
+      -#       %h3 {{contact.name}}
+      -#   %md-list-item.md-2-line.contact-item.selected{"ng-repeat" => "(index, contact) in ctrl.contacts"}
+      -#     %img.md-avatar{:alt => "{{contact.name}}", "ng-src" => "{{contact.icon}}"}/
+      -#     .md-list-item-text.compact
+      -#       %h3 {{contact.name}}
+    // Search ingredient
+    -# %div{layout: "row"}
+    -#   %div{flex: '50'}
+    -#     %div
+    -#       %md-text-float.margin-left-20{:label => "Search ingredients", "ng-model" => "form_ingredient.description", style: 'margin-top:0;display:inline-block'}
+    -#       %span.glyphicon.glyphicon-search.margin-top-15.cursor{style: 'display:inline-block;color:#999', "ng-click" => "searchIngredient()"}
+    -#     %div.margin-left-5
+    -#       %span{"ng-repeat" => "ig in ingredients track by $index"}
+    -#         %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}")',"ng-click" => "add_ingredients_in_box($index)"}
+    -#           %span.glyphicon.glyphicon-picture.font-24{style: 'color:#999;line-height:63px;', 'ng-show' => 'ig.icon == ""'}
+    -#   %div{flex: '50'}
+    -#     %div.margin-left-15.margin-top-30
+    -#       %div.margin-left-15.roboto.light.margin-top-20{style: 'color:#666'} BOX INGREDIENTS ({{recipe.ingredients.length}})
+    -#       %span{"ng-repeat" => "ig in recipe.ingredients track by $index"}
+    -#         %md-content.md-whiteframe-z1.ingredient-windows-36.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}")',"ng-click" => "rm_ingredients_in_box($index)"}
+    -#           %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" == ig.icon'}
+  %div
+    // Parts ingredient
+    %div{layout: "row", "layout-wrap" => ""}
+      %div{flex: '50', "ng-repeat" => "ig_desc in recipe.ingredients_describe track by $index"}
         %div
-          %md-input-container{flex: ''}
-            %div.margin-top-15{style: "padding:0 15px"}
-              %span.font-12{style: 'color:#29B6F6'} Recipe description
-              %textarea.msd-elastic.step-description.font-14.margin-bottom-5.blue-bottom-border{"ng-model" => "recipe.description", placeholder: "Short recipe description (200 characters)",  "md-maxlength"=>"200"}
-        %div.margin-top-15
-          %md-text-float.margin-left-20{:label => "How many people ?", "ng-model" => "recipe.people", style: 'margin-top:0;'}
-        %div.margin-left-20{layout: 'row', "layout-wrap" => ""}
-          %div.margin-top-15{style: 'width:100%'}
-            PREPARATION TIME
-          %div{flex: '50'}
-            %md-text-float.w100.margin-right-20{:label => "hours", "ng-model" => "recipe.preparation.h", style: 'margin-top:0;'}
-          %div{flex: '50'}
-            %md-text-float.w100.margin-right-20{:label => "minutes", "ng-model" => "recipe.preparation.m", style: 'margin-top:0;'}
-        %div.margin-left-20{layout: 'row', "layout-wrap" => ""}
-          %div.margin-top-15{style: 'width:100%'}
-            TOTAL TIME
-          %div{flex: '50'}
-            %md-text-float.w100.margin-right-20{:label => "hours", "ng-model" => "recipe.total.h", style: 'margin-top:0;'}
-          %div{flex: '50'}
-            %md-text-float.w100.margin-right-20{:label => "minutes", "ng-model" => "recipe.total.m", style: 'margin-top:0;'}
-    %div
-      // Search ingredient
-      %div{layout: "row"}
-        %div{flex: '50'}
-          %div
-            %md-text-float.margin-left-20{:label => "Search ingredients", "ng-model" => "form_ingredient.description", style: 'margin-top:0;display:inline-block'}
-            %span.glyphicon.glyphicon-search.margin-top-15.cursor{style: 'display:inline-block;color:#999', "ng-click" => "searchIngredient()"}
-          %div.margin-left-5
-            %span{"ng-repeat" => "ig in ingredients track by $index"}
-              %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}")',"ng-click" => "add_ingredients_in_box($index)"}
-                %span.glyphicon.glyphicon-picture.font-24{style: 'color:#999;line-height:63px;', 'ng-show' => 'ig.icon == ""'}
-        %div{flex: '50'}
-          %div.margin-left-15.margin-top-30
-            %div.margin-left-15.roboto.light.margin-top-20{style: 'color:#666'} BOX INGREDIENTS ({{recipe.ingredients.length}})
-            %span{"ng-repeat" => "ig in recipe.ingredients track by $index"}
-              %md-content.md-whiteframe-z1.ingredient-windows-36.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}")',"ng-click" => "rm_ingredients_in_box($index)"}
-                %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" == ig.icon'}
-    %div
-      // Parts ingredient
+          %md-text-float.margin-left-20{:label => "Title", "ng-model" => "recipe.ingredients_describe[$index].title"}
+        %div.margin-top-5{style: "padding:0 15px"}
+          %span.font-18.margin-bottom-30{style: 'color:#333'} Quantity
+          %textarea.margin-top-20.msd-elastic.step-description.margin-bottom-5{"ng-model" => "recipe.ingredients_describe[$index].description", placeholder: "List of quantity and ingredients"}
+  %div.step.padding-bottom-5{"ng-repeat" => "step in recipe.steps track by $index"}
+    %div.step-header{layout: 'row', "layout-align" => "start center"}
+      %div.font-24.roboto.bold.step-title
+        STEP {{$index + 1}}
+      %md-button.md-primary.step-button.food-dark-red{"ng-click" => "remove_step($index)"} REMOVE STEP
+    %textarea.msd-elastic.step-description.margin-top-15.margin-bottom-5{"ng-model" => "recipe.steps[$index]", placeholder: "Please enter your step description"}
+  %div.step
+    %div.step-header
+      %span.font-24.roboto.bold.step-title STEP {{recipe.steps.length + 1}}
+      %md-button.md-primary.step-button{"ng-click" => "add_step()"} ADD STEP
+  %div.step
+    %div.step-header
+      %div.font-18.roboto.bold.step-title.margin-top-15.margin-bottom-10 LABELS
       %div{layout: "row", "layout-wrap" => ""}
-        %div{flex: '50', "ng-repeat" => "ig_desc in recipe.ingredients_describe track by $index"}
-          %div 
-            %md-text-float.margin-left-20{:label => "Title", "ng-model" => "recipe.ingredients_describe[$index].title"}
-          %div.margin-top-5{style: "padding:0 15px"}
-            %span.font-12{style: 'color:#29B6F6'} Description
-            %textarea.msd-elastic.step-description.margin-bottom-5{"ng-model" => "recipe.ingredients_describe[$index].description", placeholder: "List of quantity and ingredients"}
-    %div.step.padding-bottom-5{"ng-repeat" => "step in recipe.steps track by $index"}
-      %div.step-header{layout: 'row', "layout-align" => "start center"}
-        %div.font-24.roboto.bold.step-title
-          STEP {{$index + 1}}
-        %md-button.md-primary.step-button.food-dark-red{"ng-click" => "remove_step($index)"} REMOVE STEP
-      %textarea.msd-elastic.step-description.margin-top-15.margin-bottom-5{"ng-model" => "recipe.steps[$index]", placeholder: "Please enter your step description"}
-    %div.step
-      %div.step-header
-        %span.font-24.roboto.bold.step-title STEP {{recipe.steps.length + 1}}
-        %md-button.md-primary.step-button{"ng-click" => "add_step()"} ADD STEP
-    %div.step
-      %div.step-header
-        %div.font-18.roboto.bold.step-title.margin-top-15.margin-bottom-10 LABELS
-        %div{layout: "row", "layout-wrap" => ""}
-          %div{"ng-repeat" => "label in labels", flex: '20'}
-            %md-checkbox{"ng-model"=>"label.c", "aria-label"=>"label.name"}
-              {{label.name}}
-        %div.font-18.roboto.bold.step-title.margin-top-30.margin-bottom-10 BANN LIST
-        %div{layout: "row", "layout-wrap" => ""}
-          %div{"ng-repeat" => "label in denied", flex: '20'}
-            %md-checkbox.md-warn{"ng-model"=>"label.c", "aria-label"=>"label.name"}
-              {{label.name}}
-    %div.text-right.padding-top-10.padding-bottom-5.top-border
-      %div{layout: "row", "layout-align" => "space-between center"}
-        %div
-          %md-button.md-primary{style: 'padding: 5px 15px;color:#BB2743'} REMOVE
-        %div
-          %md-button.md-primary{style: 'padding: 5px 15px'} CANCEL
-          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "validate()"} VALIDATE
+        %div{"ng-repeat" => "label in labels", flex: '20'}
+          %md-checkbox{"ng-model"=>"label.c", "aria-label"=>"label.name"}
+            {{label.name}}
+      %div.font-18.roboto.bold.step-title.margin-top-30.margin-bottom-10 BANN LIST
+      %div{layout: "row", "layout-wrap" => ""}
+        %div{"ng-repeat" => "label in denied", flex: '20'}
+          %md-checkbox.md-warn{"ng-model"=>"label.c", "aria-label"=>"label.name"}
+            {{label.name}}
+  %div.text-right.padding-top-20.top-border.padding-right-20
+    %div{layout: "row", "layout-align" => "space-between center"}
+      %div
+        %md-button.md-primary{style: 'color:#777',"ng-click" => "locate('/recipes/users/ok')"}
+          %i.fa.fa-arrow-left.margin-right-5
+          my recipe
+      %div
+        %md-button.md-primary.margin-left-10{"ng-click" => "validate()", style: 'padding:0 15px'}
+          %i.fa.fa-check.margin-right-5
+          VALIDATE

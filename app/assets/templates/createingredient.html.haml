@@ -19,9 +19,9 @@
           %label Name
           %input{"ng-model" => "ingredient.name"}
     %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
-      %md-button.md-primary{style: '', "ng-click" => "cancel()"}
+      %md-button.md-nothing{style: 'color:#777', "ng-click" => "cancel()"}
         %i.fa.fa-undo.margin-right-5
         Cancel
-      %md-button.md-primary.margin-left-10{"ng-click" => "create_ingredient()", style: "color:green;"}
+      %md-button.md-primary.margin-left-10{"ng-click" => "create_ingredient()"}
         %i.fa.fa-check.margin-right-5
         Validate

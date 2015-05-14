@@ -1,11 +1,15 @@
 .form-group{"ng-show" => "error != ''"}
   .alert.alert-danger{role: 'alert'}
-    %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"} 
+    %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
     {{error}}
 .form-group
-  %md-text-float.md-primary{:label => "Email", "ng-model" => "email"}
+  %md-input-container
+    %label Email
+    %input{"ng-model" => "email"}
 .form-group
-  %md-text-float.md-primary{:label => "Password", "ng-model" => "password", type: 'password'}
+  %md-input-container
+    %label Password
+    %input{"ng-model" => "password", type: 'password'}
 %div.text-right.margin-top-10
   %md-button.revert.fleft{href: '\#signin'} Sign in
   %md-button{"ng-click" => "send()"} connection

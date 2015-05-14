@@ -1,15 +1,24 @@
-angular.module('app').controller("createrecipeCtrl", (FileUploader, $scope, $location, $cookieStore, authorization, api, ingredientService, recipeService)->
+angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $location, $cookieStore, authorization, api, ingredientService, recipeService)->
     console.log 'createrecipesCtrl running'
     $scope.template = 'views/createrecipe.html'
     $scope.error = ''
     $scope.form_ingredient = {description: ""}
+    $scope.ingredientPicture = undefined
+
+    $scope.show_picture = () ->
+      if $scope.ingredientPicture != undefined
+        return "data:" + $scope.ingredientPicture.filetype + ";base64," + $scope.ingredientPicture.base64
+      else if $scope.recipe.icon != undefined && $scope.recipe.icon.length > 0
+        return $scope.recipe.icon
+      else
+        console.log($scope.ingredientPicture)
 
     $scope.data = {
       offset : 0
       limit : 8
     }
 
-    $scope.recipe = {"image": "","title":"Fabulous chocolat pie","description":"Le paradis du chocolat","people": 6,"preparation": {"h": 0, "m": 0}, "total": {"h": 0, "m": 0}, ingredients: [], steps: [], ingredients_describe: [{title: "", description: ""}]}
+    $scope.recipe = {"image": "","title":"Fabulous chocolat pie","description":"Le paradis du chocolat","people": 6,"preparation": {"h": 0, "m": 0}, "total": {"h": 0, "m": 0}, "time": "1h00", ingredients: [], steps: [], ingredients_describe: [{title: "", description: ""}]}
     $scope.ingredients = []
     $scope.labels = [{'c': false, 'name': 'breakfast & brunch'},  {'c': false, 'name': 'appetizer'},
                     {'c': false, 'name': 'dessert'},              {'c': false, 'name': 'healty'},
@@ -24,21 +33,12 @@ angular.module('app').controller("createrecipeCtrl", (FileUploader, $scope, $loc
                       {'c': false, 'name': 'milk'},     {'c': true, 'name': 'halal'},
                       {'c': true, 'name': 'kascher'}]
 
-    $scope.get_url_upload = () ->
-      'http://localhost:8080/pictures/'
 
     $scope.image_path = (img) ->
       if img == ''
         ''
       else
         img
-
-    $scope.uploader_avatar = new FileUploader();
-    $scope.uploader_avatar.url = $scope.get_url_upload()
-    $scope.uploader_avatar.onAfterAddingFile = () ->
-      this.uploadAll()
-    $scope.uploader_avatar.onSuccessItem = (item, response, status, headers) ->
-      $scope.recipe.image = response.url
 
     $scope.add_step = () ->
       $scope.recipe.steps.push ""

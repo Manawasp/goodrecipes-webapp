@@ -106,6 +106,34 @@ md-content.footer {
   }
 }
 
+.md-contact-chips .md-chips .md-chip .md-contact-avatar img {
+  width:4rem !important;
+  height:4rem !important;
+  border-radius: 2rem !important;
+  margin-left:-3px !important;
+}
+.md-contact-suggestion img {
+  width:4rem !important;
+  margin-top:0.8rem;
+  vertical-align: top;
+}
+.md-chips .md-chip-input-container input[type="text"] {
+  height:4rem !important;
+  line-height:4rem !important;
+}
+md-chips.md-default-theme .md-chip {
+  margin-right:20px !important;
+}
+md-chips.md-default-theme .md-chips.md-focused, md-chips.md-default-theme .md-chips  {
+  box-shadow: none !important;
+}
+.md-chips .md-chip {
+  height:4rem;
+  line-height:4rem;
+}
+.md-chips .md-chip .md-chip-remove md-icon {
+  margin-top: -4px;
+}
 .print-title {
   color: #999;
 }

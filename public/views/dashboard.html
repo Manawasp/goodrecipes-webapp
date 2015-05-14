@@ -33,25 +33,27 @@
           </md-button>
         </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-          <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: lowercase;'>
+          <md-button style='text-align:left;text-transform: uppercase;'>
             <span class='margin-right-5 margin-left-5'>
               <img src='/images/chef.png' style='width:24px;height:24px'>
             </span>
-            Add new recipe
+            recipes
+          </md-button>
+          <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: lowercase;color:#444'>
+            <i class='fa fa-pencil margin-left-30 margin-right-15'></i>
+            create new one
           </md-button>
           <md-button ng-click="locate('/recipes/users/ok')" style='text-align:left;text-transform: lowercase;'>
-            <span class='margin-right-5 margin-left-5'>
-              <img src='/images/plate.png' style='width:24px;height:24px'>
-            </span>
-            See my recipes
+            <i class='fa fa-eye margin-left-30 margin-right-15'></i>
+            my recipe
           </md-button>
         </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-          <md-button ng-click="locate('ingredients')" style='text-align:left;text-transform: lowercase;'>
+          <md-button ng-click="locate('ingredients')" style='text-align:left;'>
             <span class='margin-right-5 margin-left-5'>
               <img src='/images/ingredient.png' style='width:24px;height:24px'>
             </span>
-            Manage ingredients
+            ingredients
           </md-button>
         </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
@@ -63,45 +65,36 @@
       </md-content>
     </md-sidenav>
     <md-content flex='' layout-padding='' style='padding:0;height:100%;'>
-      <md-toolbar class='food-api-theme md-default-theme' layout='column' style='padding:0'>
-        <div class='md-toolbar-tools no-padding' flex='100' layout='column' style='height:114px' tabindex='0'>
-          <div class='no-margin' flex='100' layout='column'>
-            <div layout-align='space-between center' layout='row' style='height:95px'>
-              <div>
-                <span class='font-36 margin-left-40 padding-left-40'>
-                  Actuality
-                </span>
-              </div>
-              <div>
-                <md-input-container class='food-api-theme'>
-                  <label>"What do you want to eat ?"</label>
-                  <input ng-model='search_name'>
-                </md-input-container>
-              </div>
-              <div layout-align='center center' layout='row'>
-                <div layout='column'>
-                  <div class='text-right font-14 roboto bold'>
-                    {{user.pseudo || "Manawasp"}}
-                  </div>
-                  <div class='text-center font-12'>
-                    {{user.email || "manawasp@gmail.com"}}
-                  </div>
+      <md-content layout-align='space-between center' layout='row' style='border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;'>
+        <div style='line-height: 62px'>
+          <a class='cursor padding-left-30 padding-right-30' style='color:#333;border-right:1px solid #eee;display:inline-block;'>
+            <i class='fa fa-bars fa-lg'></i>
+          </a>
+          <i class='fa fa-search fa-lg padding-left-30' style='color:#aaa'></i>
+          <input class='padding-left-20 font-16' placeholder='What do you want to cook today ?' style='width:300px;border:0;' type='text'>
+        </div>
+        <div layout='column'>
+          <div class='padding-left-20' layout-align='space-between center' layout='row' style='border-left:1px solid #eee;'>
+            <div layout-align='center center' layout='row'>
+              <div layout='column'>
+                <div class='text-right font-14 roboto'>
+                  {{user.pseudo || "Manawasp"}}
                 </div>
-                <a class='margin-left-10 margin-right-20' ng-click="locate('moments/' + user.id)">
-                  <button style='width:46px;height:46px;padding:0;border-radius:23px'>
-                    <img class='profile-avatar' src='{{avatar}}' style='width:46px;height:46px;padding:0;margin-left:-2px;margin-top:-2px;border-radius:23px'>
-                      <div flex=''></div>
-                    </img>
-                  </button>
-                  <!-- %a.font-36{href:'',"ng-click"=>"toggleLeft()"} -->
-                </a>
+                <div class='text-center font-11 roboto' style='color:#999'>
+                  {{user.email || "manawasp@gmail.com"}}
+                </div>
               </div>
+              <a class='margin-left-10 margin-right-20' ng-click="locate('moments/' + user.id)">
+                <button style='width:36px;height:36px;padding:0;border-radius:18px'>
+                  <img class='profile-avatar' src='{{avatar}}' style='width:36px;height:36px;padding:0;margin-left:-2px;margin-top:-2px;border-radius:18px'>
+                </button>
+              </a>
             </div>
           </div>
         </div>
-      </md-toolbar>
+      </md-content>
       <md-content class='no-bg md-default-theme' layout-align='center center' layout='column' md-scroll-y=''>
-        <md-content class='no-bg' ng-include='template' style='width:100%;padding:20px'></md-content>
+        <md-content class='no-bg' ng-include='template' style='width:100%;padding:20px 20px 10px 20px'></md-content>
       </md-content>
     </md-content>
   </section>

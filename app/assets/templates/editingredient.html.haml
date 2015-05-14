@@ -14,11 +14,19 @@
             Name must be unique.
           %span{'ng-class' => "{'food-error' : error == 'image'}"}
             You must be choose and upload a picture
-        %md-text-float{:label => "Name", "ng-model" => "ingredient.name"}
+        %md-input-container
+          %label Name
+          %input{"ng-model" => "ingredient.name"}
     %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
       %div{layout: "row", "layout-align" => "space-between center"}
         %div
-          %md-button.md-primary{style: 'padding: 5px 15px;color:#BB2743'} REMOVE
+          %md-button.md-warn
+            %i.fa.fa-close.margin-right-5{"ng-click" => "cancel()"}
+            REMOVE
         %div
-          %md-button.md-primary{style: 'padding: 5px 15px', "ng-click" => "cancel()"} CANCEL
-          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "update_ingredient()"} VALIDATE
+          %md-button.md-nothing{"ng-click" => "cancel()", style: 'color:#777'}
+            %i.fa.fa-undo.margin-right-5
+            CANCEL
+          %md-button.md-primary.margin-left-10{"ng-click" => "update_ingredient()"}
+            %i.fa.fa-check.margin-right-5
+            VALIDATE

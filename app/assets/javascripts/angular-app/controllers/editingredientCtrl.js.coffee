@@ -1,4 +1,4 @@
-angular.module('app').controller("editingredientCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
+angular.module('app').controller("editingredientCtrl", ($timeout, $q, $mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
   $scope.ingredient = ingredientService.getCurrent()
   $scope.view = ingredientService.getView()
   $scope.error = ''
