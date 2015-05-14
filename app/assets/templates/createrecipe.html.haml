@@ -1,9 +1,10 @@
 %div
-  %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20{style: "width:100%"}
+  %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-30{style: "width:100%"}
     CREATE RECIPE
-  %div.margin-top-20.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20{style: "width:100%", layout: "row", "layout-align" => "space-between center"}
+  %div.margin-top-30.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20{style: "width:100%", layout: "row", "layout-align" => "space-between center"}
     %div{flex: 60}
-      %input{style:"border:0;color:#555;font-weight:700;width:100%","ng-model" => "recipe.title", placeholder: 'Enter recipe name...'}
+      %i.fa.fa-newspaper-o{style: "float:left;padding-top:7px;color:#333;"}
+      %input{style:"margin-left:10px;border:0;color:#333;width:90%","ng-model" => "recipe.title", placeholder: 'Enter recipe name...'}
     %div.text-right.padding-right-20{flex: 40}
       %i.fa.fa-group
       %input{style:"width:38px;border:0;color:#555;font-weight:700;","ng-model" => "recipe.people", maxlength: "2"}
@@ -19,8 +20,8 @@
   %div{layout: "row"}
     %div{flex: '50', layout: 'column'}
       %div.margin-right-20
+        %div.food-dark-red.font-18.roboto.bold.uppercase Description
         %md-input-container{flex: ''}
-          %label.font-24 Description
           %textarea{"ng-model" => "recipe.description", columns: "1", "md-maxlength" => "500", style: "min-height:330px"}
     %div{flex: '50'}
       %md-content.fileUpload.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: "background-image: url('{{ingredient.image ||  'data:' + ingredientPicture.filetype + ';base64,' + ingredientPicture.base64}}')"}
@@ -45,7 +46,7 @@
       -#     %md-text-float.w100.margin-right-20{:label => "minutes", "ng-model" => "recipe.total.m", style: 'margin-top:0;'}
   %div.chipsdemoContactChips{"ng-app" => "MyApp", "ng-controller"=>"ContactChipDemoCtrl as ctrl", layout: "column"}
     %md-content.md-padding.autocomplete{:layout => "column"}
-      %p.font-18 Ingredients
+      %p.font-18.roboto.bold.food-dark-red.uppercase Ingredients
       %md-contact-chips{"filter-selected" => "ctrl.filterSelected", "md-contact-email" => "email", "md-contact-image" => "icon", "md-contact-name" => "name", "md-contacts" => "ctrl.querySearch($query)", "md-require-match" => "", "ng-model" => "ctrl.contacts", :placeholder => "Insert ingredient"}
       -# %md-list.fixedRows
       -#   %md-subheader.md-no-sticky Contacts
@@ -80,26 +81,26 @@
         %div
           %md-text-float.margin-left-20{:label => "Title", "ng-model" => "recipe.ingredients_describe[$index].title"}
         %div.margin-top-5{style: "padding:0 15px"}
-          %span.font-18.margin-bottom-30{style: 'color:#333'} Quantity
+          %span.margin-bottom-30.font-18.roboto.bold.food-dark-red.uppercase Quantity
           %textarea.margin-top-20.msd-elastic.step-description.margin-bottom-5{"ng-model" => "recipe.ingredients_describe[$index].description", placeholder: "List of quantity and ingredients"}
   %div.step.padding-bottom-5{"ng-repeat" => "step in recipe.steps track by $index"}
-    %div.step-header{layout: 'row', "layout-align" => "start center"}
-      %div.font-24.roboto.bold.step-title
+    %div.step-header
+      %div{style: 'float:right'}
+        %md-button.md-primary.step-button{"ng-click" => "add_step()", "ng-show" => "$index == (recipe.steps.length -1)"}
+          ADD STEP
+        %md-button.md-primary.step-button.food-dark-red{"ng-click" => "remove_step($index)", "ng-show" => "recipe.steps.length != 1"}
+          REMOVE
+      %div.font-18.roboto.bold.food-dark-red.uppercase
         STEP {{$index + 1}}
-      %md-button.md-primary.step-button.food-dark-red{"ng-click" => "remove_step($index)"} REMOVE STEP
     %textarea.msd-elastic.step-description.margin-top-15.margin-bottom-5{"ng-model" => "recipe.steps[$index]", placeholder: "Please enter your step description"}
   %div.step
     %div.step-header
-      %span.font-24.roboto.bold.step-title STEP {{recipe.steps.length + 1}}
-      %md-button.md-primary.step-button{"ng-click" => "add_step()"} ADD STEP
-  %div.step
-    %div.step-header
-      %div.font-18.roboto.bold.step-title.margin-top-15.margin-bottom-10 LABELS
+      %div.font-18.roboto.bold.food-dark-red.uppercase.margin-top-15.margin-bottom-10 LABELS
       %div{layout: "row", "layout-wrap" => ""}
         %div{"ng-repeat" => "label in labels", flex: '20'}
           %md-checkbox{"ng-model"=>"label.c", "aria-label"=>"label.name"}
             {{label.name}}
-      %div.font-18.roboto.bold.step-title.margin-top-30.margin-bottom-10 BANN LIST
+      %div.font-18.roboto.bold.food-dark-red.uppercase.margin-top-30.margin-bottom-10 BANN LIST
       %div{layout: "row", "layout-wrap" => ""}
         %div{"ng-repeat" => "label in denied", flex: '20'}
           %md-checkbox.md-warn{"ng-model"=>"label.c", "aria-label"=>"label.name"}

@@ -18,7 +18,7 @@ angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $loc
       limit : 8
     }
 
-    $scope.recipe = {"image": "","title":"Fabulous chocolat pie","description":"Le paradis du chocolat","people": 6,"preparation": {"h": 0, "m": 0}, "total": {"h": 0, "m": 0}, "time": "1h00", ingredients: [], steps: [], ingredients_describe: [{title: "", description: ""}]}
+    $scope.recipe = {"image": "","title":"Fabulous chocolat pie","description":"Le paradis du chocolat","people": 6,"preparation": {"h": 0, "m": 0}, "total": {"h": 0, "m": 0}, "time": "1h00", ingredients: [], steps: [""], ingredients_describe: [{title: "", description: ""}]}
     $scope.ingredients = []
     $scope.labels = [{'c': false, 'name': 'breakfast & brunch'},  {'c': false, 'name': 'appetizer'},
                     {'c': false, 'name': 'dessert'},              {'c': false, 'name': 'healty'},
@@ -44,7 +44,8 @@ angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $loc
       $scope.recipe.steps.push ""
 
     $scope.remove_step = (id) ->
-      $scope.recipe.steps.splice(id, 1)
+      if $scope.recipe.steps.length > 1
+        $scope.recipe.steps.splice(id, 1)
 
     $scope.add_ingredients_describe = () ->
       obj = {title: "", description: ""}

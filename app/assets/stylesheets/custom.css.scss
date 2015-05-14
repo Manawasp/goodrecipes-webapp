@@ -161,7 +161,6 @@ textarea.msd-elastic {
 .step-button {
   @extend .font-12, .margin-left-20;
   margin-top:3px;
-  padding: 4px 12px;
 }
 
 body {
@@ -215,6 +214,9 @@ a.quick-access-search {
 
 .food-dark-red {
   color: #BB2743;
+}
+.uppercase {
+  text-transform: uppercase;
 }
 .food-error {
   color: #BB2743;
