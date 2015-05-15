@@ -24,8 +24,8 @@
         %md-input-container{flex: ''}
           %textarea{"ng-model" => "recipe.description", columns: "1", "md-maxlength" => "500", style: "min-height:330px"}
     %div{flex: '50'}
-      %md-content.fileUpload.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: "background-image: url('{{ingredient.image ||  'data:' + ingredientPicture.filetype + ';base64,' + ingredientPicture.base64}}')"}
-        %input.upload{type: "file", "ng-model" => 'ingredientPicture', "base-sixty-four-input" => "", style: 'height: 400px;width:100%;'}
+      %md-content.fileUpload.md-whiteframe-z1.ingredient-windows-90p.cursor.text-center{style: "background-image: url('{{show_picture()}}')"}
+        %input.upload{type: "file", "ng-model" => 'recipe.recipePict', "base-sixty-four-input" => "", style: 'height: 400px;width:100%;'}
       -# -# %span.font-12{style: 'color:#29B6F6'} Recipe description
       -# %textarea.msd-elastic.step-description.font-14.margin-bottom-5.blue-bottom-border{"ng-model" => "recipe.description", placeholder: "Short recipe description (200 characters)",  "md-maxlength"=>"200"}
       -# %div.margin-top-15

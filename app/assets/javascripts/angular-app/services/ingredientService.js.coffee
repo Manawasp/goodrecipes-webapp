@@ -2,9 +2,14 @@ angular.module('app')
   .factory('ingredientService', ($http, $q, apiService) ->
       current_ingredient = {}
       ingredientsCarabage = []
+      ingredientsSearchCarbage = []
       view = false
 
       return (
+        clean: () ->
+          ingredientsSearchCarbage.length = 0
+        getSearch: () ->
+          return ingredientsSearchCarbage
         create: (data) ->
           req = $http.post(apiService.url() + '/ingredients', data)
           return req
