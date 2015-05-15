@@ -3,6 +3,7 @@ angular.module('app').controller('ContactChipDemoCtrl', DemoCtrl);
 function DemoCtrl ($timeout, $q, authorization, api, ingredientService) {
   var self = this;
 
+  self.readonly = true;
   self.querySearch = querySearch;
   self.allContacts = loadContacts();
   self.contacts = ingredientService.getSearch();
