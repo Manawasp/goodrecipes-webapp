@@ -29,8 +29,8 @@
       </div>
     </div>
     <div flex='50'>
-      <md-content class='fileUpload md-whiteframe-z1 ingredient-windows-90p cursor text-center' style="background-image: url('{{ingredient.image ||  'data:' + ingredientPicture.filetype + ';base64,' + ingredientPicture.base64}}')">
-        <input base-sixty-four-input='' class='upload' ng-model='ingredientPicture' style='height: 400px;width:100%;' type='file'>
+      <md-content class='fileUpload md-whiteframe-z1 ingredient-windows-90p cursor text-center' style="background-image: url('{{show_picture()}}')">
+        <input base-sixty-four-input='' class='upload' ng-model='recipe.recipePict' style='height: 400px;width:100%;' type='file'>
       </md-content>
     </div>
   </div>

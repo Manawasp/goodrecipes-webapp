@@ -3,16 +3,8 @@ angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $loc
     $scope.template = 'views/createrecipe.html'
     $scope.error = ''
     $scope.form_ingredient = {description: ""}
-    $scope.ingredientPicture = undefined
+    $scope.recipePict = undefined
     $scope.type = 'create'
-
-    $scope.show_picture = () ->
-      if $scope.ingredientPicture != undefined
-        return "data:" + $scope.ingredientPicture.filetype + ";base64," + $scope.ingredientPicture.base64
-      else if $scope.recipe.icon != undefined && $scope.recipe.icon.length > 0
-        return $scope.recipe.icon
-      else
-        console.log($scope.ingredientPicture)
 
     $scope.data = {
       offset : 0
@@ -34,12 +26,15 @@ angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $loc
                       {'c': false, 'name': 'milk'},     {'c': true, 'name': 'halal'},
                       {'c': true, 'name': 'kascher'}]
 
-
-    $scope.image_path = (img) ->
-      if img == ''
-        ''
+    $scope.show_picture = () ->
+      if $scope.recipe.recipePict != undefined
+        return "data:" + $scope.recipe.recipePict.filetype + ";base64," + $scope.recipe.recipePict.base64
+      else if $scope.recipe.image != undefined && $scope.recipe.image.length > 0
+        return $scope.recipe.image
       else
-        img
+        console.log("No choose")
+
+    ingredientService.clean()
 
     $scope.add_step = () ->
       $scope.recipe.steps.push ""
@@ -48,89 +43,102 @@ angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $loc
       if $scope.recipe.steps.length > 1
         $scope.recipe.steps.splice(id, 1)
 
-    $scope.add_ingredients_describe = () ->
-      obj = {title: "", description: ""}
-      $scope.recipe.ingredients_describe.push obj
-
-    $scope.remove_ingredients_describe = (id) ->
-      $scope.recipe.ingredients_describe.splice(id, 1)
-
-    $scope.add_ingredients_in_box = (id) ->
-      if $scope.ingredients.length > id
-        for ig in $scope.recipe.ingredients
-          if $scope.ingredients[id].id && ig.id && $scope.ingredients[id].id == ig.id
-            # exist deja
-            return
-        obj = JSON.parse(JSON.stringify($scope.ingredients[id]));
-        $scope.recipe.ingredients.push obj
-
-    $scope.rm_ingredients_in_box = (id) ->
-      if $scope.recipe.ingredients.length > id
-        $scope.recipe.ingredients.splice(id, 1)
-
     $scope.validate = () ->
-      data = {"ingredients": [],"time_prep": {"h": 0, "m": 0}, "time_total": {"h": 0, "m": 0}}
-      if ($scope.recipe.preparation.h && $scope.recipe.preparation.h > 0)
-        data.time_prep.h = parseInt($scope.recipe.preparation.h)
-      if ($scope.recipe.preparation.m && $scope.recipe.preparation.m > 0)
-        data.time_prep.m = parseInt($scope.recipe.preparation.m)
-      if ($scope.recipe.total.h && $scope.recipe.total.h > 0)
-        data.time_total.h = parseInt($scope.recipe.total.h)
-      if ($scope.recipe.total.m && $scope.recipe.total.m > 0)
-        data.time_total.m = parseInt($scope.recipe.total.m)
+      data = {"id": $scope.recipe.id, "ingredients": [],"time_total": {"h": 0, "m": 0}, "parts": ""}
+      console.log("begin step")
+      if ($scope.recipe.time.length > 0)
+        res = $scope.recipe.time.split("h")
+        console.log(parseInt(1))
+        if res.length == 2
+          if parseInt(res[0]) == NaN || parseInt(res[0]) == 0
+            console.log("default so 0 h :" + res[0])
+            data.time_total.h = 0
+          else
+            data.time_total.h = parseInt(res[0])
+          if parseInt(res[1]) == NaN || parseInt(res[0]) == 0
+            console.log("default so 0 m :" + res[1])
+            data.time_total.m = 0
+          else
+            data.time_total.m = parseInt(res[1])
+          console.log("time time : " + data.time_total.h.toString() + "h" + data.time_total.m.toString())
+        else
+          # Error
+          console.log("Error: time bad format")
+      else
+        console.log("Error: time is empty")
+      console.log("step1!")
 
       data.title        = $scope.recipe.title
       data.description  = $scope.recipe.description
-      for element in $scope.recipe.ingredients
-        if element.id
-          data.ingredients.push element.id
+      console.log("step2bis!")
+
+      # debug if ingredients is empty
 
       data.people       = $scope.recipe.people || 0
       data.steps        = $scope.recipe.steps  || []
+      console.log("step3!")
 
       if $scope.recipe.image
         data.image = $scope.recipe.image
+      console.log("step4!")
 
-      if $scope.recipe.ingredients_describe && $scope.recipe.ingredients_describe[0]
-        data.parts      = $scope.recipe.ingredients_describe[0]
+      data.parts = $scope.recipe.parts
+      console.log("step5!")
 
       data.labels = []
       for element in $scope.labels
         if element.c == true
           data.labels.push element.name
+      console.log("step6!")
 
       data.blacklist = []
       for element in $scope.denied
         if element.c == true
           data.blacklist.push element.name
+      console.log("step7!")
 
       console.log(data)
+      console.log("Get ingredients :")
+      console.log(ingredientService.getSearch())
+      ig = ingredientService.getSearch()
+      for elem in ig
+        data.ingredients.push elem.id
 
       recipeService.create(data
-      ).success((data) ->
-        console.log "SUCCESS : CREATE RECIPE"
-        console.log data
-        $location.url('/recipes/show/' + data.recipe.id)
-      ).error((data) ->
-        console.log data
-        $scope.error = data.error
+      ).success((datares) ->
+        console.log "SUCCESS : Update RECIPE"
+        console.log datares
+        if ($scope.recipe.recipePict != undefined)
+          $scope.upload_picture(datares.recipe.id)
+        else
+          $location.url('/recipes/show/' + datares.recipe.id)
+      ).error((datares) ->
+        console.log datares
+        $scope.error = datares.error
       )
 
-    $scope.searchIngredient = () ->
-      ingredientService.search($scope.form_ingredient.description,
-                                [],
-                                [],
-                                [],
-                                $scope.data.offset,
-                                $scope.data.limit
-      ).success((data) ->
-        # console.log "success data in search ingredient"
-        # console.log data
-        $scope.ingredients = data.ingredients
-      ).error((data) ->
-        # console.log "error data in search ingredient"
-        # console.log data
-      )
-
-    $scope.searchIngredient()
+    $scope.upload_picture = (id) ->
+      console.log("need an upload of picture !")
+      $scope.error = ""
+      result = $scope.recipe.recipePict.filetype.split(/\//)
+      if result[0] == "image"
+        console.log("C'est une image !")
+        if result[1] != undefined && result[1] == "jpeg"
+          result[1] = "jpg"
+        if result[1] != undefined && (result[1] == "jpg" || result[1] == "png")
+          console.log("le type de l'image est valide")
+          dataPicture = {id: id, extend: result[1], picture: $scope.recipe.recipePict.base64}
+          recipeService.image(dataPicture).success((data) ->
+            console.log("Upload success image return :")
+            console.log(data)
+            $location.url('/recipes/show/' + id)
+          ).error((data) ->
+            console.log("Putain d'erreur :")
+            console.log(data)
+            $location.url('/recipes/show/' + id)
+          )
+        else
+          console.log("le type de l'image n'est pas valide")
+      else
+        console.log("Ce n'est pas une image :( !")
 )

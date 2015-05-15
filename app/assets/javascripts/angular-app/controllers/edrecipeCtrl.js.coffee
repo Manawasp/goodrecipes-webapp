@@ -1,10 +1,12 @@
-angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $scope, $location, authorization, api, recipeService)->
+angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $scope, $location, authorization, api, recipeService, ingredientService)->
     console.log 'editrecipesCtrl running'
 
     $scope.template = 'views/createrecipe.html'
-    $scope.type = 'edit'
     $scope.error = ''
     $scope.ingredients = []
+    $scope.ingredientPicture = undefined
+    $scope.type = 'edit'
+
     $scope.labels = [{'c': false, 'name': 'breakfast & brunch'},  {'c': false, 'name': 'appetizer'},
                     {'c': false, 'name': 'dessert'},              {'c': false, 'name': 'healty'},
                     {'c': false, 'name': 'main dish'},            {'c': false, 'name': 'pasta'},
@@ -18,6 +20,14 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
                       {'c': false, 'name': 'milk'},     {'c': false, 'name': 'halal'},
                       {'c': false, 'name': 'kascher'}]
 
+    $scope.show_picture = () ->
+      if $scope.recipe.recipePict != undefined
+        return "data:" + $scope.recipe.recipePict.filetype + ";base64," + $scope.recipe.recipePict.base64
+      else if $scope.recipe.image != undefined && $scope.recipe.image.length > 0
+        return $scope.recipe.image
+      else
+        console.log("No choose")
+
     $scope.add_step = () ->
       $scope.recipe.steps.push ""
 
@@ -28,7 +38,11 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
     syncData = (data) ->
       $scope.recipe = data.recipe
       console.log($scope.recipe)
-      data.recipe.time = $scope.recipe.time_total.h.toString() + "d" + $scope.recipe.time_total.m.toString()
+      if $scope.recipe.minutes == undefined || $scope.recipe.hours == undefined
+        data.recipe.time = "1h00"
+      else
+        addZero = if $scope.recipe.minutes < 10 then "0" else ""
+        data.recipe.time = $scope.recipe.hours.toString() + "h" + $scope.recipe.minutes.toString() + addZero
       $scope.author = data.user
       $scope.ingredients = data.ingredients
       # init steps if empty
@@ -49,6 +63,11 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
         for label in $scope.denied
           if label.name == rlab
             label.c = true
+      # sync ingredient
+      ingredientService.clean()
+      igs = ingredientService.getSearch()
+      for ig in data.ingredients
+        igs.push ig
 
     recipeService.get($routeParams.id
     ).success((data) ->
@@ -87,12 +106,6 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
       console.log("step2bis!")
 
       # debug if ingredients is empty
-      if $scope.recipe.ingredients is undefined
-        $scope.recipe.ingredients = []
-      for element in $scope.recipe.ingredients
-        if element.id
-          data.ingredients.push element.id
-      console.log("step2!")
 
       data.people       = $scope.recipe.people || 0
       data.steps        = $scope.recipe.steps  || []
@@ -118,14 +131,47 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
       console.log("step7!")
 
       console.log(data)
+      console.log("Get ingredients :")
+      console.log(ingredientService.getSearch())
+      ig = ingredientService.getSearch()
+      for elem in ig
+        data.ingredients.push elem.id
 
       recipeService.update(data
-      ).success((data) ->
+      ).success((datares) ->
         console.log "SUCCESS : Update RECIPE"
-        console.log data
-        $location.url('/recipes/show/' + data.recipe.id)
-      ).error((data) ->
-        console.log data
-        $scope.error = data.error
+        console.log datares
+        if ($scope.recipe.recipePict != undefined)
+          $scope.upload_picture(datares.recipe.id)
+        else
+          $location.url('/recipes/show/' + datares.recipe.id)
+      ).error((datares) ->
+        console.log datares
+        $scope.error = datares.error
       )
+
+    $scope.upload_picture = (id) ->
+      console.log("need an upload of picture !")
+      $scope.error = ""
+      result = $scope.recipe.recipePict.filetype.split(/\//)
+      if result[0] == "image"
+        console.log("C'est une image !")
+        if result[1] != undefined && result[1] == "jpeg"
+          result[1] = "jpg"
+        if result[1] != undefined && (result[1] == "jpg" || result[1] == "png")
+          console.log("le type de l'image est valide")
+          dataPicture = {id: id, extend: result[1], picture: $scope.recipe.recipePict.base64}
+          recipeService.image(dataPicture).success((data) ->
+            console.log("Upload success image return :")
+            console.log(data)
+            $location.url('/recipes/show/' + id)
+          ).error((data) ->
+            console.log("Putain d'erreur :")
+            console.log(data)
+            $location.url('/recipes/show/' + id)
+          )
+        else
+          console.log("le type de l'image n'est pas valide")
+      else
+        console.log("Ce n'est pas une image :( !")
 )

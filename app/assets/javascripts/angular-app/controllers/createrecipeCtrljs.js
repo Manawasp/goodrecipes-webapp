@@ -5,7 +5,7 @@ function DemoCtrl ($timeout, $q, authorization, api, ingredientService) {
 
   self.querySearch = querySearch;
   self.allContacts = loadContacts();
-  self.contacts = [self.allContacts[0]];
+  self.contacts = ingredientService.getSearch();
   self.filterSelected = true;
 
   /**
