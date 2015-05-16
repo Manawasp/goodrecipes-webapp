@@ -13,8 +13,11 @@ angular.module('app')
         latest: () ->
           req = $http.get(apiService.url() + '/homepage/latest')
           return req
-        random: () ->
-          req = $http.get(apiService.url() + '/homepage/random')
+        random: (rd) ->
+          datas = {}
+          if rd != undefined
+            datas.limit = rd
+          req = $http.get(apiService.url() + '/homepage/random', datas)
           return req
       )
   )

@@ -1,139 +1,111 @@
-<md-content class='md-whiteframe-z1 margin-top-30' flex='100' layout-align='start start' layout='column'>
-  <md-toolbar>
-    <div class='md-toolbar-tools no-padding food-api-silver' flex='100' layout='column' style='background-color:#E3E4E6' tabindex='0'>
-      <div class='margin-left-30 roboto medium font-24' style='color:#555'>
-        {{recipe.title}}
-      </div>
-    </div>
-  </md-toolbar>
-  <md-content layout='column' style='width:100%;padding:30px 20px 10px 20px;'>
-    <div layout='row'>
-      <div flex='65'>
-        <md-content class='md-whiteframe-z1 ingredient-windows-90p cursor text-center' style='background-image: url("{{image_path(recipe.image)}}")'>
-          <span class='glyphicon glyphicon-picture font-72' ng-show='recipe.image == ""' style='color:#999;line-height:372px;'></span>
-        </md-content>
-      </div>
-      <div flex='35' layout='column'>
-        <div class='margin-top-15 margin-bottom-10' style='padding:0 15px'>
-          <div class='font-16 roboto medium' style='color:#333'>Description</div>
-          <div class='step-description font-14 margin-top-10 margin-bottom-5 blue-bottom-border' style='color:#666'>
+<div>
+  <div class='print-title font-24 roboto light margin-top-15 margin-bottom-30 uppercase text-center' style='width:100%;color:#333;'>
+    <i class='fa fa-quote-left'></i>
+    <span class='roboto bold' style='font-family: Helvetica'>{{recipe.title}}</span>
+    <i class='fa fa-quote-right'></i>
+  </div>
+  <div class='margin-top-30 print-title margin-top-15 margin-bottom-20 text-center' style='width:100%'>
+    <i class='fa fa-group margin-right-5 fa-lg'></i>
+    <span class='font-16' style='color:#333'>{{recipe.people}}</span>
+    <i class='fa fa-history margin-left-15 margin-right-5 fa-lg'></i>
+    <span class='font-16' style='color:#333'>{{recipe.time}}</span>
+    <i class='fa fa-comments-o margin-left-15 margin-right-5 fa-lg'></i>
+    <span class='font-16' style='color:#333'>{{recipe.comments_length}}</span>
+    <span class='margin-left-30'>
+      <span class='mark xsmall margin-right-5' ng-class="{'valid': mark[$index] &lt;= recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+    </span>
+    <span class='font-16' style='color:#333'>{{recipe.mark}}</span>
+  </div>
+</div>
+<md-content layout='column' style='max-width:1140px;padding:30px 10px 10px 10px;margin-left:auto;margin-right:auto'>
+  <div>
+    <md-content class='md-whiteframe-z1 ingredient-windows-90p' style="background-image: url('{{recipe.image}}');width:100%;margin:0;"></md-content>
+  </div>
+  <div class='margin-top-30'>
+    <div layout-wrap='' layout='row'>
+      <div flex='100'>
+        <div class='margin-top-5' style='padding:0 15px'>
+          <div class='food-dark-red font-18 roboto bold uppercase'>Description</div>
+          <div class='margin-10'>
             {{recipe.description}}
           </div>
         </div>
-        <div class='margin-top-15' style='padding:0 15px'>
-          <div class='font-16 roboto medium margin-bottom-10' style='color:#333'>Informations</div>
-          <div class='margin-left-5 margin-top-15'>
-            <span style='display:inline-block;width:85px;color:#666'>Prep time</span>
-            <span class='recipe-time'>
-              <span class='roboto medium bold font-14' ng-show='recipe.time_prep.h &gt; 0'>
-                {{recipe.time_prep.h}} hours
-              </span>
-              <span class='roboto medium bold font-14' ng-show='recipe.time_prep.m &gt; 0'>
-                {{recipe.time_prep.m}} min
-              </span>
-            </span>
-          </div>
-          <div class='margin-left-5 margin-top-10'>
-            <span style='display:inline-block;width:85px;color:#666'>Total time</span>
-            <span class='recipe-time'>
-              <span class='roboto medium bold font-14' ng-show='recipe.time_total.h &gt; 0'>
-                {{recipe.time_total.h}} hours
-              </span>
-              <span class='roboto medium bold font-14' ng-show='recipe.time_total.m &gt; 0'>
-                {{recipe.time_total.m}} min
-              </span>
-            </span>
-          </div>
-          <div class='margin-left-5 margin-top-10'>
-            <span style='display:inline-block;width:85px;color:#666'>Ingredients</span>
-            <span class='roboto medium bold font-14'>
-              {{recipe.ingredients_length}}
-            </span>
-          </div>
-          <div class='margin-left-5 margin-top-10'>
-            <span style='color:#999'>
-              <span class='glyphicon glyphicon-user'></span>
-            </span>
-            <span class='roboto medium font-14 margin-left-5' style='color:#666;'>
-              {{recipe.people}}
-            </span>
-          </div>
-          <div class='margin-top-20'>
-            <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
-            <span class='font-11' style='line-height:24px'></span>
-            <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
-            <span class='font-11 margin-left-5' style='line-height:24px'>{{recipe.comments_length}}</span>
-          </div>
+      </div>
+    </div>
+  </div>
+  <div class='chipsdemoContactChips lock' layout='column' ng-app='MyApp' ng-controller='ContactChipDemoCtrl as ctrl'>
+    <md-content class='md-padding autocomplete' layout='column'>
+      <p class='font-18 roboto bold food-dark-red uppercase'>Ingredients</p>
+      <md-contact-chips filter-selected='ctrl.filterSelected' md-contact-email='email' md-contact-image='icon' md-contact-name='name' md-contacts='ctrl.querySearch($query)' md-require-match='' ng-model='ctrl.contacts' placeholder='Insert ingredient'></md-contact-chips>
+    </md-content>
+  </div>
+  <div>
+    <!-- / Parts ingredient -->
+    <div layout-wrap='' layout='row'>
+      <div flex='50'>
+        <div class='margin-top-5' style='padding:0 15px'>
+          <span class='margin-bottom-30 font-18 roboto bold food-dark-red uppercase'>Quantity</span>
+          <textarea class='margin-top-20 msd-elastic step-description margin-bottom-5' disabled='true' ng-model='recipe.parts' placeholder='List of quantity and ingredients' style='background-color:transparent'></textarea>
         </div>
       </div>
     </div>
-    <div>
-      <!-- / Search ingredient -->
-      <div class='margin-left-15 margin-top-20 margin-right-10'>
-        <div class='font-16 food-dark-red margin-bottom-10'>Ingredients</div>
-        <span ng-repeat='ig in ingredients'>
-          <md-content class='md-whiteframe-z1 ingredient-windows-64 cursor text-center' style='background-image: url("{{image_path(ig.icon)}}");margin-left:2px;margin-right:18px'>
-            <span class='glyphicon glyphicon-picture font-24' ng-show='ig.icon == ""' style='color:#999;line-height:63px;'></span>
-          </md-content>
-        </span>
+  </div>
+  <div class='step padding-bottom-5' ng-repeat='step in recipe.steps track by $index'>
+    <div class='step-header' layout-align='start center' layout='row'>
+      <div class='font-18 roboto bold food-dark-red uppercase'>
+        STEP {{$index + 1}}
       </div>
     </div>
-    <div>
-      <!-- / Parts ingredient -->
-      <div class='margin-left-10' layout-wrap='' layout='row'>
-        <div flex='50' ng-repeat='ig_desc in recipe.parts track by $index'>
-          <div class='font-16 roboto bold margin-left-10 margin-top-30 margin-bottom-5' style='color:#333'>
-            {{ig_desc.title}}
-          </div>
-          <div class='margin-top-10 margin-left-15'>
-            <textarea class='msd-elastic step-description margin-bottom-5' disabled='true' ng-model='ig_desc.description' placeholder='List of quantity and ingredients' style='background-color:transparent'></textarea>
-          </div>
-        </div>
+    <textarea class='msd-elastic step-description margin-top-15 margin-bottom-5' disabled='true' ng-model='step' placeholder='Please enter your step description' style='background-color:transparent'></textarea>
+  </div>
+  <div class='text-right padding-top-30 padding-bottom-5 top-border'>
+    <div layout-align='space-between center' layout='row'>
+      <div class='margin-left-10'>
+        <i class='fa fa-user fa-lg margin-right-5' style='color:#777'></i>
+        {{author.pseudo}}
+      </div>
+      <div>
+        <md-button class='md-primary padding-left-5' ng-click='markRecipe()'>
+          <i class='fa fa-thumbs-o-up fa-lg margin-right-5'></i>
+          MARK
+        </md-button>
+        <md-button class='md-primary margin-left-10 padding-left-5' ng-click='create_ingredient()'>
+          <i class='fa fa-comments fa-lg margin-right-5'></i>
+          COMMENT
+        </md-button>
       </div>
     </div>
-    <div class='step padding-bottom-5' ng-repeat='step in recipe.steps track by $index'>
-      <div class='step-header' layout-align='start center' layout='row'>
-        <div class='font-24 roboto bold step-title'>
-          STEP {{$index + 1}}
-        </div>
-      </div>
-      <textarea class='msd-elastic step-description margin-top-15 margin-bottom-5' disabled='true' ng-model='step' placeholder='Please enter your step description' style='background-color:transparent'></textarea>
-    </div>
-    <div class='text-right padding-top-10 padding-bottom-5 top-border'>
-      <div layout-align='space-between center' layout='row'>
-        <div class='margin-left-10'>
-          by {{author.pseudo}}
-        </div>
-        <div>
-          <md-button class='md-primary' ng-click='markRecipe()' style='padding: 5px 15px'>MARK</md-button>
-          <md-button class='md-primary margin-left-10' ng-click='create_ingredient()' style='padding: 5px 15px'>COMMENT</md-button>
-        </div>
-      </div>
-    </div>
-  </md-content>
+  </div>
 </md-content>
-<div class='print-title margin-left-20 font-24 roboto light margin-top-30 margin-bottom-20'>
+<div class='print-title margin-left-20 font-24 roboto light margin-top-30 margin-bottom-20' style='max-width:1140px;margin-left:auto;margin-right:auto'>
   Want to try more ?
 </div>
-<div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
-  <div flex='21' ng-repeat='morerecipe in more_recipe'>
-    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-      <div class='flat-image-100p cursor text-center' style='background-image: url("{{image_path(morerecipe.image)}}")'></div>
-      <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
-        <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
-        <div class='time font-12'>
-          <span ng-show='morerecipe.time_total.h != 0'>
-            {{morerecipe.time_total.h}} hour
-          </span>
-          <span ng-show='morerecipe.time_total.m != 0'>
-            {{morerecipe.time_total.m}} min
-          </span>
-        </div>
+<div class='margin-bottom-20' layout-margin='' layout-padding='' layout-wrap='' layout='row' style='text-align:justify;max-width:1140px;margin-left:auto;margin-right:auto'>
+  <div flex-gt-lg='30' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
+    <md-content class='md-whiteframe-z1 cursor' layout='column' ng-click='redir_recipe(morerecipe.id)' ng-show='$index &lt; 3'>
+      <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+      <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
+        <table style='width:95%;height:65px;padding-left:2.5%'>
+          <th>
+            <td>
+              <i class='fa fa-quote-left' style='color:#ccc'></i>
+              <span class='margin-left-5 margin-right-5'>{{morerecipe.title}}</span>
+              <i class='fa fa-quote-right' style='color:#ccc'></i>
+            </td>
+          </th>
+        </table>
       </div>
-      <div class='margin-left-10 margin-right-10 margin-bottom-5'>
-        <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
-        <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
-        <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comments_length}}</span>
+      <div class='padding-bottom-10 text-center' style='color:#777'>
+        <i class='fa fa-group margin-left-15 margin-right-5'></i>
+        <span class='font-16'>{{morerecipe.people}}</span>
+        <i class='fa fa-history margin-left-15 margin-right-5'></i>
+        <span class='font-16'>
+          {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
+        </span>
+        <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
+        <span class='font-16'>{{morerecipe.comments_length}}</span>
+        <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
+        <span class='font-16'>{{morerecipe.mark}}/5</span>
       </div>
     </md-content>
   </div>

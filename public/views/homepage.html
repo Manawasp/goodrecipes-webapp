@@ -2,7 +2,7 @@
   WEEK'S RECIPE
 </div>
 <md-content class='md-whiteframe-z1 margin-bottom-20' layout-align='start start' layout='column'>
-  <md-content class='cook-flat-bg' style='padding:20px 20px;width:100%;background-image: url("http://localhost:8080/pictures//3251-1vzfqvl.jpg")'>
+  <md-content class='cook-flat-bg' style='padding:20px 20px;width:100%;background-image: url("{{week_recipe.image}}")'>
     <div class='md-whiteframe-z1 cook-now' layout='column' style='background-color:white'>
       <div class='title'>
         {{week_recipe.title}}
@@ -57,84 +57,105 @@
     </div>
   </md-content>
 </md-content>
-<div class='print-title margin-left-20 font-24 roboto light margin-top-40 margin-bottom-20'>
+<div class='print-title margin-left-20 font-24 roboto light margin-top-40 margin-bottom-10'>
   MONTH'S RECIPE
 </div>
 <div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
-  <div flex='21' ng-repeat='morerecipe in month_recipe'>
-    <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-      <div class='flat-image-100p cursor text-center' ng-click='redir_recipe(morerecipe.id)' style='background-image: url("{{image_path(morerecipe.image)}}")'></div>
-      <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
-        <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
-        <div class='time font-12'>
-          <span ng-show='morerecipe.time_total.h != 0'>
-            {{morerecipe.time_total.h}} hour
-          </span>
-          <span ng-show='morerecipe.time_total.m != 0'>
-            {{morerecipe.time_total.m}} min
-          </span>
-        </div>
+  <div flex-gt-lg='25' flex-lg='50' flex-md='100' flex-sm='100' ng-repeat='morerecipe in month_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
+    <md-content class='md-whiteframe-z1 cursor' layout='column' ng-click='redir_recipe(morerecipe.id)'>
+      <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+      <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
+        <table style='width:95%;height:65px;padding-left:2.5%'>
+          <th>
+            <td>
+              <i class='fa fa-quote-left' style='color:#ccc'></i>
+              <span class='margin-left-5 margin-right-5'>{{morerecipe.title}}</span>
+              <i class='fa fa-quote-right' style='color:#ccc'></i>
+            </td>
+          </th>
+        </table>
       </div>
-      <div class='margin-left-10 margin-right-10 margin-bottom-5'>
-        <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
-        <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
-        <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comments_length}}</span>
+      <div class='padding-bottom-10 text-center' style='color:#777'>
+        <i class='fa fa-group margin-left-15 margin-right-5'></i>
+        <span class='font-16'>{{morerecipe.people}}</span>
+        <i class='fa fa-history margin-left-15 margin-right-5'></i>
+        <span class='font-16'>
+          {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
+        </span>
+        <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
+        <span class='font-16'>{{morerecipe.comments_length}}</span>
+        <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
+        <span class='font-16'>{{morerecipe.mark}}/5</span>
       </div>
     </md-content>
   </div>
 </div>
 <div layout='row'>
-  <div flex='50'>
-    <div class='print-title margin-left-20 font-24 roboto light margin-top-40 margin-bottom-20'>
+  <div flex-gt-sm='50' flex-sm='100'>
+    <div class='print-title margin-left-20 font-24 roboto light margin-top-20 margin-bottom-20'>
       LATEST RECIPE
     </div>
     <div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
-      <div flex='45' ng-repeat='morerecipe in latest_recipe'>
-        <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-          <div class='flat-image-100p cursor text-center' ng-click='redir_recipe(morerecipe.id)' style='background-image: url("{{image_path(morerecipe.image)}}")'></div>
-          <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
-            <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
-            <div class='time font-12'>
-              <span ng-show='morerecipe.time_total.h != 0'>
-                {{morerecipe.time_total.h}} hour
-              </span>
-              <span ng-show='morerecipe.time_total.m != 0'>
-                {{morerecipe.time_total.m}} min
-              </span>
-            </div>
+      <div flex-gt-lg='50' flex-lg='100' flex-md='100' flex-sm='100' ng-repeat='morerecipe in latest_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
+        <md-content class='md-whiteframe-z1 cursor' layout='column' ng-click='redir_recipe(morerecipe.id)'>
+          <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+          <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
+            <table style='width:95%;height:65px;padding-left:2.5%'>
+              <th>
+                <td>
+                  <i class='fa fa-quote-left' style='color:#ccc'></i>
+                  <span class='margin-left-5 margin-right-5'>{{morerecipe.title}}</span>
+                  <i class='fa fa-quote-right' style='color:#ccc'></i>
+                </td>
+              </th>
+            </table>
           </div>
-          <div class='margin-left-10 margin-right-10 margin-bottom-5'>
-            <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
-            <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
-            <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comments_length}}</span>
+          <div class='padding-bottom-10 text-center' style='color:#777'>
+            <i class='fa fa-group margin-left-15 margin-right-5'></i>
+            <span class='font-16'>{{morerecipe.people}}</span>
+            <i class='fa fa-history margin-left-15 margin-right-5'></i>
+            <span class='font-16'>
+              {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
+            </span>
+            <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
+            <span class='font-16'>{{morerecipe.comments_length}}</span>
+            <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
+            <span class='font-16'>{{morerecipe.mark}}/5</span>
           </div>
         </md-content>
       </div>
     </div>
   </div>
-  <div flex='50'>
-    <div class='print-title margin-left-20 font-24 roboto light margin-top-40 margin-bottom-20'>
+  <div flex-gt-sm='50' flex-sm='100'>
+    <div class='print-title margin-left-20 font-24 roboto light margin-top-20 margin-bottom-20'>
       RANDOM RECIPE
     </div>
     <div class='margin-bottom-20' layout-align='space-between center' layout-margin='' layout-padding='' layout-wrap='' layout='row'>
-      <div flex='45' ng-repeat='morerecipe in random_recipe'>
-        <md-content class='md-whiteframe-z1' flex='100' layout='column'>
-          <div class='flat-image-100p cursor text-center' ng-click='redir_recipe(morerecipe.id)' style='background-image: url("{{image_path(morerecipe.image)}}")'></div>
-          <div class='margin-left-10 margin-right-10 margin-top-10' style='height:60px'>
-            <div class='font-14 roboto medium'>{{morerecipe.title}}</div>
-            <div class='time font-12'>
-              <span ng-show='morerecipe.time_total.h != 0'>
-                {{morerecipe.time_total.h}} hour
-              </span>
-              <span ng-show='morerecipe.time_total.m != 0'>
-                {{morerecipe.time_total.m}} min
-              </span>
-            </div>
+      <div flex-gt-lg='50' flex-lg='100' flex-md='100' flex-sm='100' ng-repeat='morerecipe in random_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
+        <md-content class='md-whiteframe-z1 cursor' layout='column' ng-click='redir_recipe(morerecipe.id)'>
+          <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'></div>
+          <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
+            <table style='width:95%;height:65px;padding-left:2.5%'>
+              <th>
+                <td>
+                  <i class='fa fa-quote-left' style='color:#ccc'></i>
+                  <span class='margin-left-5 margin-right-5'>{{morerecipe.title}}</span>
+                  <i class='fa fa-quote-right' style='color:#ccc'></i>
+                </td>
+              </th>
+            </table>
           </div>
-          <div class='margin-left-10 margin-right-10 margin-bottom-5'>
-            <span class='mark xsmall margin-right-5 margin-top-20' ng-class="{'valid': mark[$index] &lt;= morerecipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
-            <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
-            <span class='font-11 margin-left-5' style='line-height:24px'>{{morerecipe.comments_length}}</span>
+          <div class='padding-bottom-10 text-center' style='color:#777'>
+            <i class='fa fa-group margin-left-15 margin-right-5'></i>
+            <span class='font-16'>{{morerecipe.people}}</span>
+            <i class='fa fa-history margin-left-15 margin-right-5'></i>
+            <span class='font-16'>
+              {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
+            </span>
+            <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
+            <span class='font-16'>{{morerecipe.comments_length}}</span>
+            <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
+            <span class='font-16'>{{morerecipe.mark}}/5</span>
           </div>
         </md-content>
       </div>

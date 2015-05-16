@@ -12,7 +12,7 @@
       </md-toolbar>
       <md-content>
         <div class='margin-top-30 top-border' layout='column' style='padding-top:15px'>
-          <md-button ng-click="locate('moments/' + user.id + '?action=new')" style='text-align:left;text-transform: lowercase;'>
+          <md-button ng-click="locate('moments/' + user.id + '?action=new')" style='text-align:left;text-transform: capitalize;'>
             <span class='margin-right-5 margin-left-5'>
               <img src='/images/camera.png' style='width:24px;height:24px'>
             </span>
@@ -22,12 +22,12 @@
           <!-- %span.glyphicon.glyphicon-film -->
           <!-- Post new moment -->
           <!-- %a.menu-link{href: ''} -->
-          <md-button ng-click='redir_your_profile()' style='text-align:left;text-transform: lowercase;'>
+          <md-button ng-click='redir_your_profile()' style='text-align:left;text-transform: capitalize;'>
             <span class='glyphicon glyphicon-pencil margin-right-10 margin-left-10' style='color:#666'></span>
             Edit profile informations
           </md-button>
           <!-- %a.menu-link{href: ''} -->
-          <md-button style='text-align:left;text-transform: lowercase;'>
+          <md-button style='text-align:left;text-transform: capitalize;'>
             <span class='glyphicon glyphicon-user margin-right-10 margin-left-10' style='color:#666'></span>
             Search user
           </md-button>
@@ -39,13 +39,13 @@
             </span>
             recipes
           </md-button>
-          <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: lowercase;color:#444'>
+          <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: capitalize;color:#444'>
             <i class='fa fa-pencil margin-left-30 margin-right-15'></i>
-            create new one
+            Write new
           </md-button>
-          <md-button ng-click="locate('/recipes/users/ok')" style='text-align:left;text-transform: lowercase;'>
+          <md-button ng-click="locate('/recipes/users/' + user.id)" style='text-align:left;text-transform: capitalize;'>
             <i class='fa fa-eye margin-left-30 margin-right-15'></i>
-            my recipe
+            See My
           </md-button>
         </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
@@ -57,7 +57,7 @@
           </md-button>
         </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-          <md-button style='text-align:left;text-transform: lowercase;'>
+          <md-button style='text-align:left;text-transform: capitalize;'>
             <span class='glyphicon glyphicon-off margin-right-10 margin-left-10' style='color:#666'></span>
             Logout
           </md-button>

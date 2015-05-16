@@ -4,8 +4,13 @@ angular.module('app')
       ingredientsCarabage = []
       ingredientsSearchCarbage = []
       view = false
+      searchState = {lock: true}
 
       return (
+        setLock: (v)->
+          searchState.lock = v
+        getLock: ()->
+          return searchState.lock
         clean: () ->
           ingredientsSearchCarbage.length = 0
         getSearch: () ->

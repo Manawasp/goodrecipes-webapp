@@ -1,10 +1,17 @@
-angular.module('app').controller("myrecipeCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService, recipeService)->
+angular.module('app').controller("myrecipeCtrl", ($mdDialog, $scope, $location,$routeParams, $cookieStore, authorization, api, recipeService)->
     console.log 'myrecipeCtrl running'
     $scope.template = 'views/myrecipe.html'
-
+    $scope.offset = 0
+    $scope.limit = 20
     $scope.mark = [0.5, 1.5, 2.5, 3.5, 4.5]
-    $scope.more_recipe = [{'id': '1', 'icon': '', 'title': 'Avocado Dessert', 'comment_length': 12,'total': {'h': 1, 'm': 0}, 'mark': 4.7},
-                          {'id': '2', 'icon': '', 'title': 'Apple pie', 'comment_length': 12,'total': {'h': 0, 'm': 45}, 'mark': 4.2},
-                          {'id': '3', 'icon': '', 'title': 'Moules cuites au wok', 'comment_length': 12,'total': {'h': 1, 'm': 45}, 'mark': 4.2},
-                          {'id': '4', 'icon': '', 'title': 'Pizza viande de boeuf hachee', 'comment_length': 12,'total': {'h': 0, 'm': 45}, 'mark': 4.2}]
+
+    $scope.redir_recipe = (id) ->
+      $location.url('/recipes/show/' + id)
+
+    recipeService.search("",[],[],[],[], $scope.offset, $scope.limit, $routeParams.userid
+    ).success((data) ->
+      $scope.more_recipe = data.recipes
+      console.log(data)
+    ).error((data) ->
+    )
 )
