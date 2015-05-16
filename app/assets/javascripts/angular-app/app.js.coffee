@@ -17,10 +17,6 @@
       templateUrl: 'views/dashboard.html',
       controller: 'homepageCtrl' })
 
-    .when('/moments/:userid', {
-      templateUrl: 'views/dashboard.html',
-      controller: 'momentCtrl' })
-
     .when('/recipes/users/:userid', {
       templateUrl: 'views/dashboard.html',
       controller: 'myrecipeCtrl' })

@@ -1,8 +1,17 @@
-angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $cookieStore, userService, api)->
+angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $cookieStore, userService, api, recipeService)->
+    $scope.search_name = ''
+    $scope.searchValue = ''
+    $scope.currentPath = $location.$$path || ""
+    currentPathSplit   = $scope.currentPath.split('/')
+    $scope.recipeSearch = recipeService.getSearchRecipe()
+    if ($location.$$path != '/recipes/search')
+      recipeService.getSearchHardReset()
+    if currentPathSplit.length > 3
+      console.log(currentPathSplit)
+      $scope.currentPath = '/' + currentPathSplit[1] + '/' + currentPathSplit[2]
+
     $scope.toggleLeft = () ->
       $mdSidenav('left').toggle()
-
-    $scope.search_name = ''
 
     $scope.user = api.getUser()
     $scope.id = $scope.user.id || ""
@@ -39,6 +48,12 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
       $cookieStore.remove('token')
       api.delUser()
       $location.path('/login');
+
+    $scope.searchRecipe = () ->
+      if ($location.$$path == '/recipes/search')
+        recipeService.getApplySearch()
+      else
+        $location.url('recipes/search?title='+$scope.recipeSearch.description);
 
     $scope.redir_your_profile = () ->
       loc = 'users/' + $scope.id;

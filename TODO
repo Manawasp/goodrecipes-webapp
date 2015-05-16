@@ -1,6 +1,10 @@
-- USer last name & firstname impossible a delete
-- Ingredient pagination
+- Profile
 - Ingredient search filter
-- MyRecipe pagination
-- MyRecipe search filter
-- Logout
+- Ingredient pagination
+- MyRecipe Search + pagination
+- MyRecipe Smart search
+- User books
+- User historique (Elasticsearch)
+- Deploiement de test (Docker) + test
+- Deploiement de production (Docker)
+- User last name & firstname impossible a delete

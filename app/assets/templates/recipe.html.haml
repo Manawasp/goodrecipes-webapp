@@ -1,54 +1,63 @@
-%md-content.margin-top-10{layout: "column", "layout-align" => "start start", flex: '100', "ng-class" => "{'md-whiteframe-z1' : show_search_advanced,
-                        'margin-bottom-20' : show_search_advanced}"}
-  %md-toolbar
-    .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#E3E4E6'}
-      %div.margin-left-30.roboto.medium.cursor.font-24{style: 'color:#BB2743', "ng-click" => "show_search_advanced = !show_search_advanced", "ng-show" => "show_search_advanced"}
-        Advanced recipe search
-      %div{"ng-show" => "!show_search_advanced"}
-        %md-button{'ng-click' => 'show_search_advanced = !show_search_advanced', style: 'color:#333'} Advanced recipe search
-  %md-content{"ng-show" => "show_search_advanced", style: 'width:100%;padding:30px 20px 10px 20px;', layout: 'column'}
-    %div
-      %div{layout: "column"}
-        %div{flex: '100'}
-          %div
-            %md-text-float.margin-left-20.fleft{:label => "Search ingredients", "ng-model" => "form_ingredient.description", style: 'display:inline-block;margin-top:0;'}
-            %span.glyphicon.glyphicon-search.btn-search{"ng-click" => "searchIngredient()"}
-        %div.margin-left-5
-          %span{"ng-repeat" => "ig in ingredients"}
-            %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}");display:block-inline', "ng-click" => "search_with_ingredient($index)"}
-              %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" == ig.icon'}
-    %div.step{"ng-show" => "!show_search_advanced_label"}
-      %div.step-header
-        %div.font-18.roboto.bold.step-title.margin-top-15.margin-bottom-10 LABELS
-        %div{layout: "row", "layout-wrap" => ""}
-          %div{"ng-repeat" => "label in labels", flex: '20'}
-            %md-checkbox{"ng-model"=>"label.c", "aria-label"=>"label.name"}
-              {{label.name}}
-        %div.font-18.roboto.bold.step-title.margin-top-30.margin-bottom-10 BANN LIST
-        %div{layout: "row", "layout-wrap" => ""}
-          %div{"ng-repeat" => "label in denied", flex: '20'}
-            %md-checkbox.md-warn{"ng-model"=>"label.c", "aria-label"=>"label.name"}
-              {{label.name}}
-    %div.text-right.padding-top-10.padding-bottom-5.top-border
-      %div{layout: "row", "layout-align" => "space-between center"}
-        %div
-          %md-button.md-primary{'ng-click' => 'show_search_advanced = !show_search_advanced', style: 'padding: 5px 15px;color:#BB2743'} CLOSE
-        %div
-          %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "search_launch()"} SEARCH
+%div{layout: "row", "layout-align" => "space-between center"}
+  %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.uppercase
+    Search recipes
+-# %md-content.margin-top-10{layout: "column", "layout-align" => "start start", flex: '100', "ng-class" => "{'md-whiteframe-z1' : show_search_advanced,
+-#                         'margin-bottom-20' : show_search_advanced}"}
+-#   %md-toolbar
+-#     .md-toolbar-tools.no-padding.food-api-silver{tabindex: "0", flex: "100", layout: "column", style: 'background-color:#E3E4E6'}
+-#       %div.margin-left-30.roboto.medium.cursor.font-24{style: 'color:#BB2743', "ng-click" => "show_search_advanced = !show_search_advanced", "ng-show" => "show_search_advanced"}
+-#         Advanced recipe search
+-#       %div{"ng-show" => "!show_search_advanced"}
+-#         %md-button{'ng-click' => 'show_search_advanced = !show_search_advanced', style: 'color:#333'} Advanced recipe search
+-#   %md-content{"ng-show" => "show_search_advanced", style: 'width:100%;padding:30px 20px 10px 20px;', layout: 'column'}
+-#     %div
+-#       %div{layout: "column"}
+-#         %div{flex: '100'}
+-#           %div
+-#             %md-text-float.margin-left-20.fleft{:label => "Search ingredients", "ng-model" => "form_ingredient.description", style: 'display:inline-block;margin-top:0;'}
+-#             %span.glyphicon.glyphicon-search.btn-search{"ng-click" => "searchIngredient()"}
+-#         %div.margin-left-5
+-#           %span{"ng-repeat" => "ig in ingredients"}
+-#             %md-content.md-whiteframe-z1.ingredient-windows-64.cursor.text-center{style: 'background-image: url("{{image_path(ig.icon)}}");display:block-inline', "ng-click" => "search_with_ingredient($index)"}
+-#               %span.glyphicon.glyphicon-picture.font-16{style: 'color:#999;line-height:32px;', 'ng-show' => '"" == ig.icon'}
+-#     %div.step{"ng-show" => "!show_search_advanced_label"}
+-#       %div.step-header
+-#         %div.font-18.roboto.bold.step-title.margin-top-15.margin-bottom-10 LABELS
+-#         %div{layout: "row", "layout-wrap" => ""}
+-#           %div{"ng-repeat" => "label in labels", flex: '20'}
+-#             %md-checkbox{"ng-model"=>"label.c", "aria-label"=>"label.name"}
+-#               {{label.name}}
+-#         %div.font-18.roboto.bold.step-title.margin-top-30.margin-bottom-10 BANN LIST
+-#         %div{layout: "row", "layout-wrap" => ""}
+-#           %div{"ng-repeat" => "label in denied", flex: '20'}
+-#             %md-checkbox.md-warn{"ng-model"=>"label.c", "aria-label"=>"label.name"}
+-#               {{label.name}}
+-#     %div.text-right.padding-top-10.padding-bottom-5.top-border
+-#       %div{layout: "row", "layout-align" => "space-between center"}
+-#         %div
+-#           %md-button.md-primary{'ng-click' => 'show_search_advanced = !show_search_advanced', style: 'padding: 5px 15px;color:#BB2743'} CLOSE
+-#         %div
+-#           %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "search_launch()"} SEARCH
 %div.margin-bottom-20{"ng-show" => "more_recipe.length == 0"}
   %div.text-center.font-24.roboto.light.margin-top-30{style: 'color:#999'} No Result
 %div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', "layout-align" => "start center", "ng-show" => "more_recipe.length > 0"}
-  %div{flex: '20', "ng-repeat" => 'morerecipe in more_recipe'}
-    %md-content.md-whiteframe-z1{layout: "column", flex: '100', "ng-click" => "redir_recipe(morerecipe.id)"}
-      %div.flat-image-100p.cursor.text-center{style: 'background-image: url("{{image_path(morerecipe.image)}}")'}
-      %div.margin-left-10.margin-right-10.margin-top-10{style: 'height:60px'}
-        %div.font-14.roboto.medium {{morerecipe.title}}
-        %div.time.font-12
-          %span{"ng-show" => 'morerecipe.time_total.h != 0'}
-            {{morerecipe.time_total.h}} hour
-          %span{"ng-show" => 'morerecipe.time_total.m != 0'}
-            {{morerecipe.time_total.m}} min
-      %div.margin-left-10.margin-right-10.margin-bottom-5
-        %span.mark.xsmall.margin-right-5.margin-top-20{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= morerecipe.mark}"}
-        %span.glyphicon.glyphicon-comment.margin-left-20{style: 'color:#999'}
-        %span.font-11.margin-left-5{style: 'line-height:24px'} {{morerecipe.comments_length}}
+  %div{"ng-repeat" => 'morerecipe in more_recipe track by $index', "flex-sm"=> "100", "flex-md"=> "100", "flex-lg"=> "50", "flex-gt-lg" => "20", style: 'margin-left:auto;margin-right:auto;'}
+    %md-content.md-whiteframe-z1.cursor{layout: "column", "ng-click" => "redir_recipe(morerecipe.id)"}
+      %div.flat-image-100p.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
+      %div.padding-top-5.padding-bottom-5.padding-right-10.padding-left-10.font-18.text-center
+        %table{style: 'width:95%;height:65px;padding-left:2.5%'}
+          %th
+            %td
+              %i.fa.fa-quote-left{style: 'color:#ccc'}
+              %span.margin-left-5.margin-right-5 {{morerecipe.title}}
+              %i.fa.fa-quote-right{style: 'color:#ccc'}
+      %div.padding-bottom-10.text-center{style: 'color:#777'}
+        %i.fa.fa-group.margin-left-15.margin-right-5
+        %span.font-16 {{morerecipe.people}}
+        %i.fa.fa-history.margin-left-15.margin-right-5
+        %span.font-16
+          {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
+        %i.fa.fa-comments-o.margin-left-15.margin-right-5
+        %span.font-16 {{morerecipe.comments_length}}
+        %i.fa.fa-thumbs-o-up.margin-left-15.margin-right-5
+        %span.font-16 {{morerecipe.mark}}/5

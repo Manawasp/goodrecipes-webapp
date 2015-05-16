@@ -8,15 +8,26 @@
           %span.roboto.light.silver GOOD
           %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
       %md-content
-        %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "locate('moments/' + user.id + '?action=new')"}
+        %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
+          %md-button{style: 'text-align:left;text-transform: uppercase;', "ng-click" => "locate('/')", "ng-class" => "{focused: currentPath == '/'}"}
+            %i.fa.fa-home.margin-left-5.margin-right-5
+            Home
+          %md-button{style: 'text-align:left;text-transform: uppercase;', "ng-click" => "locate('/recipes/search')", "ng-class" => "{focused: currentPath == '/recipes/search' || currentPath == '/recipes/show'}"}
             %span.margin-right-5.margin-left-5
-              %img{src: '/images/camera.png', style: 'width:24px;height:24px'}
-            Post new moment
-          / %a.menu-link{href: ''}
-          /   %span.glyphicon.glyphicon-film
-          /   Post new moment
-          / %a.menu-link{href: ''}
+              %img{src: '/images/chef.png', style: 'width:24px;height:24px'}
+            recipes
+          %md-button{style: 'text-align:left;text-transform: capitalize;color:#444', "ng-click" => "locate('/recipes/create')", "ng-class" => "{focused: currentPath == '/recipes/create'}"}
+            %i.fa.fa-pencil.margin-left-30.margin-right-15
+            Write new
+          %md-button{"ng-click" => "locate('/recipes/users/' + user.id)", style: 'text-align:left;text-transform: capitalize;', "ng-class" => "{focused: currentPath == '/recipes/users'}"}
+            %i.fa.fa-eye.margin-left-30.margin-right-15
+            See My
+        %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')", "ng-class" => "{focused: currentPath == '/ingredients'}"}
+            %span.margin-right-5.margin-left-5
+              %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
+            ingredients
+        %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
           %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "redir_your_profile()"}
             %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10{style: 'color:#666'}
             Edit profile informations
@@ -25,23 +36,7 @@
             %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10{style: 'color:#666'}
             Search user
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: uppercase;'}
-            %span.margin-right-5.margin-left-5
-              %img{src: '/images/chef.png', style: 'width:24px;height:24px'}
-            recipes
-          %md-button{style: 'text-align:left;text-transform: capitalize;color:#444', "ng-click" => "locate('/recipes/create')"}
-            %i.fa.fa-pencil.margin-left-30.margin-right-15
-            Write new
-          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "locate('/recipes/users/' + user.id)"}
-            %i.fa.fa-eye.margin-left-30.margin-right-15
-            See My
-        %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')"}
-            %span.margin-right-5.margin-left-5
-              %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
-            ingredients
-        %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: capitalize;'}
+          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "logout()"}
             %span.glyphicon.glyphicon-off.margin-right-10.margin-left-10{style: 'color:#666'}
             Logout
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
@@ -51,9 +46,9 @@
             %a.cursor{style: 'color:#333;', "ng-click"=>"toggleLeft()"}
               %i.fa.fa-bars.fa-lg
           %div
-            %i.fa.fa-search.fa-lg.padding-left-30{style: 'color:#aaa'}
-            %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'width:300px;border:0;'}
-
+            %form{"ng-submit"=>"searchRecipe()"}
+              %i.fa.fa-search.fa-lg.padding-left-30{style: 'color:#aaa'}
+              %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'width:300px;border:0;', 'ng-model' => 'recipeSearch.description'}
         %div{layout: "column"}
           %div.padding-left-20{layout: "row", "layout-align" => "space-between center", style: 'border-left:1px solid #eee;'}
             %div{layout: "row", "layout-align" => "center center"}

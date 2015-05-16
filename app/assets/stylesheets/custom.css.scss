@@ -159,7 +159,13 @@ md-chips.md-default-theme .md-chips.md-focused, md-chips.md-default-theme .md-ch
 .silver-777 {
   color: #777;
 }
-
+.md-button.focused {
+  background-color:#ED747E !important;
+  color:white;
+  .ng-scope {
+    color:white
+  }
+}
 textarea.msd-elastic {
   border:0;
   padding-bottom: 10px;
