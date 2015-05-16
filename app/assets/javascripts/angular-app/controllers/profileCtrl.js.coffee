@@ -1,12 +1,4 @@
-angular.module('app').controller("profileCtrl", (FileUploader, $scope, $routeParams, $location, $cookieStore, userService, api)->
-
-    $scope.get_url_upload = () ->
-      'http://localhost:8080/pictures/'
-
-    $scope.uploader = new FileUploader();
-    $scope.uploader.url = $scope.get_url_upload()
-    $scope.uploader.onAfterAddingFile = () ->
-      this.uploadAll()
+angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location, $cookieStore, userService, api)->
 
     $scope.followers = []
     $scope.template = 'views/profile.html'
@@ -17,6 +9,7 @@ angular.module('app').controller("profileCtrl", (FileUploader, $scope, $routePar
     }
     user_original = {}
     $scope.obj = {}
+    $scope.upload = {avatarPict: undefined}
 
     userService.get($routeParams.userid
     ).success((data) ->
@@ -26,16 +19,24 @@ angular.module('app').controller("profileCtrl", (FileUploader, $scope, $routePar
       else if data.avatar == ""
         data.avatar = "/images/avatar.png"
       # save user data & Clone
-      $scope.user = Object.create(data)
+      $scope.upload.user = Object.create(data)
       user_original = Object.create(data)
-      # redirection vers l'edition ou le profile de l'user 
+      # redirection vers l'edition ou le profile de l'user
       id = api.getUser().id
-      if id == $scope.user.id
+      if id == $scope.upload.user.id
         $scope.template = 'views/editprofile.html'
       else
         $scope.template = 'views/profile.html'
     ).error((data) ->
     )
+
+    $scope.show_picture = () ->
+      if $scope.upload.avatarPict != undefined
+        return "data:" + $scope.upload.avatarPict.filetype + ";base64," + $scope.upload.avatarPict.base64
+      else if $scope.upload.user.avatar != undefined && $scope.upload.user.avatar.length > 0
+        return $scope.upload.user.avatar
+      else
+        console.log("No choose")
 
     updateFollowed = () ->
       userService.getFollowed($routeParams.userid

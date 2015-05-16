@@ -30,7 +30,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       for ig in data.ingredients
         igs.push ig
 
-    homepageService.random(
+    homepageService.random(3
     ).success((data) ->
       $scope.more_recipe = data.recipes
     ).error((data) ->

@@ -46,6 +46,13 @@ $brand-danger:  #d9534f;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Roboto-Light';
+  src:url('Roboto-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 a, a:hover {
   text-decoration: none;
 }
@@ -116,6 +123,17 @@ md-content.footer {
   width:4rem !important;
   margin-top:0.8rem;
   vertical-align: top;
+}
+.chipsdemoContactChips.lock input {
+
+}
+.chipsdemoContactChips.lock .md-chips .md-chip {
+  padding: 0 1.8rem 0 0 !important;
+}
+.chipsdemoContactChips.lock .md-chip-remove-container {
+    display: inline-block;
+    margin-right: -0.5rem;
+    display: none !important;
 }
 .md-chips .md-chip-input-container input[type="text"] {
   height:4rem !important;
@@ -443,7 +461,7 @@ md-input-group label, .md-input-group label {
 .flat-image-100p {
   display:inline-block;
   width:100%;
-  height:125px;
+  height:250px;
   background: url('/') no-repeat center center;
   background-size: cover;
 }

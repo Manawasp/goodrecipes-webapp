@@ -9,7 +9,7 @@
           %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
       %md-content
         %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('moments/' + user.id + '?action=new')"}
+          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "locate('moments/' + user.id + '?action=new')"}
             %span.margin-right-5.margin-left-5
               %img{src: '/images/camera.png', style: 'width:24px;height:24px'}
             Post new moment
@@ -17,11 +17,11 @@
           /   %span.glyphicon.glyphicon-film
           /   Post new moment
           / %a.menu-link{href: ''}
-          %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "redir_your_profile()"}
+          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "redir_your_profile()"}
             %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10{style: 'color:#666'}
             Edit profile informations
           / %a.menu-link{href: ''}
-          %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %md-button{style: 'text-align:left;text-transform: capitalize;'}
             %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10{style: 'color:#666'}
             Search user
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
@@ -29,19 +29,19 @@
             %span.margin-right-5.margin-left-5
               %img{src: '/images/chef.png', style: 'width:24px;height:24px'}
             recipes
-          %md-button{style: 'text-align:left;text-transform: lowercase;color:#444', "ng-click" => "locate('/recipes/create')"}
+          %md-button{style: 'text-align:left;text-transform: capitalize;color:#444', "ng-click" => "locate('/recipes/create')"}
             %i.fa.fa-pencil.margin-left-30.margin-right-15
-            create new one
-          %md-button{style: 'text-align:left;text-transform: lowercase;', "ng-click" => "locate('/recipes/users/ok')"}
+            Write new
+          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "locate('/recipes/users/' + user.id)"}
             %i.fa.fa-eye.margin-left-30.margin-right-15
-            my recipe
+            See My
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
           %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')"}
             %span.margin-right-5.margin-left-5
               %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
             ingredients
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: lowercase;'}
+          %md-button{style: 'text-align:left;text-transform: capitalize;'}
             %span.glyphicon.glyphicon-off.margin-right-10.margin-left-10{style: 'color:#666'}
             Logout
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
