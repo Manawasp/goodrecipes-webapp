@@ -42,7 +42,7 @@
       templateUrl: 'views/dashboard.html',
       controller: 'searchuserCtrl' })
 
-    .when('/users/:userid', {
+    .when('/users/edit/:id', {
       templateUrl: 'views/dashboard.html',
       controller: 'profileCtrl' })
     .when('/login', { templateUrl: 'views/auth.html', controller: 'loginCtrl' })

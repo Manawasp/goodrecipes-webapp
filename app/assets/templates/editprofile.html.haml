@@ -2,10 +2,6 @@
   %div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20
     EDIT PROFILE
   %div
-    %md-button.md-primary.md-raised.padding-left-20.padding-right-20{'ng-click' => 'showCreateIngredient($event)', style: "background-color:#4CAF50"}
-      %span.font-16{style: 'line-height:16px;'}
-        %i.fa.fa-check
-        valider
 %div{layout: "column", style: 'max-width:1140px'}
   %div{"ng-show" => "data.error != ''"}
     .alert.alert-danger{role: 'alert', style: 'margin-top: 20px'}
@@ -17,19 +13,27 @@
   %div.margin-left-10.margin-right-10.margin-top-10{layout: "row", "layout-wrap" => ""}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Email adress
-      %input{"ng-model" => "upload.user.email"}
+      %input{"ng-model" => "user.email"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Pseudo
-      %input{"ng-model" => "upload.user.pseudo"}
+      %input{"ng-model" => "user.pseudo"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 First name
-      %input{"ng-model" => "upload.user.firstname"}
+      %input{"ng-model" => "user.firstname"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Last name
-      %input{"ng-model" => "upload.user.lastname"}
+      %input{"ng-model" => "user.lastname"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Password
       %input{"ng-model" => "user.password", "ng-type" => "number"}
+  %div.margin-top-15
+    %md-button.md-primary.padding-right-20{'ng-click' => 'update_user()', style: "float:right;background-color:#4CAF50;color:white;"}
+      %span.font-16{style: 'line-height:16px;'}
+        %i.fa.fa-check.margin-right-10.margin-left-10
+        valider
+    %md-button.md-warn.padding-right-20{"ng-click" => "logout()", style: 'border:1px solid #ED747E;color:#ED747E'}
+      %i.fa.fa-power-off.margin-right-10.margin-left-10
+      Logout
 -# %div.panel-content.margin-top-20{"layout-fill" => "", layout: "column"}
 -#   %section.demo-container.md-whiteframe-z1
 -#     %md-toolbar.demo-toolbar.md-default-theme{style: 'background-color: #eee;color:#666'}

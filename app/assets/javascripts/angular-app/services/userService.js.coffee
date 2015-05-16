@@ -26,6 +26,9 @@ angular.module('app')
             data.pseudo = user_new.pseudo
           req = $http.patch(apiService.url() + '/users/' + user_origin.id, data)
           return req
+        image: (data) ->
+          req = $http.post(apiService.url() + '/users/' + data.id + '/pictures', data)
+          return req
         follow: (idhash) ->
           idhash = idhash || ''
           req = $http.post(apiService.url() + '/followers', {user_id: idhash})
