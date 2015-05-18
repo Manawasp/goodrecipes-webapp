@@ -95,7 +95,15 @@ i.view-menu.selected {
     margin-right: 5px;
   }
 }
-
+.pagination a {
+  color: #aaa;
+  &.selected {
+    border:2px solid #eee;
+  }
+  &:hover {
+    color:#F85562;
+  }
+}
 .mark {
   display: inline-block;
   width: 24px;
