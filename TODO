@@ -6,8 +6,8 @@ Updated: 18/05/2015
 
 ### ON GOING
 
-- [Feature] User favourites + Pagination
 - [Feature] MyRecipe Search + pagination
+- [Feature] Recipe Pagination
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
 
@@ -30,6 +30,7 @@ Updated: 18/05/2015
 - [Feature] Search bar
 - [Feature] Ingredient search filter
 - [Feature] Ingredient pagination
+- [Feature] User favourites + Pagination
 - [Documentation] Update github
 
 ### OUT
