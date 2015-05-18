@@ -1,6 +1,7 @@
 [OK] Avatar
 [KO] Valider les modifications d'un compte user
-- Update github
+[OK] Update github
+- Add star
 - Ingredient search filter
 - Ingredient pagination
 - MyRecipe Search + pagination
@@ -10,3 +11,6 @@
 - Deploiement de test (Docker) + test
 - Deploiement de production (Docker)
 - User last name & firstname impossible a delete
+- Probleme de syncronisation (User not update)
+- Github add API repo
+- Link Author
