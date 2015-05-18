@@ -6,12 +6,9 @@ Updated: 18/05/2015
 
 ### ON GOING
 
-- [Feature] Add star
 - [Feature] User favourites + Pagination
-- [Feature] Ingredient search filter
-- [Feature] Ingredient pagination
 - [Feature] MyRecipe Search + pagination
-- [Feature] MyRecipe Smart search
+- [Feature] Recipe Smart search
 - [Feature] Recipe review
 
 - [Elasticsearch] User historique (Elasticsearch)
@@ -29,7 +26,10 @@ Updated: 18/05/2015
 ### DONE
 
 - [Feature] Avatar
+- [Feature] Add favourite
 - [Feature] Search bar
+- [Feature] Ingredient search filter
+- [Feature] Ingredient pagination
 - [Documentation] Update github
 
 ### OUT

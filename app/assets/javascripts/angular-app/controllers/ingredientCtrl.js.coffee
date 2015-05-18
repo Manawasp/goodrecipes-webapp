@@ -14,12 +14,6 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
       pagination: []
     }
 
-    $scope.loadPage = (value) ->
-      console.log("ok....")
-      $scope.updatePage(2)
-      searchIngredient()
-
-
     $scope.updatePage = (value)->
       if value > 0
         $scope.data.page    = value
