@@ -57,6 +57,17 @@ a, a:hover {
   text-decoration: none;
 }
 
+i.view-menu {
+  color: #ddd;
+  &:hover {
+    color: #ED747E;
+  }
+}
+
+i.view-menu.selected {
+  color: #555;
+}
+
 .roboto{
   &.regular {font-family: "Roboto-Regular"}
   &.medium    {font-family: "Roboto-Medium"}
@@ -84,7 +95,15 @@ a, a:hover {
     margin-right: 5px;
   }
 }
-
+.pagination a {
+  color: #aaa;
+  &.selected {
+    border:2px solid #eee;
+  }
+  &:hover {
+    color:#F85562;
+  }
+}
 .mark {
   display: inline-block;
   width: 24px;
@@ -159,7 +178,19 @@ md-chips.md-default-theme .md-chips.md-focused, md-chips.md-default-theme .md-ch
 .silver-777 {
   color: #777;
 }
-
+.md-button.favourite-false {
+  color: #aaa;
+}
+.md-button.favourite-true {
+  color: #FFCC00;
+}
+.md-button.focused {
+  background-color:#ED747E !important;
+  color:white;
+  .ng-scope {
+    color:white
+  }
+}
 textarea.msd-elastic {
   border:0;
   padding-bottom: 10px;

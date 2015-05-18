@@ -2,7 +2,7 @@
 
 ## Tools
 
-For this project I use :    
+For this project I use :
 - Haml (Html preprocessing)
 - SCSS/SASS (CSS preprocessing)
 - CoffeeScrip (JavaScript preprocessing)
@@ -15,26 +15,28 @@ For this project I use :
 
 ### Clone & Initialization
 
-Clone the depot :    
-`$ git clone git@github.com:Manawasp/nourriture-frontend-app.git`    
+Install `npm` (and also `node.js`), `Ruby on Rails` (via `RVM` if possible)
 
-Initialization :    
+Clone the depot :
+`$ git clone git@github.com:Manawasp/nourriture-frontend-app.git`
+
+I use bower so you should to install it :
+`$ npm install bower`
+
+Initialization :
 ```
 $ bundle install
 $ rake bower:instal
 ```
 
-### Start
+### Start in development
 
-**Don't forget to run the api server & mongodb**    
-
+**Don't forget to run the [api server](https://github.com/Manawasp/goodrecipes-api)**
 
 Run server :
-`rails s`    
+`rails s -p 3000`
 
-And go to (localhost:3000)[http://localhost:3000]    
-
-### Start in development
+And go to [localhost:3000](http://localhost:3000)
 
 You need to add `guard start` to compile html.haml in app/assets/templates -> public/templates
 

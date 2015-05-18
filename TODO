@@ -1,6 +1,38 @@
-- USer last name & firstname impossible a delete
-- Ingredient pagination
-- Ingredient search filter
-- MyRecipe pagination
-- MyRecipe search filter
-- Logout
+# TODO
+
+Created: 16/05/2015
+Author: Clovis Kyndt
+Updated: 18/05/2015
+
+### ON GOING
+
+- [Feature] MyRecipe Search + pagination
+- [Feature] Recipe Pagination
+- [Feature] Recipe Smart search
+- [Feature] Recipe review
+
+- [Elasticsearch] User historique (Elasticsearch)
+
+- [Docker] Deploiement de test
+- [Docker] Deploiement de production
+
+- [Bug] User last name & firstname impossible a delete
+- [Bug] Link Author
+- [Bug] search bar in responsive (mobile)
+- [Bug] Probleme de syncronisation (User not update)
+
+- [Documentation] Github add API repo
+
+### DONE
+
+- [Feature] Avatar
+- [Feature] Add favourite
+- [Feature] Search bar
+- [Feature] Ingredient search filter
+- [Feature] Ingredient pagination
+- [Feature] User favourites + Pagination
+- [Documentation] Update github
+
+### OUT
+
+[KO] Valider les modifications d'un compte user

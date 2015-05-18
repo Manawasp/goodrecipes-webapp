@@ -17,10 +17,6 @@
       templateUrl: 'views/dashboard.html',
       controller: 'homepageCtrl' })
 
-    .when('/moments/:userid', {
-      templateUrl: 'views/dashboard.html',
-      controller: 'momentCtrl' })
-
     .when('/recipes/users/:userid', {
       templateUrl: 'views/dashboard.html',
       controller: 'myrecipeCtrl' })
@@ -40,13 +36,16 @@
     .when('/ingredients', {
       templateUrl: 'views/dashboard.html',
       controller: 'ingredientCtrl' })
+    .when('/favourites', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'favouriteCtrl' })
 
 
     .when('/users/search', {
       templateUrl: 'views/dashboard.html',
       controller: 'searchuserCtrl' })
 
-    .when('/users/:userid', {
+    .when('/users/edit/:id', {
       templateUrl: 'views/dashboard.html',
       controller: 'profileCtrl' })
     .when('/login', { templateUrl: 'views/auth.html', controller: 'loginCtrl' })

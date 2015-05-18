@@ -11,55 +11,40 @@
         </span>
       </md-toolbar>
       <md-content>
-        <div class='margin-top-30 top-border' layout='column' style='padding-top:15px'>
-          <md-button ng-click="locate('moments/' + user.id + '?action=new')" style='text-align:left;text-transform: capitalize;'>
-            <span class='margin-right-5 margin-left-5'>
-              <img src='/images/camera.png' style='width:24px;height:24px'>
-            </span>
-            Post new moment
-          </md-button>
-          <!-- %a.menu-link{href: ''} -->
-          <!-- %span.glyphicon.glyphicon-film -->
-          <!-- Post new moment -->
-          <!-- %a.menu-link{href: ''} -->
-          <md-button ng-click='redir_your_profile()' style='text-align:left;text-transform: capitalize;'>
-            <span class='glyphicon glyphicon-pencil margin-right-10 margin-left-10' style='color:#666'></span>
-            Edit profile informations
-          </md-button>
-          <!-- %a.menu-link{href: ''} -->
-          <md-button style='text-align:left;text-transform: capitalize;'>
-            <span class='glyphicon glyphicon-user margin-right-10 margin-left-10' style='color:#666'></span>
-            Search user
-          </md-button>
-        </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-          <md-button style='text-align:left;text-transform: uppercase;'>
+          <md-button ng-class="{focused: currentPath == '/'}" ng-click="locate('/')" style='text-align:left;text-transform: uppercase;'>
+            <span class='margin-right-5 margin-left-5' style='width:24px;display:inline-block'>
+              <i class='fa fa-home fa-lg'></i>
+            </span>
+            Home
+          </md-button>
+          <md-button ng-class="{focused: currentPath == '/recipes/search' || currentPath == '/recipes/show'}" ng-click="locate('/recipes/search')" style='text-align:left;text-transform: uppercase;'>
             <span class='margin-right-5 margin-left-5'>
               <img src='/images/chef.png' style='width:24px;height:24px'>
             </span>
             recipes
           </md-button>
-          <md-button ng-click="locate('/recipes/create')" style='text-align:left;text-transform: capitalize;color:#444'>
+          <md-button ng-class="{focused: currentPath == '/recipes/create'}" ng-click="locate('/recipes/create')" style='text-align:left;text-transform: capitalize;color:#444'>
             <i class='fa fa-pencil margin-left-30 margin-right-15'></i>
             Write new
           </md-button>
-          <md-button ng-click="locate('/recipes/users/' + user.id)" style='text-align:left;text-transform: capitalize;'>
+          <md-button ng-class="{focused: currentPath == '/recipes/users'}" ng-click="locate('/recipes/users/' + user.id)" style='text-align:left;text-transform: capitalize;'>
             <i class='fa fa-eye margin-left-30 margin-right-15'></i>
             See My
           </md-button>
         </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-          <md-button ng-click="locate('ingredients')" style='text-align:left;'>
+          <md-button ng-class="{focused: currentPath == '/ingredients'}" ng-click="locate('ingredients')" style='text-align:left;'>
             <span class='margin-right-5 margin-left-5'>
               <img src='/images/ingredient.png' style='width:24px;height:24px'>
             </span>
             ingredients
           </md-button>
-        </div>
-        <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-          <md-button style='text-align:left;text-transform: capitalize;'>
-            <span class='glyphicon glyphicon-off margin-right-10 margin-left-10' style='color:#666'></span>
-            Logout
+          <md-button ng-class="{focused: currentPath == '/favourites'}" ng-click="locate('favourites')" style='text-align:left;'>
+            <span class='margin-right-5 margin-left-5' style='width:24px;display:inline-block'>
+              <i class='fa fa-star fa-lg'></i>
+            </span>
+            favourites
           </md-button>
         </div>
       </md-content>
@@ -73,11 +58,13 @@
             </a>
           </div>
           <div>
-            <i class='fa fa-search fa-lg padding-left-30' style='color:#aaa'></i>
-            <input class='padding-left-20 font-16' placeholder='What do you want to cook today ?' style='width:300px;border:0;' type='text'>
+            <form ng-submit='searchRecipe()'>
+              <i class='fa fa-search fa-lg padding-left-30' style='color:#aaa'></i>
+              <input class='padding-left-20 font-16' ng-model='recipeSearch.description' placeholder='What do you want to cook today ?' style='width:300px;border:0;' type='text'>
+            </form>
           </div>
         </div>
-        <div layout='column'>
+        <div class='cursor' layout='column' ng-click="locate('/users/edit/' + user.id)">
           <div class='padding-left-20' layout-align='space-between center' layout='row' style='border-left:1px solid #eee;'>
             <div layout-align='center center' layout='row'>
               <div layout='column'>
@@ -88,7 +75,7 @@
                   {{user.email || "manawasp@gmail.com"}}
                 </div>
               </div>
-              <a class='margin-left-10 margin-right-20' ng-click="locate('moments/' + user.id)">
+              <a class='margin-left-10 margin-right-20'>
                 <button style='width:36px;height:36px;padding:0;border-radius:18px'>
                   <img class='profile-avatar' src='{{avatar}}' style='width:36px;height:36px;padding:0;margin-left:-2px;margin-top:-2px;border-radius:18px'>
                 </button>

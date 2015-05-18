@@ -8,42 +8,38 @@
           %span.roboto.light.silver GOOD
           %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
       %md-content
-        %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "locate('moments/' + user.id + '?action=new')"}
-            %span.margin-right-5.margin-left-5
-              %img{src: '/images/camera.png', style: 'width:24px;height:24px'}
-            Post new moment
-          / %a.menu-link{href: ''}
-          /   %span.glyphicon.glyphicon-film
-          /   Post new moment
-          / %a.menu-link{href: ''}
-          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "redir_your_profile()"}
-            %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10{style: 'color:#666'}
-            Edit profile informations
-          / %a.menu-link{href: ''}
-          %md-button{style: 'text-align:left;text-transform: capitalize;'}
-            %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10{style: 'color:#666'}
-            Search user
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: uppercase;'}
+          %md-button{style: 'text-align:left;text-transform: uppercase;', "ng-click" => "locate('/')", "ng-class" => "{focused: currentPath == '/'}"}
+            %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
+              %i.fa.fa-home.fa-lg
+            Home
+          %md-button{style: 'text-align:left;text-transform: uppercase;', "ng-click" => "locate('/recipes/search')", "ng-class" => "{focused: currentPath == '/recipes/search' || currentPath == '/recipes/show'}"}
             %span.margin-right-5.margin-left-5
               %img{src: '/images/chef.png', style: 'width:24px;height:24px'}
             recipes
-          %md-button{style: 'text-align:left;text-transform: capitalize;color:#444', "ng-click" => "locate('/recipes/create')"}
+          %md-button{style: 'text-align:left;text-transform: capitalize;color:#444', "ng-click" => "locate('/recipes/create')", "ng-class" => "{focused: currentPath == '/recipes/create'}"}
             %i.fa.fa-pencil.margin-left-30.margin-right-15
             Write new
-          %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "locate('/recipes/users/' + user.id)"}
+          %md-button{"ng-click" => "locate('/recipes/users/' + user.id)", style: 'text-align:left;text-transform: capitalize;', "ng-class" => "{focused: currentPath == '/recipes/users'}"}
             %i.fa.fa-eye.margin-left-30.margin-right-15
             See My
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')"}
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')", "ng-class" => "{focused: currentPath == '/ingredients'}"}
             %span.margin-right-5.margin-left-5
               %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
             ingredients
-        %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;text-transform: capitalize;'}
-            %span.glyphicon.glyphicon-off.margin-right-10.margin-left-10{style: 'color:#666'}
-            Logout
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('favourites')", "ng-class" => "{focused: currentPath == '/favourites'}"}
+            %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
+              %i.fa.fa-star.fa-lg
+            favourites
+        -# %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
+        -#   %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "redir_your_profile()"}
+        -#     %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10{style: 'color:#666'}
+        -#     Edit profile informations
+        -#   / %a.menu-link{href: ''}
+        -#   %md-button{style: 'text-align:left;text-transform: capitalize;'}
+        -#     %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10{style: 'color:#666'}
+        -#     Search user
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
       %md-content{layout: "row","layout-align" => "space-between center", style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;'}
         %div{flex: "70", style: 'line-height: 62px', layout: "row", "layout-align" => "start center"}
@@ -51,10 +47,10 @@
             %a.cursor{style: 'color:#333;', "ng-click"=>"toggleLeft()"}
               %i.fa.fa-bars.fa-lg
           %div
-            %i.fa.fa-search.fa-lg.padding-left-30{style: 'color:#aaa'}
-            %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'width:300px;border:0;'}
-
-        %div{layout: "column"}
+            %form{"ng-submit"=>"searchRecipe()"}
+              %i.fa.fa-search.fa-lg.padding-left-30{style: 'color:#aaa'}
+              %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'width:300px;border:0;', 'ng-model' => 'recipeSearch.description'}
+        %div.cursor{layout: "column", "ng-click" => "locate('/users/edit/' + user.id)"}
           %div.padding-left-20{layout: "row", "layout-align" => "space-between center", style: 'border-left:1px solid #eee;'}
             %div{layout: "row", "layout-align" => "center center"}
               %div{layout: "column"}
@@ -62,7 +58,7 @@
                   {{user.pseudo || "Manawasp"}}
                 %div.text-center.font-11.roboto{style: 'color:#999'}
                   {{user.email || "manawasp@gmail.com"}}
-              %a.margin-left-10.margin-right-20{"ng-click" => "locate('moments/' + user.id)"}
+              %a.margin-left-10.margin-right-20
                 %button{style: 'width:36px;height:36px;padding:0;border-radius:18px'}
                   %img.profile-avatar{src: "{{avatar}}", style: 'width:36px;height:36px;padding:0;margin-left:-2px;margin-top:-2px;border-radius:18px'}
         -#             %div{flex: ""}

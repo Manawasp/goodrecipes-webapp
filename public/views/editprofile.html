@@ -2,14 +2,7 @@
   <div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-20'>
     EDIT PROFILE
   </div>
-  <div>
-    <md-button class='md-primary md-raised padding-left-20 padding-right-20' ng-click='showCreateIngredient($event)' style='background-color:#4CAF50'>
-      <span class='font-16' style='line-height:16px;'>
-        <i class='fa fa-check'></i>
-        valider
-      </span>
-    </md-button>
-  </div>
+  <div></div>
 </div>
 <div layout='column' style='max-width:1140px'>
   <div ng-show="data.error != ''">
@@ -26,23 +19,35 @@
   <div class='margin-left-10 margin-right-10 margin-top-10' layout-wrap='' layout='row'>
     <md-input-container class='padding-right-20' flex='50'>
       <label class='font-18'>Email adress</label>
-      <input ng-model='upload.user.email'>
+      <input ng-model='user.email'>
     </md-input-container>
     <md-input-container class='padding-right-20' flex='50'>
       <label class='font-18'>Pseudo</label>
-      <input ng-model='upload.user.pseudo'>
+      <input ng-model='user.pseudo'>
     </md-input-container>
     <md-input-container class='padding-right-20' flex='50'>
       <label class='font-18'>First name</label>
-      <input ng-model='upload.user.firstname'>
+      <input ng-model='user.firstname'>
     </md-input-container>
     <md-input-container class='padding-right-20' flex='50'>
       <label class='font-18'>Last name</label>
-      <input ng-model='upload.user.lastname'>
+      <input ng-model='user.lastname'>
     </md-input-container>
     <md-input-container class='padding-right-20' flex='50'>
       <label class='font-18'>Password</label>
       <input ng-model='user.password' ng-type='number'>
     </md-input-container>
+  </div>
+  <div class='margin-top-15'>
+    <md-button class='md-primary padding-right-20' ng-click='update_user()' style='float:right;background-color:#4CAF50;color:white;'>
+      <span class='font-16' style='line-height:16px;'>
+        <i class='fa fa-check margin-right-10 margin-left-10'></i>
+        valider
+      </span>
+    </md-button>
+    <md-button class='md-warn padding-right-20' ng-click='logout()' style='border:1px solid #ED747E;color:#ED747E'>
+      <i class='fa fa-power-off margin-right-10 margin-left-10'></i>
+      Logout
+    </md-button>
   </div>
 </div>

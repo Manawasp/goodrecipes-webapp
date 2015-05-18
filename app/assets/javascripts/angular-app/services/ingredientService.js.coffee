@@ -31,7 +31,7 @@ angular.module('app')
             data.savours = savours
           if blacklist && blacklist.length > 0
             data.blacklist = blacklist
-          if offset && offset.length > 0
+          if offset
             data.offset = offset
           if limit
             data.limit = limit
