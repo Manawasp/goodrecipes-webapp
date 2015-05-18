@@ -7,7 +7,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
 
     $scope.redir_recipe = (id) ->
       $location.url('/recipes/show/' + id)
-      
+
     recipeService.get($routeParams.id
     ).success((data) ->
       syncData(data)
@@ -38,6 +38,22 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       $scope.more_recipe = data.recipes
     ).error((data) ->
     )
+
+    $scope.makeFavourite = (value) ->
+      if value
+        recipeService.unfavourite($scope.recipe.id
+        ).success((data) ->
+          $scope.recipe.liked = false
+        ).error((data) ->
+          console.log("Make favourite error :" + data)
+        )
+      else
+        recipeService.favourite($scope.recipe.id
+        ).success((data) ->
+          $scope.recipe.liked = true
+        ).error((data) ->
+          console.log("Make favourite error :" + data)
+        )
 
     $scope.markRecipe = (data) ->
       $mdDialog.show(

@@ -28,6 +28,10 @@
             %span.margin-right-5.margin-left-5
               %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
             ingredients
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('favourites')", "ng-class" => "{focused: currentPath == '/favourites'}"}
+            %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
+              %i.fa.fa-star.fa-lg
+            favourites
         -# %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
         -#   %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "redir_your_profile()"}
         -#     %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10{style: 'color:#666'}

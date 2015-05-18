@@ -1,16 +1,37 @@
-[OK] Avatar
+# TODO
+
+Created: 16/05/2015
+Author: Clovis Kyndt
+Updated: 18/05/2015
+
+### ON GOING
+
+- [Feature] Add star
+- [Feature] User favourites + Pagination
+- [Feature] Ingredient search filter
+- [Feature] Ingredient pagination
+- [Feature] MyRecipe Search + pagination
+- [Feature] MyRecipe Smart search
+- [Feature] Recipe review
+
+- [Elasticsearch] User historique (Elasticsearch)
+
+- [Docker] Deploiement de test
+- [Docker] Deploiement de production
+
+- [Bug] User last name & firstname impossible a delete
+- [Bug] Link Author
+- [Bug] search bar in responsive (mobile)
+- [Bug] Probleme de syncronisation (User not update)
+
+- [Documentation] Github add API repo
+
+### DONE
+
+- [Feature] Avatar
+- [Feature] Search bar
+- [Documentation] Update github
+
+### OUT
+
 [KO] Valider les modifications d'un compte user
-[OK] Update github
-- Add star
-- Ingredient search filter
-- Ingredient pagination
-- MyRecipe Search + pagination
-- MyRecipe Smart search
-- User books
-- User historique (Elasticsearch)
-- Deploiement de test (Docker) + test
-- Deploiement de production (Docker)
-- User last name & firstname impossible a delete
-- Probleme de syncronisation (User not update)
-- Github add API repo
-- Link Author

@@ -20,7 +20,6 @@ function DemoCtrl ($timeout, $q, authorization, api, ingredientService) {
       xhr.setRequestHeader("Content-Type", "application/json")
       xhr.send(JSON.stringify({name:query, limit:4}));
       if(xhr.status == 200) {
-        console.log("OKOKK")
         solution = JSON.parse(xhr.response)
         for (i = 0; i < solution.length; i++) {
           solution[i].image = solution[i].icon;

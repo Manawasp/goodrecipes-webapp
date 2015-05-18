@@ -61,17 +61,15 @@
   <div class='text-right padding-top-30 padding-bottom-5 top-border'>
     <div layout-align='space-between center' layout='row'>
       <div class='margin-left-10'>
-        <i class='fa fa-user fa-lg margin-right-5' style='color:#777'></i>
-        {{author.pseudo}}
+        <md-button class='padding-left-15 padding-right-15' ng-class="{'favourite-false': !recipe.liked, 'favourite-true': recipe.liked}" ng-click='makeFavourite(recipe.liked)'>
+          <i class='fa fa-star fa-lg margin-right-5'></i>
+          Favourites
+        </md-button>
       </div>
       <div>
-        <md-button class='md-primary padding-left-5' ng-click='markRecipe()'>
-          <i class='fa fa-thumbs-o-up fa-lg margin-right-5'></i>
-          MARK
-        </md-button>
-        <md-button class='md-primary margin-left-10 padding-left-5' ng-click='create_ingredient()'>
-          <i class='fa fa-comments fa-lg margin-right-5'></i>
-          COMMENT
+        <md-button class='margin-left-10 padding-left-15 padding-right-15' ng-click='create_ingredient()' style='color:#777'>
+          <i class='fa fa-comment fa-lg margin-right-5'></i>
+          REVIEW
         </md-button>
       </div>
     </div>

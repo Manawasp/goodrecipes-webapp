@@ -42,15 +42,13 @@
   %div.text-right.padding-top-30.padding-bottom-5.top-border
     %div{layout: "row", "layout-align" => "space-between center"}
       %div.margin-left-10
-        %i.fa.fa-user.fa-lg.margin-right-5{style: 'color:#777'}
-        {{author.pseudo}}
+        %md-button.padding-left-15.padding-right-15{"ng-class" => "{'favourite-false': !recipe.liked, 'favourite-true': recipe.liked}", "ng-click" => "makeFavourite(recipe.liked)"}
+          %i.fa.fa-star.fa-lg.margin-right-5
+          Favourites
       %div
-        %md-button.md-primary.padding-left-5{"ng-click" => "markRecipe()"}
-          %i.fa.fa-thumbs-o-up.fa-lg.margin-right-5
-          MARK
-        %md-button.md-primary.margin-left-10.padding-left-5{"ng-click" => "create_ingredient()"}
-          %i.fa.fa-comments.fa-lg.margin-right-5
-          COMMENT
+        %md-button.margin-left-10.padding-left-15.padding-right-15{"ng-click" => "create_ingredient()", style: 'color:#777'}
+          %i.fa.fa-comment.fa-lg.margin-right-5
+          REVIEW
 
 %div.print-title.margin-left-20.font-24.roboto.light.margin-top-30.margin-bottom-20{style: 'max-width:1140px;margin-left:auto;margin-right:auto'}
   Want to try more ?
