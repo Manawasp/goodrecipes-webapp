@@ -22,6 +22,7 @@ angular.module('app').controller("myrecipeCtrl", ($mdDialog, $scope, $location,$
           $scope.data.pagination.length = 0
           n = $scope.data.page - 4
           while (n < ($scope.data.page + 4))
+            # DEBUG CI DESSOUS
             if (n > 0 && ((n-1)*$scope.data.limit) < $scope.data.results)
               $scope.data.pagination.push n
             n += 1
