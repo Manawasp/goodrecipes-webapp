@@ -21,7 +21,7 @@ angular.module('app').controller("favouriteCtrl", ($mdDialog, $scope, $location,
           $scope.data.pagination.length = 0
           n = $scope.data.page - 4
           while (n < ($scope.data.page + 4))
-            if (n > 0 && (n*$scope.data.limit) < $scope.data.results)
+            if (n > 0 && ((n-1)*$scope.data.limit) < $scope.data.results)
               $scope.data.pagination.push n
             n += 1
         )

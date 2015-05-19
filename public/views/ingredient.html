@@ -1,9 +1,9 @@
 <div class='margin-top-10' layout-align='space-between center' layout='row'>
-  <div class='print-title margin-left-20 font-24 roboto light margin-bottom-20 margin-top-20'>
+  <div class='print-title margin-left-20 font-24 roboto light margin-bottom-20 margin-top-20' flex='40'>
     MANAGE INGREDIENTS
   </div>
-  <div>
-    <div class='md-whiteframe-z1'>
+  <div flex='60'>
+    <div class='md-whiteframe-z1' style='position:absolute;right:30px;top:40px;max-width:600px;'>
       <form ng-submit='updatePage(1)'>
         <input class='padding-left-30' ng-model='ingredient.description' placeholder='Ingredient name...' style='width:300px;display:inline-block;height:30px;border:0;'>
         <md-button ng-click='updatePage(1)'>
@@ -32,7 +32,7 @@
     <a class='cursor margin-right-5 margin-left-5' ng-click='updatePage(data.page - 1)' ng-show='data.page &gt; 1' style='display:inline-block;padding:3px 7px'>
       <i class='fa fa-arrow-left'></i>
     </a>
-    <a class='cursor font-16 margin-right-10' ng-class="{'selected': page == data.page}" ng-click='updatePage(page)' ng-repeat='page in data.pagination track by $index' style='display:inline-block;padding:3px 7px'>
+    <a class='cursor font-16 margin-right-10' ng-class="{'selected': page == data.page}" ng-click='updatePage(page)' ng-repeat='page in data.pagination track by $index' ng-show='data.pagination.length &gt; 1' style='display:inline-block;padding:3px 7px'>
       {{page}}
     </a>
     <a class='cursor' ng-click='updatePage(data.page + 1)' ng-show='data.pagination.length &gt; 0 &amp;&amp; data.pagination[data.pagination.length - 1] != data.page' style='display:inline-block;padding:3px 7px;'>

@@ -31,7 +31,7 @@
     %a.cursor.margin-right-5.margin-left-5{"ng-show" => "data.page > 1", style: "display:inline-block;padding:3px 7px", "ng-click" => "updatePage(data.page - 1)"}
       %i.fa.fa-arrow-left
     -# %a.cursor.margin-right-5{"ng-show" => "", style: 'display:inline-block;padding:3px 7xp;'}
-    %a.cursor.font-16.margin-right-10{"ng-repeat" => "page in data.pagination track by $index", style: "display:inline-block;padding:3px 7px", "ng-class" => "{'selected': page == data.page}", "ng-click" => "updatePage(page)"}
-      {{page}}
+    %a.cursor.font-16.margin-right-10{"ng-repeat" => "page in data.pagination track by $index", style: "display:inline-block;padding:3px 7px", "ng-class" => "{'selected': page == data.page}", "ng-click" => "updatePage(page)", "ng-show" => "data.pagination.length > 1"}
+      {{page}}{{data.pagination.length}}
     %a.cursor{"ng-show" => "data.pagination.length > 0 && data.pagination[data.pagination.length - 1] != data.page", style: "display:inline-block;padding:3px 7px;", "ng-click" => "updatePage(data.page + 1)"}
       %i.fa.fa-arrow-right

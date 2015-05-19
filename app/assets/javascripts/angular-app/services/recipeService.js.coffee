@@ -54,21 +54,13 @@ angular.module('app')
         get: (idhash) ->
           req = $http.get(apiService.url() + '/recipes/' + idhash)
           return req
-        search: (name, labels, savours, blacklist, ingredients, offset, limit, created_by) ->
+        search: (name, offset, limit, created_by) ->
           data = {}
           if name && name.length > 0
             data.title = name
-          if labels && labels.length > 0
-            data.labels = labels
-          if savours && savours.length > 0
-            data.savours = savours
-          if blacklist && blacklist.length > 0
-            data.blacklist = blacklist
-          if ingredients && ingredients.length > 0
-            data.ingredients = ingredients
-          if offset && offset.length > 0
+          if offset
             data.offset = offset
-          if limit && limit > 0
+          if limit
             data.limit = limit
           if created_by && created_by.length > 0
             data.create_by = created_by

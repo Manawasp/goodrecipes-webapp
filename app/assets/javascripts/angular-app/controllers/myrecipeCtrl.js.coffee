@@ -29,7 +29,7 @@ angular.module('app').controller("myrecipeCtrl", ($mdDialog, $scope, $location,$
         )
 
     searchUserRecipes = (paginationCallback) ->
-      recipeService.search("",[],[],[],[], $scope.data.offset, $scope.data.limit, $routeParams.userid
+      recipeService.search("", $scope.data.offset, $scope.data.limit, $routeParams.userid
       ).success((data) ->
         $scope.more_recipe = data.recipes
         #paginarion
