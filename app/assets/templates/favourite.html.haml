@@ -3,9 +3,9 @@
     %i.fa.fa-list.fa-1x.margin-right-10.cursor.view-menu{"ng-class" => "{'selected': !data.tableView}", "ng-click" => "data.tableView = false"}
     %i.fa.fa-th.fa-1x.margin-right-10.cursor.view-menu{"ng-class" => "{'selected': data.tableView}", "ng-click" => "data.tableView = true"}
   FAVOURITES
-%div.margin-bottom-20{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', style: 'text-align:justify'}
-  %div{"ng-repeat" => 'morerecipe in more_recipe track by $index', "flex-sm"=> "100", "flex-md"=> "50", "flex-lg"=> "50", "flex-gt-lg" => "25", style: 'margin-left:auto;margin-right:auto;'}
-    %md-content.md-whiteframe-z1.cursor{layout: "column", "ng-click" => "redir_recipe(morerecipe.id)"}
+%div.margin-bottom-20{layout: "row", "ng-show" => "more_recipe.length > 0", "layout-wrap"=>""}
+  %span{"flex-sm"=> "100", "flex-md"=> "50", "flex-lg"=> "50", "flex-gt-lg" => "25", "ng-repeat" => 'morerecipe in more_recipe track by $index'}
+    %md-content.md-whiteframe-z1.cursor.margin-top-30{"ng-click" => "redir_recipe(morerecipe.id)", style: 'display:inline-block;width:92%;margin-left:4%;'}
       %div.flat-image-100p.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
       %div.padding-top-5.padding-bottom-5.padding-right-10.padding-left-10.font-18.text-center
         %table{style: 'width:95%;height:65px;padding-left:2.5%'}

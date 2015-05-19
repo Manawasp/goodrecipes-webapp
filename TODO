@@ -18,7 +18,6 @@ Updated: 18/05/2015
 - [Bug] Link Author
 - [Bug] search bar in responsive (mobile)
 - [Bug] Probleme de syncronisation (User not update)
-- [BUG] Alignement des recettes
 
 
 ### DONE
@@ -33,6 +32,7 @@ Updated: 18/05/2015
 - [Feature] Recipe Pagination
 - [Documentation] Update github
 - [Documentation] Github add API repo
+- [BUG] recipe alignment
 
 ### OUT
 

@@ -1,9 +1,9 @@
 <div class='print-title margin-left-20 font-24 roboto light margin-top-15 margin-bottom-20'>
   MY RECIPES
 </div>
-<div class='margin-bottom-20' layout-margin='' layout-padding='' layout-wrap='' layout='row' style='text-align:justify'>
-  <div flex-gt-lg='25' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
-    <md-content class='md-whiteframe-z1 cursor' layout='column' ng-click='redir_recipe(morerecipe.id)'>
+<div class='margin-bottom-20' layout-wrap='' layout='row' ng-show='more_recipe.length &gt; 0'>
+  <span flex-gt-lg='25' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index'>
+    <md-content class='md-whiteframe-z1 cursor margin-top-30' ng-click='redir_recipe(morerecipe.id)' style='display:inline-block;width:92%;margin-left:4%;'>
       <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'></div>
       <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
         <table style='width:95%;height:65px;padding-left:2.5%'>
@@ -29,7 +29,7 @@
         <span class='font-16'>{{morerecipe.mark}}/5</span>
       </div>
     </md-content>
-  </div>
+  </span>
 </div>
 <div class='pagination margin-left-30'>
   {{data.results}} RESULTS
