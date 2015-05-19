@@ -2,25 +2,7 @@
   MY RECIPES
 %div.margin-bottom-20{layout: "row", "ng-show" => "more_recipe.length > 0", "layout-wrap"=>""}
   %span{"flex-sm"=> "100", "flex-md"=> "50", "flex-lg"=> "50", "flex-gt-lg" => "25", "ng-repeat" => 'morerecipe in more_recipe track by $index'}
-    %md-content.md-whiteframe-z1.cursor.margin-top-30{"ng-click" => "redir_recipe(morerecipe.id)", style: 'display:inline-block;width:92%;margin-left:4%;'}
-      %div.flat-image-100p.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
-      %div.padding-top-5.padding-bottom-5.padding-right-10.padding-left-10.font-18.text-center
-        %table{style: 'width:95%;height:65px;padding-left:2.5%'}
-          %th
-            %td
-              %i.fa.fa-quote-left{style: 'color:#ccc'}
-              %span.margin-left-5.margin-right-5 {{morerecipe.title}}
-              %i.fa.fa-quote-right{style: 'color:#ccc'}
-      %div.padding-bottom-10.text-center{style: 'color:#777'}
-        %i.fa.fa-group.margin-left-15.margin-right-5
-        %span.font-16 {{morerecipe.people}}
-        %i.fa.fa-history.margin-left-15.margin-right-5
-        %span.font-16
-          {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
-        %i.fa.fa-comments-o.margin-left-15.margin-right-5
-        %span.font-16 {{morerecipe.comments_length}}
-        %i.fa.fa-thumbs-o-up.margin-left-15.margin-right-5
-        %span.font-16 {{morerecipe.mark}}/5
+    %div{"ng-recipes" => "", "ng-model"=>"morerecipe"}
 -# Pagination
 .pagination.margin-left-30
   {{data.results}} RESULTS

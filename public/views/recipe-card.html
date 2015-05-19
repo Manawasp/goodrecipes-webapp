@@ -1,0 +1,26 @@
+<md-content class='md-whiteframe-z1 cursor margin-top-30' ng-click='redirRecipe(ngModel.id)' style='display:inline-block;width:92%;margin-left:4%;'>
+  <div class='flat-image-100p text-center' style='background-image: url("{{ngModel.image}}")'></div>
+  <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
+    <table style='width:95%;height:65px;padding-left:2.5%'>
+      <th>
+        <td>
+          <i class='fa fa-quote-left' style='color:#ccc'></i>
+          <span class='margin-left-5 margin-right-5'>{{ngModel.title}}</span>
+          <i class='fa fa-quote-right' style='color:#ccc'></i>
+        </td>
+      </th>
+    </table>
+  </div>
+  <div class='padding-bottom-10 text-center' style='color:#777'>
+    <i class='fa fa-group margin-left-15 margin-right-5'></i>
+    <span class='font-16'>{{ngModel.people}}</span>
+    <i class='fa fa-history margin-left-15 margin-right-5'></i>
+    <span class='font-16'>
+      {{ngModel.hours.toString() + "h" + ngModel.minutes.toString()}}
+    </span>
+    <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
+    <span class='font-16'>{{ngModel.comments_length}}</span>
+    <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
+    <span class='font-16'>{{ngModel.mark}}/5</span>
+  </div>
+</md-content>
