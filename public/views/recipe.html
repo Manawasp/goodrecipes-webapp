@@ -7,7 +7,7 @@
   <div class='text-center font-24 roboto light margin-top-30' style='color:#999'>No Result</div>
 </div>
 <div class='margin-bottom-20' layout-align='start center' layout-margin='' layout-padding='' layout-wrap='' layout='row' ng-show='more_recipe.length &gt; 0'>
-  <div flex-gt-lg='20' flex-lg='50' flex-md='100' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
+  <div flex-gt-lg='25' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
     <md-content class='md-whiteframe-z1 cursor' layout='column' ng-click='redir_recipe(morerecipe.id)'>
       <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'></div>
       <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
@@ -34,5 +34,19 @@
         <span class='font-16'>{{morerecipe.mark}}/5</span>
       </div>
     </md-content>
+  </div>
+</div>
+<div class='pagination margin-left-30'>
+  {{data.results}} RESULTS
+  <div class='margin-top-20'>
+    <a class='cursor margin-right-5 margin-left-5' ng-click='updatePage(data.page - 1)' ng-show='data.page &gt; 1' style='display:inline-block;padding:3px 7px'>
+      <i class='fa fa-arrow-left'></i>
+    </a>
+    <a class='cursor font-16 margin-right-10' ng-class="{'selected': page == data.page}" ng-click='updatePage(page)' ng-repeat='page in data.pagination track by $index' ng-show='data.pagination.length &gt; 1' style='display:inline-block;padding:3px 7px'>
+      {{page}}
+    </a>
+    <a class='cursor' ng-click='updatePage(data.page + 1)' ng-show='data.pagination.length &gt; 0 &amp;&amp; data.pagination[data.pagination.length - 1] != data.page' style='display:inline-block;padding:3px 7px;'>
+      <i class='fa fa-arrow-right'></i>
+    </a>
   </div>
 </div>

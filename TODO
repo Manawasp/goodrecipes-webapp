@@ -6,8 +6,6 @@ Updated: 18/05/2015
 
 ### ON GOING
 
-- [Feature] MyRecipe Search + pagination
-- [Feature] Recipe Pagination
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
 
@@ -20,6 +18,7 @@ Updated: 18/05/2015
 - [Bug] Link Author
 - [Bug] search bar in responsive (mobile)
 - [Bug] Probleme de syncronisation (User not update)
+- [BUG] Alignement des recettes
 
 - [Documentation] Github add API repo
 
@@ -31,6 +30,8 @@ Updated: 18/05/2015
 - [Feature] Ingredient search filter
 - [Feature] Ingredient pagination
 - [Feature] User favourites + Pagination
+- [Feature] MyRecipe Search + pagination
+- [Feature] Recipe Pagination
 - [Documentation] Update github
 
 ### OUT
