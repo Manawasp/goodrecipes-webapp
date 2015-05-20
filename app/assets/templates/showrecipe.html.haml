@@ -42,9 +42,9 @@
   %div.text-right.padding-top-30.padding-bottom-5.top-border
     %div{layout: "row", "layout-align" => "space-between center"}
       %div.margin-left-10
-        %md-button.padding-left-15.padding-right-15{"ng-class" => "{'favourite-false': !recipe.liked, 'favourite-true': recipe.liked}", "ng-click" => "makeFavourite(recipe.liked)"}
+        %md-button.padding-left-15.padding-right-15{"ng-class" => "{'favorite-false': !recipe.liked, 'favorite-true': recipe.liked}", "ng-click" => "makeFavorite(recipe.liked)"}
           %i.fa.fa-star.fa-lg.margin-right-5
-          Favourites
+          Favorites
       %div
         %md-button.margin-left-10.padding-left-15.padding-right-15{"ng-click" => "create_ingredient()", style: 'color:#777'}
           %i.fa.fa-comment.fa-lg.margin-right-5

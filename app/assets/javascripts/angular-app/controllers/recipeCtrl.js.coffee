@@ -16,8 +16,13 @@ angular.module('app').controller("recipeCtrl", ($mdDialog, $routeParams, $scope,
     $scope.redir_recipe = (id) ->
       $location.url('/recipes/show/' + id)
 
-    searchRecipe = () ->
-      recipeService.getApplySearch()
+    $scope.updatePage = (value)->
+      recipeService.updatePage(value)
 
+    searchRecipe = (value) ->
+      if value == undefined
+        recipeService.updatePage(1)
+      else
+        recipeService.updatePage(1)
     searchRecipe()
 )

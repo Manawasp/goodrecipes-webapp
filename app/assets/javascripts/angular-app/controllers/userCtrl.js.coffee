@@ -51,7 +51,7 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
 
     $scope.searchRecipe = () ->
       if ($location.$$path == '/recipes/search')
-        recipeService.getApplySearch()
+        recipeService.updatePage(1)
       else
         $location.url('recipes/search?title='+$scope.recipeSearch.description);
 

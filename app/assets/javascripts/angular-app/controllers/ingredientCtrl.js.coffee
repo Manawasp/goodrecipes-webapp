@@ -23,7 +23,7 @@ angular.module('app').controller("ingredientCtrl", ($mdDialog, $scope, $location
           console.log("updated... ? page:" + $scope.data.page)
           n = $scope.data.page - 4
           while (n < ($scope.data.page + 4))
-            if (n > 0 && (n*$scope.data.limit) < $scope.data.results)
+            if (n > 0 && ((n-1)*$scope.data.limit) < $scope.data.results)
               $scope.data.pagination.push n
             n += 1
         )

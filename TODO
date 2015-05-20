@@ -6,10 +6,10 @@ Updated: 18/05/2015
 
 ### ON GOING
 
-- [Feature] MyRecipe Search + pagination
-- [Feature] Recipe Pagination
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
+- [Feature] Remove ingredient
+- [Feature] Remove recipes
 
 - [Elasticsearch] User historique (Elasticsearch)
 
@@ -21,17 +21,20 @@ Updated: 18/05/2015
 - [Bug] search bar in responsive (mobile)
 - [Bug] Probleme de syncronisation (User not update)
 
-- [Documentation] Github add API repo
 
 ### DONE
 
 - [Feature] Avatar
-- [Feature] Add favourite
+- [Feature] Add favorite
 - [Feature] Search bar
 - [Feature] Ingredient search filter
 - [Feature] Ingredient pagination
-- [Feature] User favourites + Pagination
+- [Feature] User favorites + Pagination
+- [Feature] MyRecipe Search + pagination
+- [Feature] Recipe Pagination
 - [Documentation] Update github
+- [Documentation] Github add API repo
+- [BUG] recipe alignment
 
 ### OUT
 

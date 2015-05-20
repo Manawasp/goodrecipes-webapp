@@ -1,8 +1,8 @@
 %div.margin-top-10{layout: "row", "layout-align" => "space-between center"}
-  %div.print-title.margin-left-20.font-24.roboto.light.margin-bottom-20.margin-top-20
+  %div.print-title.margin-left-20.font-24.roboto.light.margin-bottom-20.margin-top-20{flex: "40"}
     MANAGE INGREDIENTS
-  %div
-    %div.md-whiteframe-z1
+  %div{flex:"60"}
+    %div.md-whiteframe-z1{style: "position:absolute;right:30px;top:40px;max-width:600px;"}
       %form{"ng-submit"=>"updatePage(1)"}
         %input.padding-left-30{"ng-model" => "ingredient.description", style: "width:300px;display:inline-block;height:30px;border:0;", placeholder: "Ingredient name..."}
         %md-button{"ng-click" => "updatePage(1)"}
@@ -11,10 +11,6 @@
         %md-button{style: 'background-color:#F85562;color:white', 'ng-click' => 'showCreateIngredient($event)'}
           %i.fa.fa-plus.margin-right-5
           NEW
--# %md-button.md-primary.md-raised.padding-left-20.padding-right-20{'ng-click' => 'showCreateIngredient($event)', style: "background-color:#F85562"}
--#   %span.font-16{style: 'line-height:16px;'}
--#     %i.fa.fa-plus
--#     New ingredient
 %div{layout: "column", "layout-align" => "start start"}
   %md-content.text-justify{style: 'padding:20px 10px'}
     %span{"ng-repeat" => "ig in data.ingredients"}
@@ -26,8 +22,7 @@
   %div.margin-top-20
     %a.cursor.margin-right-5.margin-left-5{"ng-show" => "data.page > 1", style: "display:inline-block;padding:3px 7px", "ng-click" => "updatePage(data.page - 1)"}
       %i.fa.fa-arrow-left
-    -# %a.cursor.margin-right-5{"ng-show" => "", style: 'display:inline-block;padding:3px 7xp;'}
-    %a.cursor.font-16.margin-right-10{"ng-repeat" => "page in data.pagination track by $index", style: "display:inline-block;padding:3px 7px", "ng-class" => "{'selected': page == data.page}", "ng-click" => "updatePage(page)"}
+    %a.cursor.font-16.margin-right-10{"ng-repeat" => "page in data.pagination track by $index", style: "display:inline-block;padding:3px 7px", "ng-class" => "{'selected': page == data.page}", "ng-click" => "updatePage(page)", "ng-show" => "data.pagination.length > 1"}
       {{page}}
     %a.cursor{"ng-show" => "data.pagination.length > 0 && data.pagination[data.pagination.length - 1] != data.page", style: "display:inline-block;padding:3px 7px;", "ng-click" => "updatePage(data.page + 1)"}
       %i.fa.fa-arrow-right

@@ -1,0 +1,19 @@
+%md-content.md-whiteframe-z1.cursor.margin-top-30{"ng-click" => "redirRecipe(ngModel.id)", style: 'display:inline-block;width:92%;margin-left:4%;'}
+  %div.flat-image-100p.text-center{style: 'background-image: url("{{ngModel.image}}")'}
+  %div.padding-top-5.padding-bottom-5.padding-right-10.padding-left-10.font-18.text-center
+    %table{style: 'width:95%;height:65px;padding-left:2.5%'}
+      %th
+        %td
+          %i.fa.fa-quote-left{style: 'color:#ccc'}
+          %span.margin-left-5.margin-right-5 {{ngModel.title}}
+          %i.fa.fa-quote-right{style: 'color:#ccc'}
+  %div.padding-bottom-10.text-center{style: 'color:#777'}
+    %i.fa.fa-group.margin-left-15.margin-right-5
+    %span.font-16 {{ngModel.people}}
+    %i.fa.fa-history.margin-left-15.margin-right-5
+    %span.font-16
+      {{ngModel.hours.toString() + "h" + ngModel.minutes.toString()}}
+    %i.fa.fa-comments-o.margin-left-15.margin-right-5
+    %span.font-16 {{ngModel.comments_length}}
+    %i.fa.fa-thumbs-o-up.margin-left-15.margin-right-5
+    %span.font-16 {{ngModel.mark}}/5

@@ -2,34 +2,35 @@ angular.module('app')
   .factory('recipeService', ($http, apiService) ->
       current_recipe = {}
       view = false
-      searchObject = {recipe: {description: "", labels: [], blacklist: []}, labels: [{'c': false, 'name': 'breakfast & brunch'}, {'c': false, 'name': 'appetizer'}, {'c': false, 'name': 'dessert'}, {'c': false, 'name': 'healty'}, {'c': false, 'name': 'main dish'}, {'c': false, 'name': 'pasta'}, {'c': false, 'name': 'slow cooker'}, {'c': false, 'name': 'vegetarian'}, {'c': false, 'name': 'sauce'}, {'c': false, 'name': 'cheese'}, {'c': false, 'name': 'fruit'}, {'c': false, 'name': 'vegetable'}, {'c': false, 'name': 'sea food'}, {'c': false, 'name': 'fish'}, {'c': false, 'name': 'spicy'}, {'c': false, 'name': 'meat'}, {'c': false, 'name': 'chicken'}, {'c': false, 'name': 'beef'}], denied: [{'c': false, 'name': 'arachide'}, {'c': false, 'name': 'egg'}, {'c': false, 'name': 'milk'}, {'c': false, 'name': 'halal'}, {'c': false, 'name': 'kascher'}],data:{offset:0,limit:30},more_recipe: []}
+      searchObject = {recipe: {description: "", labels: [], blacklist: []}, labels: [{'c': false, 'name': 'breakfast & brunch'}, {'c': false, 'name': 'appetizer'}, {'c': false, 'name': 'dessert'}, {'c': false, 'name': 'healty'}, {'c': false, 'name': 'main dish'}, {'c': false, 'name': 'pasta'}, {'c': false, 'name': 'slow cooker'}, {'c': false, 'name': 'vegetarian'}, {'c': false, 'name': 'sauce'}, {'c': false, 'name': 'cheese'}, {'c': false, 'name': 'fruit'}, {'c': false, 'name': 'vegetable'}, {'c': false, 'name': 'sea food'}, {'c': false, 'name': 'fish'}, {'c': false, 'name': 'spicy'}, {'c': false, 'name': 'meat'}, {'c': false, 'name': 'chicken'}, {'c': false, 'name': 'beef'}], denied: [{'c': false, 'name': 'arachide'}, {'c': false, 'name': 'egg'}, {'c': false, 'name': 'milk'}, {'c': false, 'name': 'halal'}, {'c': false, 'name': 'kascher'}],data:{offset:0,limit:12,results:0,pagination:[]},more_recipe: []}
 
 
       return (
+        updatePage: (value)->
+          if value > 0
+            searchObject.data.page    = value
+            searchObject.data.offset  = (value - 1) * searchObject.data.limit
+            this.getApplySearch(()->
+              searchObject.data.pagination.length = 0
+              console.log("updated... ? page:" + searchObject.data.page)
+              n = searchObject.data.page - 4
+              while (n < (searchObject.data.page + 4))
+                if (n > 0 && ((n-1)*searchObject.data.limit) < searchObject.data.results)
+                  searchObject.data.pagination.push n
+                n += 1
+            )
         getMoreRecipe: ()->
           return more_recipe
-        getApplySearch: ()->
-          for element in searchObject.labels
-            if element.c
-              searchObject.recipe.labels.push element.name
-
-          for element in searchObject.denied
-            if element.c
-              searchObject.recipe.blacklist.push element.name
-
+        getApplySearch: (callback)->
           this.search(searchObject.recipe.description,
-                                    searchObject.recipe.labels,
-                                    searchObject.recipe.savours,
-                                    searchObject.recipe.blacklist,
-                                    [],
                                     searchObject.data.offset,
                                     searchObject.data.limit
           ).success((data) ->
             searchObject.more_recipe.length = 0
+            searchObject.data.results = data.max
             for recipe in data.recipes
               searchObject.more_recipe.push recipe
-            console.log(data.recipes)
-            console.log(searchObject.more_recipe)
+            callback()
           ).error((data) ->
             console.log "error data in search ingredient"
             # console.log data
@@ -54,21 +55,13 @@ angular.module('app')
         get: (idhash) ->
           req = $http.get(apiService.url() + '/recipes/' + idhash)
           return req
-        search: (name, labels, savours, blacklist, ingredients, offset, limit, created_by) ->
+        search: (name, offset, limit, created_by) ->
           data = {}
           if name && name.length > 0
             data.title = name
-          if labels && labels.length > 0
-            data.labels = labels
-          if savours && savours.length > 0
-            data.savours = savours
-          if blacklist && blacklist.length > 0
-            data.blacklist = blacklist
-          if ingredients && ingredients.length > 0
-            data.ingredients = ingredients
-          if offset && offset.length > 0
+          if offset
             data.offset = offset
-          if limit && limit > 0
+          if limit
             data.limit = limit
           if created_by && created_by.length > 0
             data.create_by = created_by
@@ -82,14 +75,14 @@ angular.module('app')
           req = $http.post(apiService.url() + '/recipes/' + data.id + '/pictures', data)
           return req
           console.log(type)
-        searchFavourite: (offset, limit)->
-          req = $http.post(apiService.url() + '/favourites/search', {offset: offset, limit: limit})
+        searchFavorite: (offset, limit)->
+          req = $http.post(apiService.url() + '/favorites/search', {offset: offset, limit: limit})
           return req
-        favourite: (id) ->
-          req = $http.post(apiService.url() + '/favourites/recipes/' + id)
+        favorite: (id) ->
+          req = $http.post(apiService.url() + '/favorites/recipes/' + id)
           return req
-        unfavourite: (id) ->
-          req = $http.delete(apiService.url() + '/favourites/recipes/' + id)
+        unfavorite: (id) ->
+          req = $http.delete(apiService.url() + '/favorites/recipes/' + id)
           return req
         setCurrent: (data) ->
           current_recipe = data

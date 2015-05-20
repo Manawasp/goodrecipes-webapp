@@ -1,16 +1,19 @@
-%div.print-title.margin-left-20.font-24.roboto.light.margin-top-15.margin-bottom-20
-  MY RECIPES
+%div.print-title.margin-left-20.font-24.roboto.light.margin-top-15
+  %div.margin-bottom-20.margin-left-20.margin-top-5{style:'float:right'}
+    %i.fa.fa-list.fa-1x.margin-right-10.cursor.view-menu{"ng-class" => "{'selected': !data.tableView}", "ng-click" => "data.tableView = false"}
+    %i.fa.fa-th.fa-1x.margin-right-10.cursor.view-menu{"ng-class" => "{'selected': data.tableView}", "ng-click" => "data.tableView = true"}
+  FAVORITES
 %div.margin-bottom-20{layout: "row", "ng-show" => "more_recipe.length > 0", "layout-wrap"=>""}
   %span{"flex-sm"=> "100", "flex-md"=> "50", "flex-lg"=> "50", "flex-gt-lg" => "25", "ng-repeat" => 'morerecipe in more_recipe track by $index'}
     %div{"ng-recipes" => "", "ng-model"=>"morerecipe"}
 -# Pagination
 .pagination.margin-left-30
   {{data.results}} RESULTS
-  %div.margin-top-20
+  %div
     %a.cursor.margin-right-5.margin-left-5{"ng-show" => "data.page > 1", style: "display:inline-block;padding:3px 7px", "ng-click" => "updatePage(data.page - 1)"}
       %i.fa.fa-arrow-left
     -# %a.cursor.margin-right-5{"ng-show" => "", style: 'display:inline-block;padding:3px 7xp;'}
     %a.cursor.font-16.margin-right-10{"ng-repeat" => "page in data.pagination track by $index", style: "display:inline-block;padding:3px 7px", "ng-class" => "{'selected': page == data.page}", "ng-click" => "updatePage(page)", "ng-show" => "data.pagination.length > 1"}
-      {{page}}
+      {{page}}{{data.pagination.length}}
     %a.cursor{"ng-show" => "data.pagination.length > 0 && data.pagination[data.pagination.length - 1] != data.page", style: "display:inline-block;padding:3px 7px;", "ng-click" => "updatePage(data.page + 1)"}
       %i.fa.fa-arrow-right
