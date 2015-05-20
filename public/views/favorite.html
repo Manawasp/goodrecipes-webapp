@@ -1,0 +1,26 @@
+<div class='print-title margin-left-20 font-24 roboto light margin-top-15'>
+  <div class='margin-bottom-20 margin-left-20 margin-top-5' style='float:right'>
+    <i class='fa fa-list fa-1x margin-right-10 cursor view-menu' ng-class="{'selected': !data.tableView}" ng-click='data.tableView = false'></i>
+    <i class='fa fa-th fa-1x margin-right-10 cursor view-menu' ng-class="{'selected': data.tableView}" ng-click='data.tableView = true'></i>
+  </div>
+  FAVORITES
+</div>
+<div class='margin-bottom-20' layout-wrap='' layout='row' ng-show='more_recipe.length &gt; 0'>
+  <span flex-gt-lg='25' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index'>
+    <div ng-model='morerecipe' ng-recipes=''></div>
+  </span>
+</div>
+<div class='pagination margin-left-30'>
+  {{data.results}} RESULTS
+  <div>
+    <a class='cursor margin-right-5 margin-left-5' ng-click='updatePage(data.page - 1)' ng-show='data.page &gt; 1' style='display:inline-block;padding:3px 7px'>
+      <i class='fa fa-arrow-left'></i>
+    </a>
+    <a class='cursor font-16 margin-right-10' ng-class="{'selected': page == data.page}" ng-click='updatePage(page)' ng-repeat='page in data.pagination track by $index' ng-show='data.pagination.length &gt; 1' style='display:inline-block;padding:3px 7px'>
+      {{page}}{{data.pagination.length}}
+    </a>
+    <a class='cursor' ng-click='updatePage(data.page + 1)' ng-show='data.pagination.length &gt; 0 &amp;&amp; data.pagination[data.pagination.length - 1] != data.page' style='display:inline-block;padding:3px 7px;'>
+      <i class='fa fa-arrow-right'></i>
+    </a>
+  </div>
+</div>
