@@ -36,9 +36,9 @@
     .when('/ingredients', {
       templateUrl: 'views/dashboard.html',
       controller: 'ingredientCtrl' })
-    .when('/favourites', {
+    .when('/favorites', {
       templateUrl: 'views/dashboard.html',
-      controller: 'favouriteCtrl' })
+      controller: 'favoriteCtrl' })
 
 
     .when('/users/search', {

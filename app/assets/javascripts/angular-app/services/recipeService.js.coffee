@@ -75,14 +75,14 @@ angular.module('app')
           req = $http.post(apiService.url() + '/recipes/' + data.id + '/pictures', data)
           return req
           console.log(type)
-        searchFavourite: (offset, limit)->
-          req = $http.post(apiService.url() + '/favourites/search', {offset: offset, limit: limit})
+        searchFavorite: (offset, limit)->
+          req = $http.post(apiService.url() + '/favorites/search', {offset: offset, limit: limit})
           return req
-        favourite: (id) ->
-          req = $http.post(apiService.url() + '/favourites/recipes/' + id)
+        favorite: (id) ->
+          req = $http.post(apiService.url() + '/favorites/recipes/' + id)
           return req
-        unfavourite: (id) ->
-          req = $http.delete(apiService.url() + '/favourites/recipes/' + id)
+        unfavorite: (id) ->
+          req = $http.delete(apiService.url() + '/favorites/recipes/' + id)
           return req
         setCurrent: (data) ->
           current_recipe = data
