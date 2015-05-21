@@ -2,7 +2,7 @@
 
 Created: 16/05/2015
 Author: Clovis Kyndt
-Updated: 18/05/2015
+Updated: 21/05/2015
 
 ### ON GOING
 
@@ -13,7 +13,6 @@ Updated: 18/05/2015
 
 -- [Docker] Deploiement WebApp
 
--- [Bug] User last name & firstname impossible a delete
 -- [Bug] Link Author
 - [Bug] search bar in responsive (mobile)
 -- [Bug] Probleme de syncronisation (User not update)
