@@ -18,8 +18,8 @@
     %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
       %div{layout: "row", "layout-align" => "space-between center"}
         %div
-          %md-button.md-warn
-            %i.fa.fa-close.margin-right-5{"ng-click" => "cancel()"}
+          %md-button.md-warn{"ng-click" => "remove()"}
+            %i.fa.fa-close.margin-right-5
             REMOVE
         %div
           %md-button.md-nothing{"ng-click" => "cancel()", style: 'color:#777'}

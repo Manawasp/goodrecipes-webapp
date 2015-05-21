@@ -20,6 +20,16 @@
 <md-content layout='column' style='max-width:1140px;padding:30px 10px 10px 10px;margin-left:auto;margin-right:auto'>
   <div>
     <md-content class='md-whiteframe-z1 ingredient-windows-90p' style="background-image: url('{{recipe.image}}');width:100%;margin:0;"></md-content>
+    <div class='text-right'>
+      <a class='cursor' ng-click='editRecipe(recipe.id)' style='display:inline-block;padding:10px'>
+        <i class='fa fa-pencil'></i>
+        Edit
+      </a>
+      <a class='cursor' ng-click='removeConfirm($event)' style='display:inline-block;padding:10px'>
+        <i class='fa fa-trash'></i>
+        Remove
+      </a>
+    </div>
   </div>
   <div class='margin-top-30'>
     <div layout-wrap='' layout='row'>

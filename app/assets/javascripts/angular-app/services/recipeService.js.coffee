@@ -71,6 +71,9 @@ angular.module('app')
         update: (data) ->
           req = $http.patch(apiService.url() + '/recipes/' + data.id, data)
           return req
+        delete: (id) ->
+          req = $http.delete(apiService.url() + '/recipes/' + id, {})
+          return req
         image: (data) ->
           req = $http.post(apiService.url() + '/recipes/' + data.id + '/pictures', data)
           return req
