@@ -1,4 +1,4 @@
-angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $cookieStore, userService, api, recipeService)->
+angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $cookieStore, userService, api, recipeService, $mdToast, $animate)->
     $scope.search_name = ''
     $scope.searchValue = ''
     $scope.currentPath = $location.$$path || ""
@@ -10,12 +10,13 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
       console.log(currentPathSplit)
       $scope.currentPath = '/' + currentPathSplit[1] + '/' + currentPathSplit[2]
 
+
     $scope.toggleLeft = () ->
       $mdSidenav('left').toggle()
 
-    $scope.user = api.getUser()
+    $scope.dt = api.getUser()
+    $scope.user = $scope.dt.current_user
     $scope.id = $scope.user.id || ""
-    console.log ($scope.user.avatar || "/images/avatar.jpg")
 
     if $scope.user.avatar == undefined
       $scope.avatar = "/images/avatar.jpg"
@@ -59,7 +60,5 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
       loc = 'users/' + $scope.id;
       $location.url(loc);
 
-    # console.log  api.getUser()
-    # $scope.connected = authorization.isLogged()
     console.log 'userCtrl running'
 )

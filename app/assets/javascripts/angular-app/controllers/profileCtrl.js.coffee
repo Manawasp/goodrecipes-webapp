@@ -1,4 +1,4 @@
-angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location, $cookieStore, userService, api)->
+angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location, $cookieStore, userService, api, $mdToast, $animate)->
 
     $scope.template = 'views/editprofile.html'
     $scope.data = {
@@ -7,15 +7,17 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
       isfriend : false
     }
     user_original = {}
-    $scope.user = {}
+    $scope.editUser = {}
     $scope.obj = {}
     $scope.upload = {avatarPict: undefined}
 
-    $scope.show_picture = () ->
-      if $scope.upload.avatarPict != undefined
-        return "data:" + $scope.upload.avatarPict.filetype + ";base64," + $scope.upload.avatarPict.base64
-      else if $scope.ingredient.icon != undefined && $scope.ingredient.icon.length > 0
-        return $scope.ingredient.icon
+    showCustomToast = (msg)->
+      $mdToast.show(
+        $mdToast.simple()
+          .content(msg)
+          .position("bottom right")
+          .hideDelay(2000)
+      )
 
     upload_picture = (id) ->
       $scope.error = ""
@@ -28,8 +30,8 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
           console.log("le type de l'image est valide")
           dataPicture = {id: id, extend: result[1], picture: $scope.upload.avatarPict.base64}
           userService.image(dataPicture).success((data) ->
-            console.log("Upload success image return :")
-            console.log(data)
+            api.putUser(data.user)
+            showCustomToast("Profile picture updated !")
           ).error((data) ->
             $scope.upload.avatarPict = undefined
             console.log("Putain d'erreur :")
@@ -43,38 +45,36 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
     userService.get($routeParams.id
     ).success((data) ->
       # save user data & Clone
-      $scope.user = JSON.parse(JSON.stringify(data))
-      console.log(data)
-      console.log($scope.user)
+      $scope.editUser = JSON.parse(JSON.stringify(data))
       user_original = JSON.parse(JSON.stringify(data))
-      console.log(user_original)
     ).error((data) ->
     )
 
     $scope.show_picture = () ->
       if $scope.upload.avatarPict != undefined
         return "data:" + $scope.upload.avatarPict.filetype + ";base64," + $scope.upload.avatarPict.base64
-      else if $scope.user.avatar != undefined && $scope.user.avatar.length > 0
-        return $scope.user.avatar
+      else if $scope.editUser.avatar != undefined && $scope.editUser.avatar.length > 0
+        return $scope.editUser.avatar
       else
         console.log("No choose")
 
     $scope.update_user = () ->
-      $scope.data.send = true
-      $scope.data.error = ''
-      userService.update(user_original, $scope.user
-      ).success((data) ->
+      datas = userService.diff(user_original, $scope.editUser)
+      if userService.isEmpty(datas)
         if ($scope.upload.avatarPict != undefined)
           upload_picture($routeParams.id)
-        console.log(data)
-        $scope.user = Object.create(data)
-        user_original = Object.create(data)
-        $scope.data.send = false
-      ).error((data) ->
-        if data.error != 'empty request'
-          $scope.data.error = data.error
-        else
-          upload_picture($routeParams.id)
-        $scope.data.send = false
-      )
+      else
+        userService.update($scope.editUser.id, datas
+        ).success((data) ->
+          if ($scope.upload.avatarPict != undefined)
+            upload_picture($routeParams.id)
+          $scope.editUser = JSON.parse(JSON.stringify(data.user))
+          user_original = JSON.parse(JSON.stringify(data.user))
+          api.putUser($scope.editUser)
+          showCustomToast("Profile Updated")
+        ).error((data) ->
+          console.log(data)
+          if ($scope.upload.avatarPict != undefined)
+            upload_picture($routeParams.id)
+        )
 )

@@ -1,12 +1,12 @@
 angular.module('app').factory('api', ($http, $cookies, $location, userService) ->
-  current_user = {}
+  dt = {current_user: {}}
   this.token = ""
   access_gastronomist  = false
   access_supplier      = false
   access_admin         = false
 
   init_access = () ->
-    access_tabs = current_user.access || []
+    access_tabs = dt.current_user.access || []
     for t_access in access_tabs
       if t_access == "gastronomist"
         access_gastronomist = true
@@ -35,25 +35,25 @@ angular.module('app').factory('api', ($http, $cookies, $location, userService) -
         xhr.send(JSON.stringify({}))
         if (xhr.status == 200)
           current_user = JSON.parse(xhr.response)
+          dt.current_user = current_user
         else
           console.log("xhr.status :" + xhr.status)
           console.log("xhr.response:" + xhr.response)
-        console.log("Not wait ?")
-        # req.success((data, status, headers, config) ->
-        #     current_user = data
-        #     init_access()
-        #   ).error((data, status, headers, config) ->
-        #     console.log "WATT DAFUQ "
-        #   )
       else
         $location.path('/login')
     putUser: (data) ->
-      current_user = data
+      dt.current_user.password  = data.password
+      dt.current_user.email     = data.email
+      dt.current_user.firstname = data.firstname
+      dt.current_user.lastname  = data.lastname
+      dt.current_user.pseudo    = data.pseudo
+      dt.current_user.avatar    = data.avatar
+      # dt.current_user = JSON.parse(JSON.stringify(data))
       init_access()
     delUser: () ->
-      current_user = {}
+      dt.current_user = {}
     getUser: () ->
-      return current_user
+      return dt
     getAccessGastronomist: () ->
       return (access_gastronomist)
     getAccessSupplier: () ->
