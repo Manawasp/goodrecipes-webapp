@@ -13,6 +13,16 @@ angular.module('app').controller("editingredientCtrl", ($timeout, $q, $mdDialog,
     else if $scope.ingredient.icon != undefined && $scope.ingredient.icon.length > 0
       return $scope.ingredient.icon
 
+  $scope.remove = () ->
+    console.log("Suppression")
+    ingredientService.delete($scope.ingredient.id
+    ).success((data) ->
+      console.log("remove with success the ingredient")
+      ingredientService.garbageRemove($scope.ingredient.id)
+      $scope.cancel()
+    ).error((data)->
+      console.log(data)
+    )
 
   $scope.update_ingredient = () ->
     $scope.error = ""

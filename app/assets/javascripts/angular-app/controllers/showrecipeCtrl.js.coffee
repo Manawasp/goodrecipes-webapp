@@ -3,10 +3,17 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
     $scope.template = 'views/showrecipe.html'
     $scope.error = ''
     $scope.ingredients = []
+    $scope.recipe = {}
     $scope.mark = [0.5, 1.5, 2.5, 3.5, 4.5]
 
     $scope.redir_recipe = (id) ->
       $location.url('/recipes/show/' + id)
+
+    $scope.editRecipe = (id) ->
+      $location.url('/recipes/edit/' + id)
+
+    $scope.removeRecipe = () ->
+      console.log("remove")
 
     recipeService.get($routeParams.id
     ).success((data) ->
@@ -55,13 +62,22 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
           console.log("Make favourite error :" + data)
         )
 
-    $scope.markRecipe = (data) ->
-      $mdDialog.show(
-        controller: 'markrecipeCtrl'
-        templateUrl: "/views/markrecipe.html"
-      ).then (() ->
-        # $scope.alert = "You said the information was \"" + answer + "\"."
-      ), ->
-        # $scope.alert = "You cancelled the dialog."
-
+    $scope.removeConfirm = (ev) ->
+      confirm = $mdDialog.confirm()
+        .title('Do you wnat to remove this recipe ?')
+        .content($scope.recipe.title)
+        .ariaLabel('Lucky day')
+        .ok("I'm sure")
+        .cancel('Cancel')
+        .targetEvent(ev);
+      $mdDialog.show(confirm).then(() ->
+        recipeService.delete($scope.recipe.id
+        ).success((data) ->
+          $location.url('/')
+        ).error((data) ->
+          console.log("Delete recipe error :" + data)
+        )
+      , () ->
+        console.log("Choose to stop")
+      )
 )

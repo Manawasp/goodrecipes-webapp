@@ -12,9 +12,13 @@ angular.module('app')
           return req
         search: () ->
           req = $http.post(apiService.url() + '/users/search')
-        update: (user_origin, user_new) ->
+        isEmpty: (data) ->
+          if data.password == undefined && data.email == undefined && data.firstname == undefined && data.pseudo  == undefined && data.lastname == undefined
+            return true
+          return false
+        diff: (user_origin, user_new) ->
           data = {}
-          if user_new.password
+          if user_new.password && user_new.password.length > 0
             data.password = user_new.password
           if user_new.email != user_origin.email
             data.email = user_new.email
@@ -24,7 +28,9 @@ angular.module('app')
             data.lastname = user_new.lastname
           if user_new.pseudo != user_origin.pseudo
             data.pseudo = user_new.pseudo
-          req = $http.patch(apiService.url() + '/users/' + user_origin.id, data)
+          return data
+        update: (id, data) ->
+          req = $http.patch(apiService.url() + '/users/' + id, data)
           return req
         image: (data) ->
           req = $http.post(apiService.url() + '/users/' + data.id + '/pictures', data)

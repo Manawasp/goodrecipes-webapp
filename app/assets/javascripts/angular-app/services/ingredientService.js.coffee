@@ -41,6 +41,8 @@ angular.module('app')
             return []
           )
           return req
+        delete: (id) ->
+          req = $http.delete(apiService.url() + '/ingredients/' + id, {})
         update: (data) ->
           req = $http.patch(apiService.url() + '/ingredients/' + data.id, data)
           return req
@@ -62,6 +64,12 @@ angular.module('app')
             ingredientsCarabage.push objTab[key]
         garbageAdd: (obj)->
           ingredientsCarabage.unshift(obj)
+        garbageRemove: (id) ->
+          for key of ingredientsCarabage
+            if ingredientsCarabage[key].id == id
+              ingredientsCarabage.splice(key, 1)
+              return true
+          return false
         garbageUpdate: (obj)->
           console.log("UPDATE")
           for key of ingredientsCarabage

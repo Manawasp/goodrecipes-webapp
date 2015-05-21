@@ -2,24 +2,20 @@
 
 Created: 16/05/2015
 Author: Clovis Kyndt
-Updated: 18/05/2015
+Updated: 21/05/2015
 
 ### ON GOING
 
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
-- [Feature] Remove ingredient
-- [Feature] Remove recipes
 
 - [Elasticsearch] User historique (Elasticsearch)
 
-- [Docker] Deploiement de test
-- [Docker] Deploiement de production
+-- [Docker] Deploiement WebApp
 
-- [Bug] User last name & firstname impossible a delete
-- [Bug] Link Author
+-- [Bug] Link Author
 - [Bug] search bar in responsive (mobile)
-- [Bug] Probleme de syncronisation (User not update)
+-- [Bug] Probleme de syncronisation (User not update)
 
 
 ### DONE
@@ -32,9 +28,13 @@ Updated: 18/05/2015
 - [Feature] User favorites + Pagination
 - [Feature] MyRecipe Search + pagination
 - [Feature] Recipe Pagination
+- [Feature] Remove ingredient
+- [Feature] Remove recipes
+- [Feature] Access edit recipe
 - [Documentation] Update github
 - [Documentation] Github add API repo
 - [BUG] recipe alignment
+- [Docker] Deploiement
 
 ### OUT
 

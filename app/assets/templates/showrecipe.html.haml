@@ -16,6 +16,13 @@
 %md-content{style: 'max-width:1140px;padding:30px 10px 10px 10px;margin-left:auto;margin-right:auto', layout: 'column'}
   %div
     %md-content.md-whiteframe-z1.ingredient-windows-90p{style: "background-image: url('{{recipe.image}}');width:100%;margin:0;"}
+    %div.text-right
+      %a.cursor{style: 'display:inline-block;padding:10px', "ng-click" => "editRecipe(recipe.id)"}
+        %i.fa.fa-pencil
+        Edit
+      %a.cursor{style: 'display:inline-block;padding:10px',  "ng-click"=>"removeConfirm($event)"}
+        %i.fa.fa-trash
+        Remove
   %div.margin-top-30
     %div{layout: "row", "layout-wrap" => ""}
       %div{flex: '100'}

@@ -13,19 +13,19 @@
   %div.margin-left-10.margin-right-10.margin-top-10{layout: "row", "layout-wrap" => ""}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Email adress
-      %input{"ng-model" => "user.email"}
+      %input{"ng-model" => "editUser.email"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Pseudo
-      %input{"ng-model" => "user.pseudo"}
+      %input{"ng-model" => "editUser.pseudo"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 First name
-      %input{"ng-model" => "user.firstname"}
+      %input{"ng-model" => "editUser.firstname"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Last name
-      %input{"ng-model" => "user.lastname"}
+      %input{"ng-model" => "editUser.lastname"}
     %md-input-container.padding-right-20{flex: '50'}
       %label.font-18 Password
-      %input{"ng-model" => "user.password", "ng-type" => "number"}
+      %input{"ng-model" => "editUser.password", "ng-type" => "number"}
   %div.margin-top-15
     %md-button.md-primary.padding-right-20{'ng-click' => 'update_user()', style: "float:right;background-color:#4CAF50;color:white;"}
       %span.font-16{style: 'line-height:16px;'}
