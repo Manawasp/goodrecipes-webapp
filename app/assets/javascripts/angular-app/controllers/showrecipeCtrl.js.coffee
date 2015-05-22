@@ -19,6 +19,9 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       $location.url('/')
     )
 
+    $scope.userRecipe = (id) ->
+      $location.url('recipes/search?userId='+id);
+
     syncData = (data) ->
       console.log(data)
       $scope.recipe = data.recipe

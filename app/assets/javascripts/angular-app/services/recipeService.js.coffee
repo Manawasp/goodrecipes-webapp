@@ -2,7 +2,7 @@ angular.module('app')
   .factory('recipeService', ($http, apiService) ->
       current_recipe = {}
       view = false
-      searchObject = {recipe: {description: "", labels: [], blacklist: []}, labels: [{'c': false, 'name': 'breakfast & brunch'}, {'c': false, 'name': 'appetizer'}, {'c': false, 'name': 'dessert'}, {'c': false, 'name': 'healty'}, {'c': false, 'name': 'main dish'}, {'c': false, 'name': 'pasta'}, {'c': false, 'name': 'slow cooker'}, {'c': false, 'name': 'vegetarian'}, {'c': false, 'name': 'sauce'}, {'c': false, 'name': 'cheese'}, {'c': false, 'name': 'fruit'}, {'c': false, 'name': 'vegetable'}, {'c': false, 'name': 'sea food'}, {'c': false, 'name': 'fish'}, {'c': false, 'name': 'spicy'}, {'c': false, 'name': 'meat'}, {'c': false, 'name': 'chicken'}, {'c': false, 'name': 'beef'}], denied: [{'c': false, 'name': 'arachide'}, {'c': false, 'name': 'egg'}, {'c': false, 'name': 'milk'}, {'c': false, 'name': 'halal'}, {'c': false, 'name': 'kascher'}],data:{offset:0,limit:12,results:0,pagination:[]},more_recipe: []}
+      searchObject = {recipe: {created_by: "", description: "", labels: [], blacklist: []}, labels: [{'c': false, 'name': 'breakfast & brunch'}, {'c': false, 'name': 'appetizer'}, {'c': false, 'name': 'dessert'}, {'c': false, 'name': 'healty'}, {'c': false, 'name': 'main dish'}, {'c': false, 'name': 'pasta'}, {'c': false, 'name': 'slow cooker'}, {'c': false, 'name': 'vegetarian'}, {'c': false, 'name': 'sauce'}, {'c': false, 'name': 'cheese'}, {'c': false, 'name': 'fruit'}, {'c': false, 'name': 'vegetable'}, {'c': false, 'name': 'sea food'}, {'c': false, 'name': 'fish'}, {'c': false, 'name': 'spicy'}, {'c': false, 'name': 'meat'}, {'c': false, 'name': 'chicken'}, {'c': false, 'name': 'beef'}], denied: [{'c': false, 'name': 'arachide'}, {'c': false, 'name': 'egg'}, {'c': false, 'name': 'milk'}, {'c': false, 'name': 'halal'}, {'c': false, 'name': 'kascher'}],data:{offset:0,limit:12,results:0,pagination:[]},more_recipe: []}
 
 
       return (
@@ -24,7 +24,8 @@ angular.module('app')
         getApplySearch: (callback)->
           this.search(searchObject.recipe.description,
                                     searchObject.data.offset,
-                                    searchObject.data.limit
+                                    searchObject.data.limit,
+                                    searchObject.recipe.created_by
           ).success((data) ->
             searchObject.more_recipe.length = 0
             searchObject.data.results = data.max
@@ -41,6 +42,7 @@ angular.module('app')
           this.getSearchReset()
           searchObject.recipe.description = ""
         getSearchReset: ()->
+          searchObject.recipe.created_by = ""
           for label in searchObject.labels
             label.c = false
           for deny in searchObject.denied
@@ -64,7 +66,7 @@ angular.module('app')
           if limit
             data.limit = limit
           if created_by && created_by.length > 0
-            data.create_by = created_by
+            data.created_by = created_by
           console.log(data)
           req = $http.post(apiService.url() + '/recipes/search', data)
           return req

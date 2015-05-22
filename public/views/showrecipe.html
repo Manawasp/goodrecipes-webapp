@@ -5,7 +5,7 @@
     <i class='fa fa-quote-right'></i>
     <div class='font-12' ng-show='author.pseudo != undefined'>
       by
-      <a href='#'>
+      <a class='cursor' ng-click='userRecipe(author.id)'>
         {{author.pseudo}}
       </a>
     </div>

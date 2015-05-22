@@ -9,6 +9,7 @@ angular.module('app').controller("recipeCtrl", ($mdDialog, $routeParams, $scope,
     $scope.data   = searchObject.data
     recipeService.getSearchReset()
     $scope.recipe.description = $routeParams.title || ""
+    $scope.recipe.created_by  = $routeParams.userId || ""
     $scope.more_recipe = searchObject.more_recipe
     $scope.show_search_advanced = false
     $scope.show_search_advanced_label = false
