@@ -1,4 +1,4 @@
-angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $scope, $location, authorization, api, recipeService, ingredientService)->
+angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $scope, $location, authorization, api, recipeService, ingredientService, notifService)->
     console.log 'editrecipesCtrl running'
 
     $scope.template = 'views/createrecipe.html'
@@ -144,6 +144,7 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
         if ($scope.recipe.recipePict != undefined)
           $scope.upload_picture(datares.recipe.id)
         else
+          notifService.success("Recipe updated")
           $location.url('/recipes/show/' + datares.recipe.id)
       ).error((datares) ->
         console.log datares
@@ -164,11 +165,10 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
           recipeService.image(dataPicture).success((data) ->
             console.log("Upload success image return :")
             console.log(data)
+            notifService.success("Recipe updated")
             $location.url('/recipes/show/' + id)
           ).error((data) ->
-            console.log("Putain d'erreur :")
-            console.log(data)
-            $location.url('/recipes/show/' + id)
+            notifService.error("Recipe upload picture")
           )
         else
           console.log("le type de l'image n'est pas valide")

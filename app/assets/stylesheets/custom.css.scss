@@ -131,6 +131,17 @@ md-content.footer {
     background-color:#211718;
   }
 }
+md-toast.goodrecipe.error {
+  border:1px solid #BE1E2D;
+  background-color:#fff;
+  color: #BE1E2D;
+}
+
+md-toast.goodrecipe.success {
+  border:1px solid #4CAF50;
+  background-color:#fff;
+  color: #4CAF50;
+}
 
 .md-contact-chips .md-chips .md-chip .md-contact-avatar img {
   width:4rem !important;

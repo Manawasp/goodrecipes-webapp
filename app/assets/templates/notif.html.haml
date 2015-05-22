@@ -1,4 +1,6 @@
-%md-toast
-  %span{flex: ""} Custom toast!</span>
-  %md-button{"ng-click" => "closeToast()"}
-    Close
+%md-toast.goodrecipe{"ng-class" => "{'error': notifCtrl.value == false, 'success': notifCtrl.value == true}"}
+  %span{flex: ""}
+    %span{"ng-show"=> "!notifCtrl.value"}
+      %i.fa.fa-exclamation-circle.fa-lg.margin-right-5
+    %i.fa.fa-check-circle.fa-lg.margin-right-5{"ng-show"=> "notifCtrl.value"}
+    {{notifCtrl.msg}}

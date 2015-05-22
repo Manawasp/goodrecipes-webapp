@@ -15,7 +15,6 @@ Updated: 21/05/2015
 
 -- [Bug] Link Author
 - [Bug] search bar in responsive (mobile)
--- [Bug] Probleme de syncronisation (User not update)
 
 
 ### DONE
@@ -33,7 +32,8 @@ Updated: 21/05/2015
 - [Feature] Access edit recipe
 - [Documentation] Update github
 - [Documentation] Github add API repo
-- [BUG] recipe alignment
+- [Bug] Probleme de syncronisation (User not update)
+- [Bug] recipe alignment
 - [Docker] Deploiement
 
 ### OUT
