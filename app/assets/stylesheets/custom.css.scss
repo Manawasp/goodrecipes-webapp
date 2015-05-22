@@ -64,6 +64,18 @@ i.view-menu {
   }
 }
 
+div.searchBar {
+  height:60px;
+  position:absolute;
+  left:0;
+  right:200px;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+@media only screen and (max-width:960px){div.searchBar{left:75px;}}
+@media only screen and (max-width:600px){div.searchBar{right:0;}}
+
 i.view-menu.selected {
   color: #555;
 }
@@ -130,6 +142,17 @@ md-content.footer {
     font-size: 14px;
     background-color:#211718;
   }
+}
+md-toast.goodrecipe.error {
+  border:1px solid #BE1E2D;
+  background-color:#fff;
+  color: #BE1E2D;
+}
+
+md-toast.goodrecipe.success {
+  border:1px solid #4CAF50;
+  background-color:#fff;
+  color: #4CAF50;
 }
 
 .md-contact-chips .md-chips .md-chip .md-contact-avatar img {
@@ -212,9 +235,33 @@ textarea.msd-elastic {
   margin-top:3px;
 }
 
+.main-outer-wrapper {
+  padding-top: 0px;
+  padding-bottom: 120px;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+.main-outer-wrapper.goodrecipes {
+  border-top: 10px solid #BE1E2D;
+}
+
+.stand-alone {
+  max-width: 640px;
+  min-width: 280px;
+  margin: 0px auto;
+}
+
+.main-inner-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 body {
   height: 100%;
   width: 100%;
+  position:relative;
   font-family: "Roboto-Regular";
   // background: url('fruitbg.jpg') 10%;
   background-color: #E3E4E6;
@@ -798,12 +845,12 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
   .title {
     @extend .font-18, .margin-left-15, .margin-right-15, .margin-top-10, .margin-bottom-10;
     font-family: "Roboto-Medium";
-    color: #FC850F;
   }
 
   .describe {
     @extend .font-16, .margin-left-15, .margin-right-15, .margin-bottom-10;
     height: 110px;
+    color:#777;
   }
 
   .cook-now-button {
@@ -813,7 +860,7 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
     text-align: center;
     padding-top:10px;
     padding-bottom: 10px;
-    background-color: #FC850F;
+    background-color: #BE1E2D;
   }
 }
 

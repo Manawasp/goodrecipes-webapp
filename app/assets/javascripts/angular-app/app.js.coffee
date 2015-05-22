@@ -48,8 +48,9 @@
     .when('/users/edit/:id', {
       templateUrl: 'views/dashboard.html',
       controller: 'profileCtrl' })
+
     .when('/login', { templateUrl: 'views/auth.html', controller: 'loginCtrl' })
-    .when('/signin', { templateUrl: 'views/auth.html', controller: 'signupCtrl' })
+    .when('/signup', { templateUrl: 'views/auth.html', controller: 'signupCtrl' })
     .otherwise({ redirectTo: '/' })
 )
 

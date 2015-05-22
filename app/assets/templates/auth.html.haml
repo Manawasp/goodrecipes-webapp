@@ -1,11 +1,11 @@
-#sign-in-up
-  .container.row
-    .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
-      #signin-panel.panel.panel-default
-        .panel-heading
-          %h4
-            Foodapi
-        .panel-body{"layout" => "column"}
-          %md-content{"md-theme" => "docs-dark"}
-            %form{:role => "form"}
-              %div{"ng-include" => "template"}
+.main-outer-wrapper.goodrecipes
+  .main-inner-wrapper
+    .stand-alone
+      %div.text-center
+        %img{src: '/images/logo.png', style: 'width:50px;height:50px;'}
+      %div.text-center
+        %span.font-36.margin-top-10
+          %span.roboto.light.silver GOOD
+          %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
+      %form.margin-top-30{:role => "form"}
+        %div{"ng-include" => "template"}

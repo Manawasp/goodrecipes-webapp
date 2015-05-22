@@ -1,4 +1,4 @@
-angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParams, $mdDialog, $scope, $location, $cookieStore, authorization, api, recipeService, ingredientService)->
+angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParams, $mdDialog, $scope, $location, $cookieStore, authorization, api, recipeService, ingredientService, notifService)->
     console.log 'showrecipesCtrl running'
     $scope.template = 'views/showrecipe.html'
     $scope.error = ''
@@ -12,9 +12,6 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
     $scope.editRecipe = (id) ->
       $location.url('/recipes/edit/' + id)
 
-    $scope.removeRecipe = () ->
-      console.log("remove")
-
     recipeService.get($routeParams.id
     ).success((data) ->
       syncData(data)
@@ -22,7 +19,11 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       $location.url('/')
     )
 
+    $scope.userRecipe = (id) ->
+      $location.url('recipes/search?userId='+id);
+
     syncData = (data) ->
+      console.log(data)
       $scope.recipe = data.recipe
       if $scope.recipe.minutes == undefined || $scope.recipe.hours == undefined
         data.recipe.time = "1h00"
@@ -46,20 +47,22 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
     ).error((data) ->
     )
 
-    $scope.makeFavourite = (value) ->
+    $scope.makeFavorite = (value) ->
       if value
-        recipeService.unfavourite($scope.recipe.id
+        recipeService.unfavorite($scope.recipe.id
         ).success((data) ->
+          notifService.success("You unlike this recipe")
           $scope.recipe.liked = false
         ).error((data) ->
-          console.log("Make favourite error :" + data)
+          console.log("Make favorite error :" + data)
         )
       else
-        recipeService.favourite($scope.recipe.id
+        recipeService.favorite($scope.recipe.id
         ).success((data) ->
+          notifService.success("You like this recipe")
           $scope.recipe.liked = true
         ).error((data) ->
-          console.log("Make favourite error :" + data)
+          notifService.error(data.error)
         )
 
     $scope.removeConfirm = (ev) ->
@@ -73,9 +76,10 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       $mdDialog.show(confirm).then(() ->
         recipeService.delete($scope.recipe.id
         ).success((data) ->
+          notifService.success("Recipe removed")
           $location.url('/')
         ).error((data) ->
-          console.log("Delete recipe error :" + data)
+          notifService.error(data.error)
         )
       , () ->
         console.log("Choose to stop")

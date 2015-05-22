@@ -3,6 +3,10 @@
     %i.fa.fa-quote-left
     %span.roboto.bold{style: "font-family: Helvetica"} {{recipe.title}}
     %i.fa.fa-quote-right
+    %div.font-12{{"ng-show" => "author.pseudo != undefined"}}
+      by
+      %a.cursor{"ng-click" => "userRecipe(author.id)"}
+        {{author.pseudo}}
   %div.margin-top-30.print-title.margin-top-15.margin-bottom-20.text-center{style: "width:100%"}
     %i.fa.fa-group.margin-right-5.fa-lg
     %span.font-16{style: 'color:#333'} {{recipe.people}}

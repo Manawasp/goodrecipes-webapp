@@ -1,4 +1,4 @@
-angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location, $cookieStore, userService, api, $mdToast, $animate)->
+angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location, $cookieStore, userService, api, notifService)->
 
     $scope.template = 'views/editprofile.html'
     $scope.data = {
@@ -10,14 +10,6 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
     $scope.editUser = {}
     $scope.obj = {}
     $scope.upload = {avatarPict: undefined}
-
-    showCustomToast = (msg)->
-      $mdToast.show(
-        $mdToast.simple()
-          .content(msg)
-          .position("bottom right")
-          .hideDelay(2000)
-      )
 
     upload_picture = (id) ->
       $scope.error = ""
@@ -31,7 +23,7 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
           dataPicture = {id: id, extend: result[1], picture: $scope.upload.avatarPict.base64}
           userService.image(dataPicture).success((data) ->
             api.putUser(data.user)
-            showCustomToast("Profile picture updated !")
+            notifService.success("Profile picture updated !")
           ).error((data) ->
             $scope.upload.avatarPict = undefined
             console.log("Putain d'erreur :")
@@ -71,7 +63,7 @@ angular.module('app').controller("profileCtrl", ($scope, $routeParams, $location
           $scope.editUser = JSON.parse(JSON.stringify(data.user))
           user_original = JSON.parse(JSON.stringify(data.user))
           api.putUser($scope.editUser)
-          showCustomToast("Profile Updated")
+          notifService.success("Profile Updated")
         ).error((data) ->
           console.log(data)
           if ($scope.upload.avatarPict != undefined)

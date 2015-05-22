@@ -2,21 +2,20 @@
 
 Created: 16/05/2015
 Author: Clovis Kyndt
-Updated: 21/05/2015
+Updated: 22/05/2015
 
 ### ON GOING
 
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
+- [Feature] Elasticsearch implementation
+- [Feature] User historique (Elasticsearch)
+- [Feature] Patch signup/login page
 
-- [Elasticsearch] User historique (Elasticsearch)
-
--- [Docker] Deploiement WebApp
-
--- [Bug] Link Author
-- [Bug] search bar in responsive (mobile)
--- [Bug] Probleme de syncronisation (User not update)
-
+- [Bug] Deploiement WebApp
+- [Bug] Limit description in the week_recipe
+- [Bug] Enter in search load search
+- [Bug] Font-Awesome (load localy)
 
 ### DONE
 
@@ -31,9 +30,15 @@ Updated: 21/05/2015
 - [Feature] Remove ingredient
 - [Feature] Remove recipes
 - [Feature] Access edit recipe
+- [Feature] Search user "recipe"
 - [Documentation] Update github
 - [Documentation] Github add API repo
-- [BUG] recipe alignment
+- [Bug] Probleme de syncronisation (User not update)
+- [Bug] recipe alignment
+- [Bug] search bar in responsive (mobile)
+- [Bug] Link Author
+- [Bug] Favorite doesn't work
+- [Bug] Main page feature for the first recipe
 - [Docker] Deploiement
 
 ### OUT

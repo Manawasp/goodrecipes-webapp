@@ -1,6 +1,5 @@
-angular.module('app').controller("createingredientCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService)->
+angular.module('app').controller("createingredientCtrl", ($mdDialog, $scope, $location, $cookieStore, authorization, api, ingredientService, notifService)->
   console.log 'createingredientCtrl running'
-  $scope.error = ''
   $scope.ingredient = {name: '', icon: ''}
   $scope.ingredientPicture = undefined
 
@@ -14,24 +13,17 @@ angular.module('app').controller("createingredientCtrl", ($mdDialog, $scope, $lo
       return $scope.ingredient.icon
 
   $scope.create_ingredient = () ->
-    $scope.error = ""
     data = {name: $scope.ingredient.name, icon: $scope.ingredient.icon}
     ingredientService.create(data
     ).success((data) ->
-      console.log("create ingredient success")
-      console.log(data)
       ingredientService.garbageAdd(data) # - DEBUG
       if ($scope.ingredientPicture != undefined)
         $scope.upload_picture(data.id)
       else
+        notifService.success("Ingredient created")
         $mdDialog.cancel()
     ).error((data) ->
-      if data.error == "name contain at least 2 characters"
-        $scope.error = 'toosmall'
-      else if data.error == "this ingredient already exist"
-        $scope.error = 'exist'
-      console.log "error :"
-      console.log data
+      notifService.error(data.error)
     )
 
   $scope.upload_picture = (id) ->
@@ -46,16 +38,14 @@ angular.module('app').controller("createingredientCtrl", ($mdDialog, $scope, $lo
         console.log("le type de l'image est valide")
         dataPicture = {id: id, extend: result[1], picture: $scope.ingredientPicture.base64}
         ingredientService.image(dataPicture).success((data) ->
-          console.log("Upload success image return :")
-          console.log(data)
+          notifService.success("Ingredient created")
           ingredientService.garbageUpdate(data)
           $mdDialog.cancel()
         ).error((data) ->
-          console.log("Putain d'erreur :")
-          console.log(data)
+          notifService.error(data.error)
         )
       else
-        console.log("le type de l'image n'est pas valide")
+        notifService.error("Wrong picture type, only jpg & png")
     else
-      console.log("Ce n'est pas une image :( !")
+      notifService.error("Isn't a picture")
 )
