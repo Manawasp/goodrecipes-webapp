@@ -8,13 +8,13 @@ Updated: 22/05/2015
 
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
--- [Feature] Font-Awesome (load localy)
+- [Feature] Elasticsearch implementation
+- [Feature] User historique (Elasticsearch)
 
-- [Elasticsearch] User historique (Elasticsearch)
-
--- [Docker] Deploiement WebApp
-
+- [Bug] Deploiement WebApp
 - [Bug] Limit description in the week_recipe
+- [Bug] Enter in search load search
+- [Bug] Font-Awesome (load localy)
 
 ### DONE
 

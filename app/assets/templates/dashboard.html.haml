@@ -47,7 +47,7 @@
             %a.cursor{style: 'padding:20px;color:#333;', "ng-click"=>"toggleLeft()"}
               %i.fa.fa-bars.fa-lg
         %div.searchBar{style: '', layout: "row", "layout-align" => "start center"}
-          %div.padding-left-10.padding-right-10.cursor{style: 'height:40px'}
+          %div.padding-left-10.padding-right-10.cursor{style: 'height:40px', "ng-click" => "searchRecipe()"}
             %i.fa.cursor.fa-search.fa-lg
           %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'height:40px;width:100%;border:0;', 'ng-model' => 'recipeSearch.description'}
         %div.cursor{"hide-sm"=>"","layout-align" => "space-between center", "ng-click" => "locate('/users/edit/' + user.id)", style: "position:absolute;right:10px;width:200px;height:60px;border-left:1px solid #eee",layout: "row", "layout-align" => "end center"}
