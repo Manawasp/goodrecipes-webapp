@@ -20,6 +20,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
     )
 
     syncData = (data) ->
+      console.log(data)
       $scope.recipe = data.recipe
       if $scope.recipe.minutes == undefined || $scope.recipe.hours == undefined
         data.recipe.time = "1h00"

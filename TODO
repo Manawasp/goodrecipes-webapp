@@ -14,8 +14,8 @@ Updated: 22/05/2015
 
 -- [Docker] Deploiement WebApp
 
--- [Bug] Link Author
-
+- [Bug] Favorite doesn't work
+- [Bug] Main page feature for the first recipe
 
 ### DONE
 
@@ -35,6 +35,7 @@ Updated: 22/05/2015
 - [Bug] Probleme de syncronisation (User not update)
 - [Bug] recipe alignment
 - [Bug] search bar in responsive (mobile)
+- [Bug] Link Author
 - [Docker] Deploiement
 
 ### OUT
