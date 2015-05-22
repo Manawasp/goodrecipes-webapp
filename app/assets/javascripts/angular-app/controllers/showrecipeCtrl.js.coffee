@@ -47,20 +47,20 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
     ).error((data) ->
     )
 
-    $scope.makeFavourite = (value) ->
+    $scope.makeFavorite = (value) ->
       if value
-        recipeService.unfavourite($scope.recipe.id
+        recipeService.unfavorite($scope.recipe.id
         ).success((data) ->
           $scope.recipe.liked = false
         ).error((data) ->
-          console.log("Make favourite error :" + data)
+          console.log("Make favorite error :" + data)
         )
       else
-        recipeService.favourite($scope.recipe.id
+        recipeService.favorite($scope.recipe.id
         ).success((data) ->
           $scope.recipe.liked = true
         ).error((data) ->
-          console.log("Make favourite error :" + data)
+          console.log("Make favorite error :" + data)
         )
 
     $scope.removeConfirm = (ev) ->
