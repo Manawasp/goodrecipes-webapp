@@ -9,7 +9,6 @@ Updated: 22/05/2015
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
 -- [Feature] Font-Awesome (load localy)
-- [Feature] Search user "recipe"
 
 - [Elasticsearch] User historique (Elasticsearch)
 
@@ -31,6 +30,7 @@ Updated: 22/05/2015
 - [Feature] Remove ingredient
 - [Feature] Remove recipes
 - [Feature] Access edit recipe
+- [Feature] Search user "recipe"
 - [Documentation] Update github
 - [Documentation] Github add API repo
 - [Bug] Probleme de syncronisation (User not update)
