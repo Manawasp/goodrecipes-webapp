@@ -64,6 +64,18 @@ i.view-menu {
   }
 }
 
+div.searchBar {
+  height:60px;
+  position:absolute;
+  left:0;
+  right:200px;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+@media only screen and (max-width:960px){div.searchBar{left:75px;}}
+@media only screen and (max-width:600px){div.searchBar{right:0;}}
+
 i.view-menu.selected {
   color: #555;
 }

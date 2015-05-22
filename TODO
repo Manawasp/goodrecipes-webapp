@@ -8,13 +8,13 @@ Updated: 22/05/2015
 
 - [Feature] Recipe Smart search
 - [Feature] Recipe review
+- [Feature] Font-Awesome (load localy)
 
 - [Elasticsearch] User historique (Elasticsearch)
 
 -- [Docker] Deploiement WebApp
 
 -- [Bug] Link Author
-- [Bug] search bar in responsive (mobile)
 
 
 ### DONE
@@ -34,6 +34,7 @@ Updated: 22/05/2015
 - [Documentation] Github add API repo
 - [Bug] Probleme de syncronisation (User not update)
 - [Bug] recipe alignment
+- [Bug] search bar in responsive (mobile)
 - [Docker] Deploiement
 
 ### OUT

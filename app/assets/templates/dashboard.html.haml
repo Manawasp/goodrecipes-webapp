@@ -41,56 +41,25 @@
         -#     %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10{style: 'color:#666'}
         -#     Search user
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
-      %md-content{layout: "row","layout-align" => "space-between center", style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;'}
-        %div{flex: "70", style: 'line-height: 62px', layout: "row", "layout-align" => "start center"}
-          %div.padding-left-30.padding-right-30{"hide-gt-md"=>"", style: "border-right:1px solid #eee;width:75px;"}
-            %a.cursor{style: 'color:#333;', "ng-click"=>"toggleLeft()"}
-              %i.fa.fa-bars.fa-lg
+      %md-content{style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:71px;width:100%;'}
+        %div.padding-left-10.padding-right-10{"hide-gt-md"=>"", style: ";width:75px;border-right:1px solid #eee;position:absolute;height:60px", layout: "row", "layout-align" => "start center"}
           %div
-            %form{"ng-submit"=>"searchRecipe()"}
-              %i.fa.fa-search.fa-lg.padding-left-30{style: 'color:#aaa'}
-              %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'width:300px;border:0;', 'ng-model' => 'recipeSearch.description'}
-        %div.cursor{layout: "column", "ng-click" => "locate('/users/edit/' + user.id)"}
-          %div.padding-left-20{layout: "row", "layout-align" => "space-between center", style: 'border-left:1px solid #eee;'}
-            %div{layout: "row", "layout-align" => "center center"}
-              %div{layout: "column"}
-                %div.text-right.font-14.roboto
-                  {{user.pseudo || "Manawasp"}}
-                %div.text-center.font-11.roboto{style: 'color:#999'}
-                  {{user.email || "manawasp@gmail.com"}}
-              %a.margin-left-10.margin-right-20
-                %button{style: 'width:36px;height:36px;padding:0;border-radius:18px'}
-                  %img.profile-avatar{src: "{{avatar}}", style: 'width:36px;height:36px;padding:0;margin-left:-2px;margin-top:-2px;border-radius:18px'}
-        -#             %div{flex: ""}
-                  / %a.font-36{href:'',"ng-click"=>"toggleLeft()"}
-            -#   %span.font-36.margin-left-20.cursor{style: 'line-height: 70px;', "ng-click" => "locate('/')"}
-            -#     %span.roboto.light GOOD
-            -#     %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
-              -# %div.text-right.food-dark-red{flex: ""}
-            -#     %span.cursor.glyphicon.glyphicon-search.margin-top-10.margin-left-15{style: 'float:left', "ng-click" => "redir_title()"}
-            -# %div.sub-header{layout: "row", flex: "100", layout: "row", "layout-align" => "space-between center"}
-            -#   %div
-            -#     %a.cursor{"ng-click"=>"toggleLeft()"}
-            -#       %img{src: '/images/menu.png', style: 'width:28px;height:28px'}
-            -#   %div{layout: "row", "layout-align" => "center center"}
-            -#     %div
-            -#       %a.quick-access-search.beef-color{href: "", "ng-click" => "locate('recipes/search?label=beef')"}
-            -#         %img.margin-right-5{src: '/images/meat.png', style: 'width:24px;height:24px'}
-            -#         %span.font-14 Beef Recipes
-            -#     %div
-            -#       %a.quick-access-search.chicken-color{href: "", "ng-click" => "locate('recipes/search?label=chicken')"}
-            -#         %img.margin-right-5{src: '/images/chicken.png', style: 'width:24px;height:24px'}
-            -#         %span.font-14 Chicken Recipes
-            -#     %div
-            -#       %a.quick-access-search.vegetarian-color{href: "", "ng-click" => "locate('recipes/search?label=vegetarian')"}
-            -#         %img.margin-right-5{src: '/images/tomato.png', style: 'width:24px;height:24px'}
-            -#         %span.font-14 Vegetarian Recipes
-            -#     %div
-            -#       %a.quick-access-search.dessert-color{href: "", "ng-click" => "locate('recipes/search?label=dessert')"}
-            -#         %img.margin-right-5{src: '/images/cake.png', style: 'width:24px;height:24px'}
-            -#         %span.font-14 Dessert Recipes
-            -#   %div
-            -#     %a.cursor{"ng-click" => "locate('moments/' + user.id)"}
-            -#       %img{src: '/images/camera.png', style: 'width:28px;height:28px'}
+            %a.cursor{style: 'padding:20px;color:#333;', "ng-click"=>"toggleLeft()"}
+              %i.fa.fa-bars.fa-lg
+        %div.searchBar{style: '', layout: "row", "layout-align" => "start center"}
+          %div.padding-left-10.padding-right-10.cursor{style: 'height:40px'}
+            %i.fa.cursor.fa-search.fa-lg
+          %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'height:40px;width:100%;border:0;', 'ng-model' => 'recipeSearch.description'}
+        %div.cursor{"hide-sm"=>"","layout-align" => "space-between center", "ng-click" => "locate('/users/edit/' + user.id)", style: "position:absolute;right:10px;width:200px;height:60px;border-left:1px solid #eee",layout: "row", "layout-align" => "end center"}
+          %div.roboto.text-right{layout: "row", "layout-align" => "end center"}
+            %div.padding-right-20
+              %div.font-14
+                {{user.pseudo || "Manawasp"}}
+              %div.font-11.roboto{style: 'color:#999'}
+                {{user.email || "manawasp@gmail.com"}}
+          %div
+            %a
+              %button{style: 'width:36px;height:36px;padding:0;border-radius:18px'}
+                %img.profile-avatar{src: "{{avatar}}", style: 'width:36px;height:36px;padding:0;margin-left:-2px;margin-top:-2px;border-radius:18px'}
       %md-content.no-bg.md-default-theme{layout: "column", "md-scroll-y" => "", "layout-align" => "center center"}
         %md-content.no-bg{"ng-include" => "template", style: 'width:100%;padding:20px 20px 10px 20px'}
