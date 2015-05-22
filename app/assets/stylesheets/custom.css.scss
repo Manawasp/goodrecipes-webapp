@@ -235,9 +235,33 @@ textarea.msd-elastic {
   margin-top:3px;
 }
 
+.main-outer-wrapper {
+  padding-top: 0px;
+  padding-bottom: 120px;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+.main-outer-wrapper.goodrecipes {
+  border-top: 10px solid #BE1E2D;
+}
+
+.stand-alone {
+  max-width: 640px;
+  min-width: 280px;
+  margin: 0px auto;
+}
+
+.main-inner-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 body {
   height: 100%;
   width: 100%;
+  position:relative;
   font-family: "Roboto-Regular";
   // background: url('fruitbg.jpg') 10%;
   background-color: #E3E4E6;

@@ -1,0 +1,18 @@
+.form-group{"ng-show" => "error != ''"}
+  .alert.alert-danger{role: 'alert'}
+    %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
+    {{error}}
+.form-group
+  %md-input-container
+    %label{style: 'color:#555'} Email
+    %input{"ng-model" => "email"}
+.form-group
+  %md-input-container
+    %label{style: 'color:#555'} Password
+    %input{"ng-model" => "password", type: 'password'}
+%div.text-right.margin-top-10
+  %div.fleft.padding-top-15
+    %span{style: 'color:#999'}
+      You want to create an account ?
+      %a.cursor.margin-left-5{"ng-click"=> "locate('signup')"} Sign up
+  %md-button{"ng-click" => "send()", style: 'background-color:#ED747E;color:white'} LOG IN

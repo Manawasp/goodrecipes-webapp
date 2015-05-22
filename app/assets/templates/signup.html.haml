@@ -4,12 +4,19 @@
     {{error}}
 .form-group
   %md-input-container
-    %label Email
+    %label{style: 'color:#555'} Pseudo
+    %input{"ng-model" => "pseudo"}
+.form-group
+  %md-input-container
+    %label{style: 'color:#555'} Adresse email
     %input{"ng-model" => "email"}
 .form-group
   %md-input-container
-    %label Password
-    %input{"ng-model" => "password", type: 'password'}
+    %label{style: 'color:#555'} Password
+    %input{"ng-model" => "password", type: "password"}
 %div.text-right.margin-top-10
-  %md-button.revert.fleft{href: '\#signin'} Sign in
-  %md-button{"ng-click" => "send()"} connection
+  %div.fleft.padding-top-15
+    %span{style: 'color:#999'}
+      You already have an account ?
+      %a.cursor.margin-left-5{"ng-click"=> "locate('login')"} Log in
+  %md-button{"ng-click" => "send()", style: 'background-color:#ED747E;color:white'} SIGN UP

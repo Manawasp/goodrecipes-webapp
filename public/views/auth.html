@@ -1,20 +1,18 @@
-<div id='sign-in-up'>
-  <div class='container row'>
-    <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-      <div class='panel panel-default' id='signin-panel'>
-        <div class='panel-heading'>
-          <h4>
-            Foodapi
-          </h4>
-        </div>
-        <div class='panel-body' layout='column'>
-          <md-content md-theme='docs-dark'>
-            <form role='form'>
-              <div ng-include='template'></div>
-            </form>
-          </md-content>
-        </div>
+<div class='main-outer-wrapper goodrecipes'>
+  <div class='main-inner-wrapper'>
+    <div class='stand-alone'>
+      <div class='text-center'>
+        <img src='/images/logo.png' style='width:50px;height:50px;'>
       </div>
+      <div class='text-center'>
+        <span class='font-36 margin-top-10'>
+          <span class='roboto light silver'>GOOD</span>
+          <span class='roboto bold food-dark-red' style='margin-left:-5px'>RECIPES</span>
+        </span>
+      </div>
+      <form class='margin-top-30' role='form'>
+        <div ng-include='template'></div>
+      </form>
     </div>
   </div>
 </div>

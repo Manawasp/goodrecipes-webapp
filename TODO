@@ -10,6 +10,7 @@ Updated: 22/05/2015
 - [Feature] Recipe review
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
+- [Feature] Patch signup/login page
 
 - [Bug] Deploiement WebApp
 - [Bug] Limit description in the week_recipe

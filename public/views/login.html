@@ -6,13 +6,7 @@
 </div>
 <div class='form-group'>
   <md-input-container>
-    <label style='color:#555'>Pseudo</label>
-    <input ng-model='pseudo'>
-  </md-input-container>
-</div>
-<div class='form-group'>
-  <md-input-container>
-    <label style='color:#555'>Adresse email</label>
+    <label style='color:#555'>Email</label>
     <input ng-model='email'>
   </md-input-container>
 </div>
@@ -25,9 +19,9 @@
 <div class='text-right margin-top-10'>
   <div class='fleft padding-top-15'>
     <span style='color:#999'>
-      You already have an account ?
-      <a class='cursor margin-left-5' ng-click="locate('login')">Log in</a>
+      You want to create an account ?
+      <a class='cursor margin-left-5' ng-click="locate('signup')">Sign up</a>
     </span>
   </div>
-  <md-button ng-click='send()' style='background-color:#ED747E;color:white'>SIGN UP</md-button>
+  <md-button ng-click='send()' style='background-color:#ED747E;color:white'>LOG IN</md-button>
 </div>

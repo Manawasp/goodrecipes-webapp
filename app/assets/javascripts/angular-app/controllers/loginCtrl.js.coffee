@@ -1,13 +1,16 @@
 angular.module('app').controller("loginCtrl", ($scope, $location, $cookieStore, authorization, api)->
     console.log 'loginCtrl running'
-    $scope.template = 'views/signup.html'
+    $scope.template = 'views/login.html'
     $scope.error = ""
     $scope.haveError = ->
       return true if $scope.error != ''
       return false
 
+    $scope.locate = (location) ->
+      $location.url(location);
+
     $scope.send = ->
-      authorization.login(this.email, this.password 
+      authorization.login(this.email, this.password
       ).success((data) ->
         $scope.error = ""
         $cookieStore.put('token', data.token);
