@@ -5,51 +5,23 @@
   <md-content class='cook-flat-bg' style='padding:20px 20px;width:100%;background-image: url("{{week_recipe.image}}")'>
     <div class='md-whiteframe-z1 cook-now' layout='column' style='background-color:white'>
       <div class='title'>
+        <i class='fa fa-quote-left' style='color:#ccc'></i>
         {{week_recipe.title}}
+        <i class='fa fa-quote-right' style='color:#ccc'></i>
       </div>
       <div class='describe'>
-        {{week_recipe.description}}
+        {{week_recipe.description}}...
       </div>
-      <div class='margin-left-15 margin-top-15'>
-        <span style='display:inline-block;width:85px;color:#666'>Prep time</span>
-        <span class='recipe-time'>
-          <span class='roboto medium bold font-14' ng-show='week_recipe.time_prep.h &gt; 0'>
-            {{week_recipe.time_prep.h}} hours
-          </span>
-          <span class='roboto medium bold font-14' ng-show='week_recipe.time_prep.m &gt; 0'>
-            {{week_recipe.time_prep.m}} min
-          </span>
-        </span>
-      </div>
-      <div class='margin-left-15 margin-top-10'>
-        <span style='display:inline-block;width:85px;color:#666'>Total time</span>
-        <span class='recipe-time'>
-          <span class='roboto medium bold font-14' ng-show='week_recipe.time_total.h &gt; 0'>
-            {{week_recipe.time_total.h}} hours
-          </span>
-          <span class='roboto medium bold font-14' ng-show='week_recipe.time_total.m &gt; 0'>
-            {{week_recipe.time_total.m}} min
-          </span>
-        </span>
-      </div>
-      <div class='margin-left-15 margin-top-10'>
-        <span style='display:inline-block;width:85px;color:#666'>Ingredients</span>
-        <span class='roboto medium bold font-14'>
-          {{week_recipe.ingredients_length}}
-        </span>
-      </div>
-      <div class='margin-left-15 margin-top-10'>
-        <span style='color:#999'>
-          <span class='glyphicon glyphicon-user'></span>
-        </span>
-        <span class='roboto medium font-14 margin-left-5' style='color:#666;'>
-          {{week_recipe.people}}
-        </span>
-      </div>
-      <div class='margin-left-15 margin-bottom-10'>
-        <span class='mark xsmall margin-right-5 margin-top-15' ng-class="{'valid': mark[$index] &lt;= week_recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
-        <span class='glyphicon glyphicon-comment margin-left-20' style='color:#999'></span>
-        <span class='font-11 margin-left-5' style='line-height:24px'>{{week_recipe.comments_length}}</span>
+      <div class='margin-top-30 print-title margin-top-15 margin-bottom-20 text-center' style='width:100%'>
+        <i class='fa fa-group margin-right-5 fa-lg'></i>
+        <span class='font-16' style='color:#333'>{{week_recipe.people}}</span>
+        <i class='fa fa-history margin-left-15 margin-right-5 fa-lg'></i>
+        <span class='font-16' style='color:#333'>{{week_recipe.time}}</span>
+        <i class='fa fa-comments-o margin-left-15 margin-right-5 fa-lg'></i>
+        <span class='font-16' style='color:#333'>{{week_recipe.comments_length}}</span>
+        <span class='margin-left-30'></span>
+        <span class='mark xsmall margin-right-5' ng-class="{'valid': mark[$index] &lt;= week_recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+        <span class='font-16' style='color:#333'>{{week_recipe.mark}}</span>
       </div>
       <div class='cook-now-button' ng-click='redir_recipe(week_recipe.id)'>
         COOK NOW !

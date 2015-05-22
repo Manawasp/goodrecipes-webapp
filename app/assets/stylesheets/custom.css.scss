@@ -821,12 +821,12 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
   .title {
     @extend .font-18, .margin-left-15, .margin-right-15, .margin-top-10, .margin-bottom-10;
     font-family: "Roboto-Medium";
-    color: #FC850F;
   }
 
   .describe {
     @extend .font-16, .margin-left-15, .margin-right-15, .margin-bottom-10;
     height: 110px;
+    color:#777;
   }
 
   .cook-now-button {
@@ -836,7 +836,7 @@ md-checkbox.md-default-theme:not([disabled]).md-warn.md-checked .md-icon:after {
     text-align: center;
     padding-top:10px;
     padding-bottom: 10px;
-    background-color: #FC850F;
+    background-color: #BE1E2D;
   }
 }
 

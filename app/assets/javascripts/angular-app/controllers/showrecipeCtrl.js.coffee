@@ -51,6 +51,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       if value
         recipeService.unfavorite($scope.recipe.id
         ).success((data) ->
+          notifService.success("You unlike this recipe")
           $scope.recipe.liked = false
         ).error((data) ->
           console.log("Make favorite error :" + data)
@@ -58,9 +59,10 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       else
         recipeService.favorite($scope.recipe.id
         ).success((data) ->
+          notifService.success("You like this recipe")
           $scope.recipe.liked = true
         ).error((data) ->
-          console.log("Make favorite error :" + data)
+          notifService.error(data.error)
         )
 
     $scope.removeConfirm = (ev) ->
