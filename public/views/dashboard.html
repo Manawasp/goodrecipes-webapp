@@ -46,6 +46,12 @@
             </span>
             favorites
           </md-button>
+          <md-button hide-gt-sm='' ng-class="{focused: currentPath == '/users/edit'}" ng-click="locate('/users/edit/' + user.id)" style='text-align:left;'>
+            <span class='margin-right-5 margin-left-5' style='width:24px;display:inline-block'>
+              <i class='fa fa-user fa-lg'></i>
+            </span>
+            Profil
+          </md-button>
         </div>
       </md-content>
     </md-sidenav>

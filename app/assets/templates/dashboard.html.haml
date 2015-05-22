@@ -32,14 +32,10 @@
             %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
               %i.fa.fa-star.fa-lg
             favorites
-        -# %div.margin-top-30.top-border{layout: "column",style: 'padding-top:15px'}
-        -#   %md-button{style: 'text-align:left;text-transform: capitalize;', "ng-click" => "redir_your_profile()"}
-        -#     %span.glyphicon.glyphicon-pencil.margin-right-10.margin-left-10{style: 'color:#666'}
-        -#     Edit profile informations
-        -#   / %a.menu-link{href: ''}
-        -#   %md-button{style: 'text-align:left;text-transform: capitalize;'}
-        -#     %span.glyphicon.glyphicon-user.margin-right-10.margin-left-10{style: 'color:#666'}
-        -#     Search user
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('/users/edit/' + user.id)", "ng-class" => "{focused: currentPath == '/users/edit'}", "hide-gt-sm" => ""}
+            %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
+              %i.fa.fa-user.fa-lg
+            Profil
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
       %md-content{style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:71px;width:100%;'}
         %div.padding-left-10.padding-right-10{"hide-gt-md"=>"", style: ";width:75px;border-right:1px solid #eee;position:absolute;height:60px", layout: "row", "layout-align" => "start center"}
