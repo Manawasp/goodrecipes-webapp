@@ -10,12 +10,10 @@ Updated: 22/05/2015
 - [Feature] Recipe review
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
-- [Feature] Patch signup/login page
 
 - [Bug] Deploiement WebApp
 - [Bug] Limit description in the week_recipe
 - [Bug] Enter in search load search
-- [Bug] Font-Awesome (load localy)
 
 ### DONE
 
@@ -31,6 +29,7 @@ Updated: 22/05/2015
 - [Feature] Remove recipes
 - [Feature] Access edit recipe
 - [Feature] Search user "recipe"
+- [Feature] Patch signup/login page
 - [Documentation] Update github
 - [Documentation] Github add API repo
 - [Bug] Probleme de syncronisation (User not update)
@@ -39,6 +38,7 @@ Updated: 22/05/2015
 - [Bug] Link Author
 - [Bug] Favorite doesn't work
 - [Bug] Main page feature for the first recipe
+- [Bug] Font-Awesome (load localy)
 - [Docker] Deploiement
 
 ### OUT
