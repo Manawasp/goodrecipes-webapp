@@ -12,7 +12,7 @@ Updated: 22/05/2015
 - [Feature] User historique (Elasticsearch)
 
 - [Bug] Deploiement WebApp
-- [Bug] Limit description in the week_recipe
+- [Bug] Check all restriction in UI
 
 ### DONE
 
@@ -39,6 +39,7 @@ Updated: 22/05/2015
 - [Bug] Main page feature for the first recipe
 - [Bug] Font-Awesome (load localy)
 - [Bug] Enter in search load search
+- [Bug] Limit description in the week_recipe
 - [Docker] Deploiement
 
 ### OUT

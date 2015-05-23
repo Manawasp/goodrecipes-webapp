@@ -18,6 +18,8 @@ angular.module('app').controller("homepageCtrl", (homepageService, $mdDialog, $r
     ).success((data) ->
       console.log(data.recipes)
       $scope.week_recipe = data.recipes[0]
+      if $scope.week_recipe.description.length > 120
+        $scope.week_recipe.description = $scope.week_recipe.description.substring(0,120) + "...";
     ).error((data) ->
     )
 
