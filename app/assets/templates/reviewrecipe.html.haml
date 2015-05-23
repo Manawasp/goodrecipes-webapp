@@ -1,0 +1,15 @@
+%md-dialog{"aria-label" => "Create Ingredient", "flex-sm"=> '80', "flex-md" => "50", "flex-gt-lg"=> '30'}
+  %section.demo-container.md-whiteframe-z1{layout: "column"}
+    %div.margin-top-20.margin-left-20.font-18.margin-bottom-10
+      %span.fright.margin-right-20
+        %i.fa.fa-thumbs-o-up.margin-right-5
+        {{review.mark}} / 5
+      RECIPE REVIEW
+    %div.padding-left-20.padding-right-20
+      %md-slider{"md-discrete" => '', 'ng-model' => "review.mark", 'step' => "1", 'min' => "0", 'max' => "5", 'aria-label' => "rating"}
+      %md-input-container{flex: ''}
+        %label Comments
+        %textarea{"ng-model" => "review.comment", columns: "1", "md-maxlength" => "320", style: "min-height:130px;max-height:500px;"}
+    %div.text-right.margin-right-20.margin-bottom-15.margin-top-15.margin-left-20
+      %md-button.md-primary{style: 'padding: 5px 15px', "ng-click" => 'cancel()'} Annuler
+      %md-button.md-primary.margin-left-10{style: 'padding: 5px 15px', "ng-click" => "validate()"} Valider

@@ -3,6 +3,14 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
     $scope.template = 'views/showrecipe.html'
     $scope.error = ''
     $scope.ingredients = []
+    $scope.data = {
+      page: 1
+      offset: 0
+      limit: 10
+      comments : []
+      results: 0;
+      pagination: []
+    }
     $scope.recipe = {}
     $scope.mark = [0.5, 1.5, 2.5, 3.5, 4.5]
 
@@ -25,6 +33,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
     syncData = (data) ->
       console.log(data)
       $scope.recipe = data.recipe
+      $scope.data.results = $scope.recipe.reviews
       if $scope.recipe.minutes == undefined || $scope.recipe.hours == undefined
         data.recipe.time = "1h00"
       else
@@ -66,9 +75,54 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
           notifService.error(data.error)
         )
 
+    $scope.showReviewRecipe = (ev) ->
+      $mdDialog.show(
+        controller: 'reviewrecipeCtrl',
+        templateUrl: "/views/reviewrecipe.html",
+        targetEvent: ev).then ((answer) ->
+        # $scope.alert = 'You said the information was "' + answer + '".'
+        return
+      ), ->
+        # $scope.alert = 'You cancelled the dialog.'
+        return
+      return
+
+
+    $scope.updateCommentPage = (value)->
+      if value > 0
+        $scope.data.page    = value
+        $scope.data.offset  = (value - 1) * $scope.data.limit
+        searchComments(()->
+          $scope.data.pagination.length = 0
+          console.log("updated... ? page:" + $scope.data.page)
+          n = $scope.data.page - 4
+          while (n < ($scope.data.page + 4))
+            if (n > 0 && ((n-1)*$scope.data.limit) < $scope.data.results)
+              $scope.data.pagination.push n
+            n += 1
+        )
+
+    searchComments = (paginationCallback) ->
+      console.log("offset:" + $scope.data.offset)
+      recipeService.searchReview($scope.recipe.id,
+                                $scope.data.offset,
+                                $scope.data.limit
+      ).success((data) ->
+        # console.log "success data in search ingredient"
+        # console.log data
+        console.log(data)
+        $scope.data.results = data.max
+        $scope.data.comments = data.comments
+        #paginarion
+        paginationCallback()
+      ).error((data) ->
+        # console.log "error data in search ingredient"
+        # console.log data
+      )
+
     $scope.removeConfirm = (ev) ->
       confirm = $mdDialog.confirm()
-        .title('Do you wnat to remove this recipe ?')
+        .title('Do you want to remove this recipe ?')
         .content($scope.recipe.title)
         .ariaLabel('Lucky day')
         .ok("I'm sure")

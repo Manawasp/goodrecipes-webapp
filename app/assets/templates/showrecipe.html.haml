@@ -50,18 +50,18 @@
       %div.font-18.roboto.bold.food-dark-red.uppercase
         STEP {{$index + 1}}
     %textarea.msd-elastic.step-description.margin-top-15.margin-bottom-5{"ng-model" => "step", placeholder: "Please enter your step description", disabled: 'true', style: 'background-color:transparent'}
-  %div.top-border{layout: "row", "layout-align" => "end center"}
+  %div.top-border{layout: "row", "layout-align" => "space-between center"}
+    %div.margin-left-20
+      %md-button.margin-right-20.padding-left-15.padding-right-15.margin-top-20{"ng-click" => "showReviewRecipe($event)", style: 'color:#BB2743'}
+        %i.fa.fa-pencil-square-o.fa-lg.margin-right-5
+        Write review
     %div
       %md-button.margin-right-20.padding-left-15.padding-right-15.margin-top-20{"ng-class" => "{'favorite-false': !recipe.liked, 'favorite-true': recipe.liked}", "ng-click" => "makeFavorite(recipe.liked)"}
         %i.fa.fa-star.fa-lg.margin-right-5
         Favorites
--# %div.margin-left-10
--#   %md-button.padding-left-15.padding-right-15{"ng-click" => "create_ingredient()", style: 'color:#777'}
--#     %i.fa.fa-comment.fa-lg.margin-right-5
--#     REVIEW
-%div.print-title.margin-left-20.font-24.roboto.light{style: 'max-width:1140px;margin-left:auto;margin-right:auto'}
+%div.print-title.margin-left-20.margin-top-30.font-24.roboto.light{style: 'max-width:1140px;margin-left:auto;margin-right:auto'}
   Users who like this recipe also like
-%div{layout: 'row', "layout-wrap" => "", "layout-margin" => '', 'layout-padding' => '', style: 'text-align:justify;max-width:1140px;margin-left:auto;margin-right:auto'}
+%div{layout: 'row', "layout-wrap" => "", 'layout-padding' => '', style: 'text-align:justify;max-width:1140px;margin-left:auto;margin-right:auto'}
   %div{"ng-repeat" => 'morerecipe in more_recipe track by $index', "flex-sm"=> "100", "flex-md"=> "50", "flex-lg"=> "50", "flex-gt-lg" => "20", style: 'margin-left:auto;margin-right:auto;'}
     %md-content.md-whiteframe-z1.morerecipe.cursor{layout: "column", "ng-click" => "redir_recipe(morerecipe.id)"}
       %div.flat-image-100p.text-center{style: 'background-image: url("{{morerecipe.image}}")'}
@@ -71,16 +71,15 @@
               %i.fa.fa-quote-left
               %span.margin-left-5.margin-right-5 {{morerecipe.title}}
               %i.fa.fa-quote-right
-      -# %div.padding-top-5.padding-bottom-5.padding-right-10.padding-left-10.font-18.text-center
-      -# %div.padding-bottom-10.text-center{style: 'color:#777'}
-      -#   %i.fa.fa-group.margin-left-15.margin-right-5
-      -#   %span.font-16 {{morerecipe.people}}
-      -#   %i.fa.fa-history.margin-left-15.margin-right-5
-      -#   %span.font-16
-      -#     {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
-      -#   %i.fa.fa-comments-o.margin-left-15.margin-right-5
-      -#   %span.font-16 {{morerecipe.comments_length}}
-      -#   %i.fa.fa-thumbs-o-up.margin-left-15.margin-right-5
-      -#   %span.font-16 {{morerecipe.mark}}/5
-%div.print-title.margin-left-20.font-24.roboto.light{style: 'max-width:1140px;margin-left:auto;margin-right:auto'}
+%div.print-title.margin-left-20.margin-top-20.font-24.roboto.light.margin-bottom-30{style: 'max-width:1140px;margin-left:auto;margin-right:auto;margin-bottom:100px'}
   User review
+  %div.margin-top-10{"ng-show"=>"data.results > 0 && data.comments.length == 0 && data.page == 1"}
+    %md-button.margin-right-20.padding-left-15.padding-right-15.margin-top-20{"ng-click" => "updateCommentPage(1)", style: 'background-color:#eee;color:#666'}
+      %i.fa.fa-refresh.fa-lg.margin-right-5
+      Load review
+  %div.margin-top-20{"ng-show"=>"data.results > 0 && data.comments.length != 0"}
+    {{data.comments}}
+    %div{"ng-repeat" => "comment in data.comments track by $index"}
+      Plein de comments
+  %div.margin-top-20.font-16{"ng-show"=>"data.results == 0"}
+    There isn't review for this recipe

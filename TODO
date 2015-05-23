@@ -7,17 +7,21 @@ Updated: 23/05/2015
 ### ON GOING
 
 - [Feature] Recipe Smart search
-- [Feature] Recipe review
+~~[Feature] Recipe review
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
 
+- [Feature] Replace CommentRecipe TEST by ReviewRecipe
+
 - [Bug] Deploiement WebApp
 - [Bug] Check all restriction in UI
+- [Bug] Random only 4 recipes
 
 ### ADVANCED
 
 - [Feature] Views list or card for recipe
 - [Feature] Mail gestion
+- [Feature] "Users who like this recipe also like" better algorithm
 
 ### DONE
 

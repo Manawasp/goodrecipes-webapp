@@ -74,7 +74,13 @@
     </div>
     <textarea class='msd-elastic step-description margin-top-15 margin-bottom-5' disabled='true' ng-model='step' placeholder='Please enter your step description' style='background-color:transparent'></textarea>
   </div>
-  <div class='top-border' layout-align='end center' layout='row'>
+  <div class='top-border' layout-align='space-between center' layout='row'>
+    <div class='margin-left-20'>
+      <md-button class='margin-right-20 padding-left-15 padding-right-15 margin-top-20' ng-click='showReviewRecipe($event)' style='color:#BB2743'>
+        <i class='fa fa-pencil-square-o fa-lg margin-right-5'></i>
+        Write review
+      </md-button>
+    </div>
     <div>
       <md-button class='margin-right-20 padding-left-15 padding-right-15 margin-top-20' ng-class="{'favorite-false': !recipe.liked, 'favorite-true': recipe.liked}" ng-click='makeFavorite(recipe.liked)'>
         <i class='fa fa-star fa-lg margin-right-5'></i>
@@ -83,10 +89,10 @@
     </div>
   </div>
 </md-content>
-<div class='print-title margin-left-20 font-24 roboto light' style='max-width:1140px;margin-left:auto;margin-right:auto'>
+<div class='print-title margin-left-20 margin-top-30 font-24 roboto light' style='max-width:1140px;margin-left:auto;margin-right:auto'>
   Users who like this recipe also like
 </div>
-<div layout-margin='' layout-padding='' layout-wrap='' layout='row' style='text-align:justify;max-width:1140px;margin-left:auto;margin-right:auto'>
+<div layout-padding='' layout-wrap='' layout='row' style='text-align:justify;max-width:1140px;margin-left:auto;margin-right:auto'>
   <div flex-gt-lg='20' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
     <md-content class='md-whiteframe-z1 morerecipe cursor' layout='column' ng-click='redir_recipe(morerecipe.id)'>
       <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'>
@@ -103,6 +109,21 @@
     </md-content>
   </div>
 </div>
-<div class='print-title margin-left-20 font-24 roboto light' style='max-width:1140px;margin-left:auto;margin-right:auto'>
+<div class='print-title margin-left-20 margin-top-20 font-24 roboto light margin-bottom-30' style='max-width:1140px;margin-left:auto;margin-right:auto;margin-bottom:100px'>
   User review
+  <div class='margin-top-10' ng-show='data.results &gt; 0 &amp;&amp; data.comments.length == 0 &amp;&amp; data.page == 1'>
+    <md-button class='margin-right-20 padding-left-15 padding-right-15 margin-top-20' ng-click='updateCommentPage(1)' style='background-color:#eee;color:#666'>
+      <i class='fa fa-refresh fa-lg margin-right-5'></i>
+      Load review
+    </md-button>
+  </div>
+  <div class='margin-top-20' ng-show='data.results &gt; 0 &amp;&amp; data.comments.length != 0'>
+    {{data.comments}}
+    <div ng-repeat='comment in data.comments track by $index'>
+      Plein de comments
+    </div>
+  </div>
+  <div class='margin-top-20 font-16' ng-show='data.results == 0'>
+    There isn't review for this recipe
+  </div>
 </div>

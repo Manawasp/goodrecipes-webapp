@@ -97,5 +97,15 @@ angular.module('app')
           view = dview
         getView: () ->
           return view
+        createReview: (review) ->
+          req = $http.post(apiService.url() + '/reviews/recipes/' + review.recipeId, review)
+          return req
+        searchReview: (recipeId, offset, limit) ->
+          console.log(recipeId)
+          req = $http.post(apiService.url() + '/reviews/recipes/'+recipeId+'/search', {offset: offset, limimt: limit})
+          return req
+        deleteReview: (recipeId, userId) ->
+          req = $http.delete(apiService.url() + '/reviews/recipes/' + review.recipeId, {userId: userId})
+          return req
       )
   )
