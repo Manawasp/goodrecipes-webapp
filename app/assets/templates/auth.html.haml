@@ -1,11 +1,11 @@
 .main-outer-wrapper.goodrecipes
   .main-inner-wrapper
     .stand-alone
-      %div.text-center
+      %div.text-center.margin-top-40
         %img{src: '/images/logo.png', style: 'width:50px;height:50px;'}
       %div.text-center
         %span.font-36.margin-top-10
           %span.roboto.light.silver GOOD
           %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
-      %form.margin-top-30{:role => "form"}
+      %form.margin-top-10.margin-bottom-10{:role => "form", style: 'padding:20px'}
         %div{"ng-include" => "template"}
