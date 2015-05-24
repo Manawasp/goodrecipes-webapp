@@ -7,7 +7,6 @@ Updated: 23/05/2015
 ### ON GOING
 
 - [Feature] Recipe Smart search
-~~[Feature] Recipe review
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
 
@@ -38,6 +37,7 @@ Updated: 23/05/2015
 - [Feature] Access edit recipe
 - [Feature] Search user "recipe"
 - [Feature] Patch signup/login page
+- [Feature] Recipe review
 - [Documentation] Update github
 - [Documentation] Github add API repo
 - [Bug] Probleme de syncronisation (User not update)
