@@ -74,53 +74,77 @@
     </div>
     <textarea class='msd-elastic step-description margin-top-15 margin-bottom-5' disabled='true' ng-model='step' placeholder='Please enter your step description' style='background-color:transparent'></textarea>
   </div>
-  <div class='text-right padding-top-30 padding-bottom-5 top-border'>
-    <div layout-align='space-between center' layout='row'>
-      <div class='margin-left-10'>
-        <md-button class='padding-left-15 padding-right-15' ng-class="{'favorite-false': !recipe.liked, 'favorite-true': recipe.liked}" ng-click='makeFavorite(recipe.liked)'>
-          <i class='fa fa-star fa-lg margin-right-5'></i>
-          Favorites
-        </md-button>
-      </div>
-      <div>
-        <md-button class='margin-left-10 padding-left-15 padding-right-15' ng-click='create_ingredient()' style='color:#777'>
-          <i class='fa fa-comment fa-lg margin-right-5'></i>
-          REVIEW
-        </md-button>
-      </div>
+  <div class='top-border' layout-align='space-between center' layout='row'>
+    <div class='margin-left-20'>
+      <md-button class='margin-right-20 padding-left-15 padding-right-15 margin-top-20' ng-click='showReviewRecipe($event)' style='color:#BB2743'>
+        <i class='fa fa-pencil-square-o fa-lg margin-right-5'></i>
+        Write review
+      </md-button>
+    </div>
+    <div>
+      <md-button class='margin-right-20 padding-left-15 padding-right-15 margin-top-20' ng-class="{'favorite-false': !recipe.liked, 'favorite-true': recipe.liked}" ng-click='makeFavorite(recipe.liked)'>
+        <i class='fa fa-star fa-lg margin-right-5'></i>
+        Favorites
+      </md-button>
     </div>
   </div>
 </md-content>
-<div class='print-title margin-left-20 font-24 roboto light margin-top-30 margin-bottom-20' style='max-width:1140px;margin-left:auto;margin-right:auto'>
-  Want to try more ?
+<div class='print-title margin-left-20 margin-top-30 font-24 roboto light' style='max-width:1140px;margin-left:auto;margin-right:auto'>
+  Users who like this recipe also like
 </div>
-<div class='margin-bottom-20' layout-margin='' layout-padding='' layout-wrap='' layout='row' style='text-align:justify;max-width:1140px;margin-left:auto;margin-right:auto'>
-  <div flex-gt-lg='30' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
-    <md-content class='md-whiteframe-z1 cursor' layout='column' ng-click='redir_recipe(morerecipe.id)' ng-show='$index &lt; 3'>
-      <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'></div>
-      <div class='padding-top-5 padding-bottom-5 padding-right-10 padding-left-10 font-18 text-center'>
-        <table style='width:95%;height:65px;padding-left:2.5%'>
+<div layout-padding='' layout-wrap='' layout='row' style='text-align:justify;max-width:1140px;margin-left:auto;margin-right:auto'>
+  <div flex-gt-lg='20' flex-lg='50' flex-md='50' flex-sm='100' ng-repeat='morerecipe in more_recipe track by $index' style='margin-left:auto;margin-right:auto;'>
+    <md-content class='md-whiteframe-z1 morerecipe cursor' layout='column' ng-click='redir_recipe(morerecipe.id)'>
+      <div class='flat-image-100p text-center' style='background-image: url("{{morerecipe.image}}")'>
+        <table class='morerecipe-card' style='width:100%;height:100%;background-image: url("images/pixwhite.png")'>
           <th>
-            <td>
-              <i class='fa fa-quote-left' style='color:#ccc'></i>
+            <td class='text-center' style='padding:5px'>
+              <i class='fa fa-quote-left'></i>
               <span class='margin-left-5 margin-right-5'>{{morerecipe.title}}</span>
-              <i class='fa fa-quote-right' style='color:#ccc'></i>
+              <i class='fa fa-quote-right'></i>
             </td>
           </th>
         </table>
       </div>
-      <div class='padding-bottom-10 text-center' style='color:#777'>
-        <i class='fa fa-group margin-left-15 margin-right-5'></i>
-        <span class='font-16'>{{morerecipe.people}}</span>
-        <i class='fa fa-history margin-left-15 margin-right-5'></i>
-        <span class='font-16'>
-          {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
-        </span>
-        <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
-        <span class='font-16'>{{morerecipe.comments_length}}</span>
-        <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
-        <span class='font-16'>{{morerecipe.mark}}/5</span>
-      </div>
     </md-content>
+  </div>
+</div>
+<div class='print-title margin-left-20 margin-top-20 font-24 roboto light margin-bottom-30' style='max-width:1140px;margin-left:auto;margin-right:auto;margin-bottom:100px'>
+  User review
+  <div class='margin-top-10' ng-show='data.results &gt; 0 &amp;&amp; data.comments.length == 0 &amp;&amp; data.page == 1'>
+    <md-button class='margin-right-20 padding-left-15 padding-right-15 margin-top-20' ng-click='updateCommentPage(1)' style='background-color:#eee;color:#666'>
+      <i class='fa fa-refresh fa-lg margin-right-5'></i>
+      Load review
+    </md-button>
+  </div>
+  <div class='margin-top-20' ng-show='data.results &gt; 0 &amp;&amp; data.comments.length != 0'>
+    <div ng-repeat='comment in data.comments track by $index'>
+      <div class='font-14 margin-bottom-20 margin-left-20 margin-right-20'>
+        <span class='mark xsmall margin-right-5' ng-class="{'valid': mark[$index] &lt;= comment.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+        <span>
+          {{comment.mark}} / 5
+        </span>
+        <div class='margin-top-5 font-16' style='color:#555'>
+          {{comment.comment}}
+        </div>
+      </div>
+    </div>
+    <div class='pagination margin-left-10 font-14' style='color:#999'>
+      {{data.results}} RESULTS
+      <div>
+        <a class='cursor margin-right-5 margin-left-5' ng-click='updateCommentPage(data.page - 1)' ng-show='data.page &gt; 1' style='display:inline-block;padding:3px 7px'>
+          <i class='fa fa-arrow-left'></i>
+        </a>
+        <a class='cursor font-16 margin-right-10' ng-class="{'selected': page == data.page}" ng-click='updateCommentPage(page)' ng-repeat='page in data.pagination track by $index' ng-show='data.pagination.length &gt; 1' style='display:inline-block;padding:3px 7px'>
+          {{page}}
+        </a>
+        <a class='cursor' ng-click='updateCommentPage(data.page + 1)' ng-show='data.pagination.length &gt; 0 &amp;&amp; data.pagination[data.pagination.length - 1] != data.page' style='display:inline-block;padding:3px 7px;'>
+          <i class='fa fa-arrow-right'></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class='margin-top-20 font-16' ng-show='data.results == 0'>
+    There isn't review for this recipe
   </div>
 </div>

@@ -2,18 +2,26 @@
 
 Created: 16/05/2015
 Author: Clovis Kyndt
-Updated: 22/05/2015
+Updated: 23/05/2015
 
 ### ON GOING
 
 - [Feature] Recipe Smart search
-- [Feature] Recipe review
+~~[Feature] Recipe review
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
 
+- [Feature] Replace CommentRecipe TEST by ReviewRecipe
+
 - [Bug] Deploiement WebApp
-- [Bug] Limit description in the week_recipe
-- [Bug] Enter in search load search
+- [Bug] Check all restriction in UI
+- [Bug] Random only 4 recipes
+
+### ADVANCED
+
+- [Feature] Views list or card for recipe
+- [Feature] Mail gestion
+- [Feature] "Users who like this recipe also like" better algorithm
 
 ### DONE
 
@@ -39,6 +47,8 @@ Updated: 22/05/2015
 - [Bug] Favorite doesn't work
 - [Bug] Main page feature for the first recipe
 - [Bug] Font-Awesome (load localy)
+- [Bug] Enter in search load search
+- [Bug] Limit description in the week_recipe
 - [Docker] Deploiement
 
 ### OUT

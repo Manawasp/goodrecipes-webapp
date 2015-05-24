@@ -37,15 +37,16 @@
               %i.fa.fa-user.fa-lg
             Profil
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
-      %md-content{style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:71px;width:100%;'}
+      %md-content{style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:70px;width:100%;overflow:hidden'}
         %div.padding-left-10.padding-right-10{"hide-gt-md"=>"", style: ";width:75px;border-right:1px solid #eee;position:absolute;height:60px", layout: "row", "layout-align" => "start center"}
-          %div
+          %div.margin-top-20
             %a.cursor{style: 'padding:20px;color:#333;', "ng-click"=>"toggleLeft()"}
               %i.fa.fa-bars.fa-lg
         %div.searchBar{style: '', layout: "row", "layout-align" => "start center"}
-          %div.padding-left-10.padding-right-10.cursor{style: 'height:40px', "ng-click" => "searchRecipe()"}
+          %div.padding-left-10.padding-right-10.cursor.padding-top-10{style: 'height:40px', "ng-click" => "searchRecipe()"}
             %i.fa.cursor.fa-search.fa-lg
-          %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'height:40px;width:100%;border:0;', 'ng-model' => 'recipeSearch.description'}
+          %form{style: 'width:100%', "ng-submit" => "searchRecipe()"}
+            %input.padding-left-20.font-16{type: 'text', placeholder: 'What do you want to cook today ?', style: 'height:40px;width:100%;border:0;', 'ng-model' => 'recipeSearch.description'}
         %div.cursor{"hide-sm"=>"","layout-align" => "space-between center", "ng-click" => "locate('/users/edit/' + user.id)", style: "position:absolute;right:10px;width:200px;height:60px;border-left:1px solid #eee",layout: "row", "layout-align" => "end center"}
           %div.roboto.text-right{layout: "row", "layout-align" => "end center"}
             %div.padding-right-20

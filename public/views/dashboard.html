@@ -56,19 +56,21 @@
       </md-content>
     </md-sidenav>
     <md-content flex='' layout-padding='' style='padding:0;height:100%;'>
-      <md-content style='border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:71px;width:100%;'>
+      <md-content style='border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:70px;width:100%;overflow:hidden'>
         <div class='padding-left-10 padding-right-10' hide-gt-md='' layout-align='start center' layout='row' style=';width:75px;border-right:1px solid #eee;position:absolute;height:60px'>
-          <div>
+          <div class='margin-top-20'>
             <a class='cursor' ng-click='toggleLeft()' style='padding:20px;color:#333;'>
               <i class='fa fa-bars fa-lg'></i>
             </a>
           </div>
         </div>
         <div class='searchBar' layout-align='start center' layout='row' style=''>
-          <div class='padding-left-10 padding-right-10 cursor' ng-click='searchRecipe()' style='height:40px'>
+          <div class='padding-left-10 padding-right-10 cursor padding-top-10' ng-click='searchRecipe()' style='height:40px'>
             <i class='fa cursor fa-search fa-lg'></i>
           </div>
-          <input class='padding-left-20 font-16' ng-model='recipeSearch.description' placeholder='What do you want to cook today ?' style='height:40px;width:100%;border:0;' type='text'>
+          <form ng-submit='searchRecipe()' style='width:100%'>
+            <input class='padding-left-20 font-16' ng-model='recipeSearch.description' placeholder='What do you want to cook today ?' style='height:40px;width:100%;border:0;' type='text'>
+          </form>
         </div>
         <div class='cursor' hide-sm='' layout-align='end center' layout='row' ng-click="locate('/users/edit/' + user.id)" style='position:absolute;right:10px;width:200px;height:60px;border-left:1px solid #eee'>
           <div class='roboto text-right' layout-align='end center' layout='row'>
