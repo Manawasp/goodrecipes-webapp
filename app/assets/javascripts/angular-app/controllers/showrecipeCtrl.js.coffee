@@ -112,7 +112,8 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
         # console.log data
         console.log(data)
         $scope.data.results = data.max
-        $scope.data.comments = data.comments
+        $scope.data.comments = data.reviews
+        console.log($scope.data.comments)
         #paginarion
         paginationCallback()
       ).error((data) ->

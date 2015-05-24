@@ -118,9 +118,30 @@
     </md-button>
   </div>
   <div class='margin-top-20' ng-show='data.results &gt; 0 &amp;&amp; data.comments.length != 0'>
-    {{data.comments}}
     <div ng-repeat='comment in data.comments track by $index'>
-      Plein de comments
+      <div class='font-14 margin-bottom-20 margin-left-20 margin-right-20'>
+        <span class='mark xsmall margin-right-5' ng-class="{'valid': mark[$index] &lt;= comment.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
+        <span>
+          {{comment.mark}} / 5
+        </span>
+        <div class='margin-top-5 font-16' style='color:#555'>
+          {{comment.comment}}
+        </div>
+      </div>
+    </div>
+    <div class='pagination margin-left-10 font-14' style='color:#999'>
+      {{data.results}} RESULTS
+      <div>
+        <a class='cursor margin-right-5 margin-left-5' ng-click='updateCommentPage(data.page - 1)' ng-show='data.page &gt; 1' style='display:inline-block;padding:3px 7px'>
+          <i class='fa fa-arrow-left'></i>
+        </a>
+        <a class='cursor font-16 margin-right-10' ng-class="{'selected': page == data.page}" ng-click='updateCommentPage(page)' ng-repeat='page in data.pagination track by $index' ng-show='data.pagination.length &gt; 1' style='display:inline-block;padding:3px 7px'>
+          {{page}}
+        </a>
+        <a class='cursor' ng-click='updateCommentPage(data.page + 1)' ng-show='data.pagination.length &gt; 0 &amp;&amp; data.pagination[data.pagination.length - 1] != data.page' style='display:inline-block;padding:3px 7px;'>
+          <i class='fa fa-arrow-right'></i>
+        </a>
+      </div>
     </div>
   </div>
   <div class='margin-top-20 font-16' ng-show='data.results == 0'>

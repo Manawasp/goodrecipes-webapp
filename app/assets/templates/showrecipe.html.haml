@@ -78,8 +78,22 @@
       %i.fa.fa-refresh.fa-lg.margin-right-5
       Load review
   %div.margin-top-20{"ng-show"=>"data.results > 0 && data.comments.length != 0"}
-    {{data.comments}}
     %div{"ng-repeat" => "comment in data.comments track by $index"}
-      Plein de comments
+      %div.font-14.margin-bottom-20.margin-left-20.margin-right-20
+        %span.mark.xsmall.margin-right-5{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= comment.mark}"}
+        %span
+          {{comment.mark}} / 5
+        %div.margin-top-5.font-16{style: 'color:#555'}
+          {{comment.comment}}
+    -# Pagination
+    .pagination.margin-left-10.font-14{style: 'color:#999'}
+      {{data.results}} RESULTS
+      %div
+        %a.cursor.margin-right-5.margin-left-5{"ng-show" => "data.page > 1", style: "display:inline-block;padding:3px 7px", "ng-click" => "updateCommentPage(data.page - 1)"}
+          %i.fa.fa-arrow-left
+        %a.cursor.font-16.margin-right-10{"ng-repeat" => "page in data.pagination track by $index", style: "display:inline-block;padding:3px 7px", "ng-class" => "{'selected': page == data.page}", "ng-click" => "updateCommentPage(page)", "ng-show" => "data.pagination.length > 1"}
+          {{page}}
+        %a.cursor{"ng-show" => "data.pagination.length > 0 && data.pagination[data.pagination.length - 1] != data.page", style: "display:inline-block;padding:3px 7px;", "ng-click" => "updateCommentPage(data.page + 1)"}
+          %i.fa.fa-arrow-right
   %div.margin-top-20.font-16{"ng-show"=>"data.results == 0"}
     There isn't review for this recipe
