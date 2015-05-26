@@ -54,7 +54,7 @@ angular.module('app').factory('api', ($http, $cookies, $location, userService) -
       dt.current_user = {}
     getUser: () ->
       return dt
-    getAccessGastronomist: () ->
+    getAccesGastronomist: () ->
       return (access_gastronomist)
     getAccessSupplier: () ->
       return (access_supplier)

@@ -1,5 +1,7 @@
 angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParams, $mdDialog, $scope, $location, $cookieStore, authorization, api, recipeService, ingredientService, notifService)->
     console.log 'showrecipesCtrl running'
+
+    $scope.api = api
     $scope.template = 'views/showrecipe.html'
     $scope.error = ''
     $scope.ingredients = []

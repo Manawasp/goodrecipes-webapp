@@ -24,17 +24,17 @@
             </span>
             recipes
           </md-button>
-          <md-button ng-class="{focused: currentPath == '/recipes/create'}" ng-click="locate('/recipes/create')" style='text-align:left;text-transform: capitalize;color:#444'>
+          <md-button ng-class="{focused: currentPath == '/recipes/create'}" ng-click="locate('/recipes/create')" ng-show='api.getAccesGastronomist() == true || api.getAccessAdmin() == true' style='text-align:left;text-transform: capitalize;color:#444'>
             <i class='fa fa-pencil margin-left-30 margin-right-15'></i>
             Write new
           </md-button>
-          <md-button ng-class="{focused: currentPath == '/recipes/users'}" ng-click="locate('/recipes/users/' + user.id)" style='text-align:left;text-transform: capitalize;'>
+          <md-button ng-class="{focused: currentPath == '/recipes/users'}" ng-click="locate('/recipes/users/' + user.id)" ng-show='api.getAccesGastronomist() == true || api.getAccessAdmin() == true' style='text-align:left;text-transform: capitalize;'>
             <i class='fa fa-eye margin-left-30 margin-right-15'></i>
             See My
           </md-button>
         </div>
         <div class='margin-top-15 top-border' layout='column' style='padding-top:15px'>
-          <md-button ng-class="{focused: currentPath == '/ingredients'}" ng-click="locate('ingredients')" style='text-align:left;'>
+          <md-button ng-class="{focused: currentPath == '/ingredients'}" ng-click="locate('ingredients')" ng-show='api.getAccessSupplier() == true || api.getAccessAdmin() == true' style='text-align:left;'>
             <span class='margin-right-5 margin-left-5'>
               <img src='/images/ingredient.png' style='width:24px;height:24px'>
             </span>

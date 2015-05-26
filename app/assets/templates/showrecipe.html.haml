@@ -20,7 +20,7 @@
 %md-content{style: 'max-width:1140px;padding:30px 10px 10px 10px;margin-left:auto;margin-right:auto', layout: 'column'}
   %div
     %md-content.md-whiteframe-z1.ingredient-windows-90p{style: "background-image: url('{{recipe.image}}');width:100%;margin:0;"}
-    %div.text-right
+    %div.text-right{"ng-show" => "api.getUser().current_user.id == author.id || api.getAccessAdmin() == true"}
       %a.cursor{style: 'display:inline-block;padding:10px', "ng-click" => "editRecipe(recipe.id)"}
         %i.fa.fa-pencil
         Edit

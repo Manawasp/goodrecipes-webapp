@@ -17,14 +17,14 @@
             %span.margin-right-5.margin-left-5
               %img{src: '/images/chef.png', style: 'width:24px;height:24px'}
             recipes
-          %md-button{style: 'text-align:left;text-transform: capitalize;color:#444', "ng-click" => "locate('/recipes/create')", "ng-class" => "{focused: currentPath == '/recipes/create'}"}
+          %md-button{style: 'text-align:left;text-transform: capitalize;color:#444', "ng-click" => "locate('/recipes/create')", "ng-class" => "{focused: currentPath == '/recipes/create'}", "ng-show" => "api.getAccesGastronomist() == true || api.getAccessAdmin() == true"}
             %i.fa.fa-pencil.margin-left-30.margin-right-15
             Write new
-          %md-button{"ng-click" => "locate('/recipes/users/' + user.id)", style: 'text-align:left;text-transform: capitalize;', "ng-class" => "{focused: currentPath == '/recipes/users'}"}
+          %md-button{"ng-click" => "locate('/recipes/users/' + user.id)", style: 'text-align:left;text-transform: capitalize;', "ng-class" => "{focused: currentPath == '/recipes/users'}", "ng-show" => "api.getAccesGastronomist() == true || api.getAccessAdmin() == true"}
             %i.fa.fa-eye.margin-left-30.margin-right-15
             See My
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
-          %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')", "ng-class" => "{focused: currentPath == '/ingredients'}"}
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')", "ng-class" => "{focused: currentPath == '/ingredients'}", "ng-show" => "api.getAccessSupplier() == true || api.getAccessAdmin() == true"}
             %span.margin-right-5.margin-left-5
               %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
             ingredients

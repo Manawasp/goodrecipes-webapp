@@ -14,6 +14,7 @@ angular.module('app').controller("userCtrl", ($scope,  $mdSidenav, $location, $c
     $scope.toggleLeft = () ->
       $mdSidenav('left').toggle()
 
+    $scope.api = api
     $scope.dt = api.getUser()
     $scope.user = $scope.dt.current_user
     $scope.id = $scope.user.id || ""
