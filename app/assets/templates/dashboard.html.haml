@@ -6,7 +6,8 @@
           %img{src: '/images/logo.png', style: 'width:50px;height:50px;'}
         %span.font-36.cursor.margin-top-10{"ng-click" => "locate('/')"}
           %span.roboto.light.silver GOOD
-          %span.roboto.bold.food-dark-red{style: "margin-left:-5px"} RECIPES
+          %span.roboto.bold.food-dark-red{style: "margin-left:-5px"}
+            RECIPES
       %md-content
         %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
           %md-button{style: 'text-align:left;text-transform: uppercase;', "ng-click" => "locate('/')", "ng-class" => "{focused: currentPath == '/'}"}
@@ -23,19 +24,23 @@
           %md-button{"ng-click" => "locate('/recipes/users/' + user.id)", style: 'text-align:left;text-transform: capitalize;', "ng-class" => "{focused: currentPath == '/recipes/users'}", "ng-show" => "api.getAccesGastronomist() == true || api.getAccessAdmin() == true"}
             %i.fa.fa-eye.margin-left-30.margin-right-15
             See My
-        %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
           %md-button{style: 'text-align:left;', "ng-click" => "locate('ingredients')", "ng-class" => "{focused: currentPath == '/ingredients'}", "ng-show" => "api.getAccessSupplier() == true || api.getAccessAdmin() == true"}
             %span.margin-right-5.margin-left-5
               %img{src: '/images/ingredient.png', style: 'width:24px;height:24px'}
             ingredients
-          %md-button{style: 'text-align:left;', "ng-click" => "locate('favorites')", "ng-class" => "{focused: currentPath == '/favorites'}"}
-            %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
-              %i.fa.fa-star.fa-lg
-            favorites
+        %div.margin-top-15.top-border{layout: "column",style: 'padding-top:15px'}
           %md-button{style: 'text-align:left;', "ng-click" => "locate('/users/edit/' + user.id)", "ng-class" => "{focused: currentPath == '/users/edit'}", "hide-gt-sm" => ""}
             %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
               %i.fa.fa-user.fa-lg
             Profil
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('favorites')", "ng-class" => "{focused: currentPath == '/favorites'}"}
+            %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
+              %i.fa.fa-star.fa-lg
+            favorites
+          %md-button{style: 'text-align:left;', "ng-click" => "locate('/admin')", "ng-class" => "{focused: currentPath == '/admin'}", "ng-show" => "api.getAccessAdmin() == true"}
+            %span.margin-right-5.margin-left-5{style: 'width:24px;display:inline-block'}
+              %i.fa.fa-cog.fa-lg
+            Administration
     %md-content{"flex"=> "", "layout-padding" => "", style: 'padding:0;height:100%;'}
       %md-content{style: 'border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:70px;width:100%;overflow:hidden'}
         %div.padding-left-10.padding-right-10{"hide-gt-md"=>"", style: ";width:75px;border-right:1px solid #eee;position:absolute;height:60px", layout: "row", "layout-align" => "start center"}
