@@ -15,6 +15,36 @@
     Search
   </md-button>
 </div>
+<md-content ng-show='data.results &gt; 0'>
+  <md-list>
+    <table style='width:100%;'>
+      <tr>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>#</th>
+        <th class='padding-left-10 padding-right-10' style='min-width:250px;background-color:#ED747E;color:white;padding:10px'>Pseudo</th>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>SUPPLIER</th>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>COOKER</th>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>ADMIN</th>
+      </tr>
+      <tr ng-repeat='user in data.users' style='border-bottom:1px solid #eee'>
+        <td>
+          <img alt='{{user.pseudo}}' class='face' ng-src='{{user.avatar}}'>
+        </td>
+        <td>
+          {{user.pseudo}}
+        </td>
+        <td>
+          <md-checkbox aria-label='Checkbox 1' ng-model='user.supplier'></md-checkbox>
+        </td>
+        <td>
+          <md-checkbox aria-label='Checkbox 1' ng-model='user.cooker'></md-checkbox>
+        </td>
+        <td>
+          <md-checkbox aria-label='Checkbox 1' ng-model='user.admin'></md-checkbox>
+        </td>
+      </tr>
+    </table>
+  </md-list>
+</md-content>
 <div class='pagination margin-left-30'>
   {{data.results}} RESULTS
   <div class='margin-top-20'>

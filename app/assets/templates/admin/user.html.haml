@@ -13,6 +13,26 @@
 	-# 	%label
 	-# 		%input{type: "checkbox", "ng-checked"=>"exists(item, selected)", "ng-click"=>"toggle(item, selected)"}
 	-# %div{layout: "column"}
+%md-content{"ng-show" => "data.results > 0"}
+	%md-list
+		%table{style: "width:100%;"}
+			%tr
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} #
+				%th.padding-left-10.padding-right-10{style: "min-width:250px;background-color:#ED747E;color:white;padding:10px"} Pseudo
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} SUPPLIER
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} COOKER
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} ADMIN
+			%tr{"ng-repeat" => "user in data.users", style: 'border-bottom:1px solid #eee'}
+				%td
+					%img.face{"ng-src" => "{{user.avatar}}", alt: "{{user.pseudo}}"}
+				%td
+					{{user.pseudo}}
+				%td
+					%md-checkbox{"ng-model"=>"user.supplier", "aria-label"=>"Checkbox 1"}
+				%td
+					%md-checkbox{"ng-model"=>"user.cooker", "aria-label"=>"Checkbox 1"}
+				%td
+					%md-checkbox{"ng-model"=>"user.admin", "aria-label"=>"Checkbox 1"}
 -# Pagination
 .pagination.margin-left-30
 	{{data.results}} RESULTS

@@ -746,7 +746,12 @@ textarea.msd-elastic.blue-bottom-border {
   background: url('/') no-repeat center center;
   background-size: cover;
 }
-
+img.face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px;
+}
 .profile-avatar {
   width: 90px;
   background: url('/') no-repeat center center;

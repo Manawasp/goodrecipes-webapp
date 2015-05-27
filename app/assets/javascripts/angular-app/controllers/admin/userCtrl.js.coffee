@@ -47,9 +47,21 @@ angular.module('app').controller("adminUserCtrl", ($timeout, $q, $scope, $locati
 
     #search
     searchUser = (paginationCallback) ->
+      $scope.data.users = []
       userService.search().success((data) ->
         console.log(data)
         $scope.data.users = data.users
+        for user in data.users
+          user.admin    = false
+          user.cooker   = false
+          user.grosist  = false
+          for acc in user.access
+            if acc == "gastronomist"
+              user.cooker   = true
+            else if acc == "supplier"
+              user.supplier = true
+            else if acc == "admin"
+              user.admin    = true
         $scope.data.results = data.max
         #paginarion
         paginationCallback()
@@ -57,5 +69,7 @@ angular.module('app').controller("adminUserCtrl", ($timeout, $q, $scope, $locati
         console.log(data)
       )
 
+
+    # check access
     $scope.updatePage(1)
 )
