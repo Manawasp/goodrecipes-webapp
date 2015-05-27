@@ -7,6 +7,8 @@ angular.module('app').factory('api', ($http, $cookies, $location, userService) -
 
   init_access = () ->
     access_tabs = dt.current_user.access || []
+    console.log("Acces table :")
+    console.log(access_tabs)
     for t_access in access_tabs
       if t_access == "gastronomist"
         access_gastronomist = true
@@ -36,6 +38,7 @@ angular.module('app').factory('api', ($http, $cookies, $location, userService) -
         if (xhr.status == 200)
           current_user = JSON.parse(xhr.response)
           dt.current_user = current_user
+          init_access()
         else
           console.log("xhr.status :" + xhr.status)
           console.log("xhr.response:" + xhr.response)
@@ -54,7 +57,7 @@ angular.module('app').factory('api', ($http, $cookies, $location, userService) -
       dt.current_user = {}
     getUser: () ->
       return dt
-    getAccessGastronomist: () ->
+    getAccesGastronomist: () ->
       return (access_gastronomist)
     getAccessSupplier: () ->
       return (access_supplier)

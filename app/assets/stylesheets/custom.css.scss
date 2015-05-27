@@ -227,6 +227,24 @@ textarea.msd-elastic {
   color: #555;
 }
 
+a.admin-menu {
+  color:#555;
+  padding: 20px 10px;
+  margin-left:10px;
+  margin-right:10px;
+
+  &:hover {
+    color:#ED747E;
+    padding-bottom:16px;
+    border-bottom:3px solid #ED747E;
+  }
+  &.focused {
+    color:#BE1E2D;
+    padding-bottom:16px;
+    border-bottom:3px solid #BE1E2D;
+  }
+}
+
 .step {
   @extend .top-border;
   padding: 15px 20px;
@@ -728,7 +746,12 @@ textarea.msd-elastic.blue-bottom-border {
   background: url('/') no-repeat center center;
   background-size: cover;
 }
-
+img.face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px;
+}
 .profile-avatar {
   width: 90px;
   background: url('/') no-repeat center center;

@@ -18,7 +18,7 @@
         <i class='fa fa-history margin-left-15 margin-right-5 fa-lg'></i>
         <span class='font-16' style='color:#333'>{{week_recipe.time}}</span>
         <i class='fa fa-comments-o margin-left-15 margin-right-5 fa-lg'></i>
-        <span class='font-16' style='color:#333'>{{week_recipe.comments_length}}</span>
+        <span class='font-16' style='color:#333'>{{week_recipe.reviews}}</span>
         <span class='margin-left-30'></span>
         <span class='mark xsmall margin-right-5' ng-class="{'valid': mark[$index] &lt;= week_recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
         <span class='font-16' style='color:#333'>{{week_recipe.mark}}</span>
@@ -55,7 +55,7 @@
           {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
         </span>
         <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
-        <span class='font-16'>{{morerecipe.comments_length}}</span>
+        <span class='font-16'>{{morerecipe.reviews}}</span>
         <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
         <span class='font-16'>{{morerecipe.mark}}/5</span>
       </div>
@@ -90,7 +90,7 @@
               {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
             </span>
             <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
-            <span class='font-16'>{{morerecipe.comments_length}}</span>
+            <span class='font-16'>{{morerecipe.reviews}}</span>
             <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
             <span class='font-16'>{{morerecipe.mark}}/5</span>
           </div>
@@ -125,7 +125,7 @@
               {{morerecipe.hours.toString() + "h" + morerecipe.minutes.toString()}}
             </span>
             <i class='fa fa-comments-o margin-left-15 margin-right-5'></i>
-            <span class='font-16'>{{morerecipe.comments_length}}</span>
+            <span class='font-16'>{{morerecipe.reviews}}</span>
             <i class='fa fa-thumbs-o-up margin-left-15 margin-right-5'></i>
             <span class='font-16'>{{morerecipe.mark}}/5</span>
           </div>

@@ -16,7 +16,7 @@
     <i class='fa fa-history margin-left-15 margin-right-5 fa-lg'></i>
     <span class='font-16' style='color:#333'>{{recipe.time}}</span>
     <i class='fa fa-comments-o margin-left-15 margin-right-5 fa-lg'></i>
-    <span class='font-16' style='color:#333'>{{recipe.comments_length}}</span>
+    <span class='font-16' style='color:#333'>{{recipe.reviews}}</span>
     <span class='margin-left-30'>
       <span class='mark xsmall margin-right-5' ng-class="{'valid': mark[$index] &lt;= recipe.mark}" ng-repeat='i in [0, 1, 2, 3, 4] track by $index'></span>
     </span>
@@ -26,7 +26,7 @@
 <md-content layout='column' style='max-width:1140px;padding:30px 10px 10px 10px;margin-left:auto;margin-right:auto'>
   <div>
     <md-content class='md-whiteframe-z1 ingredient-windows-90p' style="background-image: url('{{recipe.image}}');width:100%;margin:0;"></md-content>
-    <div class='text-right'>
+    <div class='text-right' ng-show='api.getUser().current_user.id == author.id || api.getAccessAdmin() == true'>
       <a class='cursor' ng-click='editRecipe(recipe.id)' style='display:inline-block;padding:10px'>
         <i class='fa fa-pencil'></i>
         Edit

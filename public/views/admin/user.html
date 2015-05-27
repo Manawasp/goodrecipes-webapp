@@ -1,0 +1,61 @@
+<div flex='100' layout-align='space-between center' layout='row' style='border-bottom:1px solid #eee;padding-bottom:15px'>
+  <form ng-submit='updatePage(1)'>
+    <div layout='row'>
+      <span class='margin-left-5' style='margin-top:13px;'>
+        <b>PSEUDO</b>
+      </span>
+      <input class='font-16 margin-left-20 margin-right-20' placeholder='Search user name...' style='border:0;' type='text'>
+      <md-checkbox ng-checked='exists(item, selected)' ng-click='toggle(item, selected)' ng-repeat='item in items'>
+        {{item}}
+      </md-checkbox>
+    </div>
+  </form>
+  <md-button class='md-primary md-raised padding-right-20 padding-left-15' ng-click='updatePage(1)' style='float:right;background-color:#ED747E'>
+    <i class='fa fa-search margin-right-5'></i>
+    Search
+  </md-button>
+</div>
+<md-content ng-show='data.results &gt; 0'>
+  <md-list>
+    <table style='width:100%;'>
+      <tr>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>#</th>
+        <th class='padding-left-10 padding-right-10' style='min-width:250px;background-color:#ED747E;color:white;padding:10px'>Pseudo</th>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>SUPPLIER</th>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>COOKER</th>
+        <th class='padding-left-10 padding-right-10' style='background-color:#ED747E;color:white;padding:10px'>ADMIN</th>
+      </tr>
+      <tr ng-repeat='user in data.users' style='border-bottom:1px solid #eee'>
+        <td>
+          <img alt='{{user.pseudo}}' class='face' ng-src='{{user.avatar}}'>
+        </td>
+        <td>
+          {{user.pseudo}}
+        </td>
+        <td>
+          <md-checkbox aria-label='Checkbox 1' ng-model='user.supplier'></md-checkbox>
+        </td>
+        <td>
+          <md-checkbox aria-label='Checkbox 1' ng-model='user.cooker'></md-checkbox>
+        </td>
+        <td>
+          <md-checkbox aria-label='Checkbox 1' ng-model='user.admin'></md-checkbox>
+        </td>
+      </tr>
+    </table>
+  </md-list>
+</md-content>
+<div class='pagination margin-left-30'>
+  {{data.results}} RESULTS
+  <div class='margin-top-20'>
+    <a class='cursor margin-right-5 margin-left-5' ng-click='updatePage(data.page - 1)' ng-show='data.page &gt; 1' style='display:inline-block;padding:3px 7px'>
+      <i class='fa fa-arrow-left'></i>
+    </a>
+    <a class='cursor font-16 margin-right-10' ng-class="{'selected': page == data.page}" ng-click='updatePage(page)' ng-repeat='page in data.pagination track by $index' ng-show='data.pagination.length &gt; 1' style='display:inline-block;padding:3px 7px'>
+      {{page}}
+    </a>
+    <a class='cursor' ng-click='updatePage(data.page + 1)' ng-show='data.pagination.length &gt; 0 &amp;&amp; data.pagination[data.pagination.length - 1] != data.page' style='display:inline-block;padding:3px 7px;'>
+      <i class='fa fa-arrow-right'></i>
+    </a>
+  </div>
+</div>

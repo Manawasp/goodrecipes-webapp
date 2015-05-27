@@ -13,14 +13,14 @@
     %i.fa.fa-history.margin-left-15.margin-right-5.fa-lg
     %span.font-16{style: 'color:#333'} {{recipe.time}}
     %i.fa.fa-comments-o.margin-left-15.margin-right-5.fa-lg
-    %span.font-16{style: 'color:#333'} {{recipe.comments_length}}
+    %span.font-16{style: 'color:#333'} {{recipe.reviews}}
     %span.margin-left-30
       %span.mark.xsmall.margin-right-5{"ng-repeat" => "i in [0, 1, 2, 3, 4] track by $index", "ng-class" => "{'valid': mark[$index] <= recipe.mark}"}
     %span.font-16{style: 'color:#333'} {{recipe.mark}}
 %md-content{style: 'max-width:1140px;padding:30px 10px 10px 10px;margin-left:auto;margin-right:auto', layout: 'column'}
   %div
     %md-content.md-whiteframe-z1.ingredient-windows-90p{style: "background-image: url('{{recipe.image}}');width:100%;margin:0;"}
-    %div.text-right
+    %div.text-right{"ng-show" => "api.getUser().current_user.id == author.id || api.getAccessAdmin() == true"}
       %a.cursor{style: 'display:inline-block;padding:10px', "ng-click" => "editRecipe(recipe.id)"}
         %i.fa.fa-pencil
         Edit

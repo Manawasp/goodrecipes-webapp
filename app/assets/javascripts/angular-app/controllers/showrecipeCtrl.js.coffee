@@ -1,5 +1,7 @@
 angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParams, $mdDialog, $scope, $location, $cookieStore, authorization, api, recipeService, ingredientService, notifService)->
     console.log 'showrecipesCtrl running'
+
+    $scope.api = api
     $scope.template = 'views/showrecipe.html'
     $scope.error = ''
     $scope.ingredients = []
@@ -49,6 +51,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       igs = ingredientService.getSearch()
       for ig in data.ingredients
         igs.push ig
+      $scope.updateCommentPage(1)
 
     homepageService.random(5
     ).success((data) ->
@@ -94,7 +97,6 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
         $scope.data.offset  = (value - 1) * $scope.data.limit
         searchComments(()->
           $scope.data.pagination.length = 0
-          console.log("updated... ? page:" + $scope.data.page)
           n = $scope.data.page - 4
           while (n < ($scope.data.page + 4))
             if (n > 0 && ((n-1)*$scope.data.limit) < $scope.data.results)

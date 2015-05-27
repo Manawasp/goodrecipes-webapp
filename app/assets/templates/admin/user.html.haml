@@ -1,0 +1,45 @@
+%div{layout: "row", flex: "100", "layout-align"=>"space-between center", style: 'border-bottom:1px solid #eee;padding-bottom:15px'}
+	%form{"ng-submit" => "updatePage(1)"}
+		%div{layout: "row"}
+			%span.margin-left-5{style: 'margin-top:13px;'}
+				%b PSEUDO
+			%input.font-16.margin-left-20.margin-right-20{type: "text", style: 'border:0;', placeholder: 'Search user name...'}
+			%md-checkbox{"ng-repeat"=>"item in items", "ng-checked"=>"exists(item, selected)", "ng-click"=>"toggle(item, selected)"}
+				{{item}}
+	%md-button.md-primary.md-raised.padding-right-20.padding-left-15{style: 'float:right;background-color:#ED747E', "ng-click" => "updatePage(1)"}
+		%i.fa.fa-search.margin-right-5
+		Search
+	-# %div.standard{"ng-repeat" => "item in items"}
+	-# 	%label
+	-# 		%input{type: "checkbox", "ng-checked"=>"exists(item, selected)", "ng-click"=>"toggle(item, selected)"}
+	-# %div{layout: "column"}
+%md-content{"ng-show" => "data.results > 0"}
+	%md-list
+		%table{style: "width:100%;"}
+			%tr
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} #
+				%th.padding-left-10.padding-right-10{style: "min-width:250px;background-color:#ED747E;color:white;padding:10px"} Pseudo
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} SUPPLIER
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} COOKER
+				%th.padding-left-10.padding-right-10{style: "background-color:#ED747E;color:white;padding:10px"} ADMIN
+			%tr{"ng-repeat" => "user in data.users", style: 'border-bottom:1px solid #eee'}
+				%td
+					%img.face{"ng-src" => "{{user.avatar}}", alt: "{{user.pseudo}}"}
+				%td
+					{{user.pseudo}}
+				%td
+					%md-checkbox{"ng-model"=>"user.supplier", "aria-label"=>"Checkbox 1"}
+				%td
+					%md-checkbox{"ng-model"=>"user.cooker", "aria-label"=>"Checkbox 1"}
+				%td
+					%md-checkbox{"ng-model"=>"user.admin", "aria-label"=>"Checkbox 1"}
+-# Pagination
+.pagination.margin-left-30
+	{{data.results}} RESULTS
+	%div.margin-top-20
+		%a.cursor.margin-right-5.margin-left-5{"ng-show" => "data.page > 1", style: "display:inline-block;padding:3px 7px", "ng-click" => "updatePage(data.page - 1)"}
+			%i.fa.fa-arrow-left
+		%a.cursor.font-16.margin-right-10{"ng-repeat" => "page in data.pagination track by $index", style: "display:inline-block;padding:3px 7px", "ng-class" => "{'selected': page == data.page}", "ng-click" => "updatePage(page)", "ng-show" => "data.pagination.length > 1"}
+			{{page}}
+		%a.cursor{"ng-show" => "data.pagination.length > 0 && data.pagination[data.pagination.length - 1] != data.page", style: "display:inline-block;padding:3px 7px;", "ng-click" => "updatePage(data.page + 1)"}
+			%i.fa.fa-arrow-right

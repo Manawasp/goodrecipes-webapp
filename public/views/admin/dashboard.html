@@ -1,0 +1,46 @@
+<span layout='column' ng-controller='userCtrl' style='height:100%'>
+  <section flex='' layout='row' style='height:100%'>
+    <md-sidenav class='md-sidenav-left md-whiteframe-z2' md-component-id='left'>
+      <md-toolbar class='food-api-theme no-bg md-theme-indigo' layout-align='center center'>
+        <div class='text-center margin-top-20'>
+          <img src='/images/logo.png' style='width:50px;height:50px;'>
+        </div>
+        <span class='font-36 cursor margin-top-10' ng-click="locate('/')">
+          <span class='roboto light silver'>GOOD</span>
+          <span class='roboto bold food-dark-red' style='margin-left:-5px'>
+            RECIPES
+          </span>
+        </span>
+      </md-toolbar>
+    </md-sidenav>
+    <md-content flex='' layout-padding='' style='padding:0;height:100%;'>
+      <md-content style='border-top:10px solid #BE1E2D;border-bottom:1px solid #eee;height:70px;width:100%;overflow:hidden'>
+        <div class='padding-left-10 padding-right-10' hide-gt-md='' layout-align='start center' layout='row' style=';width:75px;border-right:1px solid #eee;position:absolute;height:60px'>
+          <div class='margin-top-20'>
+            <a class='cursor' ng-click='toggleLeft()' style='padding:20px;color:#333;'>
+              <i class='fa fa-bars fa-lg'></i>
+            </a>
+          </div>
+        </div>
+        <div class='searchBar' layout-align='start center' layout='row' style='right:0;border-bottom:0 solid #ccc;'>
+          <div flex='100'>
+            <a href='' ng-click="locate('/')" style='float:right;display:inline-block;padding: 20px 10px'>
+              GO OUT
+              <i class='fa fa-sign-out fa-lg margin-left-5'></i>
+            </a>
+            <div class='margin-10' style='display:inline-block;color:#999999'>
+              <b>ADMIN</b>
+            </div>
+            <a class='admin-menu cursor padding-bottom-20 padding-top-20 padding-left-20 padding-right-20' href='' ng-class="{'focused': currentPath == '/admin/users'}" style='display:inline-block;'>
+              <i class='fa fa-user margin-right-5'></i>
+              <b>USER</b>
+            </a>
+          </div>
+        </div>
+      </md-content>
+      <md-content class='no-bg md-default-theme' layout-align='center center' layout='column' md-scroll-y=''>
+        <md-content class='no-bg' ng-include='template' style='width:100%;padding:20px 20px 10px 20px'></md-content>
+      </md-content>
+    </md-content>
+  </section>
+</span>

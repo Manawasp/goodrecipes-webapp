@@ -2,19 +2,15 @@
 
 Created: 16/05/2015
 Author: Clovis Kyndt
-Updated: 23/05/2015
+Updated: 26/05/2015
 
 ### ON GOING
 
-- [Feature] Recipe Smart search
-~~[Feature] Recipe review
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
-
-- [Feature] Replace CommentRecipe TEST by ReviewRecipe
+- [Feature] Admin user management
 
 - [Bug] Deploiement WebApp
-- [Bug] Check all restriction in UI
 - [Bug] Random only 4 recipes
 
 ### ADVANCED
@@ -38,6 +34,9 @@ Updated: 23/05/2015
 - [Feature] Access edit recipe
 - [Feature] Search user "recipe"
 - [Feature] Patch signup/login page
+- [Feature] Recipe review
+- [Feature] Recipe Smart search
+- [Feature] Replace CommentRecipe TEST by ReviewRecipe
 - [Documentation] Update github
 - [Documentation] Github add API repo
 - [Bug] Probleme de syncronisation (User not update)
@@ -48,6 +47,7 @@ Updated: 23/05/2015
 - [Bug] Main page feature for the first recipe
 - [Bug] Font-Awesome (load localy)
 - [Bug] Enter in search load search
+- [Bug] Check all restriction in UI
 - [Bug] Limit description in the week_recipe
 - [Docker] Deploiement
 
