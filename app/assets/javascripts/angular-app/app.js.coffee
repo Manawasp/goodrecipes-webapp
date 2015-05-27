@@ -52,7 +52,7 @@
     .when('/login', { templateUrl: 'views/auth.html', controller: 'loginCtrl' })
     .when('/signup', { templateUrl: 'views/auth.html', controller: 'signupCtrl' })
 
-    .when('/admin', {tplateUrl: 'views/admindash.html', controller: 'adminCtrl'
+    .when('/admin/users', {templateUrl: 'views/admin/dashboard.html', controller: 'adminUserCtrl'
       })
 
     .otherwise({ redirectTo: '/' })

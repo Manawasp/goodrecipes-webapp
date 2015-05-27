@@ -11,7 +11,7 @@ angular.module('app')
           req = $http.get(apiService.url() + '/users/' + idhash)
           return req
         search: () ->
-          req = $http.post(apiService.url() + '/users/search')
+          return $http.post(apiService.url() + '/users/search', {})
         isEmpty: (data) ->
           if data.password == undefined && data.email == undefined && data.firstname == undefined && data.pseudo  == undefined && data.lastname == undefined
             return true

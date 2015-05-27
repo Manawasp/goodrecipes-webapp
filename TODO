@@ -8,6 +8,7 @@ Updated: 26/05/2015
 
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
+- [Feature] Admin user management
 
 - [Bug] Deploiement WebApp
 - [Bug] Random only 4 recipes
