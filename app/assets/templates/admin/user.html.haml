@@ -28,11 +28,11 @@
 				%td
 					{{user.pseudo}}
 				%td
-					%md-checkbox{"ng-model"=>"user.supplier", "aria-label"=>"Checkbox 1"}
+					%md-checkbox{"ng-model"=>"user.supplier", "aria-label"=>"CheckboxSupplier", "ng-click" => "userAccess('supplier', user.id)"}
 				%td
-					%md-checkbox{"ng-model"=>"user.cooker", "aria-label"=>"Checkbox 1"}
+					%md-checkbox{"ng-model"=>"user.cooker", "aria-label"=>"CheckboxCooker", "ng-click" => "userAccess('cooker', user.id)"}
 				%td
-					%md-checkbox{"ng-model"=>"user.admin", "aria-label"=>"Checkbox 1"}
+					%md-checkbox{"ng-model"=>"user.admin", "aria-label"=>"CheckboxAdmin", "ng-click" => "userAccess('admin', user.id)"}
 -# Pagination
 .pagination.margin-left-30
 	{{data.results}} RESULTS

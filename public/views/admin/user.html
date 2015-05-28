@@ -33,13 +33,13 @@
           {{user.pseudo}}
         </td>
         <td>
-          <md-checkbox aria-label='Checkbox 1' ng-model='user.supplier'></md-checkbox>
+          <md-checkbox aria-label='CheckboxSupplier' ng-click="userAccess('supplier', user.id)" ng-model='user.supplier'></md-checkbox>
         </td>
         <td>
-          <md-checkbox aria-label='Checkbox 1' ng-model='user.cooker'></md-checkbox>
+          <md-checkbox aria-label='CheckboxCooker' ng-click="userAccess('cooker', user.id)" ng-model='user.cooker'></md-checkbox>
         </td>
         <td>
-          <md-checkbox aria-label='Checkbox 1' ng-model='user.admin'></md-checkbox>
+          <md-checkbox aria-label='CheckboxAdmin' ng-click="userAccess('admin', user.id)" ng-model='user.admin'></md-checkbox>
         </td>
       </tr>
     </table>

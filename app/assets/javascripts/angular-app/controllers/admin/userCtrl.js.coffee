@@ -69,6 +69,21 @@ angular.module('app').controller("adminUserCtrl", ($timeout, $q, $scope, $locati
         console.log(data)
       )
 
+    # SCOPE method
+    $scope.userAccess = (typeAccess, id) ->
+      data = {}
+      if (typeAccess == 'admin')
+        data.admin = true
+      else if (typeAccess == 'cooker')
+        data.cooker = true
+      else if (typeAccess == 'supplier')
+        data.supplier = true
+      userService.updateAccess(data, id
+      ).success((data) ->
+        console.log(data)
+      ).error((data) ->
+        console.log(data)
+      )
 
     # check access
     $scope.updatePage(1)
