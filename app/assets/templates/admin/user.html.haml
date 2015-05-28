@@ -3,9 +3,15 @@
 		%div{layout: "row"}
 			%span.margin-left-5{style: 'margin-top:13px;'}
 				%b PSEUDO
-			%input.font-16.margin-left-20.margin-right-20{type: "text", style: 'border:0;', placeholder: 'Search user name...'}
-			%md-checkbox{"ng-repeat"=>"item in items", "ng-checked"=>"exists(item, selected)", "ng-click"=>"toggle(item, selected)"}
-				{{item}}
+			%input.font-16.margin-left-20.margin-right-20{type: "text", style: 'border:0;', placeholder: 'Search user name...', "ng-model"=> "data.search.pseudo"}
+			%md-checkbox{"ng-model"=>"data.search.grosist"}
+				Grosist
+			%md-checkbox{"ng-model"=>"data.search.cooker"}
+				Cooker
+			%md-checkbox{"ng-model"=>"data.search.admin"}
+				Admin
+			-# %md-checkbox{"ng-repeat"=>"item in items", "ng-checked"=>"exists(item, selected)", "ng-click"=>"toggle(item, selected)"}
+			-# 	{{item}}
 	%md-button.md-primary.md-raised.padding-right-20.padding-left-15{style: 'float:right;background-color:#ED747E', "ng-click" => "updatePage(1)"}
 		%i.fa.fa-search.margin-right-5
 		Search
@@ -28,11 +34,11 @@
 				%td
 					{{user.pseudo}}
 				%td
-					%md-checkbox{"ng-model"=>"user.supplier", "aria-label"=>"CheckboxSupplier", "ng-click" => "userAccess('supplier', user.id)"}
+					%md-checkbox{"ng-model"=>"user.supplier", "aria-label"=>"CheckboxSupplier", "ng-click" => "userAccess('supplier', user.supplier, user.id)"}
 				%td
-					%md-checkbox{"ng-model"=>"user.cooker", "aria-label"=>"CheckboxCooker", "ng-click" => "userAccess('cooker', user.id)"}
+					%md-checkbox{"ng-model"=>"user.cooker", "aria-label"=>"CheckboxCooker", "ng-click" => "userAccess('cooker', user.cooker, user.id)"}
 				%td
-					%md-checkbox{"ng-model"=>"user.admin", "aria-label"=>"CheckboxAdmin", "ng-click" => "userAccess('admin', user.id)"}
+					%md-checkbox{"ng-model"=>"user.admin", "aria-label"=>"CheckboxAdmin", "ng-click" => "userAccess('admin', user.admin, user.id)"}
 -# Pagination
 .pagination.margin-left-30
 	{{data.results}} RESULTS

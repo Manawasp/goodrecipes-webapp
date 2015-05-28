@@ -8,6 +8,7 @@ angular.module('app').controller("adminUserCtrl", ($timeout, $q, $scope, $locati
       users : []
       results: 0;
       pagination: []
+      search: {grosist: false, cooker: false, admin: false, pseudo: ""}
     }
 
     $scope.updatePage = (value)->
@@ -48,13 +49,14 @@ angular.module('app').controller("adminUserCtrl", ($timeout, $q, $scope, $locati
     #search
     searchUser = (paginationCallback) ->
       $scope.data.users = []
-      userService.search().success((data) ->
+      userService.search($scope.data.search).success((data) ->
         console.log(data)
         $scope.data.users = data.users
         for user in data.users
           user.admin    = false
           user.cooker   = false
-          user.grosist  = false
+          user.supplier  = false
+          console.log(user.access)
           for acc in user.access
             if acc == "gastronomist"
               user.cooker   = true
@@ -70,19 +72,27 @@ angular.module('app').controller("adminUserCtrl", ($timeout, $q, $scope, $locati
       )
 
     # SCOPE method
-    $scope.userAccess = (typeAccess, id) ->
+    $scope.userAccess = (typeAccess, value, id) ->
+      console.log("type: "+typeAccess+"/userAcces : "+value, "/.id:" + id)
       data = {}
+      value = !value
       if (typeAccess == 'admin')
-        data.admin = true
+        data.admin = value
       else if (typeAccess == 'cooker')
-        data.cooker = true
+        data.cooker = value
       else if (typeAccess == 'supplier')
-        data.supplier = true
-      userService.updateAccess(data, id
+        data.supplier = value
+      userService.updateAdminAccess(data, id
       ).success((data) ->
-        console.log(data)
+        #
       ).error((data) ->
-        console.log(data)
+        # back to real value if error with the api
+        if (typeAccess == 'admin')
+          data.admin = value
+        else if (typeAccess == 'cooker')
+          data.cooker = value
+        else if (typeAccess == 'supplier')
+          data.supplier = value
       )
 
     # check access
