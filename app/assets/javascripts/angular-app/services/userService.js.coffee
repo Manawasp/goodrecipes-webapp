@@ -10,8 +10,21 @@ angular.module('app')
         get: (idhash) ->
           req = $http.get(apiService.url() + '/users/' + idhash)
           return req
-        search: () ->
-          return $http.post(apiService.url() + '/users/search', {})
+        search: (params) ->
+          if (params == undefined)
+            data = {};
+          else
+            data = {};
+            if (params.pseudo.length > 0)
+              data.pseudo = params.pseudo;
+            data.access = []
+            if (params.grosist)
+              data.access.push("supplier");
+            if (params.cooker)
+              data.access.push("gastronomist");
+            if (params.admin)
+              data.access.push("admin")
+          return $http.post(apiService.url() + '/users/search', data)
         isEmpty: (data) ->
           if data.password == undefined && data.email == undefined && data.firstname == undefined && data.pseudo  == undefined && data.lastname == undefined
             return true
@@ -32,6 +45,8 @@ angular.module('app')
         update: (id, data) ->
           req = $http.patch(apiService.url() + '/users/' + id, data)
           return req
+        updateAdminAccess: (data, id) ->
+          return $http.patch(apiService.url() + '/admin/users/' + id, data)
         image: (data) ->
           req = $http.post(apiService.url() + '/users/' + data.id + '/pictures', data)
           return req

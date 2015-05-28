@@ -4,9 +4,15 @@
       <span class='margin-left-5' style='margin-top:13px;'>
         <b>PSEUDO</b>
       </span>
-      <input class='font-16 margin-left-20 margin-right-20' placeholder='Search user name...' style='border:0;' type='text'>
-      <md-checkbox ng-checked='exists(item, selected)' ng-click='toggle(item, selected)' ng-repeat='item in items'>
-        {{item}}
+      <input class='font-16 margin-left-20 margin-right-20' ng-model='data.search.pseudo' placeholder='Search user name...' style='border:0;' type='text'>
+      <md-checkbox ng-model='data.search.grosist'>
+        Grosist
+      </md-checkbox>
+      <md-checkbox ng-model='data.search.cooker'>
+        Cooker
+      </md-checkbox>
+      <md-checkbox ng-model='data.search.admin'>
+        Admin
       </md-checkbox>
     </div>
   </form>
@@ -33,13 +39,13 @@
           {{user.pseudo}}
         </td>
         <td>
-          <md-checkbox aria-label='Checkbox 1' ng-model='user.supplier'></md-checkbox>
+          <md-checkbox aria-label='CheckboxSupplier' ng-click="userAccess('supplier', user.supplier, user.id)" ng-model='user.supplier'></md-checkbox>
         </td>
         <td>
-          <md-checkbox aria-label='Checkbox 1' ng-model='user.cooker'></md-checkbox>
+          <md-checkbox aria-label='CheckboxCooker' ng-click="userAccess('cooker', user.cooker, user.id)" ng-model='user.cooker'></md-checkbox>
         </td>
         <td>
-          <md-checkbox aria-label='Checkbox 1' ng-model='user.admin'></md-checkbox>
+          <md-checkbox aria-label='CheckboxAdmin' ng-click="userAccess('admin', user.admin, user.id)" ng-model='user.admin'></md-checkbox>
         </td>
       </tr>
     </table>
