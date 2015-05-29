@@ -2,13 +2,12 @@
 
 Created: 16/05/2015
 Author: Clovis Kyndt
-Updated: 26/05/2015
+Updated: 30/05/2015
 
 ### ON GOING
 
 - [Feature] Elasticsearch implementation
 - [Feature] User historique (Elasticsearch)
-- [Feature] Admin user management
 
 - [Bug] Deploiement WebApp
 - [Bug] Random only 4 recipes
@@ -16,7 +15,6 @@ Updated: 26/05/2015
 ### ADVANCED
 
 - [Feature] Views list or card for recipe
-- [Feature] Mail gestion
 - [Feature] "Users who like this recipe also like" better algorithm
 
 ### DONE
@@ -35,6 +33,8 @@ Updated: 26/05/2015
 - [Feature] Search user "recipe"
 - [Feature] Patch signup/login page
 - [Feature] Recipe review
+- [Feature] Admin user management
+- [Feature] Mail gestion
 - [Feature] Recipe Smart search
 - [Feature] Replace CommentRecipe TEST by ReviewRecipe
 - [Documentation] Update github
