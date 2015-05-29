@@ -47,6 +47,10 @@ angular.module('app')
           return req
         updateAdminAccess: (data, id) ->
           return $http.patch(apiService.url() + '/admin/users/' + id, data)
+        initPassword: (token, password) ->
+          return $http.patch(apiService.url() + '/users/account/reset', {token: token, password: password})
+        sendMailResetPassword: (email) ->
+          return $http.post(apiService.url() + '/users/account/reset', {email: email})
         image: (data) ->
           req = $http.post(apiService.url() + '/users/' + data.id + '/pictures', data)
           return req

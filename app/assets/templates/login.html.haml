@@ -10,9 +10,13 @@
   %md-input-container
     %label{style: 'color:#555'} Password
     %input{"ng-model" => "password", type: 'password'}
-%div.text-right.margin-top-10
-  %div.fleft.padding-top-15
+%div.margin-top-10{layout: "row", "layout-align"=>"space-between start"}
+  %div.text-left
     %span{style: 'color:#999'}
       You want to create an account ?
       %a.cursor.margin-left-5{"ng-click"=> "locate('signup')"} Sign up
-  %md-button{"ng-click" => "send()", style: 'background-color:#ED747E;color:white'} LOG IN
+      %br
+      You forgot your password ?
+      %a.cursor.margin-left-5{"ng-click" => "sendResetEmail()"} help me to rember
+  %div
+    %md-button{"ng-click" => "send()", style: 'background-color:#ED747E;color:white'} LOG IN
