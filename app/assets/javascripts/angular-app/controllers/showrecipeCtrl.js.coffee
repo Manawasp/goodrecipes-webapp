@@ -12,6 +12,7 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       comments : []
       results: 0;
       pagination: []
+      sync: false
     }
     $scope.recipe = {}
     $scope.mark = [0.5, 1.5, 2.5, 3.5, 4.5]
@@ -52,6 +53,8 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       for ig in data.ingredients
         igs.push ig
       $scope.updateCommentPage(1)
+      console.log($scope.recipe)
+      $scope.data.sync = true
 
     homepageService.random(5
     ).success((data) ->
