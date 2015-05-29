@@ -5,6 +5,7 @@ angular.module('app').controller("createrecipeCtrl", ($timeout, $q, $scope, $loc
     $scope.form_ingredient = {description: ""}
     $scope.recipePict = undefined
     $scope.type = 'create'
+    $scope.data = {sync: false}
 
     $scope.data = {
       offset : 0

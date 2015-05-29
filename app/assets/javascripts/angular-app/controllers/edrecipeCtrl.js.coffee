@@ -6,6 +6,7 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
     $scope.ingredients = []
     $scope.ingredientPicture = undefined
     $scope.type = 'edit'
+    $scope.data = {sync: false}
 
     $scope.labels = [{'c': false, 'name': 'breakfast & brunch'},  {'c': false, 'name': 'appetizer'},
                     {'c': false, 'name': 'dessert'},              {'c': false, 'name': 'healty'},
@@ -68,6 +69,7 @@ angular.module('app').controller("editerecipeCtrl", ($routeParams, $mdDialog, $s
       igs = ingredientService.getSearch()
       for ig in data.ingredients
         igs.push ig
+      $scope.data.sync = true
 
     recipeService.get($routeParams.id
     ).success((data) ->
