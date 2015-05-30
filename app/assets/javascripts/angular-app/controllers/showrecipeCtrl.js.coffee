@@ -53,7 +53,8 @@ angular.module('app').controller("showrecipeCtrl", (homepageService, $routeParam
       for ig in data.ingredients
         igs.push ig
       $scope.updateCommentPage(1)
-      console.log($scope.recipe)
+      $scope.recipe.partsTable = $scope.recipe.parts.split(/(?:\r\n|\r|\n)/g);
+      console.log($scope.recipe.partsTable)
       $scope.data.sync = true
 
     homepageService.random(5

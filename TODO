@@ -6,14 +6,13 @@ Updated: 30/05/2015
 
 ### ON GOING
 
-- [Feature] Elasticsearch implementation
-- [Feature] User historique (Elasticsearch)
-
 - [Bug] Deploiement WebApp
-- [Bug] Random only 4 recipes
+- [Bug] Random not works
 
 ### ADVANCED
 
+- [Feature] Elasticsearch implementation
+- [Feature] User historique (Elasticsearch)
 - [Feature] Views list or card for recipe
 - [Feature] "Users who like this recipe also like" better algorithm
 

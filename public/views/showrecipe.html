@@ -64,13 +64,15 @@
       <div layout-wrap='' layout='row'>
         <div flex='50'>
           <div class='margin-top-5' style='padding:0 15px'>
-            <span class='margin-bottom-30 font-18 roboto bold food-dark-red uppercase'>Quantity</span>
-            <textarea class='margin-top-20 msd-elastic step-description margin-bottom-5' disabled='true' ng-model='recipe.parts' placeholder='List of quantity and ingredients' style='background-color:transparent'></textarea>
+            <div class='margin-bottom-10 font-18 roboto bold food-dark-red uppercase'>Quantity</div>
+            <div ng-repeat='ingr in recipe.partsTable track by $index'>
+              {{ingr}}
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class='step padding-bottom-5' ng-repeat='step in recipe.steps track by $index'>
+    <div class='step margin-top-20 padding-bottom-5' ng-repeat='step in recipe.steps track by $index'>
       <div class='step-header' layout-align='start center' layout='row'>
         <div class='font-18 roboto bold food-dark-red uppercase'>
           STEP {{$index + 1}}

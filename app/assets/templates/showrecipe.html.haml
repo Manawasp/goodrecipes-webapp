@@ -46,9 +46,10 @@
       %div{layout: "row", "layout-wrap" => ""}
         %div{flex: '50'}
           %div.margin-top-5{style: "padding:0 15px"}
-            %span.margin-bottom-30.font-18.roboto.bold.food-dark-red.uppercase Quantity
-            %textarea.margin-top-20.msd-elastic.step-description.margin-bottom-5{"ng-model" => "recipe.parts", placeholder: "List of quantity and ingredients", disabled: 'true', style: 'background-color:transparent'}
-    %div.step.padding-bottom-5{"ng-repeat" => "step in recipe.steps track by $index"}
+            %div.margin-bottom-10.font-18.roboto.bold.food-dark-red.uppercase Quantity
+            %div{"ng-repeat" => "ingr in recipe.partsTable track by $index"}
+              {{ingr}}
+    %div.step.margin-top-20.padding-bottom-5{"ng-repeat" => "step in recipe.steps track by $index"}
       %div.step-header{layout: 'row', "layout-align" => "start center"}
         %div.font-18.roboto.bold.food-dark-red.uppercase
           STEP {{$index + 1}}
